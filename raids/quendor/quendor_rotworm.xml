@@ -1,0 +1,30 @@
+<raid>
+<script delay="0">
+	<![CDATA[
+	raidLog("rotworms (quendor)")
+	]]>
+	</script>
+	
+	<announce delay="0" type="event" message="A terra treme em Quendor. Alerta vermelho!"/>
+	<announce delay="60000" type="event" message="Rotworms! Estas antigas criaturas estão subindo para a planicie novamente!"/>
+	<announce delay="100000" type="event" message="Quendor está sob uma infestação de Rotworms!"/>
+	
+	<!-- Quendor West Gate -->
+	<areaspawn delay="400000" centerx="2135" centery="1836" centerz="7" radius="30">
+		<monster name="Rotworm" minamount="24" maxamount="36"/>
+		<monster name="Carrion Worm" minamount="18" maxamount="32"/>
+	</areaspawn>
+	
+	<!-- Quendor North Gate -->
+	<areaspawn delay="400000" centerx="2202" centery="1763" centerz="7" radius="30">
+		<monster name="Rotworm" minamount="24" maxamount="36"/>
+		<monster name="Carrion Worm" minamount="18" maxamount="32"/>
+	</areaspawn>	
+	
+	<!-- Quendor East Gate -->
+	<areaspawn delay="400000" centerx="2252" centery="1838" centerz="7" radius="15">
+		<monster name="Rotworm" minamount="24" maxamount="36"/>
+		<monster name="Carrion Worm" minamount="18" maxamount="32"/>
+	</areaspawn>
+	
+</raid>
