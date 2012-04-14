@@ -44,7 +44,7 @@
     <element energyPercent="10"/>
   </elements>
   <summons maxSummons="6">
-    <summon chance="10" interval="1000" name="dark priestess"/>
+    <summon chance="7" interval="1000" name="dark priestess"/>
   </summons>
   <voices chance="50" interval="5000">
     <voice sentence="O esforço de vocês Quendorianos é inutil!"/>
