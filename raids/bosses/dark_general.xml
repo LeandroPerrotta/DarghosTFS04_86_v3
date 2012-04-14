@@ -11,7 +11,7 @@
 	
 	<script delay="300000">
 	<![CDATA[
-	enableRoyalBlessing()
+
 	]]>
 	</script>
 	
@@ -260,7 +260,6 @@
 		doRemoveCreature(general)
 		local msg = "Quendor fracassou na defesa! As Armada Negra concluiu seu objetivo de invadir a cidade e saqueou muitas riquezas. Humilhado por seus inimigos Ordon está furioso."
 		addEvent(doBroadcastMessage, 1000 * 2, msg, MESSAGE_EVENT_ADVANCE)
-		addEvent(disableRoyalBlessing, 1000 * 20)
 	end
 	]]>	
 	</script>	
