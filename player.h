@@ -293,7 +293,14 @@ class Player : public Creature, public Cylinder
 		uint16_t getAccess() const {return group ? group->getAccess() : 0;}
 		uint16_t getGhostAccess() const {return group ? group->getGhostAccess() : 0;}
 
-		uint32_t getLevel() const {return level;}
+		uint32_t getLevel() const {
+#ifdef __DARGHOS_PVP_SYSTEM__
+			if(isInBattleground() && level > BATTLEGROUND_MAX_LEVEL)
+				return BATTLEGROUND_MAX_LEVEL;
+#endif
+
+			return level;
+		}
 		uint64_t getExperience() const {return experience;}
 		uint32_t getMagicLevel() const {return getPlayerInfo(PLAYERINFO_MAGICLEVEL);}
 		uint64_t getSpentMana() const {return manaSpent;}
@@ -810,12 +817,8 @@ class Player : public Creature, public Cylinder
 			lastKnowUpdate = time(NULL);
 		}
 
-		void updateBattlegroundSpeed(bool useBase = false) {
-			if(!useBase)
-				baseSpeed = vocation->getBaseSpeed() + (2 * (120 - 1));
-			else
-				updateBaseSpeed();
-		}
+		void onEnterBattleground();
+		void onLeaveBattleground();
 #endif
 
 #ifdef __DARGHOS_CUSTOM_SPELLS__

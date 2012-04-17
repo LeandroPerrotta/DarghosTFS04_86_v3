@@ -641,6 +641,10 @@ int32_t Player::getPlayerInfo(playerinfo_t playerinfo) const
 	switch(playerinfo)
 	{
 		case PLAYERINFO_LEVEL:
+#ifdef __DARGHOS_PVP_SYSTEM__
+			if(isInBattleground() && level > BATTLEGROUND_MAX_LEVEL)
+				return BATTLEGROUND_MAX_LEVEL;
+#endif
 			return level;
 		case PLAYERINFO_LEVELPERCENT:
 			return levelPercent;
@@ -651,10 +655,60 @@ int32_t Player::getPlayerInfo(playerinfo_t playerinfo) const
 		case PLAYERINFO_HEALTH:
 			return health;
 		case PLAYERINFO_MAXHEALTH:
+#ifdef __DARGHOS_PVP_SYSTEM__
+			if(isInBattleground() && level > BATTLEGROUND_MAX_LEVEL)
+			{
+				switch(vocation->getId())
+				{
+					case 1:
+					case 2:
+					case 5:
+					case 6:
+					case 9:
+					case 10:
+						return std::max((int32_t)1, (BATTLEGROUND_MAX_MAGE_HEALTH + varStats[STAT_MAXHEALTH]));
+
+					case 3:
+					case 7:
+					case 11:
+						return std::max((int32_t)1, (BATTLEGROUND_MAX_PALADIN_HEALTH + varStats[STAT_MAXHEALTH]));
+
+					case 4:
+					case 8:
+					case 12:
+						return std::max((int32_t)1, (BATTLEGROUND_MAX_KNIGHT_HEALTH + varStats[STAT_MAXHEALTH]));
+				}
+			}
+#endif
 			return std::max((int32_t)1, ((int32_t)healthMax + varStats[STAT_MAXHEALTH]));
 		case PLAYERINFO_MANA:
 			return mana;
 		case PLAYERINFO_MAXMANA:
+#ifdef __DARGHOS_PVP_SYSTEM__
+			if(isInBattleground() && level > BATTLEGROUND_MAX_LEVEL)
+			{
+				switch(vocation->getId())
+				{
+					case 1:
+					case 2:
+					case 5:
+					case 6:
+					case 9:
+					case 10:
+						return std::max((int32_t)0, (BATTLEGROUND_MAX_MAGE_MANA + varStats[STAT_MAXMANA]));
+
+					case 3:
+					case 7:
+					case 11:
+						return std::max((int32_t)0, (BATTLEGROUND_MAX_PALADIN_MANA + varStats[STAT_MAXMANA]));
+
+					case 4:
+					case 8:
+					case 12:
+						return std::max((int32_t)0, (BATTLEGROUND_MAX_KNIGHT_MANA + varStats[STAT_MAXMANA]));
+				}
+			}
+#endif
 			return std::max((int32_t)0, ((int32_t)manaMax + varStats[STAT_MAXMANA]));
 		case PLAYERINFO_SOUL:
 			return std::max((int32_t)0, ((int32_t)soul + varStats[STAT_SOUL]));
@@ -2341,9 +2395,11 @@ bool Player::onDeath()
         ignoreLoss = true;
         setLossSkill(false);
     }
-#endif
 
+	if(getZone() == ZONE_HARDCORE || isInBattleground())
+#else
 	if(getZone() == ZONE_HARDCORE)
+#endif
 	{
 		setDropLoot(LOOT_DROP_NONE);
 		setLossSkill(false);
@@ -2391,50 +2447,53 @@ bool Player::onDeath()
 
 #ifdef __DARGHOS_CUSTOM__
 	bool usePVPBlessing = false;
-    uint32_t totalDamage = 0, pvpDamage = 0, enemiesLevelSum = 0, alliesLevelSum = 0;
-    std::map<Player*, uint32_t> enemiesList, alliesList;
+	uint32_t totalDamage = 0, pvpDamage = 0, enemiesLevelSum = 0, alliesLevelSum = 0;
+	std::map<Player*, uint32_t> enemiesList, alliesList;
 
-    alliesList.insert(std::pair<Player*, uint32_t>(this, 1));
-    alliesLevelSum += getLevel();
-
-    for(CountMap::iterator it = damageMap.begin(); it != damageMap.end(); ++it)
-    {
-        // its enough when we use IDs range comparison here instead of overheating autoList
-        if(((OTSYS_TIME() - it->second.ticks) / 1000) > 60)
-            continue;
-
-        totalDamage += it->second.total;
-
-        Creature* creature = g_game.getCreatureByID(it->first);
-        if(creature && (creature->getPlayer() || creature->isPlayerSummon()))
-        {
-            Player* p = (creature->isPlayerSummon()) ? creature->getMaster()->getPlayer() : creature->getPlayer();
-            if(p && enemiesList.count(p) == 0)
-            {
-                enemiesList.insert(std::pair<Player*, uint32_t>(p, 1));
-                enemiesLevelSum += p->getLevel();
-            }
-            pvpDamage += it->second.total;
-        }
-    }
-
-	uint8_t pvpPercent = (uint8_t)std::ceil((double)pvpDamage * 100. / std::max(1U, totalDamage));
-    if(hasPvpBlessing() && getBlessings() >= 1 && pvpPercent >= 40)
-    {
-        usePVPBlessing = true;
-        removePvpBlessing();
-    }
-	else if(pvpPercent < 50)
+	if(skillLoss)
 	{
-		monsterDeath = true;
-		setDropLoot(LOOT_DROP_PREVENT);
-		setLossSkill(false);
-		preventLoss = NULL;
-		preventDrop = NULL;
+		alliesList.insert(std::pair<Player*, uint32_t>(this, 1));
+		alliesLevelSum += getLevel();
 
-		wearGear(true);
-		wearShield(true);
-		wearWeapon(true);
+		for(CountMap::iterator it = damageMap.begin(); it != damageMap.end(); ++it)
+		{
+			// its enough when we use IDs range comparison here instead of overheating autoList
+			if(((OTSYS_TIME() - it->second.ticks) / 1000) > 60)
+				continue;
+
+			totalDamage += it->second.total;
+
+			Creature* creature = g_game.getCreatureByID(it->first);
+			if(creature && (creature->getPlayer() || creature->isPlayerSummon()))
+			{
+				Player* p = (creature->isPlayerSummon()) ? creature->getMaster()->getPlayer() : creature->getPlayer();
+				if(p && enemiesList.count(p) == 0)
+				{
+					enemiesList.insert(std::pair<Player*, uint32_t>(p, 1));
+					enemiesLevelSum += p->getLevel();
+				}
+				pvpDamage += it->second.total;
+			}
+		}
+
+		uint8_t pvpPercent = (uint8_t)std::ceil((double)pvpDamage * 100. / std::max(1U, totalDamage));
+		if(hasPvpBlessing() && getBlessings() >= 1 && pvpPercent >= 40)
+		{
+			usePVPBlessing = true;
+			removePvpBlessing();
+		}
+		else if(pvpPercent < 50)
+		{
+			monsterDeath = true;
+			setDropLoot(LOOT_DROP_PREVENT);
+			setLossSkill(false);
+			preventLoss = NULL;
+			preventDrop = NULL;
+
+			wearGear(true);
+			wearShield(true);
+			wearWeapon(true);
+		}
 	}
 
 	if(!Creature::onDeath())
@@ -5678,6 +5737,28 @@ bool Player::isBattlegroundDeserter()
 	}
 
 	return false;
+}
+
+void Player::onEnterBattleground()
+{
+	baseSpeed = vocation->getBaseSpeed() + (2 * (120 - 1));
+	g_game.changeSpeed(this, 0);
+
+	health = getPlayerInfo(PLAYERINFO_MAXHEALTH);
+	mana = getPlayerInfo(PLAYERINFO_MAXMANA);
+
+	sendStats();
+}
+
+void Player::onLeaveBattleground()
+{
+	updateBaseSpeed();
+	g_game.changeSpeed(this, 0);
+
+	health = getPlayerInfo(PLAYERINFO_MAXHEALTH);
+	mana = getPlayerInfo(PLAYERINFO_MAXMANA);
+
+	sendStats();
 }
 
 void Player::wearGear(bool isDeath/* = false*/)

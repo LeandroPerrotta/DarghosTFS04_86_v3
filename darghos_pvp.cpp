@@ -357,8 +357,7 @@ void Battleground::putInside(Player* player)
 	playerInfo->statistics = statistic;
 	statisticsList.push_back(playerInfo->statistics);
 
-	player->updateBattlegroundSpeed();
-	g_game.changeSpeed(player, 0);
+	player->onEnterBattleground();
 
 	playerInfo->areInside = true;
 }
@@ -484,8 +483,8 @@ BattlegrondRetValue Battleground::kickPlayer(Player* player, bool force)
 	if(player->isPause())
 		player->setPause(false);
 
-	player->updateBattlegroundSpeed(true);
-	g_game.changeSpeed(player, 0);
+	player->onLeaveBattleground();
+	
 
 	CreatureEventList bgFragEvents = player->getCreatureEvents(CREATURE_EVENT_BG_LEAVE);
 	for(CreatureEventList::iterator it = bgFragEvents.begin(); it != bgFragEvents.end(); ++it)
