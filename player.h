@@ -293,12 +293,12 @@ class Player : public Creature, public Cylinder
 		uint16_t getAccess() const {return group ? group->getAccess() : 0;}
 		uint16_t getGhostAccess() const {return group ? group->getGhostAccess() : 0;}
 
+
 		uint32_t getLevel() const {
 #ifdef __DARGHOS_PVP_SYSTEM__
 			if(isInBattleground() && level > BATTLEGROUND_MAX_LEVEL)
 				return BATTLEGROUND_MAX_LEVEL;
 #endif
-
 			return level;
 		}
 		uint64_t getExperience() const {return experience;}

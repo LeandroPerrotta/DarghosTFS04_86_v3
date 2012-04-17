@@ -93,7 +93,7 @@ class Battleground
 		BattlegroundStatus getStatus() { return status; }
 
         BattlegrondRetValue onPlayerJoin(Player* player);
-		BattlegrondRetValue kickPlayer(Player* player, bool force = false);
+		BattlegrondRetValue kickPlayer(Player* player, bool force = false, bool updateStats = true);
 		void onPlayerDeath(Player* killer, DeathList deathList);
 		PlayersMap listPlayersOfTeam(Bg_Teams_t team);
 		Bg_PlayerInfo_t* findPlayerInfo(Player* player);

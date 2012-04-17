@@ -846,7 +846,11 @@ bool IOLoginData::savePlayer(Player* player, DBInsert& query_insert, bool preSav
 	}
 
 	query << ", ";
+#ifdef __DARGHOS_PVP_SYSTEM__
+	query << "`level` = " << std::max((uint32_t)1, player->level) << ", ";
+#else
 	query << "`level` = " << std::max((uint32_t)1, player->getLevel()) << ", ";
+#endif
 	query << "`group_id` = " << player->groupId << ", ";
 	query << "`health` = " << player->health << ", ";
 	query << "`healthmax` = " << player->healthMax << ", ";
