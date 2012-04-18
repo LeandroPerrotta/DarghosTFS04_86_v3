@@ -195,9 +195,9 @@ function pvpBattleground.getExpMultipler(level)
 end
 
 function pvpBattleground.getExperienceGain(cid)
-	local multipler = pvpBattleground.getExpMultipler(getPlayerLevel(cid))
+	local multipler = pvpBattleground.getExpMultipler(getPlayerLevel(cid, false))
 	local rate = pvpBattleground.getExpGainRate(cid)
-	local nextLevelExp = getExperienceForLevel(getPlayerLevel(cid) + 1) - getExperienceForLevel(getPlayerLevel(cid))
+	local nextLevelExp = getExperienceForLevel(getPlayerLevel(cid, false) + 1) - getExperienceForLevel(getPlayerLevel(cid, false))
 	
 	return math.floor((nextLevelExp * multipler) * rate)
 end
