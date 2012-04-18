@@ -4,11 +4,11 @@
 		<formula meleeDamage="1.0" distDamage="1.0" wandDamage="1.0" magDamage="1.0" magHealingDamage="1.0" defense="1.0" magDefense="1.0" armor="1.0"/>
 		<skill fist="1.5" club="2.0" sword="2.0" axe="2.0" distance="2.0" shielding="1.5" fishing="1.1" experience="1.0"/>
 	</vocation>
-	<vocation id="1" name="Sorcerer" description="a sorcerer" needpremium="0" gaincap="10" gainhp="5" gainmana="30" gainhpticks="12" gainhpamount="20" gainmanaticks="3" gainmanaamount="40" manamultiplier="1.1" attackspeed="2000" soulmax="100" gainsoulticks="120" fromvoc="1">
+	<vocation id="1" name="Sorcerer" description="a sorcerer" needpremium="0" gaincap="10" gainhp="5" gainmana="30" gainhpticks="12" gainhpamount="20" gainmanaticks="3" gainmanaamount="40" manamultiplier="1.1" attackspeed="1500" soulmax="100" gainsoulticks="120" fromvoc="1">
 		<formula meleeDamage="1.0" distDamage="1.0" wandDamage="1.0" magDamage="1.0" magHealingDamage="1.0" defense="1.0" magDefense="1.0" armor="1.0"/>
 		<skill fist="1.5" club="2.0" sword="2.0" axe="2.0" distance="2.0" shielding="1.5" fishing="1.1" experience="1.0"/>
 	</vocation>
-	<vocation id="2" name="Druid" description="a druid" needpremium="0" gaincap="10" gainhp="5" gainmana="30" gainhpticks="12" gainhpamount="20" gainmanaticks="3" gainmanaamount="40" manamultiplier="1.1" attackspeed="2000" soulmax="100" gainsoulticks="120" fromvoc="2">
+	<vocation id="2" name="Druid" description="a druid" needpremium="0" gaincap="10" gainhp="5" gainmana="30" gainhpticks="12" gainhpamount="20" gainmanaticks="3" gainmanaamount="40" manamultiplier="1.1" attackspeed="1500" soulmax="100" gainsoulticks="120" fromvoc="2">
 		<formula meleeDamage="1.0" distDamage="1.0" wandDamage="1.0" magDamage="1.0" magHealingDamage="1.0" defense="1.0" magDefense="1.0" armor="1.0"/>
 		<skill fist="1.5" club="1.8" sword="1.8" axe="1.8" distance="1.8" shielding="1.5" fishing="1.1" experience="1.0"/>
 	</vocation>
@@ -20,11 +20,11 @@
 		<formula meleeDamage="1.0" distDamage="1.0" wandDamage="1.0" magDamage="1.0" magHealingDamage="1.0" defense="1.0" magDefense="1.0" armor="1.0"/>
 		<skill fist="1.1" club="1.1" sword="1.1" axe="1.1" distance="1.4" shielding="1.1" fishing="1.1" experience="1.0"/>
 	</vocation>
-	<vocation id="5" name="Master Sorcerer" description="a master sorcerer" needpremium="0" criticalchancepercent="1" gaincap="10" gainhp="5" gainmana="30" gainhpticks="12" gainhpamount="30" gainmanaticks="2" gainmanaamount="60" manamultiplier="1.1" attackspeed="2000" soulmax="200" gainsoulticks="15" fromvoc="1" lessloss="30">
+	<vocation id="5" name="Master Sorcerer" description="a master sorcerer" needpremium="0" criticalchancepercent="1" gaincap="10" gainhp="5" gainmana="30" gainhpticks="12" gainhpamount="30" gainmanaticks="2" gainmanaamount="60" manamultiplier="1.1" attackspeed="1500" soulmax="200" gainsoulticks="15" fromvoc="1" lessloss="30">
 		<formula meleeDamage="1.0" distDamage="1.0" wandDamage="1.0" magDamage="1.0" magHealingDamage="1.0" defense="1.0" magDefense="1.0" armor="1.0"/>
 		<skill fist="1.5" club="2.0" sword="2.0" axe="2.0" distance="2.0" shielding="1.5" fishing="1.1" experience="1.0"/>
 	</vocation>
-	<vocation id="6" name="Elder Druid" description="an elder druid" needpremium="0" criticalchancepercent="1" gaincap="10" gainhp="5" gainmana="30" gainhpticks="12" gainhpamount="30" gainmanaticks="2" gainmanaamount="60" manamultiplier="1.1" attackspeed="2000" soulmax="200" gainsoulticks="15" fromvoc="2" lessloss="30">
+	<vocation id="6" name="Elder Druid" description="an elder druid" needpremium="0" criticalchancepercent="1" gaincap="10" gainhp="5" gainmana="30" gainhpticks="12" gainhpamount="30" gainmanaticks="2" gainmanaamount="60" manamultiplier="1.1" attackspeed="1500" soulmax="200" gainsoulticks="15" fromvoc="2" lessloss="30">
 		<formula meleeDamage="1.0" distDamage="1.0" wandDamage="1.0" magDamage="1.0" magHealingDamage="1.0" defense="1.0" magDefense="1.0" armor="1.0"/>
 		<skill fist="1.5" club="1.8" sword="1.8" axe="1.8" distance="1.8" shielding="1.5" fishing="1.1" experience="1.0"/>
 	</vocation>
@@ -36,11 +36,11 @@
 		<formula meleeDamage="1.0" distDamage="1.0" wandDamage="1.0" magDamage="1.0" magHealingDamage="1.0" defense="1.0" magDefense="1.0" armor="1.0"/>
 		<skill fist="1.1" club="1.1" sword="1.1" axe="1.1" distance="1.4" shielding="1.1" fishing="1.1" experience="1.0"/>
 	</vocation>
-	<vocation id="9" name="Warmaster Sorcerer" description="a warmaster sorcerer" needpremium="1" criticalchancepercent="5" gaincap="10" gainhp="5" gainmana="30" gainhpticks="12" gainhpamount="30" gainmanaticks="2" gainmanaamount="60" manamultiplier="1.1" attackspeed="2000" soulmax="200" gainsoulticks="15" fromvoc="5" lessloss="30">
+	<vocation id="9" name="Warmaster Sorcerer" description="a warmaster sorcerer" needpremium="1" criticalchancepercent="5" gaincap="10" gainhp="5" gainmana="30" gainhpticks="12" gainhpamount="30" gainmanaticks="2" gainmanaamount="60" manamultiplier="1.1" attackspeed="1500" soulmax="200" gainsoulticks="15" fromvoc="5" lessloss="30">
 		<formula meleeDamage="1.0" distDamage="1.0" wandDamage="1.1" magDamage="1.1" magHealingDamage="1.0" defense="1.0" magDefense="1.0" armor="1.0"/>
 		<skill fist="1.5" club="2.0" sword="2.0" axe="2.0" distance="2.0" shielding="1.5" fishing="1.1" experience="1.0"/>
 	</vocation>
-	<vocation id="10" name="Warden Druid" description="an warden druid" needpremium="1" criticalchancepercent="5" gaincap="10" gainhp="5" gainmana="30" gainhpticks="12" gainhpamount="30" gainmanaticks="2" gainmanaamount="60" manamultiplier="1.1" attackspeed="2000" soulmax="200" gainsoulticks="15" fromvoc="6" lessloss="30">
+	<vocation id="10" name="Warden Druid" description="an warden druid" needpremium="1" criticalchancepercent="5" gaincap="10" gainhp="5" gainmana="30" gainhpticks="12" gainhpamount="30" gainmanaticks="2" gainmanaamount="60" manamultiplier="1.1" attackspeed="1500" soulmax="200" gainsoulticks="15" fromvoc="6" lessloss="30">
 		<formula meleeDamage="1.0" distDamage="1.0" wandDamage="1.1" magDamage="1.1" magHealingDamage="1.0" defense="1.0" magDefense="1.0" armor="1.0"/>
 		<skill fist="1.5" club="1.8" sword="1.8" axe="1.8" distance="1.8" shielding="1.5" fishing="1.1" experience="1.0"/>
 	</vocation>
