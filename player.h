@@ -197,7 +197,11 @@ class Player : public Creature, public Cylinder
 		void hasRequestedOutfit(bool v) {requestedOutfit = v;}
 
 		Vocation* getVocation() const {return vocation;}
+#ifdef __DARGHOS_CUSTOM__
+		int32_t getPlayerInfo(playerinfo_t playerinfo, bool checkBattleground = true) const;
+#else
 		int32_t getPlayerInfo(playerinfo_t playerinfo) const;
+#endif
 
 		void setParty(Party* _party) {party = _party;}
 		Party* getParty() const {return party;}
@@ -293,11 +297,12 @@ class Player : public Creature, public Cylinder
 		uint16_t getAccess() const {return group ? group->getAccess() : 0;}
 		uint16_t getGhostAccess() const {return group ? group->getGhostAccess() : 0;}
 
-
-		uint32_t getLevel() const {
 #ifdef __DARGHOS_PVP_SYSTEM__
-			if(isInBattleground() && level > BATTLEGROUND_MAX_LEVEL)
+		uint32_t getLevel(bool checkBattleground = true) const {
+			if(checkBattleground && isInBattleground() && level > BATTLEGROUND_MAX_LEVEL)
 				return BATTLEGROUND_MAX_LEVEL;
+#else
+		uint32_t getLevel() const {
 #endif
 			return level;
 		}

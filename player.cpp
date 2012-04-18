@@ -636,13 +636,17 @@ uint32_t Player::findShopItemIdByClientId(uint16_t sprite_id)
 }
 #endif
 
+#ifdef __DARGHOS_CUSTOM__
+int32_t Player::getPlayerInfo(playerinfo_t playerinfo, bool checkBattleground/* = true*/) const
+#else
 int32_t Player::getPlayerInfo(playerinfo_t playerinfo) const
+#endif
 {
 	switch(playerinfo)
 	{
 		case PLAYERINFO_LEVEL:
 #ifdef __DARGHOS_PVP_SYSTEM__
-			if(isInBattleground() && level > BATTLEGROUND_MAX_LEVEL)
+			if(checkBattleground && isInBattleground() && level > BATTLEGROUND_MAX_LEVEL)
 				return BATTLEGROUND_MAX_LEVEL;
 #endif
 			return level;
@@ -656,7 +660,7 @@ int32_t Player::getPlayerInfo(playerinfo_t playerinfo) const
 			return health;
 		case PLAYERINFO_MAXHEALTH:
 #ifdef __DARGHOS_PVP_SYSTEM__
-			if(isInBattleground() && level > BATTLEGROUND_MAX_LEVEL)
+			if(checkBattleground && isInBattleground() && level > BATTLEGROUND_MAX_LEVEL)
 			{
 				switch(vocation->getId())
 				{
@@ -685,7 +689,7 @@ int32_t Player::getPlayerInfo(playerinfo_t playerinfo) const
 			return mana;
 		case PLAYERINFO_MAXMANA:
 #ifdef __DARGHOS_PVP_SYSTEM__
-			if(isInBattleground() && level > BATTLEGROUND_MAX_LEVEL)
+			if(checkBattleground && isInBattleground() && level > BATTLEGROUND_MAX_LEVEL)
 			{
 				switch(vocation->getId())
 				{

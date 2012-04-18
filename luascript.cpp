@@ -2713,7 +2713,17 @@ int32_t LuaInterface::internalGetPlayerInfo(lua_State* L, PlayerInfo_t info)
 			value = player->getGhostAccess();
 			break;
 		case PlayerInfoLevel:
+#ifdef __DARGHOS_CUSTOM__
+		{
+			bool checkBattleground = true;
+			if(lua_gettop(L) > 1)
+				checkBattleground = popBoolean(L);
+
+			value = player->getLevel(checkBattleground);
+		}
+#else
 			value = player->getLevel();
+#endif
 			break;
 		case PlayerInfoExperience:
 			value = player->getExperience();

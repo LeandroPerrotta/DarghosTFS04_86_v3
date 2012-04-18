@@ -173,10 +173,9 @@ void Battleground::finish(Bg_Teams_t teamWinner)
 
 			player->setPause(true);
 			player->sendPvpChannelMessage("Você será levado ao lugar em que estava em 5 segundos...");
-			player->onLeaveBattleground();
 
 			Scheduler::getInstance().addEvent(createSchedulerTask(1000 * 5,
-				boost::bind(&Battleground::kickPlayer, this, player, true, false)));
+				boost::bind(&Battleground::kickPlayer, this, player, true)));
 
 			time_t timeInBg = time(NULL) - it_players->second.join_in;
 			time_t bgDuration = time(NULL) - lastInit;
@@ -432,7 +431,7 @@ BattlegrondRetValue Battleground::onPlayerJoin(Player* player)
     return BATTLEGROUND_NO_ERROR;
 }
 
-BattlegrondRetValue Battleground::kickPlayer(Player* player, bool force, bool updateStats)
+BattlegrondRetValue Battleground::kickPlayer(Player* player, bool force)
 {
 	if(!player || player->isRemoved())
 	{
@@ -484,8 +483,7 @@ BattlegrondRetValue Battleground::kickPlayer(Player* player, bool force, bool up
 	if(player->isPause())
 		player->setPause(false);
 
-	if(updateStats)
-		player->onLeaveBattleground();
+	player->onLeaveBattleground();
 
 	CreatureEventList bgFragEvents = player->getCreatureEvents(CREATURE_EVENT_BG_LEAVE);
 	for(CreatureEventList::iterator it = bgFragEvents.begin(); it != bgFragEvents.end(); ++it)
