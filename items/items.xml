@@ -19236,6 +19236,19 @@
 		<attribute key="criticalChance" value="4" />
 		<attribute key="fieldAbsorbPercentPoison" value="75" />
 	</item>
+	<item id="12699" article="the" name="vengeful flameblade">
+		<attribute key="description" value="Get revenge with this sharpened flame blade." />
+		<attribute key="weight" value="6400" />
+		<attribute key="defense" value="35" />
+		<attribute key="attack" value="52" />
+		<attribute key="criticalChance" value="8" />
+		<attribute key="fieldAbsorbPercentFire" value="10" />
+		<attribute key="elementFire" value="6" />
+		<attribute key="skillSword" value="3" />
+		<attribute key="weaponType" value="sword" />
+		<attribute key="slotType" value="two-handed" />
+		<attribute key="rarity" value="legendary"/>
+	</item>	
 	
 	<!-- Modified Items -->
 	<item id="2270" article="a" name="holy rune">

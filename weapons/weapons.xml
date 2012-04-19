@@ -51,7 +51,7 @@
 	<wand id="8922" level="42" mana="13" min="55" max="75" type="death" event="function" value="default"> <!-- Wand of Voodoo -->
 		<vocation id="1"/> <vocation id="5"/> <vocation id="9"/>
 	</wand>
-
+	
 	<!-- Swords -->
 	<melee id="2413" unproperly="1" event="function" value="default">
 		<vocation id="4"/> <vocation id="8" showInDescription="0"/> <vocation id="12" showInDescription="0"/>
@@ -390,8 +390,11 @@
 	<!-- CUSTOM -->
 	<distance id="12697" unproperly="1" event="function" value="default"> <!-- Agile Poisoned Longbow -->
 		<vocation id="3"/> <vocation id="7" showInDescription="0"/> <vocation id="11" showInDescription="0"/>
-		
 	</distance>
+	
+	<melee id="12699" unproperly="1" event="function" value="default"> <!-- Vengeful Flameblade -->
+		<vocation id="4"/> <vocation id="8" showInDescription="0"/> <vocation id="12" showInDescription="0"/>
+	</melee>		
 
  	<!-- Ammunition -->
 	<distance id="2545" event="script" value="poison_arrow.lua"/>
