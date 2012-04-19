@@ -331,10 +331,10 @@
 		<instant name="Great Energy Beam" words="exevo gran vis lux" lvl="29" mana="200" exhaustion="1600" direction="1" script="attack/great_energy_beam.lua">
 			<vocation name="Sorcerer"/> <vocation name="Master Sorcerer"/> <vocation name="Warmaster Sorcerer"/>
 		</instant>
-		<instant name="Rage of the Skies" words="exevo gran mas vis" prem="1" lvl="55" mana="650" castdelay="4000" exhaustion="1600" selftarget="1" script="attack/rage_of_the_skies.lua">
+		<instant name="Rage of the Skies" words="exevo gran mas vis" prem="1" lvl="55" mana="650" castdelay="2000" exhaustion="1600" selftarget="1" script="attack/rage_of_the_skies.lua">
 			<vocation name="Sorcerer"/> <vocation name="Master Sorcerer"/> <vocation name="Warmaster Sorcerer"/>
 		</instant>
-		<instant name="Hell's Core" words="exevo gran mas flam" prem="1" lvl="60" mana="1200" castdelay="4000" exhaustion="1600" selftarget="1" script="attack/hells_core.lua">
+		<instant name="Hell's Core" words="exevo gran mas flam" prem="1" lvl="60" mana="1200" castdelay="3000" exhaustion="1600" selftarget="1" script="attack/hells_core.lua">
 			<vocation name="Sorcerer"/> <vocation name="Master Sorcerer"/> <vocation name="Warmaster Sorcerer"/>
 		</instant>
 		<instant name="Enchant Party" words="utori mas sio" prem="1" lvl="32" mana="0" exhaustion="1200" aggressive="0" selftarget="1" script="support/party_sorcerer.lua">
@@ -358,10 +358,10 @@
 		<instant name="Undead Legion" words="exana mas mort" lvl="30" mana="500" exhaustion="1600" selftarget="1" script="summon/undead_legion.lua">
 			<vocation name="Druid"/>    <vocation name="Elder Druid"/> <vocation name="Warden Druid"/>
 		</instant>
-		<instant name="Wrath of Nature" words="exevo gran mas tera" prem="1" lvl="55" mana="770" castdelay="4000" exhaustion="1600" selftarget="1" script="attack/wrath_of_nature.lua">
+		<instant name="Wrath of Nature" words="exevo gran mas tera" prem="1" lvl="55" mana="770" castdelay="2000" exhaustion="1600" selftarget="1" script="attack/wrath_of_nature.lua">
 			<vocation name="Druid"/>    <vocation name="Elder Druid"/> <vocation name="Warden Druid"/>
 		</instant>
-		<instant name="Eternal Winter" words="exevo gran mas frigo" prem="1" lvl="60" mana="1200" castdelay="4000" exhaustion="1600" selftarget="1" script="attack/eternal_winter.lua">
+		<instant name="Eternal Winter" words="exevo gran mas frigo" prem="1" lvl="60" mana="1200" castdelay="3000" exhaustion="1600" selftarget="1" script="attack/eternal_winter.lua">
 			<vocation name="Druid"/>    <vocation name="Elder Druid"/> <vocation name="Warden Druid"/>
 		</instant>
 		<instant name="Heal Party" words="utura mas sio" prem="1" lvl="32" mana="0" exhaustion="1200" aggressive="0" selftarget="1" script="support/party_druid.lua">
