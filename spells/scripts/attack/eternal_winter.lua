@@ -4,6 +4,12 @@ setCombatParam(combat, COMBAT_PARAM_EFFECT, CONST_ME_ICETORNADO)
 
 function onGetFormulaValues(cid, level, maglevel)
 	local min, max = getMinMaxClassicFormula(level, maglevel, 6.6, 9.2)
+	
+	if(doPlayerIsInBattleground(cid)) then
+		min = math.ceil(min * 1.33)
+		max = math.ceil(max * 1.33)
+	end
+	
 	return -min, -max
 end
 
