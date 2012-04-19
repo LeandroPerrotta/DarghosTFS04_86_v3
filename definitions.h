@@ -23,8 +23,8 @@
 #define CLIENT_VERSION_STRING "Only clients with protocol 8.6 allowed!"
 
 #ifdef __DARGHOS_CUSTOM__
-#define SOFTWARE_NAME "Darghos Engine"
-#define SOFTWARE_VERSION ""
+#define SOFTWARE_NAME "OTServ"
+#define SOFTWARE_VERSION "0.6.3_SVN"
 #else
 #define SOFTWARE_NAME "The Forgotten Server"
 #define SOFTWARE_VERSION "0.4_DEV"
