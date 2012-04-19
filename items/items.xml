@@ -19240,7 +19240,7 @@
 		<attribute key="description" value="Get revenge with this sharpened flame blade." />
 		<attribute key="weight" value="6400" />
 		<attribute key="defense" value="35" />
-		<attribute key="attack" value="52" />
+		<attribute key="attack" value="54" />
 		<attribute key="criticalChance" value="8" />
 		<attribute key="fieldAbsorbPercentFire" value="10" />
 		<attribute key="elementFire" value="6" />
