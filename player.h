@@ -143,8 +143,10 @@ typedef std::map<uint32_t, War_t> WarMap;
 
 #define SPEED_MAX 1500
 #define SPEED_MIN 10
-#define STAMINA_MAX (42 * 60 * 60 * 1000)
 #define STAMINA_MULTIPLIER (60 * 1000)
+
+const int32_t MAX_STAMINA = 42 * 60 * 60 * 1000;
+const int32_t MAX_STAMINA_MINUTES = MAX_STAMINA / 60000;
 
 class Player : public Creature, public Cylinder
 {
@@ -328,12 +330,13 @@ class Player : public Creature, public Cylinder
 		uint16_t getSex(bool full) const {return full ? sex : sex % 2;}
 		void setSex(uint16_t);
 
-		uint64_t getStamina() const {return hasFlag(PlayerFlag_HasInfiniteStamina) ? STAMINA_MAX : stamina;}
-		void setStamina(uint64_t value) {stamina = std::min((uint64_t)STAMINA_MAX, (uint64_t)std::max((uint64_t)0, value));}
-		uint32_t getStaminaMinutes() const {return (uint32_t)(getStamina() / (uint64_t)STAMINA_MULTIPLIER);}
-		void setStaminaMinutes(uint32_t value) {setStamina((uint64_t)(value * STAMINA_MULTIPLIER));}
-		void useStamina(int64_t value) {stamina = std::min((int64_t)STAMINA_MAX, (int64_t)std::max((int64_t)0, ((int64_t)stamina + value)));}
-		uint64_t getSpentStamina() {return (uint64_t)STAMINA_MAX - stamina;}
+		//stamina
+		void addStamina(int64_t value);
+		void removeStamina(int64_t value) {addStamina(-value);}
+		int32_t getStaminaMinutes();
+		int32_t getStamina() {return stamina;}
+		int32_t getSpentStamina() {return MAX_STAMINA - stamina;}
+		void setStaminaMinutes(uint32_t value) {addStamina((int64_t)(value * STAMINA_MULTIPLIER));}
 
 		int64_t getLastLoad() const {return lastLoad;}
 		time_t getLastLogin() const {return lastLogin;}
@@ -977,6 +980,7 @@ class Player : public Creature, public Cylinder
 		int32_t bloodHitCount;
 		int32_t shieldBlockCount;
 		int32_t shootRange;
+		int32_t stamina;
 
 		uint32_t clientVersion;
 		uint32_t messageTicks;
@@ -1011,7 +1015,6 @@ class Player : public Creature, public Cylinder
 		int64_t lastPong;
 		int64_t lastPing;
 		int64_t nextAction;
-		uint64_t stamina;
 		uint64_t experience;
 		uint64_t manaSpent;
 		uint64_t lastAttack;

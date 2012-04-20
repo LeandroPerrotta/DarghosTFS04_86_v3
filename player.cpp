@@ -102,7 +102,7 @@ Player::Player(const std::string& _name, ProtocolGame* p):
 	rates[SKILL__MAGLEVEL] = rates[SKILL__LEVEL] = 1.0f;
 	soulMax = 100;
 	capacity = 400.00;
-	stamina = STAMINA_MAX;
+	stamina = MAX_STAMINA;
 	lastLoad = lastPing = lastPong = OTSYS_TIME();
 
 	writeItem = NULL;
@@ -1526,36 +1526,35 @@ void Player::onCreatureAppear(const Creature* creature)
 	if(Outfits::getInstance()->getOutfit(defaultOutfit.lookType, outfit))
 		outfitAttributes = Outfits::getInstance()->addAttributes(getID(), outfit.outfitId, sex, defaultOutfit.lookAddons);
 
-	if(lastLogout && stamina < STAMINA_MAX)
+	if(lastLogout > 0)
 	{
-		int64_t ticks = (int64_t)time(NULL) - lastLogout - 600;
-		if(ticks > 0)
-		{
-			ticks = (int64_t)((double)(ticks * 1000) / g_config.getDouble(ConfigManager::RATE_STAMINA_GAIN));
-			int64_t premium = g_config.getNumber(ConfigManager::STAMINA_LIMIT_TOP) * STAMINA_MULTIPLIER, period = ticks;
-			if((int64_t)stamina <= premium)
-			{
-				period += stamina;
-				if(period > premium)
-					period -= premium;
-				else
-					period = 0;
+		int64_t timeOff = time(NULL) - lastLogout - 600;
+		if(timeOff > 0){
+			int32_t stamina_rate = g_config.getNumber(ConfigManager::RATE_STAMINA_GAIN);
+			int32_t slow_stamina_rate = g_config.getNumber(ConfigManager::SLOW_RATE_STAMINA_GAIN);
+			int32_t quick_stamina_max = MAX_STAMINA - g_config.getNumber(ConfigManager::STAMINA_EXTRA_EXPERIENCE_DURATION);
+			int64_t gain;
+			bool checkSlowStamina = true;
 
-				useStamina(ticks - period);
+			if(getStamina() < quick_stamina_max){
+				gain = timeOff * stamina_rate;
+				if(getStamina() + gain > quick_stamina_max){
+					timeOff -= (quick_stamina_max - getStamina()) / stamina_rate;
+					addStamina(quick_stamina_max - getStamina());
+				}
+				else{
+					addStamina(gain);
+					checkSlowStamina = false;
+				}
 			}
 
-			if(period > 0)
-			{
-				ticks = (int64_t)((g_config.getDouble(ConfigManager::RATE_STAMINA_GAIN) * period)
-					/ g_config.getDouble(ConfigManager::RATE_STAMINA_THRESHOLD));
-				if(stamina + ticks > STAMINA_MAX)
-					ticks = STAMINA_MAX - stamina;
-
-				useStamina(ticks);
+			if(getStamina() < MAX_STAMINA && checkSlowStamina){
+				gain = timeOff * slow_stamina_rate;
+				addStamina(gain);
 			}
-
-			sendStats();
 		}
+
+		sendStats();
 	}
 
 	g_game.checkPlayersRecord(this);
@@ -4086,9 +4085,11 @@ void Player::onCombatRemoveCondition(const Creature*, Condition* condition)
 
 void Player::onTickCondition(ConditionType_t type, int32_t interval, bool& _remove)
 {
+	if(type == CONDITION_HUNTING){
+		removeStamina(interval * g_config.getNumber(ConfigManager::RATE_STAMINA_LOSS));
+	}
+
 	Creature::onTickCondition(type, interval, _remove);
-	if(type == CONDITION_HUNTING)
-		useStamina(-(interval * g_config.getNumber(ConfigManager::RATE_STAMINA_LOSS)));
 }
 
 void Player::onAttackedCreature(Creature* target)
@@ -4342,21 +4343,20 @@ bool Player::rateExperience(double& gainExp, bool fromMonster)
 
 	gainExp *= rates[SKILL__LEVEL] * g_game.getExperienceStage(level,
 		vocation->getExperienceMultiplier());
-	if(!hasFlag(PlayerFlag_HasInfiniteStamina))
-	{
-		int32_t minutes = getStaminaMinutes();
-		if(minutes >= g_config.getNumber(ConfigManager::STAMINA_LIMIT_TOP))
-		{
-			if(isPremium() || !g_config.getBool(ConfigManager::STAMINA_BONUS_PREMIUM))
-				gainExp *= g_config.getDouble(ConfigManager::RATE_STAMINA_ABOVE);
-		}
-		else if(minutes < (g_config.getNumber(ConfigManager::STAMINA_LIMIT_BOTTOM)) && minutes > 0)
-			gainExp *= g_config.getDouble(ConfigManager::RATE_STAMINA_UNDER);
-		else if(minutes <= 0)
-			gainExp = 0;
+
+	if((isPremium() || !g_config.getBool(ConfigManager::STAMINA_EXTRA_EXPERIENCE_ONLYPREM)) &&
+		stamina > MAX_STAMINA - g_config.getNumber(ConfigManager::STAMINA_EXTRA_EXPERIENCE_DURATION)){
+			gainExp += uint64_t(gainExp * g_config.getDouble(ConfigManager::STAMINA_EXTRA_EXPERIENCE_RATE));
 	}
-	else if(isPremium() || !g_config.getBool(ConfigManager::STAMINA_BONUS_PREMIUM))
-		gainExp *= g_config.getDouble(ConfigManager::RATE_STAMINA_ABOVE);
+
+	if(!hasFlag(PlayerFlag_HasInfiniteStamina)){
+		if(getStaminaMinutes() <= 0){
+			gainExp = 0;
+		}
+		else if(getStaminaMinutes() <= 840){
+			gainExp = gainExp / 2;
+		}
+	}
 
 	return true;
 }
@@ -5620,6 +5620,28 @@ void Player::sendCritical() const
 {
 	if(g_config.getBool(ConfigManager::DISPLAY_CRITICAL_HIT))
 		g_game.addAnimatedText(getPosition(), COLOR_DARKRED, "You strike a critical hit!");
+}
+
+void Player::addStamina(int64_t value)
+{
+	int64_t newstamina = stamina + value;
+
+	//stamina may not be bigger than 42 hours, and not smaller than 0
+	if(newstamina > MAX_STAMINA)
+		newstamina = MAX_STAMINA;
+	if(newstamina < 0)
+		newstamina = 0;
+
+	stamina = newstamina;
+}
+
+int32_t Player::getStaminaMinutes()
+{
+	if(hasFlag(PlayerFlag_HasInfiniteStamina)){
+		return MAX_STAMINA_MINUTES;
+	}
+
+	return std::min(MAX_STAMINA_MINUTES, int32_t(stamina / 60000));
 }
 
 #ifdef __DARGHOS_IGNORE_AFK__

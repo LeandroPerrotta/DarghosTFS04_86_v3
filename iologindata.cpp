@@ -433,7 +433,7 @@ bool IOLoginData::loadPlayer(Player* player, const std::string& name, bool preLo
 
 	player->soul = result->getDataInt("soul");
 	player->capacity = result->getDataInt("cap");
-	player->setStamina(result->getDataLong("stamina"));
+	player->stamina = result->getDataInt("stamina");
 	player->marriage = result->getDataInt("marriage");
 
 	player->balance = result->getDataLong("balance");
@@ -873,7 +873,7 @@ bool IOLoginData::savePlayer(Player* player, DBInsert& query_insert, bool preSav
 	query << "`cap` = " << player->getCapacity() << ", ";
 	query << "`sex` = " << player->sex << ", ";
 	query << "`balance` = " << player->balance << ", ";
-	query << "`stamina` = " << player->getStamina() << ", ";
+	query << "`stamina` = " << player->stamina << ", ";
 
 	Skulls_t skull = SKULL_RED;
 	if(g_config.getBool(ConfigManager::USE_BLACK_SKULL))

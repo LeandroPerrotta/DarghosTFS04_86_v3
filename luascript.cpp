@@ -2795,7 +2795,7 @@ int32_t LuaInterface::internalGetPlayerInfo(lua_State* L, PlayerInfo_t info)
 
 			return 1;
 		case PlayerInfoStamina:
-			value = player->getStaminaMinutes();
+			value = const_cast<Player*>(player)->getStaminaMinutes();
 			break;
 		case PlayerInfoLossSkill:
 			lua_pushboolean(L, player->getLossSkill());
@@ -8843,6 +8843,7 @@ int32_t LuaInterface::luaDoPlayerSetStamina(lua_State* L)
 	if(Player* player = env->getPlayerByUID(popNumber(L)))
 	{
 		player->setStaminaMinutes(minutes);
+		player->sendStats();
 		lua_pushboolean(L, true);
 	}
 	else
