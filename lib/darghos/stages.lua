@@ -138,7 +138,7 @@ function getPlayerMultiple(cid, stagetype, skilltype)
 	
 	for k,v in pairs(_stages) do
 	
-		local attribute = getPlayerLevel(cid)
+		local attribute = getPlayerLevel(cid, false)
 		
 		if(stagetype == STAGES_MAGIC) then
 			attribute = getPlayerMagLevel(cid, true)
