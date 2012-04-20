@@ -128,6 +128,12 @@ function RepairModule.repairSlot(cid, slot)
 	slot = slot or RepairModule.repairSlotTarget[cid]
 	
 	local item = getPlayerSlotItem(cid, slot)
+	
+	if(item.uid == 0) then
+		RepairModule.npcHandler:say('Desculpe... Você não possui qualquer item equipado neste lugar!', cid)
+		return	
+	end
+	
 	local repairCost = RepairModule.getPrice(item)
 	
 	if(not repairCost) then
