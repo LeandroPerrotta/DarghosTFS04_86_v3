@@ -1632,7 +1632,6 @@ void Player::onCreatureDisappear(const Creature* creature, bool isLogout)
 	if(isLogout)
 	{
 		loginPosition = getPosition();
-		lastLogout = time(NULL);
 	}
 
 	if(eventWalk)
@@ -1666,6 +1665,9 @@ void Player::onCreatureDisappear(const Creature* creature, bool isLogout)
 	}
 
 	g_chat.removeUserFromAllChannels(this);
+
+	lastLogout = time(NULL);
+
 	if(!isGhost())
 		IOLoginData::getInstance()->updateOnlineStatus(guid, false);
 

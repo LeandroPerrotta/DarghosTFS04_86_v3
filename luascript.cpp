@@ -8837,7 +8837,7 @@ int32_t LuaInterface::luaGetCreatureMaxHealth(lua_State* L)
 int32_t LuaInterface::luaDoPlayerSetStamina(lua_State* L)
 {
 	//doPlayerSetStamina(cid, minutes)
-	uint32_t minutes = popNumber(L);
+	int32_t minutes = popNumber(L);
 
 	ScriptEnviroment* env = getEnv();
 	if(Player* player = env->getPlayerByUID(popNumber(L)))

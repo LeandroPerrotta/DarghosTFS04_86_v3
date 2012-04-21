@@ -336,7 +336,7 @@ class Player : public Creature, public Cylinder
 		int32_t getStaminaMinutes();
 		int32_t getStamina() {return stamina;}
 		int32_t getSpentStamina() {return MAX_STAMINA - stamina;}
-		void setStaminaMinutes(uint32_t value) {addStamina((int64_t)(value * STAMINA_MULTIPLIER));}
+		void setStaminaMinutes(int32_t value) {addStamina((int64_t)(value * STAMINA_MULTIPLIER));}
 
 		int64_t getLastLoad() const {return lastLoad;}
 		time_t getLastLogin() const {return lastLogin;}
