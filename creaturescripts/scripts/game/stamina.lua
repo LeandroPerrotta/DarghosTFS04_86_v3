@@ -58,7 +58,7 @@ function onThink(cid, interval)
 	end
 	
 	if(nextStaminaUpdate ~= -1) then
-		doPlayerSetStamina(cid, newStamina)
+		doPlayerSetStamina(cid, 1)
 		doSendAnimatedText(getPlayerPosition(cid), "STAMINA +1", TEXTCOLOR_PURPLE)
 	end
 end

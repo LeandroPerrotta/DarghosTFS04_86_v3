@@ -56,7 +56,6 @@ function onBattlegroundEnd(cid, winner, timeIn, bgDuration, initIn)
 			end		
 					
 			local expGain = pvpBattleground.getExperienceGain(cid)
-			local staminaMinutes = getPlayerStamina(cid)		
 			local staminaChange = timeIn / 60
 			
 			expGain = math.floor(expGain * (timeIn / bgDuration)) -- calculamo a exp obtida com base no tempo de participa??o do jogador
@@ -120,7 +119,7 @@ function onBattlegroundEnd(cid, winner, timeIn, bgDuration, initIn)
 				playerHistory.achievBattlegroundRankLegend(cid)
 			end				
 			
-			doPlayerSetStamina(cid, staminaMinutes - staminaChange)
+			doPlayerSetStamina(cid, -staminaChange)
 			doPlayerSetBattlegroundRating(cid, currentRating + changeRating)
 			doPlayerAddMoney(cid, gold)
 			doPlayerAddExp(cid, expGain)
