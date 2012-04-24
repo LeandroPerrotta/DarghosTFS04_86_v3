@@ -97,6 +97,12 @@
 	
 	*CUSTOM ITEMS
 	
+	<!-- WEAPONS -->
+	<movevent type="Equip" itemid="12699" slot="hand" event="function" value="onEquipItem"> <!-- Vengeful Flameblade -->
+		<vocation id="4"/> <vocation id="8" showInDescription="0"/> <vocation id="12" showInDescription="0"/>
+	</movevent>	
+	<movevent type="DeEquip" itemid="12699" slot="hand" event="function" value="onDeEquipItem"/>	
+	
 	<!-- BOWS -->
 	<movevent type="Equip" itemid="12697" slot="hand" event="function" value="onEquipItem"> <!-- Agile Poisoned Longbow -->
 		<vocation id="3"/> <vocation id="7" showInDescription="0"/> <vocation id="11" showInDescription="0"/>
