@@ -11637,9 +11637,12 @@
 	<item id="7176" article="a" name="standing mammoth" />
 	<item id="7177" article="a" name="sleeping mammoth" />
 	<item id="7178" article="a" name="seal" />
-	<item fromid="7183" toid="7184" article="a" name="baby seal doll">
+	<item id="7183" article="a" name="baby seal doll">
 		<attribute key="weight" value="850" />
 	</item>
+	<item id="7184" article="a" name="baby seal doll">
+		<attribute key="weight" value="850" />
+	</item>	
 	<item fromid="7185" toid="7186" name="some crack" />
 	<item fromid="7187" toid="7188" article="a" name="raft" />
 	<item id="7189" article="a" name="case">
@@ -19248,6 +19251,10 @@
 		<attribute key="weaponType" value="sword" />
 		<attribute key="slotType" value="two-handed" />
 		<attribute key="rarity" value="legendary"/>
+	</item>
+	<item id="12700" article="a" name="ghazran poison field">
+		<attribute key="type" value="magicfield" />
+		<attribute key="replaceable" value="0" />
 	</item>	
 	
 	<!-- Modified Items -->
