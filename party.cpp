@@ -74,6 +74,19 @@ bool Party::leave(Player* player)
 	if(!isPlayerMember(player) && player != leader)
 		return false;
 
+#ifdef __DARGHOS_CUSTOM__
+	bool deny = false;
+	CreatureEventList events = player->getCreatureEvents(CREATURE_EVENT_PARTY_LEAVE);
+	for(CreatureEventList::iterator it = events.begin(); it != events.end(); ++it)
+	{
+		if(!(*it)->executePartyLeave(player) && !deny)
+			deny = true;
+	}
+
+	if(deny)
+		return false;
+#endif
+
 	bool missingLeader = false;
 	if(leader == player)
 	{
@@ -121,6 +134,14 @@ bool Party::passLeadership(Player* player)
 {
 	if(!isPlayerMember(player) || player == leader)
 		return false;
+
+#ifdef __DARGHOS_CUSTOM__
+	CreatureEventList events = player->getCreatureEvents(CREATURE_EVENT_PARTY_PASS_LEADERSHIP);
+	for(CreatureEventList::iterator it = events.begin(); it != events.end(); ++it)
+	{
+		(*it)->executePartyPassLeadership(leader, player);
+	}
+#endif
 
 	//Remove it before to broadcast the message correctly
 	PlayerVector::iterator it = std::find(memberList.begin(), memberList.end(), player);

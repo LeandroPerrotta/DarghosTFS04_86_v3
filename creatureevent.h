@@ -58,6 +58,8 @@ enum CreatureEventType_t
 	#endif
 #ifdef __DARGHOS_CUSTOM__
 	,CREATURE_EVENT_MOVE_ITEM
+	,CREATURE_EVENT_PARTY_PASS_LEADERSHIP
+	,CREATURE_EVENT_PARTY_LEAVE
 #endif
 };
 
@@ -150,6 +152,8 @@ class CreatureEvent : public Event
 		uint32_t executeBgLeave(Player* player);
 
 		uint32_t executeMoveItem(Player* player, Item* item, const Position &position);
+		uint32_t executePartyPassLeadership(Player* player, Player* newLeader);
+		uint32_t executePartyLeave(Player* player);
 		#endif
 		//
 

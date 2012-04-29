@@ -214,17 +214,21 @@ bool CreatureEvent::configureEvent(xmlNodePtr p)
 		m_type = CREATURE_EVENT_DEATH;
 	else if(tmpStr == "preparedeath")
 		m_type = CREATURE_EVENT_PREPAREDEATH;
-	#ifdef __DARGHOS_PVP_SYSTEM__
+#ifdef __DARGHOS_PVP_SYSTEM__
 	else if(tmpStr == "bgdeath")
 		m_type = CREATURE_EVENT_BG_DEATH;
 	else if(tmpStr == "bgend")
 		m_type = CREATURE_EVENT_BG_END;
 	else if(tmpStr == "bgleave")
 		m_type = CREATURE_EVENT_BG_LEAVE;
-	#endif
+#endif
 #ifdef __DARGHOS_CUSTOM__
 	else if(tmpStr == "moveitem")
 		m_type = CREATURE_EVENT_MOVE_ITEM;
+	else if(tmpStr == "partypassleadership")
+		m_type = CREATURE_EVENT_PARTY_PASS_LEADERSHIP;
+	else if(tmpStr == "partyleave")
+		m_type = CREATURE_EVENT_PARTY_LEAVE;
 #endif
 	else
 	{
@@ -303,6 +307,10 @@ std::string CreatureEvent::getScriptEventName() const
 #ifdef __DARGHOS_CUSTOM__
 		case CREATURE_EVENT_MOVE_ITEM:
 			return "onMoveItem";
+		case CREATURE_EVENT_PARTY_PASS_LEADERSHIP:
+			return "onPartyPassLeadership";
+		case CREATURE_EVENT_PARTY_LEAVE:
+			return "onPartyLeave";
 #endif
 		case CREATURE_EVENT_NONE:
 		default:
@@ -317,9 +325,12 @@ std::string CreatureEvent::getScriptEventParams() const
 	switch(m_type)
 	{
 		case CREATURE_EVENT_LOGIN:
-		#ifdef __DARGHOS_PVP_SYSTEM__
+#ifdef __DARGHOS_PVP_SYSTEM__
 		case CREATURE_EVENT_BG_LEAVE:
-		#endif
+#endif
+#ifdef __DARGHOS_CUSTOM__
+		case CREATURE_EVENT_PARTY_LEAVE:
+#endif
 			return "cid";
 		case CREATURE_EVENT_LOGOUT:
 			return "cid, forceLogout";
@@ -356,6 +367,9 @@ std::string CreatureEvent::getScriptEventParams() const
 		case CREATURE_EVENT_COMBAT:
 		case CREATURE_EVENT_ATTACK:
 		case CREATURE_EVENT_CAST:
+#ifdef __DARGHOS_CUSTOM__
+		case CREATURE_EVENT_PARTY_PASS_LEADERSHIP:
+#endif
 			return "cid, target";
 		case CREATURE_EVENT_KILL:
 			return "cid, target, damage, flags, war";
@@ -2164,6 +2178,112 @@ uint32_t CreatureEvent::executeMoveItem(Player* player, Item* item, const Positi
 			LuaInterface::pushPosition(L, position, 0);
 
 			bool result = m_interface->callFunction(3);
+			m_interface->releaseEnv();
+			return result;
+		}
+	}
+	else
+	{
+		std::clog << "[Error - CreatureEvent::executePush] Call stack overflow." << std::endl;
+		return 0;
+	}
+}
+
+uint32_t CreatureEvent::executePartyPassLeadership(Player* player, Player* newLeader)
+{
+	//onPartyPassLeadership(cid, target)
+	if(m_interface->reserveEnv())
+	{
+		ScriptEnviroment* env = m_interface->getEnv();
+		if(m_scripted == EVENT_SCRIPT_BUFFER)
+		{
+			env->setRealPos(player->getPosition());
+			std::stringstream scriptstream;
+
+			scriptstream << "local cid = " << env->addThing(player) << std::endl;
+			scriptstream << "local target = " << env->addThing(newLeader) << std::endl;
+
+			scriptstream << m_scriptData;
+			bool result = true;
+			if(m_interface->loadBuffer(scriptstream.str()))
+			{
+				lua_State* L = m_interface->getState();
+				result = m_interface->getGlobalBool(L, "_result", true);
+			}
+
+			m_interface->releaseEnv();
+			return result;
+		}
+		else
+		{
+			#ifdef __DEBUG_LUASCRIPTS__
+			std::stringstream desc;
+			desc << player->getName();
+			env->setEvent(desc.str());
+			#endif
+
+			env->setScriptId(m_scriptId, m_interface);
+			env->setRealPos(player->getPosition());
+
+			lua_State* L = m_interface->getState();
+			m_interface->pushFunction(m_scriptId);
+
+			lua_pushnumber(L, env->addThing(player));
+			lua_pushnumber(L, env->addThing(newLeader));
+
+			bool result = m_interface->callFunction(2);
+			m_interface->releaseEnv();
+			return result;
+		}
+	}
+	else
+	{
+		std::clog << "[Error - CreatureEvent::executePush] Call stack overflow." << std::endl;
+		return 0;
+	}
+}
+
+uint32_t CreatureEvent::executePartyLeave(Player* player)
+{
+	//onPartyLeave(cid)
+	if(m_interface->reserveEnv())
+	{
+		ScriptEnviroment* env = m_interface->getEnv();
+		if(m_scripted == EVENT_SCRIPT_BUFFER)
+		{
+			env->setRealPos(player->getPosition());
+			std::stringstream scriptstream;
+
+			scriptstream << "local cid = " << env->addThing(player) << std::endl;
+
+			scriptstream << m_scriptData;
+			bool result = true;
+			if(m_interface->loadBuffer(scriptstream.str()))
+			{
+				lua_State* L = m_interface->getState();
+				result = m_interface->getGlobalBool(L, "_result", true);
+			}
+
+			m_interface->releaseEnv();
+			return result;
+		}
+		else
+		{
+			#ifdef __DEBUG_LUASCRIPTS__
+			std::stringstream desc;
+			desc << player->getName();
+			env->setEvent(desc.str());
+			#endif
+
+			env->setScriptId(m_scriptId, m_interface);
+			env->setRealPos(player->getPosition());
+
+			lua_State* L = m_interface->getState();
+			m_interface->pushFunction(m_scriptId);
+
+			lua_pushnumber(L, env->addThing(player));
+
+			bool result = m_interface->callFunction(1);
 			m_interface->releaseEnv();
 			return result;
 		}

@@ -211,6 +211,7 @@ class ConfigManager
             SPOOF_PLAYERS_COUNT,
             SPOOF_PLAYERS_STARTS,
             SPOOF_PLAYERS_ONLINE_STARTS,
+            SPOOF_PLAYERS_MIN_AMOUNT,
 #endif
 			
 			LAST_NUMBER_CONFIG /* this must be the last one */

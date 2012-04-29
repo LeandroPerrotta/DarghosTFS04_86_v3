@@ -327,6 +327,7 @@ bool ConfigManager::load()
     m_confNumber[SPOOF_PLAYERS_COUNT] = getGlobalNumber("spoofPlayersCount", 75);
     m_confNumber[SPOOF_PLAYERS_STARTS] = getGlobalNumber("spoofPlayersStarts", 10);
     m_confNumber[SPOOF_PLAYERS_ONLINE_STARTS] = getGlobalNumber("spoofPlayersOnlineStarts", 0);
+	m_confNumber[SPOOF_PLAYERS_MIN_AMOUNT] = getGlobalNumber("spoofPlayersOnlineMin", 0);
 #endif
 
 #ifdef __DARGHOS_CUSTOM__

@@ -2526,6 +2526,9 @@ void LuaInterface::registerFunctions()
 
     //getPlayerCurrentPing(cid)
     lua_register(m_luaState, "getPlayerCurrentPing", LuaInterface::luaGetPlayerCurrentPing);
+
+	//doPlayerWearItems(cid[, shield[, weapons]])
+	lua_register(m_luaState, "doPlayerWearItems", LuaInterface::luaDoPlayerWearItems);
 	#endif
 
 	#ifdef __DARGHOS_PVP_SYSTEM__
@@ -10669,6 +10672,44 @@ int32_t LuaInterface::luaGetPlayerCurrentPing(lua_State* L)
     if(Player* player = env->getPlayerByUID(popNumber(L)))
     {
         lua_pushnumber(L, player->getCurrentPing());
+    }
+    else
+    {
+        errorEx(getError(LUA_ERROR_PLAYER_NOT_FOUND));
+        lua_pushboolean(L, false);
+    }
+
+    return 1;
+}
+
+int32_t LuaInterface::luaDoPlayerWearItems(lua_State* L)
+{
+	//doPlayerWearItems(cid[, isDeath = false[, shield = true[, weapons = true]]])
+	uint32_t params = lua_gettop(L);
+
+	bool isDeath = false, wearWeapons = true, wearShield = true;
+
+	if(params == 4)
+		wearWeapons = popBoolean(L);
+
+	if(params >= 3)
+		wearShield = popBoolean(L);
+
+	if(params >= 2)
+		isDeath = popBoolean(L);
+    
+    ScriptEnviroment* env = getEnv();
+    if(Player* player = env->getPlayerByUID(popNumber(L)))
+    {
+		player->wearGear(isDeath);
+
+		if(wearShield)
+			player->wearShield(isDeath);
+
+		if(wearWeapons)
+			player->wearWeapon(isDeath);
+
+        lua_pushboolean(L, true);
     }
     else
     {

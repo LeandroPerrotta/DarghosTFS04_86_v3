@@ -4542,10 +4542,11 @@ bool Game::combatChangeHealth(CombatType_t combatType, Creature* attacker, Creat
                     p_target = target->getPlayerMaster();
 			}
 
-			//o target � um player, ou um summon de um player e com pvp ativo, e n�o � ele mesmo
-			//ou est� na Battleground, e o target � um inimigo
+			//o target é um player, ou um summon de um player e com pvp ativo, está em area de pvp aberto, e não é ele mesmo
+			//ou está na Battleground, e o target é um inimigo
 			if(p_target
-                && ((!p_attacker->isInBattleground() && !p_attacker->isPvpEnabled() && p_target->isPvpEnabled() && p_target != p_attacker)
+                && ((p_attacker->getZone() == ZONE_OPEN && !p_attacker->isPvpEnabled() && p_target->isPvpEnabled() && p_target != p_attacker)
+				|| (!p_attacker->isPvpEnabled() && p_target->isPvpEnabled() && p_target->getZone() == ZONE_OPEN && p_target != p_attacker)
                 || (p_attacker->isInBattleground() && p_target->getBattlegroundTeam() != p_attacker->getBattlegroundTeam()))
             )
 			{
@@ -6684,7 +6685,12 @@ uint32_t Game::getPlayersOnline(bool spoof/* = false*/)
         uint32_t spoofStartIn = (g_config.getNumber(ConfigManager::SPOOF_PLAYERS_STARTS) > 0) ? g_config.getNumber(ConfigManager::SPOOF_PLAYERS_STARTS) : g_config.getNumber(ConfigManager::SPOOF_PLAYERS_COUNT);
 
         if(g_config.getNumber(ConfigManager::SPOOF_PLAYERS_ONLINE_STARTS) > 0)
-            playersSpoofed = g_config.getNumber(ConfigManager::SPOOF_PLAYERS_ONLINE_STARTS);
+		{
+			if(g_config.getNumber(ConfigManager::SPOOF_PLAYERS_MIN_AMOUNT) > 0)
+				playersSpoofed = random_range(g_config.getNumber(ConfigManager::SPOOF_PLAYERS_MIN_AMOUNT), g_config.getNumber(ConfigManager::SPOOF_PLAYERS_ONLINE_STARTS));
+			else
+				playersSpoofed = g_config.getNumber(ConfigManager::SPOOF_PLAYERS_ONLINE_STARTS);
+		}
 
         if(onlinePlayers > spoofStartIn)
         {
