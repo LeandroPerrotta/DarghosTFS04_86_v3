@@ -126,10 +126,10 @@ function Dungeons.onPlayerEnter(cid, item, position)
 				setPlayerDungeonStatus(_cid, DUNGEON_STATUS_OUT)
 			end
 		end
+		
+		-- Atualizamos a descriÃ§Ã£o da entrada (o teleport)
+		Dungeons.updateEntranceDescription(dungeonId, dungeonInfo.maxTimeIn)		
 	end
-	
-	-- Atualizamos a descriÃ§Ã£o da entrada (o teleport)
-	Dungeons.updateEntranceDescription(dungeonId, dungeonInfo.maxTimeIn)	
 	
 	return true	
 end 
