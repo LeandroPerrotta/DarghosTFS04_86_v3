@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<monster name="Sen Gan Guard" nameDescription="a sen gan guard" race="VENOM" experience="21300" speed="320" manacost="1">
+<monster name="Sen Gan Guard" nameDescription="a sen gan guard" race="VENOM" experience="21300" speed="520" manacost="1">
   <health now="23625" max="23625"/>
   <look type="338" corpse="11273"/>
   <targetchange interval="5000" chance="20"/>
@@ -24,7 +24,7 @@
     </attack>
   </attacks>
   <defenses armor="50" defense="45">
-    <defense name="speed" interval="4000" chance="23" speedchange="420" duration="10000">
+    <defense name="speed" interval="4000" chance="23" speedchange="680" duration="10000">
       <attribute key="areaEffect" value="redshimmer"/>
     </defense>
     <defense name="healing" interval="1000" chance="10" min="875" max="1120">
