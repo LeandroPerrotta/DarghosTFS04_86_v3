@@ -21,6 +21,7 @@
 	<talkaction words="!aceitotp" access="0" event="script" value="game/accept_teleport.lua"/>
 	<talkaction words="!online;/online" event="script" value="game/online.lua"/>
 	<talkaction words="!bg;/bg;!battleground;/battleground" event="script" value="game/battleground.lua"/>
+	<talkaction words="!dungeon;/dungeon" event="script" value="game/dungeon.lua"/>
 	
 	<talkaction default="true" event="script" value="game/channels.lua"/> <!-- Help Channel -->	
 

@@ -4,7 +4,7 @@
     <look type="332" head="21" body="87" legs="107" feet="95" addons="0"/>
  
  	<parameters>
-		<parameter key="message_greet" value="Ola jovem |PLAYERNAME|. Eu sou Ordon, o Rei! Como posso lhe {ajudar}?" />
+		<parameter key="message_greet" value="Ola jovem |PLAYERNAME|. Eu sou Ordon, o Rei! Tenha cuidado por ai, a cidade esta sob perigo... Posso lhe {ajudar} de alguma forma? Você pode me ajudar com uma {missão}..." />
 	</parameters>
   
   	<!-- 

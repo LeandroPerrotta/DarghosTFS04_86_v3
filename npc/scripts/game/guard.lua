@@ -46,7 +46,7 @@ function onCreatureMove(creature, oldPos, newPos)
 	
 			if(newPos.x == cannotContinue.x and newPos.y == cannotContinue.y and newPos.z == cannotContinue.z) then
 			
-				selfSay("O Rei proibiu a todos em Thorn entrarem no pantano. Você não pode passar por aqui!")
+				selfSay("O Rei proibiu a todos entrarem no pantano. Você não pode passar por aqui!")
 				doTeleportPlayerBack(creature, newPos)
 			end
 		end
@@ -72,7 +72,7 @@ function onThink()
 	
 	local npcName = getNpcName()
 	
-	if(npcName == "Guarda de Thorn") then
+	if(npcName == "Guarda de Quendor") then
 		
 		if(_hasCreature) then
 			
@@ -81,7 +81,7 @@ function onThink()
 				local talkRandom = math.random(1, 3)
 			
 				if(talkRandom == 1) then
-					selfSay("Cuidado com as criaturas de Ariadne! Elas pretendem invadir Thorn! Fique atento para não ser pego de surpresa!")
+					selfSay("Cuidado com as seguidores de Ariadne! Elas pretendem invadir Quendor! Fique atento para não ser pego de surpresa!")
 				elseif(talkRandom == 2) then
 					selfSay("Já viu o que aconteceu com a princesa Elione? Que horror...")
 				elseif(talkRandom == 3) then

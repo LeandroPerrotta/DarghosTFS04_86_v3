@@ -15,6 +15,8 @@ function onLogin(cid)
 	registerCreatureEvent(cid, "lookItem")
 	registerCreatureEvent(cid, "onMoveItem")
 	registerCreatureEvent(cid, "PrepareDeath")
+	registerCreatureEvent(cid, "onPartyPassLeadership")
+	registerCreatureEvent(cid, "onPartyLeave")
 	
 	--if(tasks.hasStartedTask(cid)) then
 		registerCreatureEvent(cid, "CustomTasks")

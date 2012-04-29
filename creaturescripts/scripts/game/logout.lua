@@ -1,11 +1,11 @@
 function onLogout(cid, forceLogout)
 	
-	local player_dungeonStatus = getPlayerStorageValue(cid, sid.DUNGEON_STATUS)
+	local dungeonId = getPlayerStorageValue(cid, sid.ON_DUNGEON)
 	
-	if(player_dungeonStatus == dungeonStatus.IN_DUNGEON) then
-		doPlayerSendTextMessage(cid, MESSAGE_INFO_DESCR, "N�o pode sair no meio de uma Dungeon!")
-		return FALSE
+	if(dungeonId ~= -1) then
+		doPlayerSendTextMessage(cid, MESSAGE_INFO_DESCR, "Não pode sair no meio de uma Dungeon!")
+		return false
 	end	
 	
-	return TRUE
+	return true
 end 

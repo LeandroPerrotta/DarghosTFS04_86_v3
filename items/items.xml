@@ -17590,6 +17590,54 @@
 		<attribute key="weight" value="5500" />
 		<attribute key="description" value="An extremely rare crystal you recovered from the Lost Mines." />
 	</item>
+	<item id="11107" article="a" name="dead ghazran">
+		<attribute key="containerSize" value="22" />
+		<attribute key="decayTo" value="11108" />
+		<attribute key="duration" value="10" />
+		<attribute key="corpseType" value="blood" />
+		<attribute key="fluidSource" value="blood" />
+	</item>
+	<item id="11108" article="a" name="dead dghazran">
+		<attribute key="containerSize" value="22" />
+		<attribute key="decayTo" value="11109" />
+		<attribute key="duration" value="300" />
+		<attribute key="corpseType" value="blood" />
+		<attribute key="fluidSource" value="blood" />
+	</item>
+	<item id="11109" article="a" name="dead ghazran">
+		<attribute key="decayTo" value="11110" />
+		<attribute key="duration" value="300" />
+		<attribute key="corpseType" value="blood" />
+	</item>
+	<item id="11110" article="a" name="dead ghazran">
+		<attribute key="decayTo" value="0" />
+		<attribute key="duration" value="60" />
+		<attribute key="corpseType" value="blood" />
+	</item>
+	<item id="11316" article="a" name="dead sen gran shaman">
+		<attribute key="containerSize" value="22"/>
+		<attribute key="decayTo" value="11317"/>
+		<attribute key="duration" value="10"/>
+		<attribute key="corpseType" value="blood"/>
+		<attribute key="fluidSource" value="blood"/>
+	</item>
+	<item id="11317" article="a" name="dead sen gran shaman">
+		<attribute key="containerSize" value="22"/>
+		<attribute key="decayTo" value="11318"/>
+		<attribute key="duration" value="300"/>
+		<attribute key="corpseType" value="blood"/>
+		<attribute key="fluidSource" value="blood"/>
+	</item>
+	<item id="11318" article="a" name="dead sen gran shaman">
+		<attribute key="decayTo" value="11319"/>
+		<attribute key="duration" value="300"/>
+		<attribute key="corpseType" value="blood"/>
+	</item>
+	<item id="11319" article="a" name="dead sen gran shaman">
+		<attribute key="decayTo" value="0"/>
+		<attribute key="duration" value="60"/>
+		<attribute key="corpseType" value="blood"/>
+	</item>	
 	<item id="11113" article="a" name="orc tooth" plural="orc teeth">
 		<attribute key="weight" value="100" />
 	</item>
@@ -17856,6 +17904,25 @@
 	<item id="11246" name="rice ball">
 		<attribute key="weight" value="30"/>
 	</item>
+	<item id="11251" article="a" name="dead sen gan hunter">
+		<attribute key="containerSize" value="22" />
+		<attribute key="decayTo" value="11252" />
+		<attribute key="duration" value="300" />
+		<attribute key="corpseType" value="blood" />
+		<attribute key="fluidSource" value="blood" />
+	</item>
+	<item id="11252" article="a" name="dead sen gan hunter">
+		<attribute key="decayTo" value="11249" />
+		<attribute key="duration" value="300" />
+		<attribute key="corpseType" value="blood" />
+	</item>
+	<item id="11254" article="a" name="dead sen gan hunter">
+		<attribute key="containerSize" value="22" />
+		<attribute key="decayTo" value="11251" />
+		<attribute key="duration" value="10" />
+		<attribute key="corpseType" value="blood" />
+		<attribute key="fluidSource" value="blood" />
+	</item>	
 	<item id="11255" name="santa teddy">
 		<attribute key="weight" value="550"/>
 	</item>
@@ -17873,6 +17940,30 @@
 	<item id="11264" name="dragon tapestry">
 		<attribute key="weight" value="1000"/>
 	</item>
+	<item id="11273" article="a" name="dead sen gan guard">
+		<attribute key="containerSize" value="22"/>
+		<attribute key="decayTo" value="11274"/>
+		<attribute key="duration" value="300"/>
+		<attribute key="corpseType" value="blood"/>
+		<attribute key="fluidSource" value="blood"/>
+	</item>
+	<item id="11274" article="a" name="dead sen gan guard">
+		<attribute key="decayTo" value="11275"/>
+		<attribute key="duration" value="300"/>
+		<attribute key="corpseType" value="blood"/>
+	</item>
+	<item id="11275" article="a" name="dead lsen gan guard">
+		<attribute key="decayTo" value="0"/>
+		<attribute key="duration" value="60"/>
+		<attribute key="corpseType" value="blood"/>
+	</item>
+	<item id="11276" article="a" name="dead sen gan guard">
+		<attribute key="containerSize" value="22"/>
+		<attribute key="decayTo" value="11273"/>
+		<attribute key="duration" value="10"/>
+		<attribute key="corpseType" value="blood"/>
+		<attribute key="fluidSource" value="blood"/>
+	</item>	
 	<item fromid="11289" toid="11298" article="a" name="banner"/>
 	<item id="11301" name="zaoan armor">
 		<attribute key="armor" value="13"/>
@@ -17924,8 +18015,8 @@
 		<attribute key="rarity" value="rare"/>
 	</item>
 	<item id="11307" name="zaoan sword">
-		<attribute key="defense" value="25"/>
-		<attribute key="attack" value="46"/>
+		<attribute key="defense" value="18"/>
+		<attribute key="attack" value="43"/>
 		<attribute key="weaponType" value="sword"/>
 		<attribute key="weight" value="4900"/>
 		<attribute key="extradef" value="2"/>
@@ -19255,6 +19346,71 @@
 	<item id="12700" article="a" name="ghazran poison field">
 		<attribute key="type" value="magicfield" />
 		<attribute key="replaceable" value="0" />
+	</item>
+	<item id="12701" article="a" name="petrified stonehearth">
+		<attribute key="weight" value="620"/>
+		<attribute key="slotType" value="necklace"/>
+		<attribute key="transformEquipTo" value="12702" />
+		<attribute key="stopduration" value="1" />
+		<attribute key="showduration" value="1" />
+	</item>
+	<item id="12702" article="a" name="petrified stonehearth">
+		<attribute key="weight" value="620"/>
+		<attribute key="slotType" value="necklace"/>
+		<attribute key="decayTo" value="12703" />
+		<attribute key="transformDeEquipTo" value="12701" />
+		<attribute key="duration" value="5400" />
+		<attribute key="maxHealthPoints" value="225" />
+		<attribute key="showduration" value="1" />
+		<attribute key="showattributes" value="1" />
+	</item>
+	<item id="12703" article="a" name="worn petrified stonehearth">
+		<attribute key="description" value="Someone specialised in amulets might be able to repair them for you." />
+		<attribute key="weight" value="620" />
+	</item>	
+	<item id="12704" article="a" name="vengeance seal ring">
+		<attribute key="weight" value="765"/>
+		<attribute key="slotType" value="ring"/>
+		<attribute key="transformEquipTo" value="12705" />
+		<attribute key="stopduration" value="1" />
+		<attribute key="showduration" value="1" />
+	</item>
+	<item id="12705" article="a" name="vengeance seal ring">
+		<attribute key="weight" value="765"/>
+		<attribute key="slotType" value="ring"/>
+		<attribute key="decayTo" value="12706" />
+		<attribute key="transformDeEquipTo" value="12704" />
+		<attribute key="duration" value="5400" />
+		<attribute key="skillClub" value="15" />
+		<attribute key="skillAxe" value="15" />
+		<attribute key="skillSword" value="15" />
+		<attribute key="showduration" value="1" />
+		<attribute key="showattributes" value="1" />
+	</item>
+	<item id="12706" article="a" name="worn vengeance seal ring">
+		<attribute key="description" value="Someone specialised in rings might be able to repair them for you." />
+		<attribute key="weight" value="765"/>
+	</item>
+	<item id="12707" article="a" name="crooked eye ring">
+		<attribute key="weight" value="765"/>
+		<attribute key="slotType" value="ring"/>
+		<attribute key="transformEquipTo" value="12708" />
+		<attribute key="stopduration" value="1" />
+		<attribute key="showduration" value="1" />
+	</item>
+	<item id="12708" article="a" name="crooked eye ring">
+		<attribute key="weight" value="765"/>
+		<attribute key="slotType" value="ring"/>
+		<attribute key="decayTo" value="12709" />
+		<attribute key="transformDeEquipTo" value="12707" />
+		<attribute key="duration" value="5400" />
+		<attribute key="skillDist" value="12" />
+		<attribute key="showduration" value="1" />
+		<attribute key="showattributes" value="1" />
+	</item>
+	<item id="12709" article="a" name="worn crooked eye ring">
+		<attribute key="description" value="Someone specialised in rings might be able to repair them for you." />
+		<attribute key="weight" value="765"/>
 	</item>	
 	
 	<!-- Modified Items -->

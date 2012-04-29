@@ -22,7 +22,7 @@ function onStepIn(cid, item, position, fromPosition)
 		else	
 			doTransformTile(item)
 			local dungeonInfo = dungeonList[item.actionid]
-			doPlayerSendTextMessage(cid, MESSAGE_INFO_DESCR, "ATENÇÃO: Isto é uma Dungeon e só é permitido no maximo " .. dungeonInfo.maxPlayers .. " jogadores passarem pela entrada por vez. Atenção, pois ao atravessar esta porta, uma vez do outro lado é IMPOSSIVEL voltar, e você terá dois destinos: Ou conclui a dungeon, ou sofrer uma morte dolorosa. Você e seus amigos devem cumprir esta dungeon em " .. dungeonInfo.maxTimeIn .. " minutos e se este prazo não for cumprido vocês serão julgados no INFERNO!")
+			doPlayerSendTextMessage(cid, MESSAGE_INFO_DESCR, "ATENÇÃO: Isto é uma Dungeon, para entrar é necessário estar em uma party de " .. dungeonInfo.maxPlayers .. " jogadores e o primeiro a entrar deve ser o lider. Atenção, pois ao atravessar esta porta, uma vez do outro lado é IMPOSSIVEL voltar, e você terá dois destinos: Ou concluir o desafio, ou irá morrer e poderá tentar novamente. O limite de tempo para concluir esta Dungeon é de " .. dungeonInfo.maxTimeIn .. " minutos!")
 		end
 	end
 	

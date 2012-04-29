@@ -1084,16 +1084,16 @@ end
 ]]--
 function onGhazranDie(corpse)
 
-	doSetItemActionId(corpse, aid.ARIADNE_GHAZRAN_CORPSE)
+	doSetItemActionId(corpse.uid, aid.ARIADNE_GHAZRAN_CORPSE)
 end
 
-function obsidianKnifeOnGhazranCorpse(cid, corpse)
+function obsidianKnifeOnGhazranCorpse(cid)
 
 	local hasRemovedTongue = (getPlayerStorageValue(cid, sid.ARIADNE_GHAZRAN_TONGUE) == 1)
 	
 	if not(hasRemovedTongue) then
 
-		doPlayerSendTextMessage(cid, MESSAGE_INFO_DESCR, "Voc? conseguiu obter a língua de Ghazran. Seu questlog foi atualizado.")
+		doPlayerSendTextMessage(cid, MESSAGE_INFO_DESCR, "Você conseguiu obter a língua de Ghazran. Seu questlog foi atualizado.")
 		setPlayerStorageValue(cid, sid.ARIADNE_GHAZRAN_TONGUE, 1)
 		setPlayerStorageValue(cid, QUESTLOG.ARIADNE.GHAZRAN_WING, 3)
 	else

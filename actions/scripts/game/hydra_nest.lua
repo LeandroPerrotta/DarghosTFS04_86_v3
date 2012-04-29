@@ -4,7 +4,7 @@ local _HydraMessages = {
 	"<o chão parece estar tremendo. Algo se aproxima!>"
 }
 
-local _SummonHydraMessage = "<Ghazran parece estar furioso! Ele vem proteger seu ninho.>"
+local _SummonHydraMessage = "<Ghazran parece estar furioso! Ele chegou para proteger seu ninho!>"
 local _GhazranPos = {x=2811, y=1806, z=10, stackpos=253}
 local _GhazranSummoned = false
 
@@ -16,9 +16,7 @@ _EggsGained = 0
 function onUse(cid, item, frompos, item2, topos)
 
 	if(_GhazranSummoned) then
-		
-		doPlayerSendCancel(cid, "Não pode mais mecher no ninho.")
-		return TRUE
+		return true	
 	end
 
 	if(isInArray(aid.ARIADNE_HYDRA_NEST, item.actionid) == TRUE) then
@@ -39,14 +37,29 @@ function onUse(cid, item, frompos, item2, topos)
 		if(_EggsGained > 10 and math.random(1, 100) >= 50) then
 			
 			doPlayerSendTextMessage(cid, MESSAGE_EVENT_ADVANCE, _SummonHydraMessage)
-			addEvent(summonGhazran, 1000 * 5)
 			_GhazranSummoned = true
+			
+			addEvent(summonGhazran, 1000 * 5)
 		end
+	end
+	
+	return true
+end
+
+function onThink(lastBegin)
+
+	if(not getCreatureByName("ghazran") and (Dungeons.isFree(gid.DUNGEONS_ARIADNE_GHAZRAN) or Dungeons.getLastBegin(gid.DUNGEONS_ARIADNE_GHAZRAN) ~= lastBegin)) then
+		_GhazranSummoned = false
+		_EggsGained = 0
+	else
+		addEvent(onThink, 1000 * 10, lastBegin)
 	end
 end
 
 function summonGhazran()
 	
-	local _creatureCid = doSummonCreature("ghazran", _GhazranPos)
-	registerCreatureEvent(_creatureCid, "CreatureDie")
+	local cid = doSummonCreature("ghazran", _GhazranPos)
+	registerCreatureEvent(cid, "monsterDeath")
+	
+	onThink(Dungeons.getLastBegin(gid.DUNGEONS_ARIADNE_GHAZRAN))
 end

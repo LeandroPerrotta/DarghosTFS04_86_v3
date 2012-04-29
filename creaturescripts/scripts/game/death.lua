@@ -2,16 +2,18 @@ function onDeath(cid, corpse, deathList)
 	if isPlayer(cid) then
 		--Fun??es que ser?o chamadas quando um jogador morrer...
 		
-		Dungeons.onPlayerDeath(cid)
+		--Dungeons.onPlayerDeath(cid)
 		setPlayerStorageValue(cid, sid.GIVE_ITEMS_AFTER_DEATH, 1)
 		deathInDemonOak(cid)
 	end	
 	
 	if(isMonster(cid)) then
 	
+		local creatureName = string.lower(getCreatureName(cid))
+	
 		local inquisitionBosses = {"ushuriel", "madareth", "zugurosh", "latrivan", "golgordan", "annihilon", "hellgorak"}
 	
-		if(string.lower(getCreatureName(cid)) == "koshei the deathless") then
+		if(creatureName == "koshei the deathless") then
 		
 			function resummonKoshei(cid, corpse)
 			
@@ -29,12 +31,14 @@ function onDeath(cid, corpse, deathList)
 			doCreatureSay(cid, "Argh! Você realmente acha que me derrotou? <...>", TALKTYPE_ORANGE_1)
 			doItemSetAttribute(corpse.uid, "kosheiDeathDate", os.time())
 			addEvent(resummonKoshei, 1000 * 4, cid, corpse)
-		elseif(isInArray(inquisitionBosses, string.lower(getCreatureName(cid)))) then
+		elseif(isInArray(inquisitionBosses, creatureName)) then
 			addEvent(summonInquisitionBoss, 1000 * 60 * 60, string.lower(getCreatureName(cid)))
-		elseif(string.lower(getCreatureName(cid)) == "lord vankyner") then
+		elseif(creatureName == "lord vankyner") then
 			onLordVankynerDie()
-		elseif(string.lower(getCreatureName(cid)) == "dark general") then
+		elseif(creatureName == "dark general") then
 			onDarkGeneralDie(cid, corpse, deathList)
+		elseif(creatureName == "ghazran") then
+			onGhazranDie(corpse)
 		end
 	end
 	

@@ -33,9 +33,9 @@
 	
 	LAST_KILL_DARK_GENERAL = 15000,
 	
-	-- Quests Especiais
-	DUNGEONS_DEMON_HELMET	= 7400,
-	DUNGEONS_ARIADNE_GHAZRAN = 7401,
+	-- Dungeons
+	-- Para cada dungeon estaremos reservando uma range de 100 ids
+	DUNGEONS_ARIADNE_GHAZRAN	= 7400,
 	
 	LAST_WHO_IS_ONLINE		= 5000,
 	SEND_PLAYERS_TO_TEMPLE	= 5001,

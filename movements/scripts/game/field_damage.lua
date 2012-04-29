@@ -31,17 +31,17 @@ function onStepIn(cid, item, position, fromPosition)
 			local damage = item.actionid - ACTION_ID_RANGES.MIN_FIELD_DAMAGE
 			
 			if(damage == 0) then
-				doPlayerAddHealth(cid, -250)
+				doPlayerAddHealth(cid, -600)
 			elseif(damage == 1) then
-				doPlayerAddHealth(cid, -600)	
-			elseif(damage == 2) then
 				doPlayerAddHealth(cid, -1400)	
+			elseif(damage == 2) then
+				doPlayerAddHealth(cid, -3100)	
 			elseif(damage == 3) then
-				doPlayerAddHealth(cid, -2800)	
+				doPlayerAddHealth(cid, -6500)	
 			elseif(damage == 4) then
-				doPlayerAddHealth(cid, -5500)	
+				doPlayerAddHealth(cid, -14000)	
 			elseif(damage >= 5) then
-				doPlayerAddHealth(cid, -12500)	
+				doPlayerAddHealth(cid, -40000)	
 			end		
 
 			doSendMagicEffect(position, CONST_ME_HITBYPOISON)	
