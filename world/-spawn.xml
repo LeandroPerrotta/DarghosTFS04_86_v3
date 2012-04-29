@@ -10705,10 +10705,6 @@
     <monster name="Rotworm" x="-5" y="2" z="8" spawntime="60"/>
     <monster name="Carrion Worm" x="4" y="2" z="8" spawntime="60"/>
   </spawn>
-  <spawn centerx="2454" centery="1855" centerz="8" radius="5">
-    <monster name="ooze" x="2" y="-3" z="8" spawntime="60"/>
-    <monster name="ooze" x="4" y="2" z="8" spawntime="60"/>
-  </spawn>
   <spawn centerx="2178" centery="1856" centerz="8" radius="5">
     <monster name="Rotworm" x="-2" y="-3" z="8" spawntime="60"/>
     <monster name="Rotworm" x="-3" y="-1" z="8" spawntime="60"/>
@@ -10754,9 +10750,6 @@
   <spawn centerx="2408" centery="1867" centerz="8" radius="1">
     <monster name="Bug" x="1" y="-1" z="8" spawntime="60"/>
     <monster name="Bug" x="-1" y="1" z="8" spawntime="60"/>
-  </spawn>
-  <spawn centerx="2491" centery="1867" centerz="8" radius="5">
-    <monster name="ooze" x="1" y="1" z="8" spawntime="60"/>
   </spawn>
   <spawn centerx="2382" centery="1868" centerz="8" radius="5">
     <monster name="Rotworm" x="1" y="-4" z="8" spawntime="60"/>
