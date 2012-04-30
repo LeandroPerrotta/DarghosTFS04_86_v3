@@ -19,7 +19,7 @@ function onSay(cid, words, param)
 
 	if(not t[3]) then
 		
-		local value = isGlobal and getPlayerStorageValue(t[2]) or getPlayerStorageValue(tid, t[2])
+		local value = isGlobal and getGlobalStorageValue(t[2]) or getPlayerStorageValue(tid, t[2])
 		doPlayerSendTextMessage(cid, MESSAGE_STATUS_CONSOLE_BLUE, " [" .. t[1] .. " - " .. t[2] .. "] = " .. value)
 	else
 		if(isGlobal) then
