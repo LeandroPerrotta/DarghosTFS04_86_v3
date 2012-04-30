@@ -32,13 +32,13 @@
     </defense>	
   </defenses>
   <elements>
-    <element earthPercent="50"/>
 	<element physicalPercent="15"/>
 	<element deathPercent="10"/>
 	<element energyPercent="25"/>
     <element firePercent="-5"/>
   </elements>
   <immunities>
+	<immunity earth="1"/>
     <immunity invisible="1"/>
   </immunities>
   <voices interval="5000" chance="10">

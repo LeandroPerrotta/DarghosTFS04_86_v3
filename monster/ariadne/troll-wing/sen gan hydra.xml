@@ -51,7 +51,7 @@
     <element energyPercent="-10"/>
   </elements>
   <immunities>
-    <immunity poison="1"/>
+    <immunity earth="1"/>
     <immunity lifedrain="1"/>
     <immunity paralyze="1"/>
     <immunity outfit="1"/>
