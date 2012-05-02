@@ -202,6 +202,20 @@ function Dungeons.resetPlayersIn(dungeonId, reset)
 	
 	if(not reset) then
 		Dungeons.setLastEnd(dungeonId)
+		
+		local clearMonsters = { "sen gan guard", "sen gan shaman", "sen gan hunter", "sen gan hydra", "swamp thing", "big ooze" }
+		for _,name in pairs(clearMonsters) do
+			
+			local found = true
+			repeat
+				local c = getCreatureByName(name)
+				if(c) then
+					doRemoveCreature(c.uid)
+				else
+					found = false
+				end
+			until(not found)
+		end
 	else
 		Dungeons.setLastEnd(dungeonId, 0)
 	end	
@@ -439,6 +453,7 @@ function Dungeons.onPartyLeave(cid)
 		return false
 	elseif(getPlayerDungeonStatus(cid) == DUNGEON_STATUS_OUT) then
 		setPlayerDungeonStatus(cid, DUNGEON_STATUS_NONE)
+		setPlayerDungeon(cid, DUNGEON_NONE)
 	end
 	
 	return true
