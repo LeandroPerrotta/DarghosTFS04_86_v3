@@ -209,7 +209,7 @@ function Dungeons.resetPlayersIn(dungeonId, reset)
 			local found = true
 			repeat
 				local c = getCreatureByName(name)
-				if(c) then
+				if(c.uid ~= 0) then
 					doRemoveCreature(c.uid)
 				else
 					found = false
