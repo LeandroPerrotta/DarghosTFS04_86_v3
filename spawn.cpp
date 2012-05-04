@@ -229,10 +229,27 @@ bool Spawns::isInZone(const Position& centerPos, int32_t radius, const Position&
 		(pos.y >= centerPos.y - radius) && (pos.y <= centerPos.y + radius));
 }
 
+#ifdef __DARGHOS_CUSTOM__
+void Spawns::spawnCreaturesByType(MonsterType* mType)
+{
+	for(SpawnList::iterator it = spawnList.begin(); it != spawnList.end(); ++it)
+	{
+		(*it)->checkSpawn(mType);
+	}
+}
+#endif
+
 void Spawn::startEvent()
 {
 	if(!checkSpawnEvent)
+#ifdef __DARGHOS_CUSTOM__
+	{
+		MonsterType* mType = NULL;
+		checkSpawnEvent = Scheduler::getInstance().addEvent(createSchedulerTask(getInterval(), boost::bind(&Spawn::checkSpawn, this, mType)));
+	}
+#else
 		checkSpawnEvent = Scheduler::getInstance().addEvent(createSchedulerTask(getInterval(), boost::bind(&Spawn::checkSpawn, this)));
+#endif
 }
 
 Spawn::Spawn(const Position& _pos, int32_t _radius)
@@ -316,7 +333,11 @@ void Spawn::startup()
 	}
 }
 
+#ifdef __DARGHOS_CUSTOM__
+void Spawn::checkSpawn(MonsterType* mType)
+#else
 void Spawn::checkSpawn()
+#endif
 {
 #ifdef __DEBUG_SPAWN__
 	std::clog << "[Notice] Spawn::checkSpawn " << this << std::endl;
@@ -354,7 +375,19 @@ void Spawn::checkSpawn()
 		if(spawnedMap.count(spawnId))
 			continue;
 
+
+
+#ifdef __DARGHOS_CUSTOM__
+
+		bool isMonster = false;
+
+		if(mType && mType == sb.mType)
+			isMonster = true;
+
+		if(!isMonster && OTSYS_TIME() < sb.lastSpawn + sb.interval)
+#else
 		if(OTSYS_TIME() < sb.lastSpawn + sb.interval)
+#endif
 			continue;
 
 		if(findPlayer(sb.pos))
@@ -369,8 +402,13 @@ void Spawn::checkSpawn()
 			break;
 	}
 
+#ifdef __DARGHOS_CUSTOM__
+	if(spawnedMap.size() < spawnMap.size() && !mType)
+		checkSpawnEvent = Scheduler::getInstance().addEvent(createSchedulerTask(getInterval(), boost::bind(&Spawn::checkSpawn, this, mType)));
+#else
 	if(spawnedMap.size() < spawnMap.size())
 		checkSpawnEvent = Scheduler::getInstance().addEvent(createSchedulerTask(getInterval(), boost::bind(&Spawn::checkSpawn, this)));
+#endif
 #ifdef __DEBUG_SPAWN__
 	else
 		std::clog << "[Notice] Spawn::checkSpawn stopped " << this << std::endl;

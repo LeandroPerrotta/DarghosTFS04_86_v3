@@ -129,8 +129,18 @@ enum Exhaust_t
 #ifdef __DARGHOS_CUSTOM__
 	,EXHAUST_COMBAT_AREA = 3
 	,EXHAUST_ESPECIAL = 4
+	,EXHAUST_GLOBAL = 5
 #endif
 };
+
+#ifdef __DARGHOS_CUSTOM__
+enum DungeonStatus_t
+{
+	DUNGEON_STATUS_NONE = 0
+	,DUNGEON_STATUS_INSIDE = 1
+	,DUNGEON_STATUS_OUTSIDE = 2
+};
+#endif
 
 typedef std::set<uint32_t> VIPSet;
 typedef std::vector<std::pair<uint32_t, Container*> > ContainerVector;
@@ -790,9 +800,15 @@ class Player : public Creature, public Cylinder
 		void setPause(bool isPause) { pause = isPause; onTargetLost(); }
 		bool isPause() { return pause; }
 
+		void setDungeon(uint16_t dungeonId) { m_dungeonId = dungeonId; }
+		uint16_t getDungeon() { return m_dungeonId; }
+		bool isInDungeon() { return m_dungeonId != 0; }
+
+		void setDungeonStatus(DungeonStatus_t status) { m_dungeonStatus = status; }
+		DungeonStatus_t getDungeonStatus() { return m_dungeonStatus; }
+
         typedef std::list<uint16_t> LatencyList_t;
 		LatencyList_t latencyList;
-
 
         void onTargetLost(bool cancelTarget = true){
 #ifdef __DARGHOS_CUSTOM_SPELLS__
@@ -929,18 +945,20 @@ class Player : public Creature, public Cylinder
 		bool outfitAttributes;
 		bool addAttackSkillPoint;
 
-        #ifdef __DARGHOS_IGNORE_AFK__
+#ifdef __DARGHOS_IGNORE_AFK__
         bool isAfk;
-        #endif
+#endif
 
-        #ifdef __DARGHOS_CUSTOM__
+#ifdef __DARGHOS_CUSTOM__
         bool doubleDamage;
 		time_t lastKnowUpdate;
 		bool pause;
 		bool pvpStatus;
-        #endif
+		uint16_t m_dungeonId;
+		DungeonStatus_t m_dungeonStatus;
+#endif
 
-        #ifdef __DARGHOS_PVP_SYSTEM__
+#ifdef __DARGHOS_PVP_SYSTEM__
         bool onBattleground;
         Bg_Teams_t team_id;
         uint32_t battlegroundRating;
@@ -948,7 +966,7 @@ class Player : public Creature, public Cylinder
 
 		uint16_t m_criticalChance;
 		double m_criticalFactor;
-        #endif
+#endif
 
 		OperatingSystem_t operatingSystem;
 		AccountManager_t accountManager;

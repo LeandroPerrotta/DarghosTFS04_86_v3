@@ -66,22 +66,24 @@ Player::Player(const std::string& _name, ProtocolGame* p):
 	pzLocked = isConnecting = addAttackSkillPoint = requestedOutfit = false;
 	saving = true;
 
-    #ifdef __DARGHOS_IGNORE_AFK__
+#ifdef __DARGHOS_IGNORE_AFK__
     isAfk = false;
-    #endif
+#endif
 
-    #ifdef __DARGHOS_CUSTOM__
+#ifdef __DARGHOS_CUSTOM__
     doubleDamage = false;
 	pause = false;
 	lastKnowUpdate = time(NULL);
 	m_criticalFactor = g_config.getDouble(ConfigManager::CRITICAL_HIT_MUL);
-    #endif
+	m_dungeonId = 0;
+	m_dungeonStatus = DUNGEON_STATUS_NONE;
+#endif
 
-    #ifdef __DARGHOS_PVP_SYSTEM__
+#ifdef __DARGHOS_PVP_SYSTEM__
     onBattleground = false;
     team_id = BATTLEGROUND_TEAM_NONE;
     lastBattlegroundDeath = 0;
-    #endif
+#endif
 
 	lastAttackBlockType = BLOCK_NONE;
 	chaseMode = CHASEMODE_STANDSTILL;
@@ -1762,11 +1764,11 @@ void Player::onCreatureMove(const Creature* creature, const Tile* newTile, const
 	if((teleport || oldPos.z != newPos.z) && !hasCustomFlag(PlayerCustomFlag_CanStairhop))
 	{
 #ifdef __DARGHOS_CUSTOM__
-		if(this->isInBattleground())
+		if(isInBattleground())
 		{
-			addExhaust(2000, EXHAUST_COMBAT_AREA);
-			addExhaust(1000, EXHAUST_HEALING);
-			addExhaust(1000, EXHAUST_OTHERS);
+			addExhaust(1600, EXHAUST_COMBAT_AREA);
+			addExhaust(1200, EXHAUST_HEALING);
+			addExhaust(1200, EXHAUST_OTHERS);
 		}
 		else
 		{
@@ -2669,6 +2671,20 @@ bool Player::onDeath()
 		{
 		    if(ignoreLoss)
                 removeCondition(CONDITION_IGNORE_DEATH_LOSS);
+
+			if(isInDungeon() && getDungeonStatus() == DUNGEON_STATUS_INSIDE)
+			{
+				setDungeonStatus(DUNGEON_STATUS_OUTSIDE);
+				Thing* thing = ScriptEnviroment::getUniqueThing((uint32_t)m_dungeonId + 1);
+				if(thing)
+				{
+					const Position& oldPos = getPosition();
+					g_game.internalTeleport(this, thing->getPosition(), true);
+					g_game.addMagicEffect(oldPos, MAGIC_EFFECT_TELEPORT);				
+				}
+
+				return true;
+			}
 #else
 		if(preventLoss)
 		{

@@ -27,6 +27,7 @@
 
 class Spawn;
 typedef std::list<Spawn*> SpawnList;
+typedef std::list<std::string> MonsterNames;
 
 class Spawns
 {
@@ -48,6 +49,10 @@ class Spawns
 
 		bool isLoaded() {return loaded;}
 		bool isStarted() {return started;}
+
+#ifdef __DARGHOS_CUSTOM__
+		void spawnCreaturesByType(MonsterType* mType);
+#endif
 
 	private:
 		Spawns();
@@ -94,7 +99,11 @@ class Spawn
 		Position centerPos;
 		int32_t radius, despawnRange, despawnRadius;
 
+#ifdef __DARGHOS_CUSTOM__
+		void checkSpawn(MonsterType* mType);
+#else
 		void checkSpawn();
+#endif
 		bool spawnMonster(uint32_t spawnId, MonsterType* mType, const Position& pos, Direction dir, bool startup = false);
 
 		bool findPlayer(const Position& pos);
@@ -107,5 +116,9 @@ class Spawn
 		typedef std::multimap<uint32_t, Monster*, std::less<uint32_t> > SpawnedMap;
 		typedef SpawnedMap::value_type SpawnedPair;
 		SpawnedMap spawnedMap;
+
+#ifdef __DARGHOS_CUSTOM__
+	friend class Spawns;
+#endif
 };
 #endif

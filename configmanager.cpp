@@ -339,6 +339,7 @@ bool ConfigManager::load()
 	m_confBool[PLAYERS_CAN_HEAL_MONSTERS] = getGlobalBool("playersCanHealMonsters", false);
 	m_confNumber[ITEM_DURABILITY_LOSS_CHANCE] = getGlobalNumber("itemDurabilityLossChance", 10);
 	m_confNumber[ON_DEATH_ITEM_DURABILITY_WEAR_PERCENT] = getGlobalNumber("onDeathItemDurabilityWearPercent", 10);
+	m_confNumber[GLOBAL_COOLDOWN] = getGlobalNumber("globalCooldown", 1200);
 #endif
 
 #ifdef __DARGHOS_EMERGENCY_DDOS__

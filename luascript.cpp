@@ -55,6 +55,7 @@
 
 #ifdef __DARGHOS_PVP_SYSTEM__
 #include "darghos_pvp.h"
+#include "spawn.h"
 #endif
 
 extern Game g_game;
@@ -2488,7 +2489,7 @@ void LuaInterface::registerFunctions()
 	//std table
 	luaL_register(m_luaState, "std", LuaInterface::luaStdTable);
 
-	#ifdef __DARGHOS_IGNORE_AFK__
+#ifdef __DARGHOS_IGNORE_AFK__
 	//doPlayerSetAfkState(cid)
 	lua_register(m_luaState, "doPlayerSetAfkState", LuaInterface::luaDoPlayerSetAfkState);
 
@@ -2497,9 +2498,9 @@ void LuaInterface::registerFunctions()
 
 	//doPlayerGetAfkState(cid)
 	lua_register(m_luaState, "doPlayerGetAfkState", LuaInterface::luaDoPlayerGetAfkState);
-	#endif
+#endif
 
-	#ifdef __DARGHOS_CUSTOM__
+#ifdef __DARGHOS_CUSTOM__
 	//doPlayerSetDoubleDamage(cid)
 	lua_register(m_luaState, "doPlayerSetDoubleDamage", LuaInterface::luaDoPlayerSetDoubleDamage);
 
@@ -2529,9 +2530,24 @@ void LuaInterface::registerFunctions()
 
 	//doPlayerWearItems(cid[, shield[, weapons]])
 	lua_register(m_luaState, "doPlayerWearItems", LuaInterface::luaDoPlayerWearItems);
-	#endif
 
-	#ifdef __DARGHOS_PVP_SYSTEM__
+	//setPlayerDungeonId(cid, dungeonId)
+	lua_register(m_luaState, "setPlayerDungeonId", LuaInterface::luaSetPlayerDungeonId);
+
+	//getPlayerDungeonId(cid)
+	lua_register(m_luaState, "getPlayerDungeonId", LuaInterface::luaGetPlayerDungeonId);
+
+	//setPlayerDungeonStatus(cid, status)
+	lua_register(m_luaState, "setPlayerDungeonStatus", LuaInterface::luaSetPlayerDungeonStatus);
+
+	//getPlayerDungeonStatus(cid)
+	lua_register(m_luaState, "getPlayerDungeonStatus", LuaInterface::luaGetPlayerDungeonStatus);
+
+	//spawnCreaturesByName(name)
+	lua_register(m_luaState, "spawnCreaturesByName", LuaInterface::luaSpawnCreaturesByName);
+#endif
+
+#ifdef __DARGHOS_PVP_SYSTEM__
 	//doPlayerJoinBattleground(cid)
 	lua_register(m_luaState, "doPlayerJoinBattleground", LuaInterface::luaDoPlayerJoinBattleground);
 
@@ -2587,7 +2603,7 @@ void LuaInterface::registerFunctions()
 	//getPlayerBattlegroundRating()
 	lua_register(m_luaState, "getPlayerBattlegroundRating", LuaInterface::luaGetPlayerBattlegroundRating);
 
-	#endif
+#endif
 }
 
 const luaL_Reg LuaInterface::luaSystemTable[] =
@@ -10716,6 +10732,101 @@ int32_t LuaInterface::luaDoPlayerWearItems(lua_State* L)
         errorEx(getError(LUA_ERROR_PLAYER_NOT_FOUND));
         lua_pushboolean(L, false);
     }
+
+    return 1;
+}
+
+int32_t LuaInterface::luaSetPlayerDungeonId(lua_State* L)
+{
+    //setPlayerDungeonId(cid, dungeonId)
+    ScriptEnviroment* env = getEnv();
+
+	uint16_t dungeonId = popNumber(L);
+
+    if(Player* player = env->getPlayerByUID(popNumber(L)))
+    {
+		player->setDungeon(dungeonId);
+        lua_pushboolean(L, true);
+    }
+    else
+    {
+        errorEx(getError(LUA_ERROR_PLAYER_NOT_FOUND));
+        lua_pushboolean(L, false);
+    }
+
+    return 1;
+}
+
+int32_t LuaInterface::luaGetPlayerDungeonId(lua_State* L)
+{
+    //getPlayerDungeonId(cid)
+    ScriptEnviroment* env = getEnv();
+    if(Player* player = env->getPlayerByUID(popNumber(L)))
+    {
+		lua_pushnumber(L, player->getDungeon());
+    }
+    else
+    {
+        errorEx(getError(LUA_ERROR_PLAYER_NOT_FOUND));
+        lua_pushboolean(L, false);
+    }
+
+    return 1;
+}
+
+int32_t LuaInterface::luaSetPlayerDungeonStatus(lua_State* L)
+{
+    //setPlayerDungeonStatus(cid, status)
+    ScriptEnviroment* env = getEnv();
+
+	uint16_t status = popNumber(L);
+
+    if(Player* player = env->getPlayerByUID(popNumber(L)))
+    {
+		player->setDungeonStatus((DungeonStatus_t)status);
+        lua_pushboolean(L, true);
+    }
+    else
+    {
+        errorEx(getError(LUA_ERROR_PLAYER_NOT_FOUND));
+        lua_pushboolean(L, false);
+    }
+
+    return 1;
+}
+
+int32_t LuaInterface::luaGetPlayerDungeonStatus(lua_State* L)
+{
+    //getPlayerDungeonStatus(cid)
+    ScriptEnviroment* env = getEnv();
+    if(Player* player = env->getPlayerByUID(popNumber(L)))
+    {
+		lua_pushnumber(L, player->getDungeonStatus());
+    }
+    else
+    {
+        errorEx(getError(LUA_ERROR_PLAYER_NOT_FOUND));
+        lua_pushboolean(L, false);
+    }
+
+    return 1;
+}
+
+int32_t LuaInterface::luaSpawnCreaturesByName(lua_State* L)
+{
+    //spawnCreaturesByName(name)
+    ScriptEnviroment* env = getEnv();
+
+	MonsterType* mType = g_monsters.getMonsterType(popString(L));
+	if(!mType)
+	{
+		errorEx(getError(LUA_ERROR_MONSTER_NOT_FOUND));
+		lua_pushboolean(L, false);
+		return 1;
+	}
+
+	Spawns::getInstance()->spawnCreaturesByType(mType);
+	lua_pushboolean(L, true);
 
     return 1;
 }

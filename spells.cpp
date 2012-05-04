@@ -490,7 +490,7 @@ Spell::Spell()
 	manaPercent = 0;
 	soul = 0;
 	range = -1;
-	exhaustion = 1000;
+	exhaustion = 1200;
 #ifdef __DARGHOS_CUSTOM_SPELLS__
 	castDelay = 0;
 	canAgressive = true;
@@ -635,11 +635,15 @@ bool Spell::checkSpell(Player* player) const
 			return false;
 		}
 
+#ifdef __DARGHOS_CUSTOM__
+		if(player->hasCondition(CONDITION_EXHAUST, EXHAUST_COMBAT) || player->hasCondition(CONDITION_EXHAUST, EXHAUST_GLOBAL))
+#else
 		if(player->hasCondition(CONDITION_EXHAUST, EXHAUST_COMBAT))
+#endif
 			exhausted = true;
 	}
 #ifdef __DARGHOS_CUSTOM__
-	else if(player->hasCondition(CONDITION_EXHAUST, EXHAUST_COMBAT))
+	else if(player->hasCondition(CONDITION_EXHAUST, EXHAUST_HEALING) || player->hasCondition(CONDITION_EXHAUST, EXHAUST_GLOBAL))
 #else
 	else if(player->hasCondition(CONDITION_EXHAUST, EXHAUST_HEALING))
 #endif
@@ -1039,12 +1043,24 @@ void Spell::postSpell(Player* player, bool finishedCast /*= true*/, bool payCost
 		if(!player->isInBattleground())
 		{
 			if(!player->hasFlag(PlayerFlag_HasNoExhaustion) && exhaustion > 0)
-				player->addExhaust(exhaustion, EXHAUST_COMBAT);
+			{
+				player->addExhaust(exhaustion, isAggressive ? EXHAUST_COMBAT : EXHAUST_HEALING);
+
+				uint32_t globalCooldown = g_config.getNumber(ConfigManager::GLOBAL_COOLDOWN);
+				if(globalCooldown > 0)
+					player->addExhaust(globalCooldown, EXHAUST_GLOBAL);
+			}
 		}
 		else
 		{
 			if(!player->hasFlag(PlayerFlag_HasNoExhaustion) && exhaustion > 0 && castDelay == 0)
-				player->addExhaust(exhaustion, EXHAUST_COMBAT);
+			{
+				player->addExhaust(exhaustion, isAggressive ? EXHAUST_COMBAT : EXHAUST_HEALING);
+
+				uint32_t globalCooldown = g_config.getNumber(ConfigManager::GLOBAL_COOLDOWN);
+				if(globalCooldown > 0)
+					player->addExhaust(globalCooldown, EXHAUST_GLOBAL);
+			}
 		}
 #else
 		if(!player->hasFlag(PlayerFlag_HasNoExhaustion) && exhaustion > 0)
