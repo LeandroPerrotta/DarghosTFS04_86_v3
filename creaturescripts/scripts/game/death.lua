@@ -2,7 +2,7 @@ function onDeath(cid, corpse, deathList)
 	if isPlayer(cid) then
 		--Fun??es que ser?o chamadas quando um jogador morrer...
 		
-		--Dungeons.onPlayerDeath(cid)
+		Dungeons.onPlayerDeath(cid)
 		setPlayerStorageValue(cid, sid.GIVE_ITEMS_AFTER_DEATH, 1)
 		deathInDemonOak(cid)
 	end	

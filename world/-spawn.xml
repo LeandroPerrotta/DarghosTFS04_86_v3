@@ -19360,10 +19360,10 @@
     <monster name="Cyclops" x="0" y="1" z="10" spawntime="60"/>
   </spawn>
   <spawn centerx="2683" centery="1751" centerz="10" radius="5">
-    <monster name="Sen Gan Hydra" x="-1" y="-2" z="10" spawntime="900"/>
-    <monster name="Sen Gan Hunter" x="2" y="-2" z="10" spawntime="900"/>
-    <monster name="Sen Gan Shaman" x="-2" y="0" z="10" spawntime="900"/>
-    <monster name="Sen Gan Hydra" x="2" y="0" z="10" spawntime="900"/>
+    <monster name="Sen Gan Hydra" x="-1" y="-2" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Hunter" x="2" y="-2" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Shaman" x="-2" y="0" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Hydra" x="2" y="0" z="10" spawntime="3600"/>
   </spawn>
   <spawn centerx="2556" centery="1753" centerz="10" radius="5">
     <monster name="Bat" x="-4" y="-3" z="10" spawntime="30"/>
@@ -19388,18 +19388,18 @@
     <monster name="Necromancer" x="0" y="-1" z="10" spawntime="60"/>
   </spawn>
   <spawn centerx="2670" centery="1764" centerz="10" radius="5">
-    <monster name="Sen Gan Guard" x="0" y="-2" z="10" spawntime="900"/>
-    <monster name="Big Ooze" x="2" y="-2" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="-2" y="2" z="10" spawntime="900"/>
-    <monster name="Sen Gan Hunter" x="1" y="2" z="10" spawntime="900"/>
-    <monster name="Swamp Thing" x="2" y="2" z="10" spawntime="900"/>
+    <monster name="Sen Gan Guard" x="0" y="-2" z="10" spawntime="3600"/>
+    <monster name="Big Ooze" x="2" y="-2" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="-2" y="2" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Hunter" x="1" y="2" z="10" spawntime="3600"/>
+    <monster name="Swamp Thing" x="2" y="2" z="10" spawntime="3600"/>
   </spawn>
   <spawn centerx="2659" centery="1774" centerz="10" radius="5">
-    <monster name="Sen Gan Guard" x="5" y="-2" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="3" y="1" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="5" y="1" z="10" spawntime="900"/>
-    <monster name="Sen Gan Hydra" x="2" y="2" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="4" y="2" z="10" spawntime="900"/>
+    <monster name="Sen Gan Guard" x="5" y="-2" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="3" y="1" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="5" y="1" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Hydra" x="2" y="2" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="4" y="2" z="10" spawntime="3600"/>
   </spawn>
   <spawn centerx="1975" centery="1776" centerz="10" radius="5">
     <monster name="Carrion Worm" x="0" y="1" z="10" spawntime="120"/>
@@ -19416,19 +19416,19 @@
     <monster name="Orc Berserker" x="0" y="0" z="10" spawntime="60"/>
   </spawn>
   <spawn centerx="2666" centery="1789" centerz="10" radius="5">
-    <monster name="Sen Gan Guard" x="0" y="-5" z="10" spawntime="900"/>
-    <monster name="Big Ooze" x="2" y="-5" z="10" spawntime="900"/>
-    <monster name="Swamp Thing" x="0" y="2" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="1" y="2" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="2" y="2" z="10" spawntime="900"/>
+    <monster name="Sen Gan Guard" x="0" y="-5" z="10" spawntime="3600"/>
+    <monster name="Big Ooze" x="2" y="-5" z="10" spawntime="3600"/>
+    <monster name="Swamp Thing" x="0" y="2" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="1" y="2" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="2" y="2" z="10" spawntime="3600"/>
   </spawn>
   <spawn centerx="1961" centery="1791" centerz="10" radius="5">
     <monster name="Rotworm" x="-3" y="-5" z="10" spawntime="120"/>
     <monster name="Carrion Worm" x="0" y="0" z="10" spawntime="120"/>
   </spawn>
   <spawn centerx="2574" centery="1791" centerz="10" radius="5">
-    <monster name="Sen Gan Hydra" x="-1" y="-1" z="10" spawntime="900"/>
-    <monster name="Swamp Thing" x="1" y="-1" z="10" spawntime="900"/>
+    <monster name="Sen Gan Hydra" x="-1" y="-1" z="10" spawntime="3600"/>
+    <monster name="Swamp Thing" x="1" y="-1" z="10" spawntime="3600"/>
   </spawn>
   <spawn centerx="1975" centery="1792" centerz="10" radius="5">
     <monster name="Rotworm" x="-4" y="-4" z="10" spawntime="120"/>
@@ -19456,15 +19456,15 @@
   <spawn centerx="2540" centery="1799" centerz="10" radius="5">
     <monster name="Bone Wall" x="-4" y="-5" z="10" spawntime="60"/>
     <monster name="Bone Wall" x="-3" y="-5" z="10" spawntime="60"/>
-    <monster name="Swamp Thing" x="0" y="-1" z="10" spawntime="900"/>
-    <monster name="Sen Gan Hydra" x="2" y="1" z="10" spawntime="900"/>
-    <monster name="Sen Gan Shaman" x="2" y="2" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="3" y="3" z="10" spawntime="900"/>
-    <monster name="Swamp Thing" x="1" y="4" z="10" spawntime="900"/>
+    <monster name="Swamp Thing" x="0" y="-1" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Hydra" x="2" y="1" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Shaman" x="2" y="2" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="3" y="3" z="10" spawntime="3600"/>
+    <monster name="Swamp Thing" x="1" y="4" z="10" spawntime="3600"/>
   </spawn>
   <spawn centerx="2778" centery="1799" centerz="10" radius="5">
-    <monster name="Sen Gan Hydra" x="-1" y="2" z="10" spawntime="900"/>
-    <monster name="Sen Gan Hydra" x="-1" y="4" z="10" spawntime="900"/>
+    <monster name="Sen Gan Hydra" x="-1" y="2" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Hydra" x="-1" y="4" z="10" spawntime="3600"/>
   </spawn>
   <spawn centerx="1985" centery="1801" centerz="10" radius="5">
     <monster name="Carrion Worm" x="1" y="0" z="10" spawntime="120"/>
@@ -19480,83 +19480,86 @@
     <monster name="Orc Warrior" x="-2" y="2" z="10" spawntime="60"/>
   </spawn>
   <spawn centerx="2667" centery="1802" centerz="10" radius="5">
-    <monster name="Sen Gan Guard" x="1" y="0" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="2" y="2" z="10" spawntime="900"/>
-    <monster name="Swamp Thing" x="3" y="2" z="10" spawntime="900"/>
+    <monster name="Sen Gan Guard" x="1" y="0" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="2" y="2" z="10" spawntime="3600"/>
+    <monster name="Swamp Thing" x="3" y="2" z="10" spawntime="3600"/>
   </spawn>
   <spawn centerx="2615" centery="1803" centerz="10" radius="5">
-    <monster name="Sen Gan Guard" x="-5" y="-2" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="-4" y="-1" z="10" spawntime="900"/>
-    <monster name="Big Ooze" x="-4" y="0" z="10" spawntime="900"/>
+    <monster name="Sen Gan Guard" x="-4" y="-2" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="-4" y="-1" z="10" spawntime="3600"/>
+    <monster name="Big Ooze" x="-4" y="0" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="-4" y="1" z="10" spawntime="3600"/>
   </spawn>
   <spawn centerx="2750" centery="1804" centerz="10" radius="5">
-    <monster name="Big Ooze" x="-2" y="-1" z="10" spawntime="60"/>
-    <monster name="Sen Gan Hydra" x="0" y="-1" z="10" spawntime="900"/>
+    <monster name="Big Ooze" x="-2" y="-1" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Hydra" x="0" y="-1" z="10" spawntime="3600"/>
   </spawn>
   <spawn centerx="2602" centery="1806" centerz="10" radius="5">
-    <monster name="Sen Gan Guard" x="2" y="-3" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="2" y="-2" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="-1" y="-1" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="3" y="-1" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="-1" y="0" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="-5" y="1" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="-1" y="1" z="10" spawntime="900"/>
-    <monster name="Sen Gan Hunter" x="-5" y="3" z="10" spawntime="900"/>
+    <monster name="Sen Gan Hunter" x="5" y="-4" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="2" y="-3" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="2" y="-2" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="-1" y="-1" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="2" y="-1" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="-1" y="0" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="-5" y="1" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="-1" y="1" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Hunter" x="-5" y="3" z="10" spawntime="3600"/>
   </spawn>
   <spawn centerx="2554" centery="1808" centerz="10" radius="5">
-    <monster name="Sen Gan Hunter" x="-1" y="-1" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="-1" y="0" z="10" spawntime="900"/>
-    <monster name="Sen Gan Shaman" x="-1" y="1" z="10" spawntime="900"/>
+    <monster name="Sen Gan Hunter" x="-1" y="-1" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="-1" y="0" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Shaman" x="-1" y="1" z="10" spawntime="3600"/>
+  </spawn>
+  <spawn centerx="2573" centery="1808" centerz="10" radius="5">
+    <monster name="Sen Gan Guard" x="0" y="-1" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="3" y="-1" z="10" spawntime="3600"/>
+    <monster name="Swamp Thing" x="0" y="1" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="1" y="1" z="10" spawntime="3600"/>
+    <monster name="Swamp Thing" x="2" y="1" z="10" spawntime="3600"/>
   </spawn>
   <spawn centerx="2706" centery="1808" centerz="10" radius="5">
-    <monster name="Sen Gan Shaman" x="-2" y="-1" z="10" spawntime="60"/>
-    <monster name="Big Ooze" x="-1" y="1" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="-2" y="2" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="0" y="2" z="10" spawntime="900"/>
-    <monster name="Swamp Thing" x="-2" y="3" z="10" spawntime="900"/>
-  </spawn>
-  <spawn centerx="2573" centery="1809" centerz="10" radius="5">
-    <monster name="Sen Gan Guard" x="0" y="-3" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="3" y="-3" z="10" spawntime="900"/>
-    <monster name="Swamp Thing" x="0" y="0" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="1" y="0" z="10" spawntime="900"/>
-    <monster name="Swamp Thing" x="2" y="0" z="10" spawntime="900"/>
+    <monster name="Sen Gan Shaman" x="-2" y="-1" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="0" y="-1" z="10" spawntime="3600"/>
+    <monster name="Big Ooze" x="-1" y="1" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="-2" y="2" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="0" y="2" z="10" spawntime="3600"/>
+    <monster name="Swamp Thing" x="-2" y="3" z="10" spawntime="3600"/>
   </spawn>
   <spawn centerx="2025" centery="1811" centerz="10" radius="5">
     <monster name="Orc Warrior" x="1" y="-1" z="10" spawntime="60"/>
     <monster name="Orc Warrior" x="-1" y="1" z="10" spawntime="60"/>
   </spawn>
   <spawn centerx="2588" centery="1812" centerz="10" radius="5">
-    <monster name="Sen Gan Guard" x="2" y="-4" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="1" y="-3" z="10" spawntime="900"/>
-    <monster name="Swamp Thing" x="2" y="-2" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="2" y="-1" z="10" spawntime="900"/>
+    <monster name="Sen Gan Guard" x="2" y="-4" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="1" y="-3" z="10" spawntime="3600"/>
+    <monster name="Swamp Thing" x="2" y="-2" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="2" y="-1" z="10" spawntime="3600"/>
   </spawn>
   <spawn centerx="2001" centery="1813" centerz="10" radius="5">
     <monster name="Skeleton" x="1" y="0" z="10" spawntime="60"/>
     <monster name="Skeleton" x="-1" y="2" z="10" spawntime="60"/>
   </spawn>
   <spawn centerx="2677" centery="1813" centerz="10" radius="5">
-    <monster name="Sen Gan Guard" x="-5" y="-1" z="10" spawntime="900"/>
-    <monster name="Sen Gan Hydra" x="1" y="0" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="0" y="1" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="-5" y="3" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="1" y="3" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="0" y="4" z="10" spawntime="900"/>
+    <monster name="Sen Gan Guard" x="-5" y="-1" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Hydra" x="1" y="0" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="0" y="2" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="-5" y="3" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="1" y="3" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="0" y="4" z="10" spawntime="3600"/>
   </spawn>
   <spawn centerx="2103" centery="1816" centerz="10" radius="5">
     <monster name="Orc Shaman" x="-2" y="-2" z="10" spawntime="60"/>
   </spawn>
   <spawn centerx="2661" centery="1816" centerz="10" radius="5">
-    <monster name="Sen Gan Guard" x="-1" y="0" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="-5" y="2" z="10" spawntime="900"/>
-    <monster name="Sen Gan Hunter" x="-4" y="2" z="10" spawntime="900"/>
-    <monster name="Big Ooze" x="-3" y="2" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="-3" y="4" z="10" spawntime="900"/>
+    <monster name="Sen Gan Guard" x="-2" y="0" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="-5" y="2" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Hunter" x="-4" y="2" z="10" spawntime="3600"/>
+    <monster name="Big Ooze" x="-3" y="2" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="-3" y="4" z="10" spawntime="3600"/>
   </spawn>
   <spawn centerx="2740" centery="1816" centerz="10" radius="5">
-    <monster name="Big Ooze" x="-4" y="-3" z="10" spawntime="60"/>
-    <monster name="Sen Gan Hydra" x="-1" y="-2" z="10" spawntime="900"/>
+    <monster name="Big Ooze" x="-4" y="-3" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Hydra" x="-1" y="-2" z="10" spawntime="3600"/>
   </spawn>
   <spawn centerx="2090" centery="1817" centerz="10" radius="5">
     <monster name="Orc Warrior" x="1" y="-3" z="10" spawntime="60"/>
@@ -19578,12 +19581,12 @@
     <monster name="Bone Wall" x="0" y="1" z="10" spawntime="60"/>
   </spawn>
   <spawn centerx="2579" centery="1826" centerz="10" radius="5">
-    <monster name="Sen Gan Guard" x="-3" y="1" z="10" spawntime="900"/>
-    <monster name="Big Ooze" x="-1" y="1" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="1" y="1" z="10" spawntime="900"/>
-    <monster name="Sen Gan Hunter" x="-2" y="2" z="10" spawntime="900"/>
-    <monster name="Swamp Thing" x="-3" y="3" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="0" y="3" z="10" spawntime="900"/>
+    <monster name="Sen Gan Guard" x="-3" y="1" z="10" spawntime="3600"/>
+    <monster name="Big Ooze" x="-1" y="1" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="1" y="1" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Hunter" x="-2" y="2" z="10" spawntime="3600"/>
+    <monster name="Swamp Thing" x="-3" y="3" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="0" y="3" z="10" spawntime="3600"/>
   </spawn>
   <spawn centerx="1984" centery="1829" centerz="10" radius="5">
     <monster name="Fire Devil" x="0" y="1" z="10" spawntime="180"/>
@@ -19592,76 +19595,77 @@
     <monster name="Bone Wall" x="4" y="2" z="10" spawntime="60"/>
   </spawn>
   <spawn centerx="2644" centery="1830" centerz="10" radius="5">
-    <monster name="Sen Gan Guard" x="-2" y="-3" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="0" y="-3" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="-2" y="-1" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="1" y="-1" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="-1" y="0" z="10" spawntime="900"/>
+    <monster name="Sen Gan Guard" x="-2" y="-3" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="0" y="-3" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="-3" y="-2" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="1" y="-2" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="-2" y="-1" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="0" y="-1" z="10" spawntime="3600"/>
   </spawn>
   <spawn centerx="2527" centery="1831" centerz="10" radius="5">
-    <monster name="Sen Gan Hydra" x="-2" y="0" z="10" spawntime="900"/>
-    <monster name="Sen Gan Shaman" x="1" y="0" z="10" spawntime="60"/>
-    <monster name="Sen Gan Guard" x="-3" y="1" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="-3" y="2" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="1" y="2" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="1" y="5" z="10" spawntime="900"/>
+    <monster name="Sen Gan Hydra" x="-2" y="0" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Shaman" x="1" y="0" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="-3" y="1" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="-3" y="2" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="1" y="2" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="1" y="5" z="10" spawntime="3600"/>
   </spawn>
   <spawn centerx="2731" centery="1831" centerz="10" radius="5">
-    <monster name="Sen Gan Hydra" x="2" y="-3" z="10" spawntime="60"/>
-    <monster name="Big Ooze" x="3" y="-1" z="10" spawntime="60"/>
+    <monster name="Sen Gan Hydra" x="2" y="-3" z="10" spawntime="3600"/>
+    <monster name="Big Ooze" x="3" y="-1" z="10" spawntime="3600"/>
   </spawn>
   <spawn centerx="2605" centery="1832" centerz="10" radius="5">
-    <monster name="Sen Gan Guard" x="-3" y="-2" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="1" y="-2" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="-4" y="1" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="-2" y="1" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="2" y="1" z="10" spawntime="900"/>
+    <monster name="Sen Gan Guard" x="-3" y="-2" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="1" y="-2" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="-4" y="1" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="-3" y="1" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="2" y="1" z="10" spawntime="3600"/>
   </spawn>
   <spawn centerx="2591" centery="1834" centerz="10" radius="5">
-    <monster name="Sen Gan Guard" x="4" y="-3" z="10" spawntime="900"/>
-    <monster name="Sen Gan Hunter" x="2" y="-2" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="1" y="-1" z="10" spawntime="900"/>
-    <monster name="Swamp Thing" x="2" y="-1" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="4" y="-1" z="10" spawntime="900"/>
+    <monster name="Sen Gan Guard" x="4" y="-3" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Hunter" x="2" y="-2" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="1" y="-1" z="10" spawntime="3600"/>
+    <monster name="Swamp Thing" x="2" y="-1" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="4" y="-1" z="10" spawntime="3600"/>
   </spawn>
   <spawn centerx="2628" centery="1836" centerz="10" radius="5">
-    <monster name="Big Ooze" x="3" y="-1" z="10" spawntime="900"/>
-    <monster name="Big Ooze" x="-4" y="0" z="10" spawntime="900"/>
-    <monster name="Big Ooze" x="-1" y="1" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="1" y="2" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="-2" y="5" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="-1" y="5" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="3" y="5" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="4" y="5" z="10" spawntime="900"/>
+    <monster name="Big Ooze" x="3" y="-1" z="10" spawntime="3600"/>
+    <monster name="Big Ooze" x="-4" y="0" z="10" spawntime="3600"/>
+    <monster name="Big Ooze" x="-1" y="1" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="1" y="2" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="-2" y="5" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="-1" y="5" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="3" y="5" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="4" y="5" z="10" spawntime="3600"/>
   </spawn>
   <spawn centerx="2692" centery="1838" centerz="10" radius="5">
-    <monster name="Swamp Thing" x="1" y="-1" z="10" spawntime="900"/>
+    <monster name="Swamp Thing" x="1" y="-1" z="10" spawntime="3600"/>
   </spawn>
   <spawn centerx="2719" centery="1839" centerz="10" radius="5">
-    <monster name="Big Ooze" x="-2" y="-4" z="10" spawntime="60"/>
-    <monster name="Sen Gan Hydra" x="-1" y="-2" z="10" spawntime="60"/>
+    <monster name="Big Ooze" x="-2" y="-4" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Hydra" x="-1" y="-2" z="10" spawntime="3600"/>
   </spawn>
   <spawn centerx="2565" centery="1842" centerz="10" radius="5">
-    <monster name="Sen Gan Guard" x="2" y="-3" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="-2" y="-2" z="10" spawntime="900"/>
-    <monster name="Swamp Thing" x="0" y="-2" z="10" spawntime="900"/>
-    <monster name="Sen Gan Shaman" x="4" y="-2" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="-2" y="2" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="0" y="2" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="2" y="2" z="10" spawntime="900"/>
+    <monster name="Sen Gan Guard" x="2" y="-3" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="-2" y="-2" z="10" spawntime="3600"/>
+    <monster name="Swamp Thing" x="0" y="-2" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Shaman" x="4" y="-2" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="-2" y="2" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="0" y="2" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="2" y="2" z="10" spawntime="3600"/>
   </spawn>
   <spawn centerx="2534" centery="1847" centerz="10" radius="5">
-    <monster name="Swamp Thing" x="-4" y="-5" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="-3" y="-2" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="-2" y="-1" z="10" spawntime="900"/>
-    <monster name="Big Ooze" x="-1" y="1" z="10" spawntime="900"/>
-    <monster name="Swamp Thing" x="4" y="4" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="2" y="5" z="10" spawntime="900"/>
+    <monster name="Swamp Thing" x="-4" y="-5" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="-3" y="-2" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="-2" y="-1" z="10" spawntime="3600"/>
+    <monster name="Big Ooze" x="0" y="-1" z="10" spawntime="3600"/>
+    <monster name="Swamp Thing" x="4" y="4" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="2" y="5" z="10" spawntime="3600"/>
   </spawn>
   <spawn centerx="2629" centery="1850" centerz="10" radius="5">
-    <monster name="Sen Gan Guard" x="-2" y="-2" z="10" spawntime="900"/>
-    <monster name="Sen Gan Hydra" x="-1" y="-2" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="0" y="-2" z="10" spawntime="900"/>
+    <monster name="Sen Gan Guard" x="-2" y="-2" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Hydra" x="-1" y="-2" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="0" y="-2" z="10" spawntime="3600"/>
   </spawn>
   <spawn centerx="3346" centery="1850" centerz="10" radius="5">
     <monster name="Dragon" x="-2" y="-2" z="10" spawntime="180"/>
@@ -19673,124 +19677,125 @@
     <monster name="Behemoth" x="3" y="-1" z="10" spawntime="180"/>
   </spawn>
   <spawn centerx="2693" centery="1852" centerz="10" radius="5">
-    <monster name="Swamp Thing" x="0" y="4" z="10" spawntime="900"/>
-    <monster name="Swamp Thing" x="-1" y="5" z="10" spawntime="900"/>
+    <monster name="Swamp Thing" x="0" y="4" z="10" spawntime="3600"/>
+    <monster name="Swamp Thing" x="-1" y="5" z="10" spawntime="3600"/>
   </spawn>
   <spawn centerx="2601" centery="1854" centerz="10" radius="5">
-    <monster name="Sen Gan Guard" x="4" y="-1" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="2" y="0" z="10" spawntime="900"/>
-    <monster name="Sen Gan Hydra" x="2" y="2" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="2" y="4" z="10" spawntime="900"/>
+    <monster name="Sen Gan Guard" x="2" y="-1" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="4" y="-1" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Hydra" x="2" y="2" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="2" y="4" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="4" y="4" z="10" spawntime="3600"/>
   </spawn>
-  <spawn centerx="2561" centery="1855" centerz="10" radius="5">
-    <monster name="Big Ooze" x="5" y="-5" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="3" y="-4" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="5" y="-3" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="5" y="-1" z="10" spawntime="900"/>
-    <monster name="Swamp Thing" x="0" y="0" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="-4" y="2" z="10" spawntime="900"/>
-    <monster name="Big Ooze" x="-5" y="4" z="10" spawntime="900"/>
+  <spawn centerx="2562" centery="1855" centerz="10" radius="5">
+    <monster name="Big Ooze" x="4" y="-5" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="2" y="-4" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="4" y="-3" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="4" y="-1" z="10" spawntime="3600"/>
+    <monster name="Swamp Thing" x="-1" y="0" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="-5" y="2" z="10" spawntime="3600"/>
+    <monster name="Big Ooze" x="-5" y="4" z="10" spawntime="3600"/>
   </spawn>
   <spawn centerx="2465" centery="1857" centerz="10" radius="5">
-    <monster name="Sen Gan Hydra" x="1" y="2" z="10" spawntime="900"/>
-    <monster name="Sen Gan Shaman" x="-1" y="4" z="10" spawntime="60"/>
-    <monster name="Sen Gan Guard" x="0" y="4" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="2" y="4" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="3" y="4" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="-1" y="5" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="0" y="5" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="2" y="5" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="3" y="5" z="10" spawntime="900"/>
+    <monster name="Sen Gan Hydra" x="1" y="2" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Shaman" x="-1" y="4" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="0" y="4" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="2" y="4" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="3" y="4" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="-1" y="5" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="0" y="5" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="2" y="5" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="3" y="5" z="10" spawntime="3600"/>
   </spawn>
   <spawn centerx="2618" centery="1857" centerz="10" radius="5">
-    <monster name="Big Ooze" x="1" y="0" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="3" y="0" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="5" y="0" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="4" y="1" z="10" spawntime="900"/>
+    <monster name="Sen Gan Guard" x="4" y="-1" z="10" spawntime="3600"/>
+    <monster name="Big Ooze" x="1" y="0" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="3" y="0" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="5" y="0" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="4" y="1" z="10" spawntime="3600"/>
   </spawn>
-  <spawn centerx="2702" centery="1857" centerz="10" radius="5">
-    <monster name="Sen Gan Hunter" x="-1" y="-5" z="10" spawntime="900"/>
-    <monster name="Sen Gan Hunter" x="0" y="-4" z="10" spawntime="900"/>
-    <monster name="Sen Gan Hunter" x="-1" y="-3" z="10" spawntime="900"/>
-    <monster name="Sen Gan Hunter" x="0" y="-2" z="10" spawntime="900"/>
-    <monster name="Sen Gan Hunter" x="-1" y="-1" z="10" spawntime="900"/>
-    <monster name="Sen Gan Hunter" x="0" y="0" z="10" spawntime="900"/>
-    <monster name="Sen Gan Hunter" x="-1" y="1" z="10" spawntime="900"/>
-    <monster name="Sen Gan Hunter" x="0" y="2" z="10" spawntime="900"/>
-    <monster name="Sen Gan Hunter" x="-1" y="3" z="10" spawntime="900"/>
-    <monster name="Sen Gan Hunter" x="0" y="4" z="10" spawntime="900"/>
-    <monster name="Sen Gan Hunter" x="-1" y="5" z="10" spawntime="900"/>
+  <spawn centerx="2702" centery="1858" centerz="10" radius="5">
+    <monster name="Sen Gan Hunter" x="0" y="-5" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Hunter" x="-1" y="-4" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Hunter" x="0" y="-3" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Hunter" x="-1" y="-2" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Hunter" x="0" y="-1" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Hunter" x="-1" y="0" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Hunter" x="0" y="1" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Hunter" x="-1" y="2" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Hunter" x="0" y="3" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Hunter" x="-1" y="4" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Hunter" x="0" y="5" z="10" spawntime="3600"/>
   </spawn>
   <spawn centerx="2546" centery="1860" centerz="10" radius="5">
-    <monster name="Sen Gan Guard" x="1" y="-3" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="4" y="-3" z="10" spawntime="900"/>
-    <monster name="Big Ooze" x="-3" y="-1" z="10" spawntime="900"/>
-    <monster name="Sen Gan Hydra" x="2" y="0" z="10" spawntime="900"/>
-    <monster name="Sen Gan Hunter" x="4" y="0" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="-4" y="2" z="10" spawntime="900"/>
+    <monster name="Sen Gan Guard" x="2" y="-3" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="4" y="-3" z="10" spawntime="3600"/>
+    <monster name="Big Ooze" x="-3" y="-1" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Hydra" x="2" y="0" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Hunter" x="4" y="0" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="-3" y="2" z="10" spawntime="3600"/>
   </spawn>
   <spawn centerx="2683" centery="1861" centerz="10" radius="5">
-    <monster name="Swamp Thing" x="-3" y="2" z="10" spawntime="900"/>
-    <monster name="Swamp Thing" x="5" y="2" z="10" spawntime="900"/>
+    <monster name="Swamp Thing" x="-3" y="2" z="10" spawntime="3600"/>
+    <monster name="Swamp Thing" x="4" y="2" z="10" spawntime="3600"/>
   </spawn>
   <spawn centerx="2531" centery="1862" centerz="10" radius="5">
-    <monster name="Sen Gan Guard" x="3" y="-2" z="10" spawntime="900"/>
-    <monster name="Sen Gan Hunter" x="5" y="-2" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="-2" y="1" z="10" spawntime="900"/>
-    <monster name="Swamp Thing" x="3" y="1" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="5" y="1" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="3" y="2" z="10" spawntime="900"/>
-    <monster name="Sen Gan Hunter" x="-4" y="4" z="10" spawntime="900"/>
+    <monster name="Sen Gan Guard" x="3" y="-2" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Hunter" x="5" y="-2" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="5" y="0" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="-2" y="1" z="10" spawntime="3600"/>
+    <monster name="Swamp Thing" x="3" y="1" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="3" y="2" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Hunter" x="-4" y="4" z="10" spawntime="3600"/>
   </spawn>
   <spawn centerx="2578" centery="1862" centerz="10" radius="5">
-    <monster name="Sen Gan Guard" x="0" y="-4" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="-1" y="-3" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="-2" y="-2" z="10" spawntime="900"/>
-    <monster name="Big Ooze" x="4" y="0" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="3" y="1" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="2" y="2" z="10" spawntime="900"/>
+    <monster name="Sen Gan Guard" x="0" y="-4" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="-1" y="-3" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="-2" y="-2" z="10" spawntime="3600"/>
+    <monster name="Big Ooze" x="4" y="0" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="3" y="1" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="2" y="2" z="10" spawntime="3600"/>
   </spawn>
   <spawn centerx="2447" centery="1863" centerz="10" radius="5">
-    <monster name="Big Ooze" x="0" y="2" z="10" spawntime="900"/>
-    <monster name="Swamp Thing" x="1" y="3" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="1" y="4" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="0" y="5" z="10" spawntime="900"/>
+    <monster name="Big Ooze" x="0" y="2" z="10" spawntime="3600"/>
+    <monster name="Swamp Thing" x="1" y="3" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="1" y="4" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="0" y="5" z="10" spawntime="3600"/>
   </spawn>
   <spawn centerx="2518" centery="1863" centerz="10" radius="5">
-    <monster name="Sen Gan Guard" x="3" y="0" z="10" spawntime="900"/>
-    <monster name="Sen Gan Shaman" x="-1" y="2" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="5" y="2" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="3" y="3" z="10" spawntime="900"/>
+    <monster name="Sen Gan Guard" x="3" y="0" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Shaman" x="-1" y="2" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="5" y="2" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="3" y="3" z="10" spawntime="3600"/>
   </spawn>
   <spawn centerx="2655" centery="1863" centerz="10" radius="5">
     <monster name="Bone Wall" x="-5" y="0" z="10" spawntime="60"/>
-    <monster name="Swamp Thing" x="4" y="0" z="10" spawntime="900"/>
+    <monster name="Swamp Thing" x="4" y="0" z="10" spawntime="3600"/>
   </spawn>
   <spawn centerx="2702" centery="1868" centerz="10" radius="5">
-    <monster name="Sen Gan Hunter" x="0" y="-5" z="10" spawntime="900"/>
-    <monster name="Sen Gan Hunter" x="-1" y="-4" z="10" spawntime="900"/>
-    <monster name="Sen Gan Hunter" x="0" y="-3" z="10" spawntime="900"/>
-    <monster name="Sen Gan Hunter" x="-1" y="-2" z="10" spawntime="900"/>
-    <monster name="Sen Gan Hunter" x="0" y="-1" z="10" spawntime="900"/>
-    <monster name="Sen Gan Hunter" x="-1" y="0" z="10" spawntime="900"/>
-    <monster name="Sen Gan Hunter" x="0" y="1" z="10" spawntime="900"/>
-    <monster name="Sen Gan Hunter" x="-1" y="2" z="10" spawntime="900"/>
-    <monster name="Sen Gan Hunter" x="0" y="3" z="10" spawntime="900"/>
-    <monster name="Sen Gan Hunter" x="-1" y="4" z="10" spawntime="900"/>
+    <monster name="Sen Gan Hunter" x="-1" y="-4" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Hunter" x="0" y="-3" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Hunter" x="-1" y="-2" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Hunter" x="0" y="-1" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Hunter" x="-1" y="0" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Hunter" x="0" y="1" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Hunter" x="-1" y="2" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Hunter" x="0" y="3" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Hunter" x="-1" y="4" z="10" spawntime="3600"/>
     <monster name="Bone Wall" x="0" y="5" z="10" spawntime="60"/>
   </spawn>
   <spawn centerx="2591" centery="1869" centerz="10" radius="5">
-    <monster name="Sen Gan Guard" x="-3" y="-1" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="-1" y="1" z="10" spawntime="900"/>
-    <monster name="Swamp Thing" x="0" y="1" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="1" y="1" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="2" y="1" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="1" y="5" z="10" spawntime="900"/>
+    <monster name="Sen Gan Guard" x="-3" y="-1" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="-1" y="1" z="10" spawntime="3600"/>
+    <monster name="Swamp Thing" x="0" y="1" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="1" y="1" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="2" y="1" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="1" y="5" z="10" spawntime="3600"/>
   </spawn>
   <spawn centerx="2616" centery="1869" centerz="10" radius="5">
-    <monster name="Sen Gan Shaman" x="0" y="-1" z="10" spawntime="900"/>
-    <monster name="Big Ooze" x="-2" y="0" z="10" spawntime="900"/>
-    <monster name="Swamp Thing" x="1" y="0" z="10" spawntime="900"/>
+    <monster name="Sen Gan Shaman" x="0" y="-1" z="10" spawntime="3600"/>
+    <monster name="Big Ooze" x="-2" y="0" z="10" spawntime="3600"/>
+    <monster name="Swamp Thing" x="1" y="0" z="10" spawntime="3600"/>
   </spawn>
   <spawn centerx="2515" centery="1873" centerz="10" radius="5">
     <monster name="Bone Wall" x="0" y="-3" z="10" spawntime="60"/>
@@ -19814,58 +19819,58 @@
     <monster name="Cyclops" x="-1" y="2" z="10" spawntime="150"/>
   </spawn>
   <spawn centerx="2446" centery="1878" centerz="10" radius="5">
-    <monster name="Sen Gan Guard" x="-3" y="-4" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="-2" y="-4" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="1" y="0" z="10" spawntime="900"/>
-    <monster name="Sen Gan Shaman" x="0" y="1" z="10" spawntime="60"/>
-    <monster name="Sen Gan Guard" x="1" y="2" z="10" spawntime="900"/>
+    <monster name="Sen Gan Guard" x="-3" y="-4" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="-2" y="-4" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="1" y="0" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Shaman" x="0" y="1" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="1" y="2" z="10" spawntime="3600"/>
   </spawn>
   <spawn centerx="2473" centery="1880" centerz="10" radius="5">
-    <monster name="Sen Gan Guard" x="0" y="-5" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="3" y="-5" z="10" spawntime="900"/>
-    <monster name="Sen Gan Hydra" x="0" y="-4" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="3" y="-4" z="10" spawntime="900"/>
+    <monster name="Sen Gan Guard" x="0" y="-5" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="3" y="-5" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Hydra" x="0" y="-4" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="3" y="-4" z="10" spawntime="3600"/>
   </spawn>
   <spawn centerx="2494" centery="1880" centerz="10" radius="5">
-    <monster name="Sen Gan Guard" x="-3" y="-3" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="-3" y="-2" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="0" y="-2" z="10" spawntime="900"/>
-    <monster name="Sen Gan Shaman" x="0" y="-1" z="10" spawntime="900"/>
+    <monster name="Sen Gan Guard" x="-2" y="-3" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="-2" y="-2" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="0" y="-2" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Shaman" x="0" y="-1" z="10" spawntime="3600"/>
   </spawn>
   <spawn centerx="2590" centery="1880" centerz="10" radius="5">
-    <monster name="Sen Gan Guard" x="2" y="-5" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="-1" y="-4" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="2" y="-4" z="10" spawntime="900"/>
-    <monster name="Swamp Thing" x="-2" y="-3" z="10" spawntime="900"/>
-    <monster name="Sen Gan Shaman" x="-1" y="-3" z="10" spawntime="60"/>
-    <monster name="Sen Gan Guard" x="-2" y="-2" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="-1" y="-1" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="-4" y="0" z="10" spawntime="900"/>
-    <monster name="Sen Gan Hunter" x="-4" y="1" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="-4" y="3" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="-4" y="4" z="10" spawntime="900"/>
+    <monster name="Sen Gan Guard" x="2" y="-5" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="-1" y="-4" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="2" y="-4" z="10" spawntime="3600"/>
+    <monster name="Swamp Thing" x="-2" y="-3" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Shaman" x="-1" y="-3" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="-2" y="-2" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="-1" y="-1" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="-4" y="0" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Hunter" x="-4" y="1" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="-4" y="3" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="-4" y="4" z="10" spawntime="3600"/>
   </spawn>
   <spawn centerx="2604" centery="1883" centerz="10" radius="5">
-    <monster name="Sen Gan Hydra" x="1" y="-2" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="2" y="-1" z="10" spawntime="900"/>
-    <monster name="Sen Gan Hydra" x="2" y="2" z="10" spawntime="900"/>
+    <monster name="Sen Gan Hydra" x="1" y="-2" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="2" y="-1" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Hydra" x="2" y="2" z="10" spawntime="3600"/>
   </spawn>
   <spawn centerx="2515" centery="1884" centerz="10" radius="5">
     <monster name="Bone Wall" x="0" y="-5" z="10" spawntime="60"/>
-    <monster name="Sen Gan Hydra" x="-1" y="-1" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="-1" y="0" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="5" y="0" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="5" y="1" z="10" spawntime="900"/>
-    <monster name="Sen Gan Shaman" x="-2" y="2" z="10" spawntime="60"/>
-    <monster name="Sen Gan Guard" x="4" y="2" z="10" spawntime="900"/>
+    <monster name="Sen Gan Hydra" x="-1" y="-1" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="-1" y="0" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="5" y="0" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Shaman" x="-2" y="2" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="-1" y="2" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="5" y="2" z="10" spawntime="3600"/>
   </spawn>
   <spawn centerx="2460" centery="1886" centerz="10" radius="5">
-    <monster name="Sen Gan Guard" x="-3" y="-4" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="-3" y="-3" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="-1" y="-2" z="10" spawntime="900"/>
-    <monster name="Swamp Thing" x="-2" y="-1" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="0" y="-1" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="-1" y="0" z="10" spawntime="900"/>
+    <monster name="Sen Gan Guard" x="-3" y="-4" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="-2" y="-3" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="-1" y="-2" z="10" spawntime="3600"/>
+    <monster name="Swamp Thing" x="-2" y="-1" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="0" y="-1" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="-1" y="0" z="10" spawntime="3600"/>
     <monster name="Bone Wall" x="0" y="5" z="10" spawntime="60"/>
   </spawn>
   <spawn centerx="3360" centery="1887" centerz="10" radius="3">
@@ -19875,55 +19880,55 @@
     <monster name="Dwarf Soldier" x="-1" y="2" z="10" spawntime="120"/>
   </spawn>
   <spawn centerx="2540" centery="1888" centerz="10" radius="5">
-    <monster name="Sen Gan Guard" x="-3" y="-2" z="10" spawntime="900"/>
-    <monster name="Swamp Thing" x="-3" y="-1" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="3" y="-1" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="-4" y="0" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="3" y="1" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="3" y="2" z="10" spawntime="900"/>
+    <monster name="Sen Gan Guard" x="-3" y="-2" z="10" spawntime="3600"/>
+    <monster name="Swamp Thing" x="-3" y="-1" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="3" y="-1" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="-4" y="0" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="3" y="1" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="3" y="2" z="10" spawntime="3600"/>
   </spawn>
   <spawn centerx="2577" centery="1888" centerz="10" radius="5">
-    <monster name="Sen Gan Guard" x="-3" y="1" z="10" spawntime="900"/>
-    <monster name="Swamp Thing" x="-2" y="1" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="-5" y="4" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="-4" y="4" z="10" spawntime="900"/>
+    <monster name="Sen Gan Guard" x="-3" y="1" z="10" spawntime="3600"/>
+    <monster name="Swamp Thing" x="-2" y="1" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="-5" y="4" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="-4" y="4" z="10" spawntime="3600"/>
   </spawn>
   <spawn centerx="2556" centery="1890" centerz="10" radius="5">
-    <monster name="Sen Gan Guard" x="-3" y="-1" z="10" spawntime="900"/>
-    <monster name="Swamp Thing" x="-3" y="0" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="2" y="2" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="5" y="2" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="4" y="5" z="10" spawntime="900"/>
+    <monster name="Sen Gan Guard" x="-3" y="-1" z="10" spawntime="3600"/>
+    <monster name="Swamp Thing" x="-3" y="0" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="2" y="2" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="5" y="2" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="5" y="5" z="10" spawntime="3600"/>
   </spawn>
   <spawn centerx="2566" centery="1890" centerz="10" radius="5">
-    <monster name="Sen Gan Guard" x="5" y="2" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="-3" y="5" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="1" y="5" z="10" spawntime="900"/>
+    <monster name="Sen Gan Guard" x="5" y="2" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="-2" y="5" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="1" y="5" z="10" spawntime="3600"/>
   </spawn>
   <spawn centerx="3359" centery="1900" centerz="10" radius="5">
     <monster name="Cyclops" x="0" y="-5" z="10" spawntime="150"/>
     <monster name="Dwarf Soldier" x="0" y="3" z="10" spawntime="120"/>
   </spawn>
   <spawn centerx="2499" centery="1901" centerz="10" radius="5">
-    <monster name="Swamp Thing" x="4" y="-2" z="10" spawntime="900"/>
-    <monster name="Big Ooze" x="-2" y="-1" z="10" spawntime="900"/>
+    <monster name="Big Ooze" x="-2" y="-1" z="10" spawntime="3600"/>
+    <monster name="Swamp Thing" x="-1" y="1" z="10" spawntime="3600"/>
   </spawn>
   <spawn centerx="2562" centery="1903" centerz="10" radius="5">
-    <monster name="Sen Gan Guard" x="-1" y="-3" z="10" spawntime="900"/>
-    <monster name="Big Ooze" x="0" y="-3" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="4" y="-3" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="5" y="-3" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="-3" y="0" z="10" spawntime="900"/>
-    <monster name="Sen Gan Shaman" x="-1" y="0" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="1" y="0" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="-5" y="5" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="-3" y="5" z="10" spawntime="900"/>
+    <monster name="Sen Gan Guard" x="-1" y="-5" z="10" spawntime="3600"/>
+    <monster name="Big Ooze" x="0" y="-5" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="4" y="-5" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="5" y="-5" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="-1" y="-2" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="3" y="-2" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Shaman" x="1" y="-1" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="-3" y="3" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="-1" y="3" z="10" spawntime="3600"/>
   </spawn>
   <spawn centerx="2483" centery="1907" centerz="10" radius="5">
-    <monster name="Sen Gan Guard" x="3" y="-2" z="10" spawntime="900"/>
-    <monster name="Big Ooze" x="-4" y="1" z="10" spawntime="60"/>
-    <monster name="Sen Gan Shaman" x="-2" y="1" z="10" spawntime="900"/>
-    <monster name="Sen Gan Guard" x="0" y="2" z="10" spawntime="900"/>
+    <monster name="Sen Gan Guard" x="-3" y="0" z="10" spawntime="3600"/>
+    <monster name="Big Ooze" x="-4" y="1" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Guard" x="-3" y="2" z="10" spawntime="3600"/>
+    <monster name="Sen Gan Shaman" x="-4" y="3" z="10" spawntime="3600"/>
   </spawn>
   <spawn centerx="2178" centery="1908" centerz="10" radius="20">
     <monster name="Dwarf Guard" x="-12" y="6" z="10" spawntime="30"/>
@@ -19959,7 +19964,7 @@
   </spawn>
   <spawn centerx="2466" centery="1910" centerz="10" radius="5">
     <monster name="Bone Wall" x="-1" y="1" z="10" spawntime="60"/>
-    <monster name="Swamp Thing" x="2" y="1" z="10" spawntime="900"/>
+    <monster name="Swamp Thing" x="2" y="1" z="10" spawntime="3600"/>
   </spawn>
   <spawn centerx="3343" centery="1910" centerz="10" radius="5">
     <monster name="Dwarf Soldier" x="0" y="-1" z="10" spawntime="120"/>

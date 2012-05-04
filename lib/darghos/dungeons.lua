@@ -8,22 +8,23 @@ UID_DUNGEON_RESPAWN = 1
 
 DUNGEON_THINK_INTERVAL = 1000 * 60
 
-DUNGEON_NONE = -1
+DUNGEON_NONE = 0
 
 dungeonList =
 {	
 	[gid.DUNGEONS_ARIADNE_GHAZRAN] =
 	{
-		maxPlayers = 6,
-		onPlayerEndLockTime = 60 * 60 * 24,
-		onEndLockTime = 60 * 15,
-		maxTimeIn = 90
+		maxPlayers = 2
+		,onPlayerEndLockTime = 60 * 60 * 24
+		,onEndLockTime = 60 --seconds
+		,maxTimeIn = 60 -- minutes
+		,requiredItems = { {name = "obsidian knife"} }
 	}	
 }
 
-DUNGEON_STATUS_NONE = -1
-DUNGEON_STATUS_IN = 0
-DUNGEON_STATUS_OUT = 1
+DUNGEON_STATUS_NONE = 0
+DUNGEON_STATUS_IN = 1
+DUNGEON_STATUS_OUT = 2
 
 dungeonEntranceUids =
 {
@@ -91,7 +92,36 @@ function Dungeons.onPlayerEnter(cid, item, position)
 		Dungeons.doTeleportPlayerBack(cid, position)
 		
 		return false
-	end	
+	end
+	
+	if(dungeonInfo.requiredItems) then
+		local foundAll = true
+		local itemsString = ""
+		local last = dungeonInfo.requiredItems[#dungeonInfo.requiredItems].name
+		
+		for k, itemType in pairs(dungeonInfo.requiredItems) do
+			local itemId = getItemIdByName(itemType.name)
+			local requireCount = itemType.count or 1
+			if(getPlayerItemCount(cid, itemId) < requireCount) then
+				itemsString = itemsString .. requireCount .. "x " .. itemType.name
+				
+				if(k == #dungeonInfo.requiredItems) then
+					itemsString = itemsString .. "."
+				else
+					itemsString = itemsString .. ", "
+				end
+				
+				foundAll = false
+			end
+		end
+		
+		if(not foundAll) then
+			doPlayerSendTextMessage(cid, MESSAGE_INFO_DESCR, "Para você entrar nesta Dungeon e necessário possuir com você os seguinte(s) item(s): " .. itemsString)
+			Dungeons.doTeleportPlayerBack(cid, position)
+			
+			return false
+		end
+	end
 	
 	-- Verificamos se hÃƒÂ¡ espaÃƒÂ§o na Dungeon
 	if(Dungeons.getPlayersIn(dungeonId) == dungeonInfo.maxPlayers) then
@@ -107,7 +137,7 @@ function Dungeons.onPlayerEnter(cid, item, position)
 	Dungeons.increasePlayers(dungeonId)
 	
 	-- Informamos em storage values que o jogador estÃƒÂ¡ em uma dungeon e em qual dungeon ele estÃƒÂ¡
-	setPlayerDungeon(cid, dungeonId)
+	setPlayerDungeonId(cid, dungeonId)
 	setPlayerDungeonStatus(cid, DUNGEON_STATUS_IN)
 	
 	-- Transportamos o jogador para dentro da dungeon
@@ -122,7 +152,7 @@ function Dungeons.onPlayerEnter(cid, item, position)
 		local members = getPartyMembers(cid)
 		for _, _cid in pairs(members) do
 			if(getPlayerGUID(cid) ~= getPlayerGUID(_cid)) then
-				setPlayerDungeon(_cid, dungeonId)
+				setPlayerDungeonId(_cid, dungeonId)
 				setPlayerDungeonStatus(_cid, DUNGEON_STATUS_OUT)
 			end
 		end
@@ -212,11 +242,18 @@ function Dungeons.resetPlayersIn(dungeonId, reset)
 				if(not c) then
 					found = false
 				else
-					doRemoveCreature(c.uid)
+					doRemoveCreature(c)
 				end		
 				
 			until(not found)
 		end
+		
+		spawnCreaturesByName("sen gan guard")
+		spawnCreaturesByName("sen gan shaman")
+		spawnCreaturesByName("sen gan hunter")
+		spawnCreaturesByName("sen gan hydra")
+		spawnCreaturesByName("swamp thing")
+		spawnCreaturesByName("big ooze")
 	else
 		Dungeons.setLastEnd(dungeonId, 0)
 	end	
@@ -289,7 +326,7 @@ function Dungeons.onThink(dungeonId, runningTime, awayTime)
 				local members = getPartyMembers(leader)
 				for _, cid in pairs(members) do
 				
-					if getPlayerDungeon(cid) == dungeonId then
+					if getPlayerDungeonId(cid) == dungeonId then
 						doPlayerSendTextMessage(cid, MESSAGE_INFO_DESCR, "Restam " .. leftTime .. " minutos para concluir a dungeon...")
 					end
 				end
@@ -320,10 +357,10 @@ function Dungeons.onAbandon(dungeonId)
 	
 	for _, cid in pairs(members) do
 	
-		if getPlayerDungeon(cid) == dungeonId then
+		if getPlayerDungeonId(cid) == dungeonId then
 			doPlayerSendTextMessage(cid, MESSAGE_INFO_DESCR, "Você e toda sua party estiveram por mais de 5 minutos fora da Dungeon, e por isso, foi considerado que vocês a abandonaram.")
 			
-			setPlayerDungeon(cid, DUNGEON_NONE)
+			setPlayerDungeonId(cid, DUNGEON_NONE)
 			setPlayerDungeonStatus(cid, DUNGEON_STATUS_NONE)		
 		end
 	end	
@@ -339,7 +376,7 @@ function Dungeons.onTimeEnd(dungeonId)
 	
 	for _, cid in pairs(members) do
 	
-		if getPlayerDungeon(cid) == dungeonId then
+		if getPlayerDungeonId(cid) == dungeonId then
 			doPlayerSendTextMessage(cid, MESSAGE_INFO_DESCR, "O tempo para concluir esta dungeon acabou e você fracassou. Você e seus amigos precisarão ser mais rapidos da proxima vez!")
 			
 			if getPlayerDungeonStatus(cid) == DUNGEON_STATUS_IN then
@@ -349,7 +386,7 @@ function Dungeons.onTimeEnd(dungeonId)
 				doSendMagicEffect(dest, CONST_ME_MAGIC_BLUE)
 			end
 			
-			setPlayerDungeon(cid, DUNGEON_NONE)
+			setPlayerDungeonId(cid, DUNGEON_NONE)
 			setPlayerDungeonStatus(cid, DUNGEON_STATUS_NONE)		
 		end
 	end
@@ -360,35 +397,34 @@ end
 
 function Dungeons.onPlayerDeath(cid)
 
-	local dungeonId = getPlayerDungeon(cid)
-	
-	if(dungeonId == DUNGEON_NONE) then
-		return true
+	if(not isPlayerInDungeon(cid)) then
+		return
 	end
+	
+	local dungeonId = getPlayerDungeonId(cid)
 	
 	if(getPlayerDungeonStatus(cid) ~= DUNGEON_STATUS_IN) then
-		return true
+		return
 	end
-	
-	local dest = getThingPosition(dungeonId + UID_DUNGEON_RESPAWN)
-	
-	doTeleportThing(cid, dest)
-	doSendMagicEffect(dest, CONST_ME_MAGIC_BLUE)
-	
-	doCreatureAddHealth(cid, getCreatureMaxHealth(cid), nil, nil, true)
-	
-	doPlayerWearItems(cid, true)
 	
 	Dungeons.decreasePlayers(dungeonId)
 	
-	setPlayerDungeonStatus(cid, DUNGEON_STATUS_OUT)
-	return false
+	--local dest = getThingPosition(dungeonId + UID_DUNGEON_RESPAWN)
+	
+	--doTeleportThing(cid, dest)
+	--doSendMagicEffect(dest, CONST_ME_MAGIC_BLUE)
+	
+	doCreatureAddHealth(cid, getCreatureMaxHealth(cid), nil, nil, true)
+	doCreatureAddMana(cid, getCreatureMaxMana(cid), false)
+	doRemoveConditions(cid, false)
+	--doPlayerWearItems(cid, true)
+	--setPlayerDungeonStatus(cid, DUNGEON_STATUS_OUT)
 end
 
 function Dungeons.onLogin(cid)
 
 	if (isPlayerInDungeon(cid)) then
-		setPlayerDungeon(cid, DUNGEON_NONE)
+		setPlayerDungeonId(cid, DUNGEON_NONE)
 		setPlayerDungeonStatus(cid, DUNGEON_STATUS_NONE)
 		
 		doTeleportThing(cid, getPlayerMasterPos(cid))
@@ -420,9 +456,9 @@ end
 
 function Dungeons.onPlayerLeave(cid)
 
-	local dungeonId = getPlayerDungeon(cid)
+	local dungeonId = getPlayerDungeonId(cid)
 	
-	setPlayerDungeon(cid, DUNGEON_NONE)
+	setPlayerDungeonId(cid, DUNGEON_NONE)
 	setPlayerDungeonStatus(cid, DUNGEON_STATUS_NONE)
 
 	setPlayerStorageValue(cid, dungeonId, os.time())
@@ -437,13 +473,13 @@ end
 
 function Dungeons.onPartyPassLeadership(cid, target)
 
-	local dungeonId = getPlayerDungeon(cid)
+	local dungeonId = getPlayerDungeonId(cid)
 	
-	if(dungeonId ~= DUNGEON_NONE and Dungeons.getLeader(dungeonId) == cid) then
+	if(isPlayerInDungeon(cid) and Dungeons.getLeader(dungeonId) == cid) then
 		Dungeons.setLeader(dungeonId, target)
 		
 		if(getPlayerDungeonStatus(cid) == DUNGEON_STATUS_NONE) then
-			setPlayerDungeon(cid, DUNGEON_NONE)
+			setPlayerDungeonId(cid, DUNGEON_NONE)
 		end
 	end
 end
@@ -454,7 +490,7 @@ function Dungeons.onPartyLeave(cid)
 		return false
 	elseif(getPlayerDungeonStatus(cid) == DUNGEON_STATUS_OUT) then
 		setPlayerDungeonStatus(cid, DUNGEON_STATUS_NONE)
-		setPlayerDungeon(cid, DUNGEON_NONE)
+		setPlayerDungeonId(cid, DUNGEON_NONE)
 	end
 	
 	return true
@@ -495,35 +531,19 @@ function Dungeons.onTeleportEntrance(cid)
 		return		
 	end
 	
-	local dest = getThingPosition(getPlayerDungeon(cid) + UID_DUNGEON_RESPAWN)
+	local dest = getThingPosition(getPlayerDungeonId(cid) + UID_DUNGEON_RESPAWN)
 	
 	doTeleportThing(cid, dest)
 	doSendMagicEffect(dest, CONST_ME_MAGIC_BLUE)
 	
 	if(getPlayerDungeonStatus(cid) == DUNGEON_STATUS_IN) then
 		setPlayerDungeonStatus(cid, DUNGEON_STATUS_OUT)
-		Dungeons.decreasePlayers(getPlayerDungeon(cid))	
+		Dungeons.decreasePlayers(getPlayerDungeonId(cid))	
 	end	
 end
 
 -- Player Tools
 
-function getPlayerDungeon(cid)
-	return tonumber(getPlayerStorageValue(cid, sid.ON_DUNGEON))
-end
-
-function setPlayerDungeon(cid, dungeonId)
-	setPlayerStorageValue(cid, sid.ON_DUNGEON, dungeonId)
-end
-
 function isPlayerInDungeon(cid)
-	return getPlayerDungeon(cid) ~= -1
-end
-
-function getPlayerDungeonStatus(cid)
-	return tonumber(getPlayerStorageValue(cid, sid.DUNGEON_STATUS))
-end
-
-function setPlayerDungeonStatus(cid, status)
-	setPlayerStorageValue(cid, sid.DUNGEON_STATUS, status)
+	return getPlayerDungeonId(cid) ~= DUNGEON_NONE
 end

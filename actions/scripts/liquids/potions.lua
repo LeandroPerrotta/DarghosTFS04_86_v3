@@ -30,8 +30,12 @@ local POTIONS = {
 }
 
 local exhaust = createConditionObject(CONDITION_EXHAUST)
-setConditionParam(exhaust, CONDITION_PARAM_SUBID, EXHAUST_COMBAT)
-setConditionParam(exhaust, CONDITION_PARAM_TICKS, 900)
+setConditionParam(exhaust, CONDITION_PARAM_SUBID, EXHAUST_HEALING)
+setConditionParam(exhaust, CONDITION_PARAM_TICKS, 1200)
+
+local exhaustGlobal = createConditionObject(CONDITION_EXHAUST)
+setConditionParam(exhaust, CONDITION_PARAM_SUBID, EXHAUSTED_GLOBAL)
+setConditionParam(exhaust, CONDITION_PARAM_TICKS, 1200)
 
 function onUse(cid, item, fromPosition, itemEx, toPosition)
 	local potion = POTIONS[item.itemid]
@@ -75,7 +79,7 @@ function onUse(cid, item, fromPosition, itemEx, toPosition)
 	end
 	]]
 
-	if(hasCondition(cid, CONDITION_EXHAUST, EXHAUST_COMBAT)) then
+	if(hasCondition(cid, CONDITION_EXHAUST, EXHAUST_HEALING) or hasCondition(cid, CONDITION_EXHAUST, EXHAUSTED_GLOBAL)) then
 		doPlayerSendDefaultCancel(cid, RETURNVALUE_YOUAREEXHAUSTED)
 		return true
 	end
@@ -118,6 +122,7 @@ function onUse(cid, item, fromPosition, itemEx, toPosition)
 	end
 
 	doAddCondition(cid, exhaust)
+	doAddCondition(cid, exhaustGlobal)
 	doRemoveItem(item.uid, 1)
 	if(not potion.empty or config.removeOnUse) then
 		return true

@@ -6,10 +6,12 @@ function onPrepareDeath(cid, deathList)
 			return useRoyalBless(cid)
 		end
 		
+		--[[
 		local ret = Dungeons.onPlayerDeath(cid)
 		if(not ret) then
 			return false
 		end
+		]]
 	end
 	
 	return true
