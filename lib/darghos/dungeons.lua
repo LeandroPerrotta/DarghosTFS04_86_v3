@@ -14,7 +14,7 @@ dungeonList =
 {	
 	[gid.DUNGEONS_ARIADNE_GHAZRAN] =
 	{
-		maxPlayers = 2
+		maxPlayers = 6
 		,onPlayerEndLockTime = 60 * 60 * 24
 		,onEndLockTime = 60 --seconds
 		,maxTimeIn = 60 -- minutes
