@@ -16,6 +16,7 @@
     <flag lightlevel="0"/>
     <flag lightcolor="0"/>
     <flag targetdistance="1"/>
+	<flag lureable="1"/>
     <flag runonhealth="6200"/>
   </flags>
   <attacks>

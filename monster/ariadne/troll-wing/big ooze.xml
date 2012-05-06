@@ -14,6 +14,7 @@
     <flag canpushitems="1"/>
     <flag canpushcreatures="1"/>
     <flag targetdistance="1"/>
+    <flag lureable="1"/>
     <flag staticattack="90"/>
     <flag runonhealth="0"/>
   </flags>
