@@ -119,7 +119,101 @@ function onLogin(cid)
 	setPlayerStorageValue(cid, sid.HACKS_CASTMANA, STORAGE_NULL)
 	setPlayerStorageValue(cid, sid.NEXT_STAMINA_UPDATE, STORAGE_NULL)
 	
+	-- Map Marks
+	local hasMapMarks = getPlayerStorageValue(cid, sid.FIRST_LOGIN_MAPMARKS) == 1
+	if not hasMapMarks then
+		if(uid.MM_TICK) then
+			addMapMarksByUids(cid, uid.MM_TICK, MAPMARK_TICK)
+		end
+		
+		if(uid.MM_QUESTION) then
+			addMapMarksByUids(cid, uid.MM_QUESTION, MAPMARK_QUESTION)
+		end
+		
+		if(uid.MM_EXCLAMATION) then
+			addMapMarksByUids(cid, uid.MM_EXCLAMATION, MAPMARK_EXCLAMATION)
+		end
+		
+		if(uid.MM_STAR) then
+			addMapMarksByUids(cid, uid.MM_STAR, MAPMARK_STAR)
+		end
+		
+		if(uid.MM_CROSS) then
+			addMapMarksByUids(cid, uid.MM_CROSS, MAPMARK_CROSS)
+		end
+		
+		if(uid.MM_TEMPLE) then
+			addMapMarksByUids(cid, uid.MM_TEMPLE, MAPMARK_TEMPLE)
+		end
+		
+		if(uid.MM_KISS) then
+			addMapMarksByUids(cid, uid.MM_KISS, MAPMARK_KISS)
+		end
+		
+		if(uid.MM_SHOVEL) then
+			addMapMarksByUids(cid, uid.MM_SHOVEL, MAPMARK_SHOVEL)
+		end
+		
+		if(uid.MM_SWORD) then
+			addMapMarksByUids(cid, uid.MM_SWORD, MAPMARK_SWORD)
+		end
+		
+		if(uid.MM_FLAG) then
+			addMapMarksByUids(cid, uid.MM_FLAG, MAPMARK_FLAG)
+		end
+		
+		if(uid.MM_LOCK) then
+			addMapMarksByUids(cid, uid.MM_LOCK, MAPMARK_LOCK)
+		end
+		
+		if(uid.MM_BAG) then
+			addMapMarksByUids(cid, uid.MM_BAG, MAPMARK_BAG)
+		end
+		
+		if(uid.MM_SKULL) then
+			addMapMarksByUids(cid, uid.MM_SKULL, MAPMARK_SKULL)
+		end
+		
+		if(uid.MM_DOLLAR) then
+			addMapMarksByUids(cid, uid.MM_DOLLAR, MAPMARK_DOLLAR)
+		end
+		
+		if(uid.MM_RED_NORTH) then
+			addMapMarksByUids(cid, uid.MM_RED_NORTH, MAPMARK_REDNORTH)
+		end
+		
+		if(uid.MM_RED_SOUTH) then
+			addMapMarksByUids(cid, uid.MM_RED_SOULTH, MAPMARK_REDSOUTH)
+		end
+		
+		if(uid.MM_RED_EAST) then
+			addMapMarksByUids(cid, uid.MM_RED_EAST, MAPMARK_REDEAST)
+		end
+		
+		if(uid.MM_RED_WEST) then
+			addMapMarksByUids(cid, uid.MM_RED_WEST, MAPMARK_REDWEST)
+		end
+		
+		if(uid.MM_GREEN_NORTH) then
+			addMapMarksByUids(cid, uid.MM_GREEN_NORTH, MAPMARK_GREENNORTH)
+		end
+		
+		if(uid.MM_GREEN_SOUTH) then
+			addMapMarksByUids(cid, uid.MM_GREEN_SOUTH, MAPMARK_GREENSOUTH)
+		end
+		
+		setPlayerStorageValue(cid, sid.FIRST_LOGIN_MAPMARKS, 1)
+	end
+	
 	return TRUE
+end
+
+function addMapMarksByUids(cid, uids, type)
+
+	for k,v in pairs(uids) do
+		local pos = getThingPosition(12000 + v.uid)
+		doPlayerAddMapMark(cid, pos, type, v.description)
+	end
 end
 
 function onLoginNotify(cid)

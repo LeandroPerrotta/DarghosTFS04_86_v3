@@ -253,6 +253,110 @@
 	NPC_RASHID_START			= 6500,
 	NPC_RASHID_END				= 6503,
 	
+	-- special map marks
+	MM_GHAZRAN_TOTEMS = { 11000, 11001, 11002, 11003, 11004, 11005, 11006, 11007, 11008, 11009, 11010, 11011 },
+	
+	-- dynamic map marks (12xxx to 14000)
+	-- 000 ~ 099 (tick)
+	--MM_TICK = {}
+	
+	-- 100 ~ 199 (question)
+	--MM_QUESTION = {}
+	
+	-- 200 ~ 299 (exclamation)
+	--MM_EXCLAMATION = {}
+	
+	-- 300 ~ 399 (star)
+	MM_STAR = {
+		{ uid = 300, description = "Loja de artigos mágicos"}
+		,{ uid = 301, description = "Loja de artigos mágicos"}
+	},
+		
+	-- 400 ~ 499 (cross)
+	MM_CROSS = {
+		{ uid = 400, description = "Porto de Quendor"}
+		,{ uid = 401, description = "Academia de Treinos"}
+		,{ uid = 402, description = "Porto de Island of Peace"}
+		,{ uid = 403, description = "Academia de Treinos"}
+	},
+		
+	-- 500 ~ 599 (temple)
+	MM_TEMPLE = {
+		{ uid = 500, description = "Templo de Quendor"}
+		,{ uid = 501, description = "Templo de Island of Peace"}
+	},
+		
+	-- 600 ~ 699 (kiss)
+	--MM_KISS = {}
+		
+	-- 700 ~ 799 (shovel)
+	MM_SHOVEL = {
+		{ uid = 700, description = "Acessórios & Utilidades"}
+		,{ uid = 701, description = "Acessórios & Utilidades"}
+	},
+		
+	-- 800 ~ 899 (sword)
+	MM_SWORD = {
+		-- Quendor
+		{ uid = 800, description = "Ferreiro (equipamentos)"}
+		,{ uid = 801, description = "Ferreiro (armas)"}
+		,{ uid = 802, description = "Armas de distância & munições"}
+		
+		-- Island of Peace
+		,{ uid = 803, description = "Ferreiro (armas)"}
+		,{ uid = 804, description = "Ferreiro (equipamentos)"}
+		,{ uid = 805, description = "Armas de distância & munições"}
+	},
+		
+	-- 900 ~ 999 (flag)
+	MM_FLAG = {
+		{ uid = 900, description = "Castelo do Rei Ordon"}
+		,{ uid = 901, description = "Castelo do Principe Aldebaran"}
+	},
+		
+	-- 1000 ~ 1099 (lock)
+	MM_LOCK = {
+		{ uid = 1000, description = "Centro de Quendor"}
+		,{ uid = 1001, description = "Centro de Island of Peace"}
+	},
+		
+	-- 1100 ~ 1199 (bag)
+	MM_BAG = {
+		{ uid = 1100, description = "Lojas de decoração & moveis"}
+	},
+		
+	-- 1200 ~ 1299 (skull)
+	MM_SKULLS = {
+		{ uid = 1200, description = "Lar do Ghazran"}
+	},
+	
+	-- 1300 ~ 1399 (dollar)
+	MM_DOLLAR = {
+		-- Island of Peace
+		{ uid = 1300, description = "Banco"}
+		-- Quendor
+		,{ uid = 1301, description = "Banco"}
+	},
+				
+	-- 1400 ~ 1499 (red north)
+	--MM_RED_NORTH = {}
+		
+	-- 1500 ~ 1599 (red south)
+	--MM_RED_SOUTH = {}
+		
+	-- 1600 ~ 1699 (red east)
+	--MM_RED_EAST = {}
+		
+	-- 1700 ~ 1799 (red west)
+	--MM_RED_WEST = {}
+		
+	-- 1800 ~ 1899 (green north)
+	--MM_GREEN_NORTH = {}
+		
+	-- 1900 ~ 1999 (green south)
+	--MM_GREEN_SOUTH = {}
+		
+	
 	-- pvp systems
 	ARENA_TEAM_ONE_WALLS		= {3301, 3302},
 	ARENA_TEAM_TWO_WALLS		= {3303, 3304},

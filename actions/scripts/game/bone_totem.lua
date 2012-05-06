@@ -26,6 +26,9 @@ function onUse(cid, item, frompos, item2, topos)
 			end		
 		end
 			
+		local pos = getThingPosition(uid.MM_GHAZRAN_TOTEMS[totemId])
+		doPlayerAddMapMark(cid, pos, MAPMARK_TICK)
+		
 		if(playerTotems < 12) then
 				
 			doPlayerSendTextMessage(cid, MESSAGE_INFO_DESCR, "Você ganhou uma das doze benções de Ghazran!")

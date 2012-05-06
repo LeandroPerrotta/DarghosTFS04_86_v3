@@ -14,11 +14,25 @@ dungeonList =
 {	
 	[gid.DUNGEONS_ARIADNE_GHAZRAN] =
 	{
-		maxPlayers = 6
+		maxPlayers = 2
 		,onPlayerEndLockTime = 60 * 60 * 24
 		,onEndLockTime = 60 --seconds
 		,maxTimeIn = 60 -- minutes
 		,requiredItems = { {name = "obsidian knife"} }
+		,onEnterEvent = function (cid)
+			local mapMarks = uid.MM_GHAZRAN_TOTEMS
+			
+			for k,v in pairs(mapMarks) do
+				
+				local storage = sid.ARIADNE_TOTEMS[k]
+				local pos = getThingPosition(v)
+				if(getPlayerStorageValue(cid, storage) == 1) then
+					doPlayerAddMapMark(cid, pos, MAPMARK_TICK)
+				else
+					doPlayerAddMapMark(cid, pos, MAPMARK_EXCLAMATION)
+				end
+			end
+		end
 	}	
 }
 
@@ -161,8 +175,12 @@ function Dungeons.onPlayerEnter(cid, item, position)
 		Dungeons.updateEntranceDescription(dungeonId, dungeonInfo.maxTimeIn)		
 	end
 	
+	if(dungeonInfo.onEnterEvent ~= nil) then
+		dungeonInfo.onEnterEvent(cid)
+	end
+	
 	return true	
-end 
+end
 
 function Dungeons.increasePlayers(dungeonId)
 
@@ -233,7 +251,7 @@ function Dungeons.resetPlayersIn(dungeonId, reset)
 	if(not reset) then
 		Dungeons.setLastEnd(dungeonId)
 		
-		local clearMonsters = { "sen gan guard", "sen gan shaman", "sen gan hunter", "sen gan hydra", "swamp thing", "big ooze" }
+		local clearMonsters = { "sen gan guard", "sen gan shaman", "sen gan hunter", "sen gan hydra", "swamp thing", "big ooze", "ghazran", "bone wall" }
 		for _,name in pairs(clearMonsters) do
 			
 			local found = true
@@ -254,6 +272,7 @@ function Dungeons.resetPlayersIn(dungeonId, reset)
 		spawnCreaturesByName("sen gan hydra")
 		spawnCreaturesByName("swamp thing")
 		spawnCreaturesByName("big ooze")
+		spawnCreaturesByName("bone wall")
 	else
 		Dungeons.setLastEnd(dungeonId, 0)
 	end	
