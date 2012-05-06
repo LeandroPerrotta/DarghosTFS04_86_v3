@@ -326,7 +326,7 @@
 	},
 		
 	-- 1200 ~ 1299 (skull)
-	MM_SKULLS = {
+	MM_SKULL = {
 		{ uid = 1200, description = "Lar do Ghazran"}
 	},
 	
