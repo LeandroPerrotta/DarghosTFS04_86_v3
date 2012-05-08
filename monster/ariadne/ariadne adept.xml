@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<monster name="Ariadne Adept" nameDescription="a powerfull witch" race="blood" experience="6500" speed="270" manacost="0">
-  <health now="16000" max="16000"/>
+<monster name="Ariadne Adept" nameDescription="a ariadne adept" race="blood" experience="6500" speed="270" manacost="0">
+  <health now="12000" max="12000"/>
   <look type="54" head="20" body="30" legs="40" feet="50" corpse="6081"/>
   <targetchange interval="3000" chance="50"/>
   <strategy attack="100" defense="0"/>
@@ -15,7 +15,7 @@
     <flag canpushcreatures="0"/>
     <flag targetdistance="4"/>
     <flag staticattack="90"/>
-    <flag runonhealth="1000"/>
+    <flag runonhealth="700"/>
   </flags>
   <attacks>
     <attack name="melee" interval="2000" skill="18" attack="18"/>
@@ -30,8 +30,9 @@
   <elements>
     <element energyPercent="100"/>
     <element earthPercent="30"/>
-    <element deathPercent="-5"/>
-    <element physicalPercent="-14"/>
+    <element deathPercent="10"/>
+	<element icePercent="-30"/>
+    <element physicalPercent="-50"/>
   </elements>
   <immunities>
     <immunity invisible="1"/>
