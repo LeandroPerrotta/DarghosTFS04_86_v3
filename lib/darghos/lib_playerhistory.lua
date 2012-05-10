@@ -1,15 +1,97 @@
+----------------------------------------------------------
+-- DATA LOG
+-- Battlegrounds
 PH_LOG_BATTLEGROUND_WIN = 1
 PH_LOG_BATTLEGROUND_LOST = 2
 PH_LOG_BATTLEGROUND_DRAW = 3
 
+-- Dungeons
+PH_LOG_DUNGEON_ARIADNE_TROLLS_ATTEMPS = 4
+PH_LOG_DUNGEON_ARIADNE_TROLLS_COMPLETED = 5
+
+----------------------------------------------------------
+-- ACHIEVEMENTS
+-- Battlegrounds (1 a 999)
 PH_ACH_BATTLEGROUND_RANK_VETERAN = 1
 PH_ACH_BATTLEGROUND_RANK_LEGEND = 2
 PH_ACH_BATTLEGROUND_INSANE_KILLER = 3
 PH_ACH_BATTLEGROUND_PERFECT = 4
 PH_ACH_BATTLEGROUND_RANK_BRAVE = 5
 
+-- Dungeons (1000 a 1999)
+PH_ACH_DUNGEON_ARIADNE_TROLLS_GOT_ALL_TOTEMS = 1000
+PH_ACH_DUNGEON_ARIADNE_TROLLS_GOT_GHAZRAN_TONGUE = 1001
+PH_ACH_DUNGEON_ARIADNE_TROLLS_COMPLETE_IN_ONLY_ONE_ATTEMP = 1002
+PH_ACH_DUNGEON_ARIADNE_TROLLS_COMPLETE_WITHOUT_ANYONE_DIE = 1003
+
+-- Misc (2000 a 2999)
+PH_ACH_MISC_GOT_LEVEL_100 = 2000
+PH_ACH_MISC_GOT_LEVEL_200 = 2001
+PH_ACH_MISC_GOT_LEVEL_300 = 2002
+PH_ACH_MISC_GOT_LEVEL_400 = 2003
+PH_ACH_MISC_GOT_LEVEL_500 = 2004
+
 PH_TYPE_LOG = 1
 PH_TYPE_ACHIEVEMENT = 2
+
+playerAchievements = {
+
+	[PH_ACH_BATTLEGROUND_RANK_BRAVE] = {
+		notifyText = "[Façanha alcançada] Rank - Bravo: Conquistou 1.000 pontos (rating) de classificação em Battlegrounds!"
+	}
+	
+	,[PH_ACH_BATTLEGROUND_RANK_VETERAN] = {
+		notifyText = "[Façanha alcançada] Rank - Veterano: Conquistou 1.500 pontos (rating) de classificação em Battlegrounds!"
+	}
+	
+	,[PH_ACH_BATTLEGROUND_RANK_LEGEND] = {
+		notifyText = "[Façanha alcançada] Rank - Lenda: Conquistou 2.000 pontos (rating) de classificação em Battlegrounds!"
+	}
+	
+	,[PH_ACH_BATTLEGROUND_INSANE_KILLER] = {
+		notifyText = "[Façanha alcançada] Matador insano! Derrotou 25 oponentes sem ser derrotado nenhuma vez em Battlegrounds!"
+	}
+	
+	,[PH_ACH_BATTLEGROUND_PERFECT] = {
+		notifyText = "[Façanha alcançada] Efetuou a Battleground perfeita ao vencer pelo placar de 50 pontos a 0!"
+	}
+	
+	,[PH_ACH_DUNGEON_ARIADNE_TROLLS_GOT_ALL_TOTEMS] = {
+		notifyText = "[Façanha alcançada] Você obteve os 12 totems que liberam o acesso ao lar do Ghazran!"
+	}
+	
+	,[PH_ACH_DUNGEON_ARIADNE_TROLLS_GOT_GHAZRAN_TONGUE] = {
+		notifyText = "[Façanha alcançada] Você derrotou e obteve a lingua do boss Ghazran da Ariadne Trolls Wing!"
+	}
+	
+	,[PH_ACH_DUNGEON_ARIADNE_TROLLS_COMPLETE_IN_ONLY_ONE_ATTEMP] = {
+		notifyText = "[Façanha alcançada] Você completou a Ariadne Trolls Wing obtendo os 12 totems e derrotando o boss em apénas uma tentativa!"
+	}
+	
+	,[PH_ACH_DUNGEON_ARIADNE_TROLLS_COMPLETE_WITHOUT_ANYONE_DIE] = {
+		notifyText = "[Façanha alcançada] Você completou a Ariadne Trolls Wing derrotando o boss sem que ninguem do seu time morresse!"
+	}
+	
+	,[PH_ACH_MISC_GOT_LEVEL_100] = {
+		notifyText = "[Façanha alcançada] Você atingiu o level 100!"
+	}
+	
+	,[PH_ACH_MISC_GOT_LEVEL_200] = {
+		notifyText = "[Façanha alcançada] Você atingiu o level 200!"
+	}
+	
+	,[PH_ACH_MISC_GOT_LEVEL_300] = {
+		notifyText = "[Façanha alcançada] Você atingiu o level 300!"
+	}
+	
+	,[PH_ACH_MISC_GOT_LEVEL_400] = {
+		notifyText = "[Façanha alcançada] Você atingiu o level 400!"
+	}
+	
+	,[PH_ACH_MISC_GOT_LEVEL_500] = {
+		notifyText = "[Façanha alcançada] Você atingiu o level 500!"
+	}
+}
 
 playerHistory = {}
 
@@ -71,51 +153,21 @@ function playerHistory.logBattlegroundDraw(cid, rating)
 	playerHistory.log(cid, PH_LOG_BATTLEGROUND_DRAW, {["rating"] = rating})
 end
 
+function playerHistory.logDungAriadneTrollsAttemp(cid)
+	playerHistory.log(cid, PH_LOG_DUNGEON_ARIADNE_TROLLS_ATTEMPS)
+end
+
+function playerHistory.logDungAriadneTrollsCompleted(cid)
+	playerHistory.log(cid, PH_LOG_DUNGEON_ARIADNE_TROLLS_COMPLETED)
+end
+
 --[[
 	ACHIEVEMENTS
 ]]--
 
-function playerHistory.achievBattlegroundRankBrave(cid)
-	playerHistory.notifyAchievement(cid, "[FaÃ§anha alcanÃ§ada] Rank - Bravo: Conquistou 1.000 pontos (rating) de classificaÃ§Ã£o em Battlegrounds!")
-	playerHistory.addAchievement(cid, PH_ACH_BATTLEGROUND_RANK_BRAVE)
-end
-
-function playerHistory.hasAchievBattlegroundRankBrave(cid)
-	return playerHistory.hasAchievement(cid, PH_ACH_BATTLEGROUND_RANK_BRAVE)
-end
-
-function playerHistory.achievBattlegroundRankVeteran(cid)
-	playerHistory.notifyAchievement(cid, "[FaÃ§anha alcanÃ§ada] Rank - Veterano: Conquistou 1.500 pontos (rating) de classificaÃ§Ã£o em Battlegrounds!")
-	playerHistory.addAchievement(cid, PH_ACH_BATTLEGROUND_RANK_VETERAN)
-end
-
-function playerHistory.hasAchievBattlegroundRankVeteran(cid)
-	return playerHistory.hasAchievement(cid, PH_ACH_BATTLEGROUND_RANK_VETERAN)
-end
-
-function playerHistory.achievBattlegroundRankLegend(cid)
-	playerHistory.notifyAchievement(cid, "[FaÃ§anha alcanÃ§ada] Rank - Lenda: Conquistou 2.000 pontos (rating) de classificaÃ§Ã£o em Battlegrounds!")
-	playerHistory.addAchievement(cid, PH_ACH_BATTLEGROUND_RANK_LEGEND)
-end
-
-function playerHistory.hasAchievBattlegroundRankLegend(cid)
-	return playerHistory.hasAchievement(cid, PH_ACH_BATTLEGROUND_RANK_LEGEND)
-end
-
-function playerHistory.achievBattlegroundInsaneKiller(cid)
-	playerHistory.notifyAchievement(cid, "[FaÃ§anha alcanÃ§ada] Matador insano! Derrotou 25 oponentes sem ser derrotado nenhuma vez em Battlegrounds!")
-	playerHistory.addAchievement(cid, PH_ACH_BATTLEGROUND_INSANE_KILLER)
-end
-
-function playerHistory.hasAchievBattlegroundInsaneKiller(cid)
-	return playerHistory.hasAchievement(cid, PH_ACH_BATTLEGROUND_INSANE_KILLER)
-end
-
-function playerHistory.achievBattlegroundPerfect(cid)
-	playerHistory.notifyAchievement(cid, "[FaÃ§anha alcanÃ§ada] Efetuou a Battleground perfeita ao vencer pelo placar de 50 pontos a 0!")
-	playerHistory.addAchievement(cid, PH_ACH_BATTLEGROUND_PERFECT)
-end
-
-function playerHistory.hasAchievBattlegroundPerfect(cid)
-	return playerHistory.hasAchievement(cid, PH_ACH_BATTLEGROUND_PERFECT)
+function playerHistory.onAchiev(cid, history)
+	
+	local data = playerAchievements[history]
+	playerHistory.notifyAchievement(cid, data.notifyText)
+	playerHistory.addAchievement(cid, history)
 end

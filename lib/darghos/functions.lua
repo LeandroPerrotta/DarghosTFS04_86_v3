@@ -1085,6 +1085,37 @@ end
 function onGhazranDie(corpse)
 
 	doSetItemActionId(corpse.uid, aid.ARIADNE_GHAZRAN_CORPSE)
+	
+	local leader = Dungeons.getLeader(gid.DUNGEONS_ARIADNE_GHAZRAN)
+	
+	if(leader) then
+		local members = getPartyMembers(leader)
+		
+		local anyoneDied = false
+		
+		for _, cid in pairs(members) do
+			if (getPlayerStorageValue(cid, ARIADNE_TROLLS_WING_ATTEMP_DEATHS) > 0) then	
+				anyoneDied = true
+				break
+			end	
+		end		
+		
+		for _, cid in pairs(members) do
+				
+			playerHistory.logDungAriadneTrollsCompleted(cid)
+			
+			if(not anyoneDied and not playerHistory.hasAchievement(cid, PH_ACH_DUNGEON_ARIADNE_TROLLS_COMPLETE_WITHOUT_ANYONE_DIE)) then
+				playerHistory.onAchiev(cid, PH_ACH_DUNGEON_ARIADNE_TROLLS_COMPLETE_WITHOUT_ANYONE_DIE)
+			end	
+			
+			if (getPlayerStorageValue(cid, sid.ARIADNE_TROLLS_WING_TODAY_ATTEMPS) == 1) then
+				
+				if(not playerHistory.hasAchievement(cid, PH_ACH_DUNGEON_ARIADNE_TROLLS_COMPLETE_IN_ONLY_ONE_ATTEMP)) then
+					playerHistory.onAchiev(cid, PH_ACH_DUNGEON_ARIADNE_TROLLS_COMPLETE_IN_ONLY_ONE_ATTEMP)
+				end
+			end	
+		end
+	end
 end
 
 function obsidianKnifeOnGhazranCorpse(cid)
@@ -1096,6 +1127,10 @@ function obsidianKnifeOnGhazranCorpse(cid)
 		doPlayerSendTextMessage(cid, MESSAGE_INFO_DESCR, "Você conseguiu obter a língua de Ghazran. Seu questlog foi atualizado.")
 		setPlayerStorageValue(cid, sid.ARIADNE_GHAZRAN_TONGUE, 1)
 		setPlayerStorageValue(cid, QUESTLOG.ARIADNE.GHAZRAN_WING, 3)
+		
+		if(not playerHistory.hasAchievement(cid, PH_ACH_DUNGEON_ARIADNE_TROLLS_GOT_GHAZRAN_TONGUE)) then
+			playerHistory.onAchiev(cid, PH_ACH_DUNGEON_ARIADNE_TROLLS_GOT_GHAZRAN_TONGUE)
+		end
 	else
 		doPlayerSendCancel(cid, "Você já obteve a língua de Ghazran.")
 	end

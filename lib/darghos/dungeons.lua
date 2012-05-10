@@ -10,6 +10,12 @@ DUNGEON_THINK_INTERVAL = 1000 * 60
 
 DUNGEON_NONE = 0
 
+dungeonPlayerData = {
+	[gid.DUNGEONS_ARIADNE_GHAZRAN] = {
+		
+	}
+}
+
 dungeonList =
 {	
 	[gid.DUNGEONS_ARIADNE_GHAZRAN] =
@@ -32,6 +38,19 @@ dungeonList =
 					doPlayerAddMapMark(cid, pos, MAPMARK_EXCLAMATION)
 				end
 			end
+		end
+		,onAttempEvent = function (cid)
+			local attemps = getPlayerStorageValue(cid, sid.ARIADNE_TROLLS_WING_TODAY_ATTEMPS)
+			attemps = (attemps > 0) and attemps + 1 or 1
+			setPlayerStorageValue(cid, sid.ARIADNE_TROLLS_WING_TODAY_ATTEMPS, attemps)
+			
+			playerHistory.logDungAriadneTrollsAttemp(cid)
+			setPlayerStorageValue(cid, ARIADNE_TROLLS_WING_ATTEMP_DEATHS, 0)
+		end
+		,onDeathEvent = function (cid)
+			local attemps = getPlayerStorageValue(cid, ARIADNE_TROLLS_WING_ATTEMP_DEATHS)
+			attemps = (attemps > 0) and attemps + 1 or 1
+			setPlayerStorageValue(cid, ARIADNE_TROLLS_WING_ATTEMP_DEATHS, attemps)			
 		end
 	}	
 }
@@ -168,6 +187,10 @@ function Dungeons.onPlayerEnter(cid, item, position)
 			if(getPlayerGUID(cid) ~= getPlayerGUID(_cid)) then
 				setPlayerDungeonId(_cid, dungeonId)
 				setPlayerDungeonStatus(_cid, DUNGEON_STATUS_OUT)
+			end
+			
+			if(dungeonInfo.onAttempEvent ~= nil) then
+				dungeonInfo.onAttempEvent(_cid)
 			end
 		end
 		
@@ -426,6 +449,11 @@ function Dungeons.onPlayerDeath(cid)
 		return
 	end
 	
+	local dungeonInfo = dungeonList[dungeonId]
+	if(dungeonInfo.onDeathEvent ~= nil) then
+		dungeonInfo.onDeathEvent(cid)
+	end		
+	
 	Dungeons.decreasePlayers(dungeonId)
 	
 	--local dest = getThingPosition(dungeonId + UID_DUNGEON_RESPAWN)
@@ -436,6 +464,8 @@ function Dungeons.onPlayerDeath(cid)
 	doCreatureAddHealth(cid, getCreatureMaxHealth(cid), nil, nil, true)
 	doCreatureAddMana(cid, getCreatureMaxMana(cid), false)
 	doRemoveConditions(cid, false)
+	
+	
 	--doPlayerWearItems(cid, true)
 	--setPlayerDungeonStatus(cid, DUNGEON_STATUS_OUT)
 end

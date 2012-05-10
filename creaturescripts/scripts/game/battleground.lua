@@ -51,8 +51,8 @@ function onBattlegroundEnd(cid, winner, timeIn, bgDuration, initIn)
 		if(winner or winnerTeam == BATTLEGROUND_TEAM_NONE) then
 		
 			pvpBattleground.onGainHonor(cid, BATTLEGROUND_HONOR_WIN)
-			if(winner and points[winnerTeam] == BG_CONFIG_WINPOINTS	and points[loserTeam] == 0 and not playerHistory.hasAchievBattlegroundPerfect(cid)) then
-				playerHistory.achievBattlegroundPerfect(cid)
+			if(winner and points[winnerTeam] == BG_CONFIG_WINPOINTS	and points[loserTeam] == 0 and not playerHistory.hasAchievement(cid, PH_ACH_BATTLEGROUND_PERFECT)) then
+				playerHistory.onAchiev(cid, PH_ACH_BATTLEGROUND_PERFECT)
 			end		
 					
 			local expGain = pvpBattleground.getExperienceGain(cid)
@@ -101,22 +101,22 @@ function onBattlegroundEnd(cid, winner, timeIn, bgDuration, initIn)
 			
 			pvpBattleground.storePlayerParticipation(cid, getPlayerBattlegroundTeam(cid), false, expGain, changeRating, gainHonor, getPlayerStamina(cid) > 40 * 60)
 	
-			if(not playerHistory.hasAchievBattlegroundRankBrave(cid)
+			if(not playerHistory.hasAchievement(cid, PH_ACH_BATTLEGROUND_RANK_BRAVE)
 				and currentRating < 1000
 				and currentRating + changeRating >= 1000) then
-				playerHistory.achievBattlegroundRankBrave(cid)
+				playerHistory.onAchiev(cid, PH_ACH_BATTLEGROUND_RANK_BRAVE)
 			end			
 			
-			if(not playerHistory.hasAchievBattlegroundRankVeteran(cid)
+			if(not playerHistory.hasAchievement(cid, PH_ACH_BATTLEGROUND_RANK_VETERAN)
 				and currentRating < 1500
 				and currentRating + changeRating >= 1500) then
-				playerHistory.achievBattlegroundRankVeteran(cid)
+				playerHistory.onAchiev(cid, PH_ACH_BATTLEGROUND_RANK_VETERAN)
 			end
 			
-			if(not playerHistory.hasAchievBattlegroundRankLegend(cid)
+			if(not playerHistory.hasAchievement(cid, PH_ACH_BATTLEGROUND_RANK_LEGEND)
 				and currentRating < 2000
 				and currentRating + changeRating >= 2000) then
-				playerHistory.achievBattlegroundRankLegend(cid)
+				playerHistory.onAchiev(cid, PH_ACH_BATTLEGROUND_RANK_LEGEND)
 			end				
 			
 			doPlayerSetStamina(cid, -staminaChange)
@@ -166,9 +166,9 @@ function onBattlegroundDeath(cid, lastDamager, assistList)
 		end
 		
 		local playerInfo = getPlayerBattlegroundInfo(lastDamager)
-		if(not playerHistory.hasAchievBattlegroundInsaneKiller(lastDamager)
+		if(not playerHistory.hasAchievement(lastDamager, PH_ACH_BATTLEGROUND_INSANE_KILLER)
 			and playerInfo.kills >= 25 and playerInfo.deaths == 0) then
-			playerHistory.achievBattlegroundInsaneKiller(lastDamager)
+			playerHistory.onAchiev(lastDamager, PH_ACH_BATTLEGROUND_INSANE_KILLER)
 		end
 	end
 end

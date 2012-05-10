@@ -610,11 +610,11 @@ changeItemsPriceCallback = {
 			
 			local change = 1
 			
-			if(playerHistory.hasAchievBattlegroundRankLegend(cid)) then
+			if(playerHistory.hasAchievement(cid, PH_ACH_BATTLEGROUND_RANK_LEGEND)) then
 				change = 1.70
-			elseif(playerHistory.hasAchievBattlegroundRankVeteran(cid)) then
+			elseif(playerHistory.hasAchievement(cid, PH_ACH_BATTLEGROUND_RANK_VETERAN)) then
 				change = 1.40
-			elseif(playerHistory.hasAchievBattlegroundRankBrave(cid)) then
+			elseif(playerHistory.hasAchievement(cid, PH_ACH_BATTLEGROUND_RANK_BRAVE)) then
 				change = 1.20
 			end
 			

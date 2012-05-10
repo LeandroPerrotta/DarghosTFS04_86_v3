@@ -18,11 +18,11 @@ function greetCallback(cid)
 		return false		
 	end
 	
-	if(playerHistory.hasAchievBattlegroundRankLegend(cid)) then
+	if(playerHistory.hasAchievement(cid, PH_ACH_BATTLEGROUND_RANK_LEGEND)) then
 		npcHandler:say('Oh! Possui o nobre titulo de Lenda nos campos de batalha! O Rei Ordon ordena que sua dedicação e lealdade seja re-compensada! Irei pagar 70% mais nos itens que você tem para mim!', cid)
-	elseif(playerHistory.hasAchievBattlegroundRankVeteran(cid)) then
+	elseif(playerHistory.hasAchievement(cid, PH_ACH_BATTLEGROUND_RANK_VETERAN)) then
 		npcHandler:say('Veterano hein? Você deve ter se esforçado muito para atingir tal posição! O Rei Ordon ordena que sua dedicação seja re-compensada! Irei pagar 40% mais nos itens que você tem para mim!', cid)
-	elseif(playerHistory.hasAchievBattlegroundRankBrave(cid)) then
+	elseif(playerHistory.hasAchievement(cid, PH_ACH_BATTLEGROUND_RANK_BRAVE)) then
 		npcHandler:say('Você tem se dedicado muito em aperfeiçoar as suas tecnicas de batalha! Por isso lhe pagarei 20% mais nos itens que você tem para mim!', cid)
 	else
 		npcHandler:say('Eu compro uma grande variedade de itens. Mas saiba que ao se dedicar a aperfeiçoar as suas tecnicas de combate no {campo de batalha} eu posso lhe pagar ainda mais por estes itens!', cid)
