@@ -6,6 +6,6 @@
 	<parameters>
 		<parameter key="message_greet" value="Hello |PLAYERNAME|. On my {trade} you can found soft pillows for your house." />
 		<parameter key="message_decline" value="Is |TOTALCOST| gold coins too much for you? Get out of here!" />
-		<parameter key="use_trade_lists" value="pillows" />
+		<parameter key="use_trade_lists" value="beds;pillows" />
 	</parameters>  
 </npc>
