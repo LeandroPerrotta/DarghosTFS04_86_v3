@@ -5,7 +5,7 @@ setCombatParam(combat, COMBAT_PARAM_AGGRESSIVE, FALSE)
 setCombatParam(combat, COMBAT_PARAM_DISPEL, CONDITION_PARALYZE)
 
 function onGetFormulaValues(cid, level, maglevel)
-	local min, max = getMinMaxClassicFormula(level, maglevel, 12.5, 16.2, 250, 300)
+	local min, max = getMinMaxClassicFormula(level, maglevel, 11.2, 14.5, 250, 300)
 	return min, max
 end
 
