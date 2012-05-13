@@ -1,6 +1,6 @@
 function onStepIn(cid, item, position, fromPosition)
 		
-	local isInside = getPlayerStorageValue(cid, sid.INSIDE_MINI_GAME) or false
+	local isInside = getPlayerStorageValue(cid, sid.INSIDE_MINI_GAME) == 1
 	
 	if(not isInside) then
 		

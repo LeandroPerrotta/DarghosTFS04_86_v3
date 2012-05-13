@@ -5,6 +5,12 @@ function onPrepareDeath(cid, deathList)
 		if(doRoyalBlessIsEnable()) then
 			return useRoyalBless(cid)
 		end
+	
+		local isInside = getPlayerStorageValue(cid, sid.INSIDE_MINI_GAME) == 1
+		
+		if(isInside) then			
+			setPlayerStorageValue(cid, sid.INSIDE_MINI_GAME, -1)
+		end
 		
 		--[[
 		local ret = Dungeons.onPlayerDeath(cid)
