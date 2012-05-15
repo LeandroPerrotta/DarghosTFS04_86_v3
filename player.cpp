@@ -2484,12 +2484,7 @@ bool Player::onDeath()
 		}
 
 		uint8_t pvpPercent = (uint8_t)std::ceil((double)pvpDamage * 100. / std::max(1U, totalDamage));
-		if(hasPvpBlessing() && getBlessings() >= 1 && pvpPercent >= 40)
-		{
-			usePVPBlessing = true;
-			removePvpBlessing();
-		}
-		else if(pvpPercent < 50)
+		if(pvpPercent < 50 && !pzLocked)
 		{
 			monsterDeath = true;
 			setDropLoot(LOOT_DROP_PREVENT);
@@ -2500,6 +2495,14 @@ bool Player::onDeath()
 			wearGear(true);
 			wearShield(true);
 			wearWeapon(true);
+		}
+		else
+		{
+			if(hasPvpBlessing() && getBlessings() >= 1 && pvpPercent >= 40)
+			{
+				usePVPBlessing = true;
+				removePvpBlessing();
+			}
 		}
 	}
 
@@ -2563,7 +2566,7 @@ bool Player::onDeath()
 		uint64_t lossExperience = getLostExperience();
 
 #ifdef __DARGHOS_CUSTOM__
-        std::stringstream deathStr; deathStr << "Relat�rios da morte:\n";
+        std::stringstream deathStr; deathStr << "Relatórios da morte:\n";
 
         float extraReduction = 0.;
 
@@ -2574,7 +2577,7 @@ bool Player::onDeath()
                 extraReduction = 0.2;
 
             lossExperience = std::floor(lossExperience * extraReduction);
-            deathStr << "\nRedu��o extra por combate desleal (unfair fight): " << std::floor(100 - (extraReduction * 100)) << "%";
+            deathStr << "\nRedução extra por combate desleal (unfair fight): " << std::floor(100 - (extraReduction * 100)) << "%";
         }
 
         deathStr << "\nExperiencia perdida: " << lossExperience << " pontos.";
@@ -2635,7 +2638,7 @@ bool Player::onDeath()
 		#ifdef __DARGHOS_CUSTOM__
         if(usePVPBlessing)
         {
-            deathStr << "\nVoc� morreu em luta contra outros jogadores e perdeu a ben��o do PvP (twist of fate)! Suas ben��es regulares est�o vuneraveis!";
+            deathStr << "\nVocê morreu em luta contra outros jogadores e perdeu a benção do PvP (twist of fate)! Suas benções regulares estão vuneraveis!";
         }
         else
 		#endif
@@ -5378,6 +5381,12 @@ bool Player::isPremium() const
 {
 	if(g_config.getBool(ConfigManager::FREE_PREMIUM) || hasFlag(PlayerFlag_IsAlwaysPremium))
 		return true;
+
+#ifdef __DARGHOS_CUSTOM__
+	int32_t maxFreePremiumLevel = g_config.getNumber(ConfigManager::MAX_FREE_PREMIUM_LEVEL);
+	if(maxFreePremiumLevel > 0 && level <= maxFreePremiumLevel)
+		return true;
+#endif
 
 	return premiumDays;
 }

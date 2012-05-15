@@ -340,6 +340,7 @@ bool ConfigManager::load()
 	m_confNumber[ITEM_DURABILITY_LOSS_CHANCE] = getGlobalNumber("itemDurabilityLossChance", 10);
 	m_confNumber[ON_DEATH_ITEM_DURABILITY_WEAR_PERCENT] = getGlobalNumber("onDeathItemDurabilityWearPercent", 10);
 	m_confNumber[GLOBAL_COOLDOWN] = getGlobalNumber("globalCooldown", 1200);
+	m_confNumber[MAX_FREE_PREMIUM_LEVEL] = getGlobalNumber("maxFreePremiumLevel", 150);
 #endif
 
 #ifdef __DARGHOS_EMERGENCY_DDOS__

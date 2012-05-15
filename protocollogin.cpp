@@ -219,6 +219,7 @@ bool ProtocolLogin::parseFirstPacket(NetworkMessage& msg)
 		{
 			#ifndef __LOGIN_SERVER__
 			output->putString((*it));
+
 			if(g_config.getBool(ConfigManager::ON_OR_OFF_CHARLIST))
 			{
 				if(g_game.getPlayerByName((*it)))
@@ -254,7 +255,17 @@ bool ProtocolLogin::parseFirstPacket(NetworkMessage& msg)
 		if(g_config.getBool(ConfigManager::FREE_PREMIUM))
 			output->put<uint16_t>(65535); //client displays free premium
 		else
-			output->put<uint16_t>(account.premiumDays);
+#ifdef __DARGHOS_CUSTOM__
+		{
+			if(account.premiumDays == 0)
+				output->put<uint16_t>(65535);
+			else
+				output->put<uint16_t>(account.premiumDays);
+		}
+#else
+		output->put<uint16_t>(account.premiumDays);
+#endif
+			
 
 		OutputMessagePool::getInstance()->send(output);
 	}
