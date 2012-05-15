@@ -88,7 +88,7 @@ function doPlayerAddStamina(cid, minutes)
 end
 
 function isPremium(cid)
-	return (isPlayer(cid) and (getPlayerPremiumDays(cid) > 0 or getBooleanFromString(getConfigValue('freePremium'))))
+	return (isPlayer(cid) and (getPlayerPremiumDays(cid) > 0 or getBooleanFromString(getConfigValue('freePremium')) or getPlayerLevel(cid) <= tonumber(getConfigValue('maxFreePremiumLevel'))))
 end
 
 function getMonthDayEnding(day)

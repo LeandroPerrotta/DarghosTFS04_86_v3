@@ -10912,9 +10912,9 @@
     <monster name="Ghoul" x="0" y="3" z="8" spawntime="60"/>
   </spawn>
   <spawn centerx="2531" centery="1911" centerz="8" radius="5">
-    <monster name="Ariadne Adept" x="-1" y="-2" z="8" spawntime="60"/>
-    <monster name="Ariadne Adept" x="-1" y="1" z="8" spawntime="60"/>
-    <monster name="Ariadne Adept" x="2" y="1" z="8" spawntime="60"/>
+    <monster name="Ariadne Adept" x="-3" y="-3" z="8" spawntime="900"/>
+    <monster name="Ariadne Adept" x="1" y="-3" z="8" spawntime="900"/>
+    <monster name="Ariadne Adept" x="-1" y="-2" z="8" spawntime="900"/>
   </spawn>
   <spawn centerx="1939" centery="1916" centerz="8" radius="3">
     <monster name="Minotaur archer" x="-2" y="-1" z="8" spawntime="60"/>
@@ -10980,11 +10980,11 @@
     <monster name="Cyclops Smith" x="-12" y="23" z="8" spawntime="60"/>
   </spawn>
   <spawn centerx="2533" centery="1928" centerz="8" radius="5">
-    <monster name="Ariadne Adept" x="-3" y="-3" z="8" spawntime="60"/>
-    <monster name="Ariadne Adept" x="3" y="-2" z="8" spawntime="60"/>
-    <monster name="Ariadne Adept" x="2" y="0" z="8" spawntime="60"/>
-    <monster name="Ariadne Adept" x="0" y="2" z="8" spawntime="60"/>
-    <monster name="Ariadne Adept" x="-2" y="3" z="8" spawntime="60"/>
+    <monster name="Ariadne Adept" x="3" y="-3" z="8" spawntime="900"/>
+    <monster name="Ariadne Adept" x="1" y="-2" z="8" spawntime="900"/>
+    <monster name="Ariadne Adept" x="4" y="-1" z="8" spawntime="900"/>
+    <monster name="Ariadne Adept" x="1" y="1" z="8" spawntime="900"/>
+    <monster name="Ariadne Adept" x="3" y="1" z="8" spawntime="900"/>
   </spawn>
   <spawn centerx="3321" centery="1928" centerz="8" radius="5">
     <monster name="Minotaur archer" x="-1" y="-3" z="8" spawntime="60"/>
@@ -10993,13 +10993,13 @@
     <monster name="Minotaur" x="0" y="1" z="8" spawntime="60"/>
   </spawn>
   <spawn centerx="2519" centery="1930" centerz="8" radius="5">
-    <monster name="Ariadne Adept" x="2" y="-4" z="8" spawntime="60"/>
-    <monster name="Ariadne Adept" x="4" y="-2" z="8" spawntime="60"/>
-    <monster name="Ariadne Adept" x="4" y="0" z="8" spawntime="60"/>
-    <monster name="Ariadne Adept" x="-5" y="1" z="8" spawntime="60"/>
-    <monster name="Ariadne Adept" x="0" y="1" z="8" spawntime="60"/>
-    <monster name="Ariadne Adept" x="-2" y="2" z="8" spawntime="60"/>
-    <monster name="Ariadne Adept" x="-4" y="5" z="8" spawntime="60"/>
+    <monster name="Ariadne Adept" x="2" y="-4" z="8" spawntime="900"/>
+    <monster name="Ariadne Adept" x="4" y="-2" z="8" spawntime="900"/>
+    <monster name="Ariadne Adept" x="4" y="0" z="8" spawntime="900"/>
+    <monster name="Ariadne Adept" x="-5" y="1" z="8" spawntime="900"/>
+    <monster name="Ariadne Adept" x="0" y="1" z="8" spawntime="900"/>
+    <monster name="Ariadne Adept" x="-2" y="2" z="8" spawntime="900"/>
+    <monster name="Ariadne Adept" x="-3" y="4" z="8" spawntime="900"/>
   </spawn>
   <spawn centerx="3301" centery="1930" centerz="8" radius="5">
     <monster name="Minotaur archer" x="0" y="-1" z="8" spawntime="60"/>
@@ -11085,8 +11085,8 @@
     <monster name="Cyclops" x="5" y="28" z="8" spawntime="60"/>
   </spawn>
   <spawn centerx="2533" centery="1944" centerz="8" radius="5">
-    <monster name="Ariadne Adept" x="-1" y="-1" z="8" spawntime="60"/>
-    <monster name="Ariadne Adept" x="1" y="0" z="8" spawntime="60"/>
+    <monster name="Ariadne Adept" x="3" y="0" z="8" spawntime="900"/>
+    <monster name="Ariadne Adept" x="-1" y="2" z="8" spawntime="900"/>
   </spawn>
   <spawn centerx="3298" centery="1947" centerz="8" radius="5">
     <monster name="Minotaur guard" x="-1" y="0" z="8" spawntime="60"/>
@@ -15821,31 +15821,31 @@
     <monster name="Vampire" x="1" y="0" z="9" spawntime="60"/>
   </spawn>
   <spawn centerx="2535" centery="1918" centerz="9" radius="25">
-    <monster name="Ariadne Adept" x="-17" y="-15" z="9" spawntime="30"/>
-    <monster name="Ariadne Adept" x="-18" y="-13" z="9" spawntime="30"/>
-    <monster name="Ariadne Adept" x="-1" y="-13" z="9" spawntime="30"/>
-    <monster name="Ariadne Adept" x="-13" y="-12" z="9" spawntime="30"/>
-    <monster name="Ariadne Adept" x="-18" y="-11" z="9" spawntime="30"/>
-    <monster name="Ariadne Adept" x="-2" y="-11" z="9" spawntime="30"/>
-    <monster name="Ariadne Adept" x="-9" y="-10" z="9" spawntime="30"/>
-    <monster name="Ariadne Adept" x="9" y="-9" z="9" spawntime="30"/>
-    <monster name="Ariadne Adept" x="11" y="-7" z="9" spawntime="30"/>
-    <monster name="Ariadne Adept" x="14" y="-4" z="9" spawntime="30"/>
-    <monster name="Ariadne Adept" x="12" y="-3" z="9" spawntime="30"/>
-    <monster name="Ariadne Adept" x="-18" y="1" z="9" spawntime="30"/>
-    <monster name="Ariadne Adept" x="18" y="7" z="9" spawntime="30"/>
-    <monster name="Ariadne Adept" x="-20" y="9" z="9" spawntime="30"/>
-    <monster name="Ariadne Adept" x="2" y="9" z="9" spawntime="30"/>
-    <monster name="Ariadne Adept" x="-19" y="10" z="9" spawntime="30"/>
-    <monster name="Ariadne Adept" x="-18" y="10" z="9" spawntime="30"/>
-    <monster name="Ariadne Adept" x="1" y="11" z="9" spawntime="30"/>
-    <monster name="Ariadne Adept" x="-20" y="12" z="9" spawntime="30"/>
-    <monster name="Ariadne Adept" x="-10" y="16" z="9" spawntime="30"/>
-    <monster name="Ariadne Adept" x="12" y="16" z="9" spawntime="30"/>
-    <monster name="Ariadne Adept" x="-11" y="17" z="9" spawntime="30"/>
-    <monster name="Ariadne Adept" x="-9" y="17" z="9" spawntime="30"/>
-    <monster name="Ariadne Adept" x="14" y="17" z="9" spawntime="30"/>
-    <monster name="Ariadne Adept" x="6" y="18" z="9" spawntime="30"/>
+    <monster name="Ariadne Adept" x="-16" y="-15" z="9" spawntime="900"/>
+    <monster name="Ariadne Adept" x="-18" y="-13" z="9" spawntime="900"/>
+    <monster name="Ariadne Adept" x="-1" y="-13" z="9" spawntime="900"/>
+    <monster name="Ariadne Adept" x="-13" y="-12" z="9" spawntime="900"/>
+    <monster name="Ariadne Adept" x="-18" y="-11" z="9" spawntime="900"/>
+    <monster name="Ariadne Adept" x="-2" y="-11" z="9" spawntime="900"/>
+    <monster name="Ariadne Adept" x="-9" y="-10" z="9" spawntime="900"/>
+    <monster name="Ariadne Adept" x="9" y="-9" z="9" spawntime="900"/>
+    <monster name="Ariadne Adept" x="11" y="-7" z="9" spawntime="900"/>
+    <monster name="Ariadne Adept" x="14" y="-4" z="9" spawntime="900"/>
+    <monster name="Ariadne Adept" x="11" y="-3" z="9" spawntime="900"/>
+    <monster name="Ariadne Adept" x="-18" y="1" z="9" spawntime="900"/>
+    <monster name="Ariadne Adept" x="18" y="7" z="9" spawntime="900"/>
+    <monster name="Ariadne Adept" x="-20" y="9" z="9" spawntime="900"/>
+    <monster name="Ariadne Adept" x="2" y="9" z="9" spawntime="900"/>
+    <monster name="Ariadne Adept" x="-19" y="10" z="9" spawntime="900"/>
+    <monster name="Ariadne Adept" x="-18" y="10" z="9" spawntime="900"/>
+    <monster name="Ariadne Adept" x="0" y="11" z="9" spawntime="900"/>
+    <monster name="Ariadne Adept" x="-20" y="12" z="9" spawntime="900"/>
+    <monster name="Ariadne Adept" x="-10" y="16" z="9" spawntime="900"/>
+    <monster name="Ariadne Adept" x="12" y="16" z="9" spawntime="900"/>
+    <monster name="Ariadne Adept" x="-11" y="17" z="9" spawntime="900"/>
+    <monster name="Ariadne Adept" x="14" y="17" z="9" spawntime="900"/>
+    <monster name="Ariadne Adept" x="-9" y="18" z="9" spawntime="900"/>
+    <monster name="Ariadne Adept" x="6" y="18" z="9" spawntime="900"/>
   </spawn>
   <spawn centerx="2131" centery="1922" centerz="9" radius="1">
     <monster name="Ghoul" x="1" y="-1" z="9" spawntime="60"/>

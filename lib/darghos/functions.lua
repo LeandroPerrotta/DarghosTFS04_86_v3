@@ -1360,13 +1360,13 @@ function addPremiumTest(cid)
 	doPlayerAddPremiumDays(cid, 7)
 	local account = getPlayerAccountId(cid)
 	db.executeQuery("INSERT INTO `wb_premiumtest` VALUES ('" .. account .. "', '" .. os.time() .. "');")
-	doPlayerSendTextMessage(cid, MESSAGE_STATUS_CONSOLE_ORANGE, "Parabens! Este é o seu primeiro personagem a atingir o level 100 no Darghos! Como prêmio você acaba de receber uma Conta Premium por uma semana gratuitamente, que irá permitir que você conheça todo o Darghos! Boa sorte!")
+	doPlayerSendTextMessage(cid, MESSAGE_STATUS_CONSOLE_ORANGE, "Parabens! Este é o seu primeiro personagem a atingir o level 150! No Darghos todos personagens de level inferior a 150 possuem acesso gratuito e sem limitações a todos benéficios de Premium, após este level é necessário possuir Dias de Premium, maiores informações sobre como os adquirir podem ser encontrados em nosso website (www.darghos.com.br).\nPorem, por este ser seu primeiro personagem a atingir level 150 você receberá mais uma semana de benéficios Premium gratuitamente! Boa sorte!")
 	sendEnvolveEffect(cid, CONST_ME_HOLYAREA)
 end
 
 function canReceivePremiumTest(cid, newlevel)
 
-	if(newlevel < 100) then
+	if(newlevel < 150) then
 		return false
 	end
 
@@ -1389,7 +1389,7 @@ function canReceivePremiumTest(cid, newlevel)
 		return false
 	end
 	
-	if(not hasValidEmail(cid)) then	
+	if(not hasValidEmail(cid)) then
 		return false
 	end
 	
@@ -1421,12 +1421,12 @@ function notifyValidateEmail(cid)
 	message = message .. "sua conta não esta segura e você não conseguirá recuperar-la caso perda seus dados de acesso!\n\n"
 	message = message .. "Os seguintes recursos também estarão disponiveis para sua conta após o registro do e-mail:\n\n"
 	message = message .. " - Obter uma conta Premium.\n"
-	message = message .. " - Receber a Premium Test ao atingir level 100.\n"
+	message = message .. " - Receber a Premium Test ao atingir level 150.\n"
 	message = message .. " - Gerar uma chave de recuperação.\n\n"
 	message = message .. "Acesse o website o mais breve possivel e registre o e-mail de sua conta!\n"
 	message = message .. "www.darghos.com.br\n\n"
-	message = message .. "Tenha um bom jogo!"	
-	doPlayerPopupFYI(cid, message)	
+	message = message .. "Tenha um bom jogo!"
+	doPlayerPopupFYI(cid, message)
 end
 
 -- Verifica se o jogador ja foi notificado, existe uma enquete aberta, se o jogador possui um usuario e se esse usuario jï¿½ votou, se tudo for verdadeiro, ele retorna falso
