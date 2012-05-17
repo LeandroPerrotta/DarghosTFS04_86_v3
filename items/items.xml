@@ -19411,6 +19411,10 @@
 	<item id="12709" article="a" name="worn crooked eye ring">
 		<attribute key="description" value="Someone specialised in rings might be able to repair them for you." />
 		<attribute key="weight" value="765"/>
+	</item>
+	<item id="12710" article="a" name="flask of magic productivity">
+		<attribute key="description" value="Este liquido magico irá trazer efeitos inacreditaveis se você beber-lo enquanto estiver muito cançado."/>
+		<attribute key="weight" value="300"/>
 	</item>	
 	
 	<!-- Modified Items -->
