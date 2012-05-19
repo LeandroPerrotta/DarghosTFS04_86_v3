@@ -6,6 +6,10 @@ BG_EXP_RATE = 1
 BG_EACH_BONUS_PERCENT = 50
 BG_BONUS_INTERVAL = 60 * 60
 
+BG_GIVE_MONEY = true
+BG_MONEY_WIN = 40000
+BG_MONEY_LOST = 8000
+
 BG_CONFIG_TEAMSIZE = 6
 BG_CONFIG_WINPOINTS = 50
 BG_CONFIG_DURATION = 60 * 15
@@ -55,7 +59,7 @@ BATTLEGROUND_HONOR_DESTROY_FLAG = 50
 
 BG_GAIN_EVERYHOUR_DAYS = { WEEKDAY.SATURDAY, WEEKDAY.SUNDAY }
 BG_GAIN_START_HOUR = 11
-BG_GAIN_END_HOUR = 5
+BG_GAIN_END_HOUR = 1
 
 -- BANS CONSTS
 BATTLEGROUND_BAN_TYPE_PLAYER = 0
@@ -409,14 +413,18 @@ function pvpBattleground.drawRank()
 	msg = msg .. "Informações personagem:\nFrags / Mortes / [Assists] | Danos | Cura\n\n"
 	
 	local vocStr = {
-		"S",
-		"D",
-		"P",
-		"K",
-		"MS",
-		"ED",
-		"RP",
-		"EK"
+		"S"
+		,"D"
+		,"P"
+		,"K"
+		,"MS"
+		,"ED"
+		,"RP"
+		,"EK"
+		,"WS"
+		,"WD"
+		,"HP"
+		,"BK"	
 	}
 	
 	if(data and #data > 0) then

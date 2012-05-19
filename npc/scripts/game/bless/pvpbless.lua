@@ -16,11 +16,11 @@ function process(cid, message, keywords, parameters, node)
         return false
     end 
 
-	if(getConfigInfo("worldId") == WORLD_AARAGON) then
-    	npcHandler:say("Você não pode efetuar uma mudança de PvP neste mundo...", cid)
-		npcHandler:resetNpc(cid)
-		return false		
-	end
+    if(getConfigInfo("worldId") == WORLD_AARAGON) then
+    npcHandler:say("Você não pode efetuar uma mudança de PvP neste mundo...", cid)
+	    npcHandler:resetNpc(cid)
+	    return false		
+    end
 	
     if(hasCondition(cid, CONDITION_INFIGHT)) then
     	npcHandler:say("Ohh por Deus! Você está muito agressivo! Volte quando estiver mais calmo...", cid)
@@ -92,8 +92,13 @@ function process(cid, message, keywords, parameters, node)
     	npcHandler:say("!!! E SUA ULTIMA CHANCE !!!", cid)
     elseif(talkState == 3) then
     	if(doPlayerIsPvpEnable(cid)) then
-    		npcHandler:say("ESTÁ FEITO!! Seu PvP agora está DESATIVADO!! Espero que não se arrependa de sua decisão...", cid)
-    		doPlayerDisablePvp(cid)
+			npcHandler:say("ESTÁ FEITO!! Seu PvP agora está DESATIVADO!! Espero que não se arrependa de sua decisão...", cid)
+			doPlayerDisablePvp(cid)
+	  
+			-- somente iremos aplicar o debuff de exp para mudanças agressive -> pacific
+			if(lastChangePvp ~= -1) then
+				setPlayerStorageValue(cid, sid.CHANGE_PVP_EXP_DEBUFF, os.time() + (60 * 60 * 24 * darghos_change_pvp_days_cooldown)) 
+			end
     	else
     		npcHandler:say("ESTÁ FEITO!! Seu PvP agora está ATIVO!! Espero que não se arrependa de sua decisão...", cid)
     		doPlayerEnablePvp(cid)
@@ -102,12 +107,8 @@ function process(cid, message, keywords, parameters, node)
     	setPlayerStorageValue(cid, sid.LAST_CHANGE_PVP, os.time())
     	
     	if(hasPermission) then
-    		setPlayerStorageValue(cid, sid.CHANGE_PVP_PERMISSION, -1)
+			setPlayerStorageValue(cid, sid.CHANGE_PVP_PERMISSION, -1)
     	end
-    	
-    	if(lastChangePvp ~= -1) then
-    		setPlayerStorageValue(cid, sid.CHANGE_PVP_EXP_DEBUFF, os.time() + (60 * 60 * 24 * darghos_change_pvp_days_cooldown)) 
-		end
     	
     	local oldpos = getPlayerPosition(cid) 	
     	doTeleportThing(cid, getTownTemplePosition(towns.QUENDOR))
