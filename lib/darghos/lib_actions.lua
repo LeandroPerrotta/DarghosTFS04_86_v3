@@ -23,6 +23,8 @@ function defaultActions(cid, item, fromPosition, itemEx, toPosition)
 		ret = outfitTicket.onUse(cid, item, fromPosition, itemEx, toPosition)
 	elseif(isInArray(CHRISTMAS_PRESENTS, item_id)) then
 		ret = christmasPresent.onUse(cid, item, fromPosition, itemEx, toPosition)
+	elseif(item_id == CUSTOM_ITEMS.FLASK_OF_MAGIC_PRODUCTIVITY)  then
+		ret = staminaFlask.onUse(cid, item, fromPosition, itemEx, toPosition)
 	end
 
 	return ret
@@ -457,4 +459,28 @@ function teleportRune.thirdStep(cid)
 	
 	setPlayerStorageValue(cid, sid.TELEPORT_RUNE_STATE, teleportRune.STATE_NONE)
 	setPlayerStorageValue(cid, sid.TELEPORT_RUNE_LAST_USAGE, os.time())
+end
+
+staminaFlask = {}
+
+function staminaFlask.onUse(cid, item, frompos, item2, topos)
+	
+	local staminaMinutes = getPlayerStamina(cid)
+	
+	local staminaMax = 60 * 42
+	local staminaBonus = 40 * 60
+	
+	if(staminaMinutes >= staminaBonus) then
+		doPlayerSendTextMessage(cid, MESSAGE_STATUS_SMALL, "Você não está tão cansado, somente use este item quando a sua barra stamina estiver na cor laranja ou vermelha.")
+		return true
+	end
+	
+	local stamimaAdd = staminaMax - staminaMinutes
+	
+	doPlayerSetStamina(cid, stamimaAdd)
+	doCreatureSay(cid, "Aaahhh! Incrível! Me sinto completamente renovado!", TALKTYPE_ORANGE_1)
+	doSendMagicEffect(getPlayerPosition(cid), CONST_ME_HOLYDAMAGE)
+	doRemoveItem(item.uid)
+	
+	return true
 end
