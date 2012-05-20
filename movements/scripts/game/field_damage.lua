@@ -1,6 +1,6 @@
 function onStepIn(cid, item, position, fromPosition)
 
-	if(item.actionid >= ACTION_ID_RANGES.MIN_FIELD_DAMAGE and item.actionid <= ACTION_ID_RANGES.MAX_FIELD_DAMAGE) then
+	if(item.actionid >= ACTION_ID_RANGES.MIN_FIELD_DAMAGE and item.actionid <= ACTION_ID_RANGES.MAX_FIELD_DAMAGE and isPlayer(cid)) then
 	
 		local playerTotems = 0
 		
