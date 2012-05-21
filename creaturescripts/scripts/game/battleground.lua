@@ -211,6 +211,10 @@ function onThink(cid, interval)
 
 	local carryingFlag = getPlayerStorageValue(cid, sid.BATTLEGROUND_CARRYING_FLAG) == 1
 	if(carryingFlag) then
+		if(not isPlayerPzLocked(cid)) then
+			doPlayerSetPzLocked(cid, true)
+		end
+		
 		local canAnnimation = getPlayerStorageValue(cid, sid.BATTLEGROUND_CARRYING_LAST_ANI) == -1 or getPlayerStorageValue(cid, sid.BATTLEGROUND_CARRYING_LAST_ANI) + 2 < os.time()
 		
 		if(canAnnimation)  then

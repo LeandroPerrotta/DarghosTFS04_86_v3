@@ -44,7 +44,6 @@ function searchItemDepthContainer(container, itemlist, result, recursively)
 			return false
 		end
 		
-		print("Blabla")
 		table.insert(result, tmp)
 		return true
 	end
