@@ -290,8 +290,7 @@ function doPlayerSetPVPBlessing(cid)
 	return doPlayerAddBlessing(cid, pvpBless)
 end
 
-function doPlayerIsInBattleground(cid) return getPlayerBattlegroundTeam(cid) > 0 end
-function isBattlegroundEnemies(cid, target) return getPlayerBattlegroundTeam(cid) ~= getPlayerBattlegroundTeam(target) end
+function doPlayerIsInArena(cid) return getPlayerStorageValue(cid, sid.ARENA_INSIDE) == 1 end
 
 function incPlayerStorageValue(cid, storage, value)
 	value = value or 1

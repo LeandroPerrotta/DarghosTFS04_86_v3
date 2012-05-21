@@ -204,6 +204,11 @@ function pvpArena:addPlayer(cid, inFirst)
 
 	if(getPlayerTown(cid) == getTownIdByName("Island of Peace")) then
 		doPlayerSendTextMessage(cid, MESSAGE_STATUS_CONSOLE_BLUE, "Jogadores que moram em Island of Peace são muito passivos para participarem de sanguinarias batalhas de Arena.")
+		return
+	end
+	
+	if(doPlayerIsInBattleground(cid)) then
+		doPlayerSendTextMessage(cid, MESSAGE_STATUS_CONSOLE_BLUE, "Você não pode entrar em uma Arena estando dentro de uma Battleground.")
 		return		
 	end
 
@@ -228,8 +233,12 @@ function pvpArena:addPlayer(cid, inFirst)
 	self:prepareGame()
 end
 
-function pvpArena:finishGame(winner)
+function pvpArena:finishGame(winner, target)
 
+	if(not isPlayer(target)) then
+		return
+	end
+	
 	local log = {pvpended = "false"}
 
 	if(winner ~= nil) then
@@ -405,6 +414,7 @@ function pvpArena:onPlayerReady(cid)
 	player = self:findPlayer(cid)
 	self:setPlayerOldPos(player, getCreaturePosition(cid))
 
+	setPlayerStorageValue(cid, sid.ARENA_INSIDE, 1)
 	doTeleportThing(cid, dest)
 	lockTeleportScroll(cid)
 	registerCreatureEvent(cid, "pvpArena_onKill")
@@ -416,6 +426,7 @@ function pvpArena:teleportPlayerOut(player, instant)
 
 	instant = (instant ~= nil) and instant or false
 	
+	setPlayerStorageValue(cid, sid.ARENA_INSIDE, -1)
 	unregisterCreatureEvent(player.cid, "pvpArena_onKill")
 	unlockTeleportScroll(player.cid)
 	doCreatureAddHealth(player.cid, getCreatureMaxHealth(player.cid) - getCreatureHealth(player.cid))

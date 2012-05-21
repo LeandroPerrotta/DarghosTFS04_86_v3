@@ -34,8 +34,8 @@ setConditionParam(exhaust, CONDITION_PARAM_SUBID, EXHAUST_HEALING)
 setConditionParam(exhaust, CONDITION_PARAM_TICKS, 1200)
 
 local exhaustGlobal = createConditionObject(CONDITION_EXHAUST)
-setConditionParam(exhaust, CONDITION_PARAM_SUBID, EXHAUSTED_GLOBAL)
-setConditionParam(exhaust, CONDITION_PARAM_TICKS, 1200)
+setConditionParam(exhaustGlobal, CONDITION_PARAM_SUBID, EXHAUSTED_GLOBAL)
+setConditionParam(exhaustGlobal, CONDITION_PARAM_TICKS, 1200)
 
 function onUse(cid, item, fromPosition, itemEx, toPosition)
 	local potion = POTIONS[item.itemid]

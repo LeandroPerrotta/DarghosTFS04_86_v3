@@ -8,5 +8,14 @@ setConditionFormula(condition, 0.7, -56, 0.7, -56)
 setCombatCondition(combat, condition)
 
 function onCastSpell(cid, var)
+	
+	local flagCarrying = getPlayerStorageValue(cid, sid.BATTLEGROUND_CARRYING_FLAG) == 1	
+	
+	if(flagCarrying) then
+		doPlayerSendCancel(cid, "Você não pode usar magias que alterem a sua velocidade enquanto estiver carregando a bandeira.")
+		doSendMagicEffect(getPlayerPosition(cid), CONST_ME_POFF)
+		return false
+	end	
+	
 	return doCombat(cid, combat, var)
 end

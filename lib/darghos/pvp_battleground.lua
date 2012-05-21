@@ -10,8 +10,8 @@ BG_GIVE_MONEY = true
 BG_MONEY_WIN = 40000
 BG_MONEY_LOST = 8000
 
-BG_CONFIG_TEAMSIZE = 6
-BG_CONFIG_WINPOINTS = 50
+BG_CONFIG_TEAMSIZE = 1
+BG_CONFIG_WINPOINTS = 3
 BG_CONFIG_DURATION = 60 * 15
 
 BG_AFK_TIME_LIMIT = 60 * 2
@@ -55,7 +55,13 @@ BATTLEGROUND_HONOR_LIMIT = 8000
 BATTLEGROUND_DEATH_HONOR_GIVE = 20
 BATTLEGROUND_FRAGGER_HONOR_PERCENT = 50
 BATTLEGROUND_HONOR_WIN = 150
-BATTLEGROUND_HONOR_DESTROY_FLAG = 50
+BATTLEGROUND_HONOR_CAPTURE_FLAG = 50
+
+BG_FLAG_STATE_NONE = 1
+BG_FLAG_STATE_DROP = 2
+BG_FLAG_STATE_CAPTURED = 3
+BG_FLAG_STATE_CARRYING = 4
+BG_FLAG_STATE_RETURNED = 5
 
 BG_GAIN_EVERYHOUR_DAYS = { WEEKDAY.SATURDAY, WEEKDAY.SUNDAY }
 BG_GAIN_START_HOUR = 11
@@ -75,6 +81,11 @@ BATTLEGROUND_RATING = 3
 BATTLEGROUND_HIGH_RATE = 1601
 BATTLEGROUND_LOW_RATE = 501
 
+-- flags
+BATTLEGROUND_FLAGS = {
+	[BATTLEGROUND_TEAM_ONE] = { flag = uid.BATTLEGROUND_TEAM_ONE_FLAG, uid = uid.BATTLEGROUND_TEAM_ONE_FLAG_SPAWN, item_id = 11293, lastKiller = gid.BG_LAST_FLAG_KILLER_TEAM_ONE }
+	,[BATTLEGROUND_TEAM_TWO] = { flag = uid.BATTLEGROUND_TEAM_TWO_FLAG, uid = uid.BATTLEGROUND_TEAM_TWO_FLAG_SPAWN, item_id = 10952, lastKiller = gid.BG_LAST_FLAG_KILLER_TEAM_TWO }
+}
 --[[
 	RATING & EXP AREA
 ]]--
@@ -488,9 +499,9 @@ end
 
 function pvpBattleground.getInformations()
 	local msg = "INSTRUÇÕES BASICAS:\n\n"
-	msg = msg .. "Este é um sistema de PvP do Darghos, e o objetivo é seu time atingir 50 pontos, obtidos ao derrotar um oponente ou derrubando o muro de proteção da bandeira na base inimiga e a destruindo. A partida tem duração de até 15 minutos "
-	msg = msg .. "se ao final do tempo nenhum time tiver atingido os 50 pontos a vitoria é concedida ao com maior numero de pontos, e empate no caso de igualdade de pontos\n\n"
-	msg = msg .. "Aos participantes do time vencedor é concedido uma quantidade de pontos de experiencia, rating e honra que você poderá usar para trocar por itens uteis com alguns NPCs!\n\n"
+	msg = msg .. "Este é um sistema de PvP do Darghos baseado no classico Capture the Flag, e o objetivo é seu time capturar a bandeira adversária e entregar-la em sua base 3 vezes. A partida tem duração de até 15 minutos "
+	msg = msg .. "se ao final do tempo nenhum time tiver capturado 3 vezes a bandeira adversaria a vitória é concedida ao com maior numero de bandeiras capturadas, e empate no caso de igualdade de bandeiras\n\n"
+	msg = msg .. "Aos participantes do time vencedor é concedido uma quantidade de pontos de experiencia, dinheiro, rating e honra que você poderá usar para trocar por itens uteis com alguns NPCs!\n\n"
 	msg = msg .. "Ao morrer você não perderá nada e nascera na base de seu time e logo poderá voltar para o combate!\n\n"
 	msg = msg .. "Use o PvP Channel para se comunicar com seus companheiros, somente eles poderão ler suas mensagens.\n\n"
 	msg = msg .. "Isto é um resumo muito curto, o sistema é muito maior! Você poderá encontrar informações mais detalhadas no link:\n"
@@ -560,7 +571,15 @@ function pvpBattleground.getPlayersTeamString(team_id)
 		
 		local player = v
 		if(player) then
-			msg = msg .. getPlayerName(player) .. " (" .. getPlayerLevel(player) .. ")"
+			local tmp_msg = "{PLAYER} ({PLAYER_LEVEL}{FLAG})"
+			
+			tmp_msg = string.gsub(tmp_msg, "{PLAYER}", getPlayerName(player))
+			tmp_msg = string.gsub(tmp_msg, "{PLAYER_LEVEL}", getPlayerLevel(player))
+			
+			local withFlag = getPlayerStorageValue(player, sid.BATTLEGROUND_CARRYING_FLAG) == 1 and " | Bandeira" or ""
+			tmp_msg = string.gsub(tmp_msg, "{FLAG}", withFlag)
+			
+			msg = msg .. tmp_msg
 			msg = msg .. ((islast) and ".\n" or ", ")
 		end
 	end
@@ -626,10 +645,10 @@ function pvpBattleground.broadcastLeftOnePlayer()
 	end
 
 	local messages = {
-		"Quer ganhar experiencia e dinheiro se divertindo com PvP? Participe da proxima battleground! Restam apénas mais um para fechar os times 6x6! -> !bg entrar",
-		"Restam apénas mais um jogador para fechar os times 6x6 para a proxima Battleground! Ganhe recompensas! Ao morrer nada é perdido! Divirta-se! -> !bg entrar",
-		"Gosta de PvP? Prove seu valor! Restam apénas mais um jogadore para fechar os times 6x6 para a proxima Battleground! -> !bg entrar",
-		"Não conhece o sistema de Battlegrounds? Conheça agora! Falta apénas você para o proxima batalha 6x6! Não há perdas nas mortes, ajude o time na vitoria e ganhe recompensas! -> !bg entrar",
+		"Quer ganhar experiencia e dinheiro se divertindo com PvP no classico Capture The Flag? Participe da proxima battleground! Restam apénas mais um para fechar os times 6x6! -> !bg entrar",
+		"Restam apénas mais um jogador para fechar os times 6x6 para a proxima partida de Battleground! Ganhe recompensas! Ao morrer nada é perdido! Divirta-se! -> !bg entrar",
+		"Gosta de PvP misturado com objetivos como o classico Capture The Flag? Prove seu valor! Restam apénas mais um jogadore para fechar os times 6x6 para a proxima Battleground! -> !bg entrar",
+		"Não conhece o sistema de Battlegrounds? Conheça agora! Falta apénas você para o proxima batalha 6x6! Não há perdas nas mortes, ajude o time na busca a bandeira adversária rumo a vitoria e ganhe recompensas! -> !bg entrar",
 	}
 	
 	local rand = math.random(1, #messages)
@@ -703,6 +722,11 @@ function pvpBattleground.onEnter(cid)
 		
 		doPlayerPopupFYI(cid, str)
 		return false
+	end
+	
+	if(doPlayerIsInArena(cid)) then
+		doPlayerSendCancel(cid, "Você não pode entrar na battleground enquanto estiver dentro de uma Arena.")
+		return false		
 	end
 	
 	if(getCreatureCondition(cid, CONDITION_OUTFIT)) then
@@ -790,6 +814,7 @@ function pvpBattleground.onEnter(cid)
 		
 		setPlayerStorageValue(cid, sid.BATTLEGROUND_MATCH_DAMAGE_DONE, 0)
 		setPlayerStorageValue(cid, sid.BATTLEGROUND_MATCH_HEALING_DONE, 0)
+		setPlayerStorageValue(cid, sid.BATTLEGROUND_MATCH_FLAGS_CAPTURED, 0)
 		setPlayerStorageValue(cid, sid.BATTLEGROUND_TEMP_HONOR, 0)
 		
 		-- teleportando direto da ilha de treinamento...
@@ -842,6 +867,7 @@ function pvpBattleground.addObjects()
 	local ITEM_GATE = 1560
 	
 	-- creature walls
+	--[[
 	local gid_creatures = {
 		[uid.BATTLEGROUND_WALL_CREATURE_TEAM_ONE] = gid.WALL_CID_TEAM_ONE,
 		[uid.BATTLEGROUND_WALL_CREATURE_TEAM_TWO] = gid.WALL_CID_TEAM_TWO
@@ -860,6 +886,7 @@ function pvpBattleground.addObjects()
 			registerCreatureEvent(temp_monster, "onStateChange")
 		end
 	end
+	]]
 	
 	-- static items walls
 	for i = uid.BATTLEGROUND_WALLS_START, uid.BATTLEGROUND_WALLS_END do
@@ -868,23 +895,126 @@ function pvpBattleground.addObjects()
 		doCreateItem(ITEM_GATE, pos)
 	end	
 	
-	-- flags
-	local ITEM_FLAGS = {
-		[uid.BATTLEGROUND_TEAM_ONE_FLAG] = 11293,
-		[uid.BATTLEGROUND_TEAM_TWO_FLAG] = 10952
-	}
+	for _,v in pairs(BATTLEGROUND_FLAGS) do
+		
+		local thing = getThing(v.flag, false)
+		if(thing.uid ~= 0) then
+			doRemoveItem(thing.uid)
+		end
+		
+		local pos = getThingPos(v.uid)
+		pvpBattleground.putFlag(_, pos)
+	end
+end
+
+function pvpBattleground.setLastFlagKiller(cid)
+	local enemy = getPlayerBattlegroundEnemies(cid)
+	doSetStorage(BATTLEGROUND_FLAGS[enemy].lastKiller, getPlayerGUID(cid))
+end
+
+function pvpBattleground.getLastFlagKiller(team)
+	return getStorage(BATTLEGROUND_FLAGS[team].lastKiller)
+end
+
+function pvpBattleground.returnFlag(team_id)
+	local pos = getThingPos(BATTLEGROUND_FLAGS[team_id].uid)
+	pvpBattleground.putFlag(team_id, pos)
+end
+
+function pvpBattleground.putFlag(team_id, pos)
+	doCleanTile(pos)
+	local uid = doCreateItem(BATTLEGROUND_FLAGS[team_id].item_id, pos)
+	doItemSetAttribute(uid, "uid", BATTLEGROUND_FLAGS[team_id].flag)
+end
+
+function pvpBattleground.setPlayerCarryingFlagState(cid, flagState)
 	
-	for k,v in pairs(ITEM_FLAGS) do
-		local pos = getThingPos(k)
-		doCleanTile(pos)
-		doCreateItem(v, pos)
+	local enemy = getPlayerBattlegroundEnemies(cid)
+	
+	if(flagState == BG_FLAG_STATE_CARRYING) then
+			
+		doRemoveCondition(cid, CONDITION_HASTE)
+		
+		local condition = createConditionObject(CONDITION_OUTFIT)
+		setConditionParam(condition, CONDITION_PARAM_TICKS, 1000 * 60 * 15)
+		addOutfitCondition(condition, { lookTypeEx = BATTLEGROUND_FLAGS[enemy].item_id})
+		doAddCondition(cid, condition)
+		
+		condition = createConditionObject(CONDITION_INFIGHT)
+		setConditionParam(condition, CONDITION_PARAM_TICKS, 1000 * 60 * 15)
+		doAddCondition(cid, condition)
+		
+		doPlayerSetPzLocked(cid, true)
+		
+		doChangeSpeed(cid, -240)
+		
+		setPlayerStorageValue(cid, sid.BATTLEGROUND_CARRYING_FLAG, 1)
+	elseif(isInArray({BG_FLAG_STATE_DROP, BG_FLAG_STATE_CAPTURED}, flagState)) then
+		
+		doRemoveCondition(cid, CONDITION_OUTFIT)
+		doRemoveCondition(cid, CONDITION_INFIGHT)
+		
+		setPlayerStorageValue(cid, sid.BATTLEGROUND_CARRYING_FLAG, -1)
+
+		doChangeSpeed(cid, 240)	
+	end
+	
+	if(flagState == BG_FLAG_STATE_DROP) then
+		playerHistory.logBattlegroundFlagDroped(cid)
+	end
+	
+	if(flagState == BG_FLAG_STATE_CAPTURED) then
+		pvpBattleground.onGainHonor(cid, BATTLEGROUND_HONOR_CAPTURE_FLAG, true)
+		
+		local flagsCaptured = tonumber(getPlayerStorageValue(cid, sid.BATTLEGROUND_MATCH_FLAGS_CAPTURED)) + 1
+		setPlayerStorageValue(cid, sid.BATTLEGROUND_MATCH_FLAGS_CAPTURED, flagsCaptured)
+		
+		if(flagsCaptured == 3 and not playerHistory.hasAchievement(cid, PH_ACH_BATTLEGROUND_FLAG_CATCHER)) then
+			playerHistory.onAchiev(cid, PH_ACH_BATTLEGROUND_FLAG_CATCHER)
+		end
+		
+		if(not playerHistory.hasAchievement(cid, PH_ACH_BATTLEGROUND_FLAG_CAPTURED)) then
+			playerHistory.onAchiev(cid, PH_ACH_BATTLEGROUND_FLAG_CAPTURED)
+		end
+		
+		playerHistory.logBattlegroundFlagCaptured(cid)
+		
+		if(playerHistory.logBattlegroundFlagCapturedCount(cid) == 50 and not playerHistory.hasAchievement(cid, PH_ACH_BATTLEGROUND_MANY_FLAGS_CAPTURED)) then
+			playerHistory.onAchiev(cid, PH_ACH_BATTLEGROUND_MANY_FLAGS_CAPTURED)
+		end
+		
+		local points = getBattlegroundTeamsPoints()
+		local team = getPlayerBattlegroundTeam(cid)
+		
+		if(points[team] == 2 and points[enemy] == 0) then
+			doSetStorage(gid.BG_WINNING_BY_TWO_POINTS, team)
+		end
+		
+		if(points[team] == 3 and points[enemy] == 2) then
+			
+			if(getStorage(gid.BG_WINNING_BY_TWO_POINTS) == enemy and not playerHistory.hasAchievement(cid, PH_ACH_BATTLEGROUND_EPIC_MATCH)) then
+				playerHistory.onAchiev(cid, PH_ACH_BATTLEGROUND_EPIC_MATCH)
+			end
+			
+			if(pvpBattleground.getLastFlagKiller(enemy) == getPlayerGUID(cid) and not playerHistory.hasAchievement(cid, PH_ACH_BATTLEGROUND_SAVE_THE_DAY)) then
+				playerHistory.onAchiev(cid, PH_ACH_BATTLEGROUND_SAVE_THE_DAY)
+			end
+		end
+	end
+	
+	if(flagState == BG_FLAG_STATE_RETURNED) then
+		playerHistory.logBattlegroundFlagReturned(cid)
+		
+		if(playerHistory.logBattlegroundFlagReturnedCount(cid) == 50 and not playerHistory.hasAchievement(cid, PH_ACH_BATTLEGROUND_MANY_FLAGS_RETURNED)) then
+			playerHistory.onAchiev(cid, PH_ACH_BATTLEGROUND_MANY_FLAGS_RETURNED)
+		end
 	end
 end
 
 function pvpBattleground.removeWall(team)
 	local teamWalls = {
-		[BATTLEGROUND_TEAM_ONE] = {uid.BATTLEGROUND_WALLS_START, uid.BATTLEGROUND_WALLS_START + 1},
-		[BATTLEGROUND_TEAM_TWO] = {uid.BATTLEGROUND_WALLS_END, uid.BATTLEGROUND_WALLS_END - 1}
+		[BATTLEGROUND_TEAM_ONE] = {uid.BATTLEGROUND_WALLS_START, uid.BATTLEGROUND_WALLS_START + 1, uid.BATTLEGROUND_WALLS_START + 2},
+		[BATTLEGROUND_TEAM_TWO] = {uid.BATTLEGROUND_WALLS_END, uid.BATTLEGROUND_WALLS_END - 1, uid.BATTLEGROUND_WALLS_END - 2}
 	}
 	
 	local ITEM_GATE = 1560
@@ -1118,3 +1248,11 @@ function pvpBattleground.spamDebuffSpell(cid, min, max, playerDebbufs)
 	
 	return min, max, playerDebbufs
 end
+
+--[[
+	TOOLS
+]]
+
+function doPlayerIsInBattleground(cid) return getPlayerBattlegroundTeam(cid) > 0 end
+function isBattlegroundEnemies(cid, target) return getPlayerBattlegroundTeam(cid) ~= getPlayerBattlegroundTeam(target) end
+function getPlayerBattlegroundEnemies(cid) return (getPlayerBattlegroundTeam(cid) == BATTLEGROUND_TEAM_ONE) and BATTLEGROUND_TEAM_TWO or BATTLEGROUND_TEAM_ONE end

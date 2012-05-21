@@ -9,6 +9,12 @@ PH_LOG_BATTLEGROUND_DRAW = 3
 PH_LOG_DUNGEON_ARIADNE_TROLLS_ATTEMPS = 4
 PH_LOG_DUNGEON_ARIADNE_TROLLS_COMPLETED = 5
 
+PH_LOG_BATTLEGROUND_FLAGS_CAPTURED = 6
+PH_LOG_BATTLEGROUND_FLAGS_RETURNED = 7
+PH_LOG_BATTLEGROUND_FLAGS_KILLED = 8
+PH_LOG_BATTLEGROUND_FLAGS_DROPED = 9
+PH_LOG_BATTLEGROUND_PERFECT_MATCHES = 10
+
 ----------------------------------------------------------
 -- ACHIEVEMENTS
 -- Battlegrounds (1 a 999)
@@ -17,6 +23,14 @@ PH_ACH_BATTLEGROUND_RANK_LEGEND = 2
 PH_ACH_BATTLEGROUND_INSANE_KILLER = 3
 PH_ACH_BATTLEGROUND_PERFECT = 4
 PH_ACH_BATTLEGROUND_RANK_BRAVE = 5
+PH_ACH_BATTLEGROUND_FLAG_CATCHER = 6
+PH_ACH_BATTLEGROUND_FLAG_CAPTURED = 7
+PH_ACH_BATTLEGROUND_MANY_FLAGS_RETURNED = 8
+PH_ACH_BATTLEGROUND_FLAG_KILLER = 9
+PH_ACH_BATTLEGROUND_MANY_FLAGS_CAPTURED = 10
+PH_ACH_BATTLEGROUND_SAVE_THE_DAY = 11
+PH_ACH_BATTLEGROUND_EPIC_MATCH = 12
+PH_ACH_BATTLEGROUND_PERFECT_COLLECTOR = 13
 
 -- Dungeons (1000 a 1999)
 PH_ACH_DUNGEON_ARIADNE_TROLLS_GOT_ALL_TOTEMS = 1000
@@ -53,7 +67,39 @@ playerAchievements = {
 	}
 	
 	,[PH_ACH_BATTLEGROUND_PERFECT] = {
-		notifyText = "[Façanha alcançada] Efetuou a Battleground perfeita ao vencer pelo placar de 50 pontos a 0!"
+		notifyText = "[Façanha alcançada] Partida perfeita! Capturaram a bandeira adversária 3 vezes sem ter a própria bandeira capturada nenhuma vez!"
+	}
+	
+	,[PH_ACH_BATTLEGROUND_FLAG_CATCHER] = {
+		notifyText = "[Façanha alcançada] Capturador de bandeiras! Levou o time a vitória capturando três bandeiras adversárias e as levando a base!"
+	}
+	
+	,[PH_ACH_BATTLEGROUND_FLAG_CAPTURED] = {
+		notifyText = "[Façanha alcançada] Capturou a bandeira! Você capturou e levou uma bandeira a sua base colaborando com o seu time!"
+	}
+	
+	,[PH_ACH_BATTLEGROUND_MANY_FLAGS_RETURNED] = {
+		notifyText = "[Façanha alcançada] Grande recuperador de bandeiras! Você somou 50 bandeiras recuperadas prestando grande ajuda aos times que participou!"
+	}
+	
+	,[PH_ACH_BATTLEGROUND_FLAG_KILLER] = {
+		notifyText = "[Façanha alcançada] Grande matador de bandeiras! Você somou 50 carregadores bandeiras mortos prestando grande ajuda aos times que participou!"
+	}
+	
+	,[PH_ACH_BATTLEGROUND_MANY_FLAGS_CAPTURED] = {
+		notifyText = "[Façanha alcançada] Grande capturador de bandeiras! Você somou 50 bandeiras bandeiras adversárias capturadas prestando grande ajuda aos times que participou!"
+	}
+	
+	,[PH_ACH_BATTLEGROUND_SAVE_THE_DAY] = {
+		notifyText = "[Façanha alcançada] Salvou a dia! Você matou e retornou a bandeira adversária enquanto a partida estava em 2x2 contribuindo para a vitória de seu time em grande estilo!"
+	}
+	
+	,[PH_ACH_BATTLEGROUND_EPIC_MATCH] = {
+		notifyText = "[Façanha alcançada] Virada epica! Estiveram perdendo por 0x2 mas em uma magnifica reação buscaram a virada e fecharam em 3x2! Bela partida!"
+	}
+	
+	,[PH_ACH_BATTLEGROUND_PERFECT_COLLECTOR] = {
+		notifyText = "[Façanha alcançada] Colecionador de partidas perfeitas! Somou 10 partidas perfeitas, aonde venceram pelo resultado de 3x0!"
 	}
 	
 	,[PH_ACH_DUNGEON_ARIADNE_TROLLS_GOT_ALL_TOTEMS] = {
@@ -111,6 +157,19 @@ function playerHistory.log(cid, history, params)
 	db.executeQuery("INSERT `player_history` (`player_id`, `history`, `type`, `date`, `params`) VALUES (" .. getPlayerGUID(cid) .. ", " .. history .. ", " .. PH_TYPE_LOG .. ", " .. os.time() .. ", '" .. params .. "');")
 end
 
+function playerHistory.logCount(cid, history)
+	local result = db.getResult("SELECT COUNT(*) as `c` FROM `player_history` WHERE `player_id` = " .. getPlayerGUID(cid) .. " AND `history` = " .. history .. " AND `type` = " .. PH_TYPE_LOG .. ";")
+
+	if(result:getID() ~= -1) then
+		local count = result:getDataInt("c")
+		
+		result:free()
+		return count
+	end
+	
+	return 0
+end
+
 --[[
 	ACHIEVEMENTS HANDLER
 ]]--
@@ -128,7 +187,7 @@ function playerHistory.hasAchievement(cid, history)
 	if(result:getID() ~= -1) then
 		result:free()
 		return true
-	end	
+	end
 	
 	return false	
 end
@@ -151,6 +210,46 @@ end
 
 function playerHistory.logBattlegroundDraw(cid, rating)
 	playerHistory.log(cid, PH_LOG_BATTLEGROUND_DRAW, {["rating"] = rating})
+end
+
+function playerHistory.logBattlegroundFlagCaptured(cid)
+	playerHistory.log(cid, PH_LOG_BATTLEGROUND_FLAGS_CAPTURED)
+end
+
+function playerHistory.logBattlegroundFlagCapturedCount(cid)
+	return playerHistory.logCount(cid, PH_LOG_BATTLEGROUND_FLAGS_CAPTURED)
+end
+
+function playerHistory.logBattlegroundFlagReturned(cid)
+	playerHistory.log(cid, PH_LOG_BATTLEGROUND_FLAGS_RETURNED)
+end
+
+function playerHistory.logBattlegroundFlagReturnedCount(cid)
+	return playerHistory.logCount(cid, PH_LOG_BATTLEGROUND_FLAGS_RETURNED)
+end
+
+function playerHistory.logBattlegroundFlagKilled(cid)
+	playerHistory.log(cid, PH_LOG_BATTLEGROUND_FLAGS_KILLED)
+end
+
+function playerHistory.logBattlegroundFlagKilledCount(cid)
+	return playerHistory.logCount(cid, PH_LOG_BATTLEGROUND_FLAGS_KILLED)
+end
+
+function playerHistory.logBattlegroundFlagDroped(cid)
+	playerHistory.log(cid, PH_LOG_BATTLEGROUND_FLAGS_DROPED)
+end
+
+function playerHistory.logBattlegroundFlagDropedCount(cid)
+	return playerHistory.logCount(cid, PH_LOG_BATTLEGROUND_FLAGS_DROPED)
+end
+
+function playerHistory.logBattlegroundPerfectMatche(cid)
+	playerHistory.log(cid, PH_LOG_BATTLEGROUND_PERFECT_MATCHES)
+end
+
+function playerHistory.logBattlegroundPerfectMatchesCount(cid)
+	return playerHistory.logCount(cid, PH_LOG_BATTLEGROUND_PERFECT_MATCHES)
 end
 
 function playerHistory.logDungAriadneTrollsAttemp(cid)

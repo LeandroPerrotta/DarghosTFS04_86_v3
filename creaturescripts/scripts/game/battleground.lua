@@ -1,7 +1,5 @@
---DAILY_REQUIRED_POINTS = 20
-
 function onBattlegroundLeave(cid)
-	unlockTeleportScroll(cid)
+	
 	unregisterCreatureEvent(cid, "onBattlegroundFrag")
 	unregisterCreatureEvent(cid, "onBattlegroundEnd")
 	unregisterCreatureEvent(cid, "onBattlegroundLeave")
@@ -10,9 +8,11 @@ function onBattlegroundLeave(cid)
 	
 	if(isInTrainingIsland(cid)) then
 		doUpdateCreaturePassable(cid)
-	end	
+	end
 	
-	doRemoveCondition(cid, CONDITION_INFIGHT)
+	unlockTeleportScroll(cid)
+	doCreatureAddHealth(cid, getCreatureMaxHealth(cid) - getCreatureHealth(cid))
+	pvpBattleground.setPlayerCarryingFlagState(cid, BG_FLAG_STATE_NONE)
 end
 
 function onBattlegroundEnd(cid, winner, timeIn, bgDuration, initIn)
@@ -55,8 +55,16 @@ function onBattlegroundEnd(cid, winner, timeIn, bgDuration, initIn)
 		if(winner or winnerTeam == BATTLEGROUND_TEAM_NONE) then
 		
 			pvpBattleground.onGainHonor(cid, BATTLEGROUND_HONOR_WIN)
-			if(winner and points[winnerTeam] == BG_CONFIG_WINPOINTS	and points[loserTeam] == 0 and not playerHistory.hasAchievement(cid, PH_ACH_BATTLEGROUND_PERFECT)) then
-				playerHistory.onAchiev(cid, PH_ACH_BATTLEGROUND_PERFECT)
+			if(winner and points[winnerTeam] == BG_CONFIG_WINPOINTS	and points[loserTeam] == 0) then
+				playerHistory.logBattlegroundPerfectMatche(cid)
+				
+				if(playerHistory.logBattlegroundPerfectMatchesCount(cid) == 10 and not playerHistory.hasAchievement(cid, PH_ACH_BATTLEGROUND_PERFECT_COLLECTOR)) then
+					playerHistory.onAchiev(cid, PH_ACH_BATTLEGROUND_PERFECT_COLLECTOR)
+				end
+				
+				if (not playerHistory.hasAchievement(cid, PH_ACH_BATTLEGROUND_PERFECT)) then
+					playerHistory.onAchiev(cid, PH_ACH_BATTLEGROUND_PERFECT)
+				end
 			end		
 					
 			local expGain = pvpBattleground.getExperienceGain(cid)
@@ -157,9 +165,25 @@ function onBattlegroundDeath(cid, lastDamager, assistList)
 	local teams = { "Time A", "Time B" }
 	local points = getBattlegroundTeamsPoints()
 	
-	local msg = "[Battleground | (" .. teams[BATTLEGROUND_TEAM_ONE] .. ") " .. points[BATTLEGROUND_TEAM_ONE] .. " X " .. points[BATTLEGROUND_TEAM_TWO] .. " (" .. teams[BATTLEGROUND_TEAM_TWO] .. ")] "
-	msg = msg .. getPlayerName(lastDamager).. " (" .. getPlayerLevel(lastDamager) .. ") matou " .. getPlayerName(cid) .. " (" .. getPlayerLevel(cid) .. ") "
-	msg = msg .. "pelo " .. teams[getPlayerBattlegroundTeam(lastDamager)] .. "!"
+	local msg = "[Battleground] |PLAYER_KILLER| matou |PLAYER_DEATH| pelo |KILLER_TEAM|!"
+	local flagCarrying = getPlayerStorageValue(cid, sid.BATTLEGROUND_CARRYING_FLAG) == 1	
+	
+	if(flagCarrying) then
+		msg = "[Battleground] |PLAYER_KILLER| matou |PLAYER_DEATH| que estava carregando a bandeira do |KILLER_TEAM|! A bandeira do |KILLER_TEAM| pode ser retornada!"
+		pvpBattleground.putFlag(getPlayerBattlegroundTeam(lastDamager), getPlayerPosition(cid))
+		pvpBattleground.setPlayerCarryingFlagState(cid, BG_FLAG_STATE_DROP)
+		
+		playerHistory.logBattlegroundFlagKilled(lastDamager)
+		if(playerHistory.logBattlegroundFlagKilledCount(lastDamager) == 50 and not playerHistory.hasAchievement(lastDamager, PH_ACH_BATTLEGROUND_FLAG_KILLER)) then
+			playerHistory.onAchiev(lastDamager, PH_ACH_BATTLEGROUND_FLAG_KILLER)
+		end
+		
+		pvpBattleground.setLastFlagKiller(lastDamager)
+	end
+	
+	msg = string.gsub(msg, "|PLAYER_KILLER|", getPlayerName(lastDamager) .. " (" .. getPlayerLevel(lastDamager) .. ")")
+	msg = string.gsub(msg, "|PLAYER_DEATH|", getPlayerName(cid) .. " (" .. getPlayerLevel(cid) .. ")")
+	msg = string.gsub(msg, "|KILLER_TEAM|", teams[getPlayerBattlegroundTeam(lastDamager)])
 	
 	pvpBattleground.sendPvpChannelMessage(msg, PVPCHANNEL_MSGMODE_INBATTLE)
 
@@ -185,10 +209,25 @@ end
 
 function onThink(cid, interval)
 
+	local carryingFlag = getPlayerStorageValue(cid, sid.BATTLEGROUND_CARRYING_FLAG) == 1
+	if(carryingFlag) then
+		local canAnnimation = getPlayerStorageValue(cid, sid.BATTLEGROUND_CARRYING_LAST_ANI) == -1 or getPlayerStorageValue(cid, sid.BATTLEGROUND_CARRYING_LAST_ANI) + 2 < os.time()
+		
+		if(canAnnimation)  then
+			doCreatureSay(cid, "Carregando a bandeira!", TALKTYPE_MONSTER_YELL)
+			setPlayerStorageValue(cid, sid.BATTLEGROUND_CARRYING_LAST_ANI, os.time())
+		end
+	end
+	
+	-- TODO: Este trecho pode ser desativado, pois agora estaremos efetuando battleground somente de objetivo e ficar no pz
+	-- não ira beneficiar nenhum dos times de nenhuma forma
+	
+	--[[	
+	
 	if(not doPlayerIsInBattleground(cid)) then
 		return
 	end
-	
+
 	local points = getBattlegroundTeamsPoints()
 	local opponent = (getPlayerBattlegroundTeam(cid) == BATTLEGROUND_TEAM_ONE) and BATTLEGROUND_TEAM_TWO or BATTLEGROUND_TEAM_ONE
 	if(points[getPlayerBattlegroundTeam(cid)] <= points[opponent]) then
@@ -220,4 +259,5 @@ function onThink(cid, interval)
 			doCreatureSay(cid, "Fugindo da batalha? Entre em combate com os inimigos ou seu time sofrerá penalidades!", TALKTYPE_ORANGE_1)		
 		end	
 	end
+	]]
 end

@@ -18,7 +18,7 @@ local secondsLeftMessages = {
 
 function onBattlegroundStart(notJoinPlayers)
 	
-	pvpBattleground.sendPvpChannelMessage("[Battleground] A partida foi iniciada! Será vencedor o time que atingir primeiro 50 pontos ou o que mais tiver pontos ao fim da partida em " .. BG_CONFIG_DURATION / 60 .. " minutos!", PVPCHANNEL_MSGMODE_OUTBATTLE, TALKTYPE_TYPES["channel-orange"])
+	pvpBattleground.sendPvpChannelMessage("[Battleground] A partida foi iniciada! Será vencedor o primeiro time que capturar a bandeira dos adversários 3 vezes ou o que mais bandeiras capturadas ao fim da partida em " .. BG_CONFIG_DURATION / 60 .. " minutos!", PVPCHANNEL_MSGMODE_OUTBATTLE, TALKTYPE_TYPES["channel-orange"])
 	
 	if(notJoinPlayers > 0) then
 		pvpBattleground.sendPvpChannelMessage(notJoinPlayers .. " jogadores não compareceram ao inicio da partida e poderam ser substituidos! Se você deseja IMEDIATAMENTE substituir esses jogadores digite '!bg entrar'!", PVPCHANNEL_MSGMODE_OUTBATTLE, TALKTYPE_TYPES["channel-orange"])
@@ -29,6 +29,9 @@ function onBattlegroundStart(notJoinPlayers)
 	if(bgEvents.bonus ~= nil) then
 		stopEvent(bgEvents.bonus)
 	end
+	
+	pvpBattleground.removeWall(BATTLEGROUND_TEAM_ONE)
+	pvpBattleground.removeWall(BATTLEGROUND_TEAM_TWO)
 	
 	return true
 end
@@ -88,12 +91,12 @@ function onBattlegroundEnd()
 		msg = "" .. teams[winnerTeam] .. " é o VENCEDOR por ";
 		
 		if(points[winnerTeam] == BG_CONFIG_WINPOINTS) then
-			msg = msg .. "pontos necessários para vitoria!"
+			msg = msg .. "3 bandeiras capturadas necessárias para vitoria!"
 		else
-			msg = msg .. "mais pontos ao fim da partida!"
+			msg = msg .. "mais bandeiras capturadas ao fim da partida!"
 		end
 	else
-		msg = "Não houve vencedor! EMPATE por igualdade de pontos ao fim da partida!"
+		msg = "Não houve vencedor! EMPATE por igualdade de bandeiras capturadas ao fim da partida!"
 	end	
 	
 	pvpBattleground.sendPvpChannelMessage("Partida encerrada. " .. msg, PVPCHANNEL_MSGMODE_BROADCAST, TALKTYPE_TYPES["channel-orange"])

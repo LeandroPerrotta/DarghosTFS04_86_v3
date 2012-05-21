@@ -3,28 +3,89 @@ function onUse(cid, item, fromPosition, itemEx, toPosition)
 	local pos = table.copy(fromPosition)
 	pos["stackpos"] = 0
 	local ground = getThingFromPos(pos)
-
-	if(ground.uid ~= 0) then
-		local team = getPlayerBattlegroundTeam(cid)
-		local enemy = (getPlayerBattlegroundTeam(cid) == BATTLEGROUND_TEAM_ONE) and BATTLEGROUND_TEAM_TWO or BATTLEGROUND_TEAM_ONE
-		local flagTeam = (ground.uid == uid.BATTLEGROUND_TEAM_ONE_FLAG) and BATTLEGROUND_TEAM_ONE or BATTLEGROUND_TEAM_TWO
-		if(flagTeam == enemy) then
+	local team = getPlayerBattlegroundTeam(cid)
+	local enemy = getPlayerBattlegroundEnemies(cid)
+	local teams = { "Time A", "Time B" }
+	
+	if(isInArray({uid.BATTLEGROUND_TEAM_ONE_FLAG_SPAWN, uid.BATTLEGROUND_TEAM_TWO_FLAG_SPAWN}, ground.uid)) then
+		-- assumimos aqui que o jogador está dando use com a bandeira dentro da base
 		
-			local teams = { "Time A", "Time B" }
-			local points = getBattlegroundTeamsPoints()
-			setBattlegroundTeamsPoints(team, points[team] + BATTLEGROUND_FLAG_BONUS_POINTS)
-			points = getBattlegroundTeamsPoints()
+		local flagTeam = (item.uid == uid.BATTLEGROUND_TEAM_ONE_FLAG) and BATTLEGROUND_TEAM_ONE or BATTLEGROUND_TEAM_TWO
 		
-			local msg = "[Battleground | (" .. teams[BATTLEGROUND_TEAM_ONE] .. ") " .. points[BATTLEGROUND_TEAM_ONE] .. " X " .. points[BATTLEGROUND_TEAM_TWO] .. " (" .. teams[BATTLEGROUND_TEAM_TWO] .. ")] "
-			msg = msg .. getPlayerName(cid) .. " (" .. getPlayerLevel(cid) .. ") destruiu a bandeira do time oponente pelo " .. teams[team] .. " conquistando o bonus de " .. BATTLEGROUND_FLAG_BONUS_POINTS .. " pontos!"
-			pvpBattleground.onGainHonor(cid, BATTLEGROUND_HONOR_DESTROY_FLAG, true)
-		
-			doRemoveItem(item.uid)
-			pvpBattleground.sendPvpChannelMessage(msg, PVPCHANNEL_MSGMODE_INBATTLE)
+		if(flagTeam == enemy) then			
+			onPlayerPickupFlag(cid, item.uid)
 		else
-			doPlayerSendCancel(cid, "Você não pode destruir a sua propria bandeira! Destrua a bandeira dos oponentes!")
+			local carryingFlag = getPlayerStorageValue(cid, sid.BATTLEGROUND_CARRYING_FLAG) == 1
+			if(carryingFlag) then
+				local points = getBattlegroundTeamsPoints()
+				points[team] = points[team] + 1
+				
+				setBattlegroundTeamsPoints(team, points[team])
+				
+				local msg = "[Battleground | (|TEAM_ONE|) |TEAM_ONE_POINTS| X |TEAM_TWO_POINTS| (|TEAM_TWO|)] |FLAG_CAPTURER| capturou a bandeira adversaria marcando um ponto pelo |FLAG_CAPTURER_TEAM|! A bandeira capturada ira reaparecer na base em 5 segundos..."
+				
+				msg = string.gsub(msg, "|TEAM_ONE|", teams[BATTLEGROUND_TEAM_ONE])
+				msg = string.gsub(msg, "|TEAM_ONE_POINTS|", points[BATTLEGROUND_TEAM_ONE])
+				msg = string.gsub(msg, "|TEAM_TWO|", teams[BATTLEGROUND_TEAM_TWO])
+				msg = string.gsub(msg, "|TEAM_TWO_POINTS|", points[BATTLEGROUND_TEAM_TWO])
+				msg = string.gsub(msg, "|FLAG_CAPTURER|", getPlayerName(cid) .. " (" .. getPlayerLevel(cid) .. ")")
+				msg = string.gsub(msg, "|FLAG_CAPTURER_TEAM|", teams[team])
+			
+				pvpBattleground.sendPvpChannelMessage(msg, PVPCHANNEL_MSGMODE_INBATTLE)
+				
+				pvpBattleground.setPlayerCarryingFlagState(cid, BG_FLAG_STATE_CAPTURED)
+				
+				addEvent(pvpBattleground.returnFlag, 1000 * 5, enemy)
+			else
+				doPlayerSendCancel(cid, "Você não pode capturar a sua propria bandeira! Capture a bandeira do time adversario e a traga até aqui!")
+			end
+		end
+	
+	else
+		-- aqui está sendo dado use na bandeira em qualquer lugar do mapa
+		
+		local flagTeam = (item.uid == uid.BATTLEGROUND_TEAM_ONE_FLAG) and BATTLEGROUND_TEAM_ONE or BATTLEGROUND_TEAM_TWO
+		
+		if(flagTeam == enemy) then
+			onPlayerPickupFlag(cid, item.uid, false)
+		else
+			local msg = "[Battleground | A bandeira do |TEAM| foi recuperada por |FLAG_RETURNER|! A bandeira ira reaparecer a base em 5 segundos..."
+				
+			msg = string.gsub(msg, "|TEAM|", teams[team])
+			msg = string.gsub(msg, "|FLAG_RETURNER|", getPlayerName(cid) .. " (" .. getPlayerLevel(cid) .. ")")
+		
+			pvpBattleground.sendPvpChannelMessage(msg, PVPCHANNEL_MSGMODE_INBATTLE)
+			
+			pvpBattleground.setPlayerCarryingFlagState(cid, BG_FLAG_STATE_RETURNED)
+			
+			addEvent(pvpBattleground.returnFlag, 1000 * 5, team)
+			
+			doSendMagicEffect(fromPosition, CONST_ME_POFF)
+			doRemoveItem(item.uid)
 		end
 	end
 	
 	return true
+end
+
+function onPlayerPickupFlag(cid, uid, inBase)
+	inBase = inBase or true
+	
+	local teams = { "Time A", "Time B" }
+	local enemy = getPlayerBattlegroundEnemies(cid)
+	
+	local msg = "[Battleground] A bandeira do |TEAM| foi pega por |FLAG_CAPTURER| e está sendo levada para a base do time adversário!"
+	
+	if(not inBase) then		
+		msg = "[Battleground] A bandeira do |TEAM| foi pega novamente por |FLAG_CAPTURER| e está sendo levada para a base do time adversário!"		
+	end
+	
+	msg = string.gsub(msg, "|TEAM|", teams[enemy])
+	msg = string.gsub(msg, "|FLAG_CAPTURER|", getPlayerName(cid) .. " (" .. getPlayerLevel(cid) .. ")")
+	
+	pvpBattleground.sendPvpChannelMessage(msg, PVPCHANNEL_MSGMODE_INBATTLE)
+	
+	pvpBattleground.setPlayerCarryingFlagState(cid, BG_FLAG_STATE_CARRYING)
+
+	doRemoveItem(uid)
 end
