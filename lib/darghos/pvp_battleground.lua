@@ -949,7 +949,7 @@ function pvpBattleground.setPlayerCarryingFlagState(cid, flagState)
 		doChangeSpeed(cid, -240)
 		
 		setPlayerStorageValue(cid, sid.BATTLEGROUND_CARRYING_FLAG, 1)
-	elseif(isInArray({BG_FLAG_STATE_DROP, BG_FLAG_STATE_CAPTURED}, flagState)) then
+	elseif(isInArray({BG_FLAG_STATE_DROP, BG_FLAG_STATE_CAPTURED, BG_FLAG_STATE_NONE}, flagState)) then
 		
 		doRemoveCondition(cid, CONDITION_OUTFIT)
 		doRemoveCondition(cid, CONDITION_INFIGHT)
