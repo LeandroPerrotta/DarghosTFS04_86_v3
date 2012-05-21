@@ -563,7 +563,6 @@ void Battleground::onPlayerDeath(Player* player, DeathList deathList)
 	if(lastDmg)
 	{
 		Bg_Team_t* team = findPlayerTeam(lastDmg);
-		team->points++;
 
 		Bg_PlayerInfo_t* playerInfo = findPlayerInfo(player);
 

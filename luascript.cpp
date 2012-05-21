@@ -1653,7 +1653,11 @@ void LuaInterface::registerFunctions()
 	//getThingFromPos(pos[, displayError = true])
 	lua_register(m_luaState, "getThingFromPos", LuaInterface::luaGetThingFromPos);
 
+#ifdef __DARGHOS_CUSTOM__
+	//getThing(uid[, displayError = true])
+#else
 	//getThing(uid)
+#endif
 	lua_register(m_luaState, "getThing", LuaInterface::luaGetThing);
 
 	//doTileQueryAdd(uid, pos[, flags[, displayError = true]])
@@ -5705,7 +5709,15 @@ int32_t LuaInterface::luaGetPlayerItemById(lua_State* L)
 
 int32_t LuaInterface::luaGetThing(lua_State* L)
 {
+#ifdef __DARGHOS_CUSTOM__
+	//getThing(uid[, displayError = true])
+	bool showError = true;
+
+	if(lua_gettop(L) >= 2)
+		showError = popBoolean(L);	
+#else
 	//getThing(uid)
+#endif
 	uint32_t uid = popNumber(L);
 
 	ScriptEnviroment* env = getEnv();
@@ -5713,6 +5725,10 @@ int32_t LuaInterface::luaGetThing(lua_State* L)
 		pushThing(L, thing, uid);
 	else
 	{
+
+#ifdef __DARGHOS_CUSTOM__
+		if(showError)
+#endif
 		errorEx(getError(LUA_ERROR_THING_NOT_FOUND));
 		pushThing(L, NULL, 0);
 	}
