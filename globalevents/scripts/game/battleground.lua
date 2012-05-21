@@ -130,6 +130,13 @@ local message = 0
 
 function onBattlegroundPrepare()
 
+	setStorage(gid.BG_LAST_FLAG_KILLER_TEAM_ONE, -1)
+	setStorage(gid.BG_LAST_FLAG_KILLER_TEAM_TWO, -1)
+	setStorage(gid.BG_WINNING_BY_TWO_POINTS, -1)
+	
+	setBattlegroundTeamsPoints(BATTLEGROUND_TEAM_ONE, 0)
+	setBattlegroundTeamsPoints(BATTLEGROUND_TEAM_TWO, 0)
+	
 	pvpBattleground.addObjects()
 	addEvent(showMessage, 5000)
 	return true
