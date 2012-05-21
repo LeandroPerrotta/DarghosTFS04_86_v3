@@ -9,7 +9,7 @@ function onCastSpell(cid, var)
 	
 	if(doPlayerIsInBattleground(cid)) then
 		local v = getPlayerStorageValue(cid, sid.BATTLEGROUND_LAST_MAGIC_WALL)
-		local inCooldown = (v == -1 or v + COOLDOWN <= os.time()) and false or true
+		local inCooldown = (v ~= -1 and v + COOLDOWN > os.time()) and true or false
 		if(inCooldown) then
 			local cooldownLeft = os.time() - (v + COOLDOWN)
 			doPlayerSendCancel(cid, "Você está exausto para usar novamente esta runa, aguarde mais " .. cooldownLeft .. " segundos.")
