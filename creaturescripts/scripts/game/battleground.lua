@@ -166,9 +166,8 @@ function onBattlegroundDeath(cid, lastDamager, assistList)
 	local points = getBattlegroundTeamsPoints()
 	
 	local msg = "[Battleground] |PLAYER_KILLER| matou |PLAYER_DEATH| pelo |KILLER_TEAM|!"
-	local flagCarrying = getPlayerStorageValue(cid, sid.BATTLEGROUND_CARRYING_FLAG) == 1	
 	
-	if(flagCarrying) then
+	if(doPlayerIsFlagCarrier(cid)) then
 		msg = "[Battleground] |PLAYER_KILLER| matou |PLAYER_DEATH| que estava carregando a bandeira do |KILLER_TEAM|! A bandeira do |KILLER_TEAM| pode ser retornada!"
 		pvpBattleground.putFlag(getPlayerBattlegroundTeam(lastDamager), getPlayerPosition(cid))
 		pvpBattleground.setPlayerCarryingFlagState(cid, BG_FLAG_STATE_DROP)
@@ -209,8 +208,7 @@ end
 
 function onThink(cid, interval)
 
-	local carryingFlag = getPlayerStorageValue(cid, sid.BATTLEGROUND_CARRYING_FLAG) == 1
-	if(carryingFlag) then
+	if(doPlayerIsFlagCarrier(cid)) then
 		if(not isPlayerPzLocked(cid)) then
 			doPlayerSetPzLocked(cid, true)
 		end

@@ -15,8 +15,7 @@ function onCastSpell(cid, var)
 		return false
 	end
 	
-	local flagCarrying = getPlayerStorageValue(target, sid.BATTLEGROUND_CARRYING_FLAG) == 1	
-	if(flagCarrying) then
+	if(doPlayerIsFlagCarrier(target)) then
 		doPlayerSendCancel(cid, "Você não pode usar magias que alterem a velocidade de quem está carregando a bandeira.")
 		doSendMagicEffect(getPlayerPosition(cid), CONST_ME_POFF)
 		return false

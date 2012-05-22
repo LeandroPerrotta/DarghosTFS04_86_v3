@@ -1,7 +1,6 @@
 local combat = createCombatObject()
 setCombatParam(combat, COMBAT_PARAM_TYPE, COMBAT_HEALING)
 setCombatParam(combat, COMBAT_PARAM_AGGRESSIVE, false)
-setCombatParam(combat, COMBAT_PARAM_DISPEL, CONDITION_PARALYZE)
 
 local condition = createConditionObject(CONDITION_REGENERATION)
 setConditionParam(condition, CONDITION_PARAM_SUBID, 1)
@@ -11,9 +10,19 @@ setConditionParam(condition, CONDITION_PARAM_HEALTHTICKS, 1000)
 function onCastSpell(cid, var)
 
 	if(not doPlayerIsInBattleground(cid)) then
-            doPlayerSendCancel(cid, "Esta magia so está disponivel dentro de partidas na Battleground.")
-            doSendMagicEffect(getCreaturePosition(cid), CONST_ME_POFF)
-            return false
+		doPlayerSendCancel(cid, "Esta magia so está disponivel dentro de partidas na Battleground.")
+		doSendMagicEffect(getCreaturePosition(cid), CONST_ME_POFF)
+		return false
+	end
+	
+	local target = getSpellTargetCreature(var)
+	if(not target) then
+		error("Invalid target: " .. table.show(var))
+		return false
+	end	
+	
+	if(not doPlayerIsFlagCarrier(target)) then
+		setCombatParam(combat, COMBAT_PARAM_DISPEL, CONDITION_PARALYZE)
 	end
 	
 	local level, maglevel = getPlayerLevel(cid), getPlayerMagLevel(cid)

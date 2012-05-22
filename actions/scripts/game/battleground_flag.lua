@@ -15,8 +15,7 @@ function onUse(cid, item, fromPosition, itemEx, toPosition)
 		if(flagTeam == enemy) then			
 			onPlayerPickupFlag(cid, item.uid)
 		else
-			local carryingFlag = getPlayerStorageValue(cid, sid.BATTLEGROUND_CARRYING_FLAG) == 1
-			if(carryingFlag) then
+			if(doPlayerIsFlagCarrier(cid)) then
 				local points = getBattlegroundTeamsPoints()
 				points[team] = points[team] + 1
 				

@@ -1,7 +1,6 @@
 local combat = createCombatObject()
 setCombatParam(combat, COMBAT_PARAM_TYPE, COMBAT_HEALING)
 setCombatParam(combat, COMBAT_PARAM_AGGRESSIVE, FALSE)
-setCombatParam(combat, COMBAT_PARAM_DISPEL, CONDITION_PARALYZE)
 
 function onGetFormulaValues(cid, level, maglevel)
 
@@ -10,7 +9,7 @@ function onGetFormulaValues(cid, level, maglevel)
 	if(doPlayerIsInBattleground(cid)) then
 		min = ((level/5)+(maglevel*6.1))
 		max = ((level/5)+(maglevel*8.8))
-	end	
+	end
 	
 	local baseMin = min
 	local baseMax = max
@@ -62,8 +61,19 @@ end
 setCombatCallback(combat, CALLBACK_PARAM_LEVELMAGICVALUE, "onGetFormulaValues")
 
 function onCastSpell(cid, var)
+	
+	local target = getSpellTargetCreature(var)
+	if(not target) then
+		error("Invalid target: " .. table.show(var))
+		return false
+	end	
+	
+	if(not doPlayerIsFlagCarrier(target)) then
+		setCombatParam(combat, COMBAT_PARAM_DISPEL, CONDITION_PARALYZE)
+	end
+	
 	local ret = doCombat(cid, combat, var)
-
+	
 	--send effects
 	if ret == LUA_NO_ERROR then
 		doSendMagicEffect(getCreaturePosition(cid), CONST_ME_MAGIC_BLUE)

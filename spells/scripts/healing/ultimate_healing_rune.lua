@@ -3,7 +3,6 @@ setCombatParam(combat, COMBAT_PARAM_TYPE, COMBAT_HEALING)
 setCombatParam(combat, COMBAT_PARAM_EFFECT, CONST_ME_MAGIC_BLUE)
 setCombatParam(combat, COMBAT_PARAM_AGGRESSIVE, FALSE)
 setCombatParam(combat, COMBAT_PARAM_TARGETCASTERORTOPMOST, TRUE)
-setCombatParam(combat, COMBAT_PARAM_DISPEL, CONDITION_PARALYZE)
 
 function onGetFormulaValues(cid, level, maglevel)
 	local min, max = getMinMaxClassicFormula(level, maglevel, 11.2, 14.5, 250, 300)
@@ -19,6 +18,10 @@ function onCastSpell(cid, var)
 		error("Invalid target: " .. table.show(var))
 		return false
 	end
+	
+	if(not doPlayerIsFlagCarrier(target)) then
+		setCombatParam(combat, COMBAT_PARAM_DISPEL, CONDITION_PARALYZE)
+	end	
 	
 	if(target ~= cid and not isDruid(cid)) then
 		doPlayerSendCancel(cid, "Somente druids podem usar runas de regeneração em outros jogadores.")

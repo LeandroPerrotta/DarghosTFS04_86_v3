@@ -328,6 +328,7 @@ end
 ]]--
 
 function pvpBattleground.onInit()
+	
 	local configs = {
 		teamSize = BG_CONFIG_TEAMSIZE,
 		winPoints = BG_CONFIG_WINPOINTS,
@@ -576,7 +577,7 @@ function pvpBattleground.getPlayersTeamString(team_id)
 			tmp_msg = string.gsub(tmp_msg, "{PLAYER}", getPlayerName(player))
 			tmp_msg = string.gsub(tmp_msg, "{PLAYER_LEVEL}", getPlayerLevel(player))
 			
-			local withFlag = getPlayerStorageValue(player, sid.BATTLEGROUND_CARRYING_FLAG) == 1 and " | Bandeira" or ""
+			local withFlag = doPlayerIsFlagCarrier(player) and " | Bandeira" or ""
 			tmp_msg = string.gsub(tmp_msg, "{FLAG}", withFlag)
 			
 			msg = msg .. tmp_msg
@@ -946,17 +947,23 @@ function pvpBattleground.setPlayerCarryingFlagState(cid, flagState)
 		
 		doPlayerSetPzLocked(cid, true)
 		
-		doChangeSpeed(cid, -240)
+		--doChangeSpeed(cid, -240)
+		
+		condition = createConditionObject(CONDITION_PARALYZE)
+		setConditionParam(condition, CONDITION_PARAM_TICKS, 1000 * 60 * 15)
+		setConditionFormula(condition, -0.5, 0, -0.5, 0)
+		doAddCondition(cid, condition)
 		
 		setPlayerStorageValue(cid, sid.BATTLEGROUND_CARRYING_FLAG, 1)
 	elseif(isInArray({BG_FLAG_STATE_DROP, BG_FLAG_STATE_CAPTURED, BG_FLAG_STATE_NONE}, flagState)) then
 		
 		doRemoveCondition(cid, CONDITION_OUTFIT)
 		doRemoveCondition(cid, CONDITION_INFIGHT)
+		doRemoveCondition(cid, CONDITION_PARALYZE)
 		
 		setPlayerStorageValue(cid, sid.BATTLEGROUND_CARRYING_FLAG, -1)
 
-		doChangeSpeed(cid, 240)	
+		--doChangeSpeed(cid, 240)	
 	end
 	
 	if(flagState == BG_FLAG_STATE_DROP) then
@@ -1256,3 +1263,5 @@ end
 function doPlayerIsInBattleground(cid) return getPlayerBattlegroundTeam(cid) > 0 end
 function isBattlegroundEnemies(cid, target) return getPlayerBattlegroundTeam(cid) ~= getPlayerBattlegroundTeam(target) end
 function getPlayerBattlegroundEnemies(cid) return (getPlayerBattlegroundTeam(cid) == BATTLEGROUND_TEAM_ONE) and BATTLEGROUND_TEAM_TWO or BATTLEGROUND_TEAM_ONE end
+function doPlayerIsFlagCarrier(cid) return getPlayerStorageValue(cid, sid.BATTLEGROUND_CARRYING_FLAG) == 1 end
+	
