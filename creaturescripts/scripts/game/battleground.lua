@@ -213,6 +213,14 @@ function onThink(cid, interval)
 			doPlayerSetPzLocked(cid, true)
 		end
 		
+		if(not hasCondition(cid, CONDITION_PARALYZE)) then
+			print("[Battleground] Player " .. getPlayerName(cid) .. " carregando a bandeira sem condição de paralizado.")
+			local condition = createConditionObject(CONDITION_PARALYZE)
+			setConditionParam(condition, CONDITION_PARAM_TICKS, 1000 * 60 * 15)
+			setConditionFormula(condition, -0.5, 0, -0.5, 0)
+			doAddCondition(cid, condition)			
+		end
+		
 		local canAnnimation = getPlayerStorageValue(cid, sid.BATTLEGROUND_CARRYING_LAST_ANI) == -1 or getPlayerStorageValue(cid, sid.BATTLEGROUND_CARRYING_LAST_ANI) + 2 < os.time()
 		
 		if(canAnnimation)  then

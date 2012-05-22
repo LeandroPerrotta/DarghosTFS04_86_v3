@@ -1,3 +1,5 @@
+ARENA_ENABLED = false
+
 local STATE_WAITING, STATE_STARTING, STATE_RUNNING, STATE_PAUSED = 1, 2, 3, 4
 local TEAM_ONE, TEAM_TWO = 1, 2
 
@@ -192,6 +194,11 @@ function pvpArena:addPlayer(cid, inFirst)
 
 	inFirst = inFirst or false
 
+	if(not ARENA_ENABLED) then
+		doPlayerSendTextMessage(cid, MESSAGE_STATUS_CONSOLE_BLUE, "As Arenas do Darghos estão temporaremaente desativada para uma completa revisão e estará novamente disponivel em breve.")
+		return
+	end
+	
 	if(getGameState() == GAMESTATE_CLOSING or self:getState() == STATE_PAUSED) then
 		doPlayerSendTextMessage(cid, MESSAGE_STATUS_CONSOLE_BLUE, "A arena está desativada por enquanto, tente novamente mais tarde.")
 		return			
@@ -426,7 +433,7 @@ function pvpArena:teleportPlayerOut(player, instant)
 
 	instant = (instant ~= nil) and instant or false
 	
-	setPlayerStorageValue(cid, sid.ARENA_INSIDE, -1)
+	setPlayerStorageValue(player.cid, sid.ARENA_INSIDE, -1)
 	unregisterCreatureEvent(player.cid, "pvpArena_onKill")
 	unlockTeleportScroll(player.cid)
 	doCreatureAddHealth(player.cid, getCreatureMaxHealth(player.cid) - getCreatureHealth(player.cid))
