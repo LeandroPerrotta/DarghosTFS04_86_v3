@@ -1767,8 +1767,8 @@ void Player::onCreatureMove(const Creature* creature, const Tile* newTile, const
 		if(isInBattleground())
 		{
 			addExhaust(1600, EXHAUST_COMBAT_AREA);
-			addExhaust(1200, EXHAUST_HEALING);
-			addExhaust(1200, EXHAUST_OTHERS);
+			addExhaust(2400, EXHAUST_HEALING, true);
+			addExhaust(2400, EXHAUST_OTHERS);
 		}
 		else
 		{
@@ -2778,11 +2778,37 @@ Item* Player::createCorpse(DeathList deathList)
 	return corpse;
 }
 
+#ifdef __DARGHOS_CUSTOM__
+void Player::addExhaust(uint32_t ticks, Exhaust_t type, bool increment)
+{
+	if(!increment)
+	{
+		if(Condition* condition = Condition::createCondition(CONDITIONID_DEFAULT,
+			CONDITION_EXHAUST, ticks, 0, false, (uint32_t)type))
+			addCondition(condition);
+	}
+	else
+	{
+		Condition* exhaust = getCondition(CONDITION_EXHAUST, CONDITIONID_DEFAULT, (uint32_t)type);
+		if(!exhaust)
+		{
+			if(Condition* condition = Condition::createCondition(CONDITIONID_DEFAULT,
+				CONDITION_EXHAUST, ticks, 0, false, (uint32_t)type))
+				addCondition(condition);
+		}
+		else
+		{
+			exhaust->setTicks(exhaust->getTicks() + ticks);
+		}
+	}
+
+#else
 void Player::addExhaust(uint32_t ticks, Exhaust_t type)
 {
 	if(Condition* condition = Condition::createCondition(CONDITIONID_DEFAULT,
 		CONDITION_EXHAUST, ticks, 0, false, (uint32_t)type))
 		addCondition(condition);
+#endif
 }
 
 void Player::addInFightTicks(bool pzLock, int32_t ticks/* = 0*/)

@@ -518,7 +518,11 @@ class Player : public Creature, public Cylinder
 		virtual float getAttackFactor() const;
 		virtual float getDefenseFactor() const;
 
+#ifdef __DARGHOS_CUSTOM__
+		void addExhaust(uint32_t ticks, Exhaust_t type, bool increment = false);
+#else
 		void addExhaust(uint32_t ticks, Exhaust_t type);
+#endif
 		void addInFightTicks(bool pzLock, int32_t ticks = 0);
 		void addDefaultRegeneration(uint32_t addTicks);
 
