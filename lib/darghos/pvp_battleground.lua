@@ -923,6 +923,39 @@ function pvpBattleground.returnFlag(team_id)
 end
 
 function pvpBattleground.putFlag(team_id, pos)
+	local thing = getTileItemById(pos, 1386)
+	
+	-- não iremos deixar colocar a flag no mesmo tile q estiver uma escada...
+	if(thing.uid ~= 0) then
+		local alternativePositions = {
+			{ x = pos.x, y = pos.y - 1, z = pos.z }
+			,{ x = pos.x + 1, y = pos.y - 1, z = pos.z }
+			,{ x = pos.x + 1, y = pos.y, z = pos.z }
+			,{ x = pos.x + 1, y = pos.y + 1, z = pos.z }
+			,{ x = pos.x, y = pos.y + 1, z = pos.z }
+			,{ x = pos.x - 1, y = pos.y + 1, z = pos.z }
+			,{ x = pos.x - 1, y = pos.y, z = pos.z }
+			,{ x = pos.x - 1, y = pos.y - 1, z = pos.z }
+		}
+		
+		local foundPos = false
+		
+		for _, _pos in pairs(alternativePositions) do
+			thing = getTileItemById(_pos, 1386)
+			if(thing.uid == 0) then
+				pos = _pos
+				foundPos = true
+				
+				break
+			end
+		end
+		
+		if(not foundPos) then
+			error("[Battleground Warning | pvpBattleground.putFlag] Valid free tile to drop flag not found!")
+			return
+		end
+	end
+	
 	doCleanTile(pos)
 	local uid = doCreateItem(BATTLEGROUND_FLAGS[team_id].item_id, pos)
 	doItemSetAttribute(uid, "uid", BATTLEGROUND_FLAGS[team_id].flag)
