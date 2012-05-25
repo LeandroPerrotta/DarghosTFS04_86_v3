@@ -10,7 +10,7 @@ BG_GIVE_MONEY = true
 BG_MONEY_WIN = 40000
 BG_MONEY_LOST = 8000
 
-BG_CONFIG_TEAMSIZE = 6
+BG_CONFIG_TEAMSIZE = 1
 BG_CONFIG_WINPOINTS = 3
 BG_CONFIG_DURATION = 60 * 15
 
@@ -18,6 +18,7 @@ BG_AFK_TIME_LIMIT = 60 * 2
 BG_WINNER_INPZ_PUNISH_INTERVAL = 60
 
 BG_LASTPLAYERS_BROADCAST_INTERVAL = 60 * 3
+BG_LEAVE_SPAWN_INTERVAL = 10
 
 BG_RET_NO_ERROR = 0
 BG_RET_CLOSED = 1
@@ -81,10 +82,22 @@ BATTLEGROUND_RATING = 3
 BATTLEGROUND_HIGH_RATE = 1601
 BATTLEGROUND_LOW_RATE = 501
 
--- flags
-BATTLEGROUND_FLAGS = {
-	[BATTLEGROUND_TEAM_ONE] = { flag = uid.BATTLEGROUND_TEAM_ONE_FLAG, uid = uid.BATTLEGROUND_TEAM_ONE_FLAG_SPAWN, item_id = 11293, lastKiller = gid.BG_LAST_FLAG_KILLER_TEAM_ONE }
-	,[BATTLEGROUND_TEAM_TWO] = { flag = uid.BATTLEGROUND_TEAM_TWO_FLAG, uid = uid.BATTLEGROUND_TEAM_TWO_FLAG_SPAWN, item_id = 10952, lastKiller = gid.BG_LAST_FLAG_KILLER_TEAM_TWO }
+-- team misc
+BATTLEGROUND_TEAM = {
+	[BATTLEGROUND_TEAM_ONE] = { 
+		flag = uid.BATTLEGROUND_TEAM_ONE_FLAG
+		, uid = uid.BATTLEGROUND_TEAM_ONE_FLAG_SPAWN
+		, item_id = 11293
+		, lastKiller = gid.BG_LAST_FLAG_KILLER_TEAM_ONE
+		, lastDeathDate = gid.BG_LAST_DEATH_TEAM_ONE 
+	}
+	,[BATTLEGROUND_TEAM_TWO] = { 
+		flag = uid.BATTLEGROUND_TEAM_TWO_FLAG
+		, uid = uid.BATTLEGROUND_TEAM_TWO_FLAG_SPAWN
+		, item_id = 10952
+		, lastKiller = gid.BG_LAST_FLAG_KILLER_TEAM_TWO
+		, lastDeathDate = gid.BG_LAST_DEATH_TEAM_TWO 
+	}
 }
 --[[
 	RATING & EXP AREA
@@ -896,7 +909,7 @@ function pvpBattleground.addObjects()
 		doCreateItem(ITEM_GATE, pos)
 	end	
 	
-	for _,v in pairs(BATTLEGROUND_FLAGS) do
+	for _,v in pairs(BATTLEGROUND_TEAM) do
 		
 		local thing = getThing(v.flag, false)
 		if(thing.uid ~= 0) then
@@ -910,15 +923,15 @@ end
 
 function pvpBattleground.setLastFlagKiller(cid)
 	local enemy = getPlayerBattlegroundEnemies(cid)
-	doSetStorage(BATTLEGROUND_FLAGS[enemy].lastKiller, getPlayerGUID(cid))
+	doSetStorage(BATTLEGROUND_TEAM[enemy].lastKiller, getPlayerGUID(cid))
 end
 
 function pvpBattleground.getLastFlagKiller(team)
-	return getStorage(BATTLEGROUND_FLAGS[team].lastKiller)
+	return getStorage(BATTLEGROUND_TEAM[team].lastKiller)
 end
 
 function pvpBattleground.returnFlag(team_id)
-	local pos = getThingPos(BATTLEGROUND_FLAGS[team_id].uid)
+	local pos = getThingPos(BATTLEGROUND_TEAM[team_id].uid)
 	pvpBattleground.putFlag(team_id, pos)
 end
 
@@ -957,8 +970,8 @@ function pvpBattleground.putFlag(team_id, pos)
 	end
 	
 	doCleanTile(pos)
-	local uid = doCreateItem(BATTLEGROUND_FLAGS[team_id].item_id, pos)
-	doItemSetAttribute(uid, "uid", BATTLEGROUND_FLAGS[team_id].flag)
+	local uid = doCreateItem(BATTLEGROUND_TEAM[team_id].item_id, pos)
+	doItemSetAttribute(uid, "uid", BATTLEGROUND_TEAM[team_id].flag)
 end
 
 function pvpBattleground.setPlayerCarryingFlagState(cid, flagState)
@@ -971,7 +984,7 @@ function pvpBattleground.setPlayerCarryingFlagState(cid, flagState)
 		
 		local condition = createConditionObject(CONDITION_OUTFIT)
 		setConditionParam(condition, CONDITION_PARAM_TICKS, 1000 * 60 * 15)
-		addOutfitCondition(condition, { lookTypeEx = BATTLEGROUND_FLAGS[enemy].item_id})
+		addOutfitCondition(condition, { lookTypeEx = BATTLEGROUND_TEAM[enemy].item_id})
 		doAddCondition(cid, condition)
 		
 		condition = createConditionObject(CONDITION_INFIGHT)
@@ -1068,16 +1081,21 @@ function pvpBattleground.removeWall(team)
 	end
 end
 
-function pvpBattleground.onLeaveBase(cid, teamBase)
+function pvpBattleground.updateLastTeamDeath(team_id)
+	doSetStorage(BATTLEGROUND_TEAM[team_id].lastDeathDate, os.time())
+end
 
-	if(getBattlegroundStatus() ~= BATTLEGROUND_STATUS_STARTED) then
-		doPlayerSendCancel(cid, "Aguarde o inicio da partida para sair de sua base.")
-		return false		
-	end
+function pvpBattleground.getLastTeamDeath(team_id)
+	return getStorage(BATTLEGROUND_TEAM[team_id].lastDeathDate)
+end
+
+function pvpBattleground.onLeaveSpawnArea(cid)
+
+	local lastTeamDeath = pvpBattleground.getLastTeamDeath(getPlayerBattlegroundTeam(cid))
 	
-	if(getPlayerBattlegroundTeam(cid) ~= teamBase) then
-		local teams = { [1] = "Time A", [2] = "Time B" }
-		doPlayerSendCancel(cid, "Somente jogadores do " .. teams[teamBase] .. " podem entrar neste portal.")
+	if(lastTeamDeath ~= -1 and lastTeamDeath + BG_LEAVE_SPAWN_INTERVAL > os.time()) then
+		local leftSeconds = (lastTeamDeath + BG_LEAVE_SPAWN_INTERVAL) - os.time()
+		doPlayerSendCancel(cid, "Você podera sair em " .. leftSeconds .. " segundos.")
 		return false	
 	end
 	

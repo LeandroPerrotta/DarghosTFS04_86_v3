@@ -38,9 +38,8 @@ function onStepIn(cid, item, position, fromPosition)
 			pushBack(cid, position, fromPosition)
 			return false
 		end
-	elseif(isInArray({aid.BATTLEGROUND_LEAVE_BASE_TEAM_ONE, aid.BATTLEGROUND_LEAVE_BASE_TEAM_TWO}, item.actionid)) then
-		local team = (item.actionid == aid.BATTLEGROUND_LEAVE_BASE_TEAM_ONE) and BATTLEGROUND_TEAM_ONE or BATTLEGROUND_TEAM_TWO
-		local ret = pvpBattleground.onLeaveBase(cid, team)
+	elseif(item.actionid == aid.BATTLEGROUND_LEAVE_SPAWN) then
+		local ret = pvpBattleground.onLeaveSpawnArea(cid)
 		if(not ret) then
 			pushBack(cid, position, fromPosition)
 			return false

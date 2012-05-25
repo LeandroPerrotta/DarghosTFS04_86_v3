@@ -180,6 +180,8 @@ function onBattlegroundDeath(cid, lastDamager, assistList)
 		pvpBattleground.setLastFlagKiller(lastDamager)
 	end
 	
+	pvpBattleground.updateLastTeamDeath(getPlayerBattlegroundTeam(cid))
+	
 	msg = string.gsub(msg, "|PLAYER_KILLER|", getPlayerName(lastDamager) .. " (" .. getPlayerLevel(lastDamager) .. ")")
 	msg = string.gsub(msg, "|PLAYER_DEATH|", getPlayerName(cid) .. " (" .. getPlayerLevel(cid) .. ")")
 	msg = string.gsub(msg, "|KILLER_TEAM|", teams[getPlayerBattlegroundTeam(lastDamager)])
