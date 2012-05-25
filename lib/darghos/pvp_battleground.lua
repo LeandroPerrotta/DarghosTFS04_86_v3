@@ -105,17 +105,17 @@ BATTLEGROUND_TEAM = {
 
 battlegroundExpToLevelGain = {
 	[WORLD_ORDON] = {
-		{to = 125, multipler = 2.30},
-		{from = 126, to = 150, multipler = 1.70},
-		{from = 151, to = 175, multipler = 1.40},
-		{from = 176, to = 200, multipler = 0.90},
-		{from = 201, to = 225, multipler = 0.60},
-		{from = 226, to = 250, multipler = 0.40},
-		{from = 251, to = 275, multipler = 0.30},
-		{from = 276, to = 300, multipler = 0.25},
-		{from = 301, to = 325, multipler = 0.20},
-		{from = 326, to = 350, multipler = 0.18},
-		{from = 351, to = 400, multipler = 0.14},
+		{to = 125, multipler = 4.20},
+		{from = 126, to = 150, multipler = 3.00},
+		{from = 151, to = 175, multipler = 2.60},
+		{from = 176, to = 200, multipler = 2.20},
+		{from = 201, to = 225, multipler = 1.80},
+		{from = 226, to = 250, multipler = 1.40},
+		{from = 251, to = 275, multipler = 1.00},
+		{from = 276, to = 300, multipler = 0.75},
+		{from = 301, to = 325, multipler = 0.35},
+		{from = 326, to = 350, multipler = 0.25},
+		{from = 351, to = 400, multipler = 0.20},
 		{from = 401, to = 450, multipler = 0.11},
 		{from = 451, to = 500, multipler = 0.07},
 		{from = 501, to = 600, multipler = 0.05}
