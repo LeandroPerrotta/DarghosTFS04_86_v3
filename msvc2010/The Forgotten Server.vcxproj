@@ -307,7 +307,7 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>false</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>__USE_MYSQL__;__ENABLE_SERVER_DIAGNOSTIC__;__EXCEPTION_TRACER__;__USE_LUALIBRARIES__;__DARGHOS_PVP_SYSTEM__;__DARGHOS_SPOOF__;__DARGHOS_CUSTOM__;__DARGHOS_CUSTOM_SPELLS__;__TFS_NEWEST_REVS_FIXIES__;__NO_CRYPTOPP__;__EXCEPTION_TRACER__;__USE_LUALIBRARIES__;__DARGHOS_PVP_SYSTEM__;__DARGHOS_SPOOF__;__DARGHOS_CUSTOM__;__DARGHOS_CUSTOM_SPELLS__;__TFS_NEWEST_REVS_FIXIES__;__NO_CRYPTOPP__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>__USE_MYSQL__;__ENABLE_SERVER_DIAGNOSTIC__;__EXCEPTION_TRACER__;__USE_LUALIBRARIES__;__DARGHOS_PVP_SYSTEM__;__DARGHOS_CUSTOM__;__DARGHOS_CUSTOM_SPELLS__;__DARGHOS_SPOOF__;__TFS_NEWEST_REVS_FIXIES__;__NO_CRYPTOPP__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>otpch.h</PrecompiledHeaderFile>

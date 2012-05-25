@@ -59,6 +59,7 @@ typedef std::map<uint32_t, Bg_PlayerInfo_t> PlayersMap;
 struct Bg_Team_t {
     PlayersMap players;
     Bg_TeamLook_t look;
+	Position entrance_pos;
     Position spawn_pos;
 	uint32_t points;
 	uint32_t levelSum;

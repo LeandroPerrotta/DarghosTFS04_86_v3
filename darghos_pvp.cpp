@@ -69,6 +69,10 @@ void Battleground::onInit()
 	if(thing)
 		team_one.spawn_pos = thing->getPosition();
 
+	thing = ScriptEnviroment::getUniqueThing((uint32_t)BATTLEGROUND_TEAM_1_ENTRANCE);
+	if(thing)
+		team_one.entrance_pos = thing->getPosition();
+
 	teamsMap.insert(std::make_pair(BATTLEGROUND_TEAM_ONE, team_one));
 
     Bg_Team_t team_two;
@@ -84,6 +88,10 @@ void Battleground::onInit()
 	thing = ScriptEnviroment::getUniqueThing((uint32_t)BATTLEGROUND_TEAM_2_SPAWN);
 	if(thing)
 		team_two.spawn_pos = thing->getPosition();
+
+	thing = ScriptEnviroment::getUniqueThing((uint32_t)BATTLEGROUND_TEAM_2_ENTRANCE);
+	if(thing)
+		team_two.entrance_pos = thing->getPosition();
 
 	teamsMap.insert(std::make_pair(BATTLEGROUND_TEAM_TWO, team_two));
 
@@ -349,7 +357,7 @@ void Battleground::putInside(Player* player)
 	if(playerIsInWaitlist(player))
 		removeWaitlistPlayer(player);
 
-	g_game.internalTeleport(player, team->spawn_pos, true);
+	g_game.internalTeleport(player, team->entrance_pos, true);
 	g_game.addMagicEffect(oldPos, MAGIC_EFFECT_TELEPORT);
 
 	Bg_Statistic_t* statistic = new Bg_Statistic_t;
