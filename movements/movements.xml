@@ -148,22 +148,31 @@
 		
 	<!-- NECKS -->
 		<!-- Petrified Stonehearth (equipped) -->
-	<movevent type="Equip" itemid="12702" slot="necklace" event="function" value="onEquipItem"/>
+	<movevent type="Equip" itemid="12702" slot="necklace" event="function" value="onEquipItem">
+		<vocation id="1"/> <vocation id="5" showInDescription="0"/> <vocation id="9" showInDescription="0"/>	
+		<vocation id="2"/> <vocation id="6" showInDescription="0"/> <vocation id="10" showInDescription="0"/>
+	</movevent>
 	<movevent type="DeEquip" itemid="12702" slot="necklace" event="function" value="onDeEquipItem"/>
+	
 		<!-- Petrified Stonehearth (unequipped) -->
 	<movevent type="Equip" itemid="12701" slot="necklace" event="function" value="onEquipItem"/>
 	<movevent type="DeEquip" itemid="12701" slot="necklace" event="function" value="onDeEquipItem"/>
 	
 	<!-- RINGS SECTOR -->
-		<!-- Vengeance Seal Ring (equipped) -->
-	<movevent type="Equip" itemid="12705" slot="ring" event="function" value="onEquipItem"/>
+	<!-- Vengeance Seal Ring (equipped) -->
+	<movevent type="Equip" itemid="12705" slot="ring" event="function" value="onEquipItem">
+		<vocation id="4"/> <vocation id="8" showInDescription="0"/> <vocation id="12" showInDescription="0"/>
+	</movevent>
 	<movevent type="DeEquip" itemid="12705" slot="ring" event="function" value="onDeEquipItem"/>
-		<!-- Vengeance Seal Ring (unequipped) -->
+	
+	<!-- Vengeance Seal Ring (unequipped) -->
 	<movevent type="Equip" itemid="12704" slot="ring" event="function" value="onEquipItem"/>
 	<movevent type="DeEquip" itemid="12704" slot="ring" event="function" value="onDeEquipItem"/>
 	
 		<!-- Crooked Eye Ring (equipped) -->
-	<movevent type="Equip" itemid="12708" slot="ring" event="function" value="onEquipItem"/>
+	<movevent type="Equip" itemid="12708" slot="ring" event="function" value="onEquipItem">
+		<vocation id="3"/> <vocation id="7" showInDescription="0"/> <vocation id="11" showInDescription="0"/>
+	</movevent>		
 	<movevent type="DeEquip" itemid="12708" slot="ring" event="function" value="onDeEquipItem"/>
 		<!-- Crooked Eye Ring (unequipped) -->
 	<movevent type="Equip" itemid="12707" slot="ring" event="function" value="onEquipItem"/>
