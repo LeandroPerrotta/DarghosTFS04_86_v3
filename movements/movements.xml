@@ -135,7 +135,7 @@
 	</movevent>	
 	<movevent type="DeEquip" itemid="5803" slot="hand" event="function" value="onDeEquipItem"/>
 	
-	*BOOTS SECTOR
+	<!-- BOOTS SECTOR -->
 	<movevent type="Equip" itemid="12673" slot="feet" event="function" value="onEquipItem"/>
 	<movevent type="DeEquip" itemid="12673" slot="feet" event="function" value="onDeEquipItem"/>
 	<movevent type="Equip" itemid="12672" slot="feet" event="function" value="onEquipItem"/>
@@ -145,6 +145,16 @@
 	<movevent type="DeEquip" itemid="12675" slot="feet" event="function" value="onDeEquipItem"/>
 	<movevent type="Equip" itemid="12674" slot="feet" event="function" value="onEquipItem"/>
 	<movevent type="DeEquip" itemid="12674" slot="feet" event="function" value="onDeEquipItem"/>
+	
+	<!-- CHESTS -->
+	<!-- elemental robe of dragons souls -->
+	<movevent type="Equip" itemid="12711" slot="armor" level="120" event="function" value="onEquipItem">
+		<vocation id="1"/> <vocation id="5" showInDescription="0"/> <vocation id="9" showInDescription="0"/>
+		
+		<vocation id="2"/> <vocation id="6" showInDescription="0"/> <vocation id="10" showInDescription="0"/>
+		
+	</movevent>
+	<movevent type="DeEquip" itemid="12711" slot="armor" event="function" value="onDeEquipItem"/>	
 		
 	<!-- NECKS -->
 		<!-- Petrified Stonehearth (equipped) -->

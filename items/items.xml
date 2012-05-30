@@ -19415,7 +19415,20 @@
 	<item id="12710" article="a" name="flask of magic productivity">
 		<attribute key="description" value="Este liquido magico irá trazer efeitos inacreditaveis se você beber-lo enquanto estiver muito cançado."/>
 		<attribute key="weight" value="300"/>
-	</item>	
+	</item>
+	<item id="12711" article="the" name="elemental robe of dragons souls">
+		<attribute key="description" value="If you can wear this robe you can feel the true soul of the dragons." />
+		<attribute key="armor" value="12" />
+		<attribute key="weight" value="3350" />
+		<attribute key="absorbPercentFire" value="10" />
+		<attribute key="absorbPercentIce" value="10" />
+		<attribute key="magicpoints" value="4"/>
+		<attribute key="criticalChance" value="4" />
+		<attribute key="maxHealthPoints" value="185" />
+		<attribute key="slotType" value="body" />
+		<attribute key="rarity" value="legendary" />
+		<attribute key="quality" value="cloth" />			
+	</item>
 	
 	<!-- Modified Items -->
 	<item id="2270" article="a" name="holy rune">
