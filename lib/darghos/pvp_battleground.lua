@@ -1147,6 +1147,11 @@ function pvpBattleground.onReportIdle(cid, idle_player)
 		return
 	end
 	
+	if(hasCondition(idle_player, CONDITION_INFIGHT)) then
+		pvpBattleground.sendPlayerChannelMessage(cid, "Este jogador está em combate portanto não pode estar inativo.")
+		return		
+	end
+	
 	if(getBattlegroundStatus() ~= BATTLEGROUND_STATUS_STARTED) then
 		pvpBattleground.sendPlayerChannelMessage(cid, "Somente é permitido fazer denuncias após a Battleground ter iniciado.")
 		return

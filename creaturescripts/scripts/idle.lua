@@ -18,6 +18,10 @@ function onThink(cid, interval)
 		return true
 	end
 	
+	if(doPlayerIsInBattleground(cid) and hasCondition(cid, CONDITION_INFIGHT)) then
+		return true
+	end
+	
 	local idleTime = getPlayerIdleTime(cid) + interval
 	doPlayerSetIdleTime(cid, idleTime)
 	
