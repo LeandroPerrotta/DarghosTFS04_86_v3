@@ -2,7 +2,7 @@ function onPrepareDeath(cid, deathList)
 	
 	if(isPlayer(cid)) then
 	
-		if(doRoyalBlessIsEnable()) then
+		if(doRoyalBlessIsEnable() and not isPlayerInDungeon(cid)) then
 			return useRoyalBless(cid)
 		end
 	
