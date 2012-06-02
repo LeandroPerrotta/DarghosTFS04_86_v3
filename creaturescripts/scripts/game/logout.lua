@@ -1,6 +1,6 @@
 function onLogout(cid, forceLogout)
 	
-	if(isPlayerInDungeon(cid)) then
+	if(isPlayerInDungeon(cid) and not forceLogout) then
 		doPlayerSendTextMessage(cid, MESSAGE_INFO_DESCR, "Não pode sair do jogo no meio de uma Dungeon!")
 		return false
 	end	
