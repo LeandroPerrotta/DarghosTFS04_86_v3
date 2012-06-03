@@ -983,12 +983,12 @@ function pvpBattleground.setPlayerCarryingFlagState(cid, flagState)
 		doRemoveCondition(cid, CONDITION_HASTE)
 		
 		local condition = createConditionObject(CONDITION_OUTFIT)
-		setConditionParam(condition, CONDITION_PARAM_TICKS, 1000 * 60 * 15)
+		setConditionParam(condition, CONDITION_PARAM_TICKS, 1000 * BG_CONFIG_DURATION)
 		addOutfitCondition(condition, { lookTypeEx = BATTLEGROUND_TEAM[enemy].item_id})
 		doAddCondition(cid, condition)
 		
 		condition = createConditionObject(CONDITION_INFIGHT)
-		setConditionParam(condition, CONDITION_PARAM_TICKS, 1000 * 60 * 15)
+		setConditionParam(condition, CONDITION_PARAM_TICKS, 1000 * BG_CONFIG_DURATION)
 		doAddCondition(cid, condition)
 		
 		doPlayerSetPzLocked(cid, true)
@@ -996,7 +996,7 @@ function pvpBattleground.setPlayerCarryingFlagState(cid, flagState)
 		--doChangeSpeed(cid, -240)
 		
 		condition = createConditionObject(CONDITION_PARALYZE)
-		setConditionParam(condition, CONDITION_PARAM_TICKS, 1000 * 60 * 15)
+		setConditionParam(condition, CONDITION_PARAM_TICKS, 1000 * BG_CONFIG_DURATION)
 		setConditionFormula(condition, -0.5, 0, -0.5, 0)
 		doAddCondition(cid, condition)
 		

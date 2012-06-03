@@ -218,7 +218,7 @@ function onThink(cid, interval)
 		if(not hasCondition(cid, CONDITION_PARALYZE)) then
 			print("[Battleground] Player " .. getPlayerName(cid) .. " carregando a bandeira sem condição de paralizado.")
 			local condition = createConditionObject(CONDITION_PARALYZE)
-			setConditionParam(condition, CONDITION_PARAM_TICKS, 1000 * 60 * 15)
+			setConditionParam(condition, CONDITION_PARAM_TICKS, 1000 * BG_CONFIG_DURATION)
 			setConditionFormula(condition, -0.5, 0, -0.5, 0)
 			doAddCondition(cid, condition)			
 		end
