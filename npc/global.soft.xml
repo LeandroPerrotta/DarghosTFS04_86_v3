@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+ï»¿<?xml version="1.0"?>
 <npc name="Kethorin" floorchange="0" walkinterval="4000">
 	<health now="150" max="150"/>
 	<look type="54" head="87" body="28" legs="98" feet="57" addons="1"/>
@@ -82,7 +82,7 @@
 		<keywords>boots</keywords>
 		<keywords>recharge</keywords>
 		<keywords>trade</keywords>
-		<response text="Você gostaria de recarregar a sua soft boots gasta por 100.000 moedas de ouro?">
+		<response text="VocÃª gostaria de recarregar a sua soft boots gasta por 100.000 moedas de ouro?">
 			<action name="topic" value="1"/>
 
 			<interact keywords="yes" topic="1">
@@ -94,12 +94,12 @@
 							doPlayerRemoveItem(cid,6530,1)
 							doPlayerRemoveItem(cid,10021,1)
 							doPlayerAddItem(cid, 6132,1)
-							selfSay("Aqui está a sua soft boots recarregada! Aproveitea!",cid)
+							selfSay("Aqui estÃ¡ a sua soft boots recarregada! Aproveitea!",cid)
 						else
-							selfSay("Você não possui dinheiro para isto!",cid)
+							selfSay("VocÃª nÃ£o possui dinheiro para isto!",cid)
 						end
 					else
-						selfSay("Você não possui uma soft boots gasta para recarregar!",cid)
+						selfSay("VocÃª nÃ£o possui uma soft boots gasta para recarregar!",cid)
 					end
 					]]>
 					</action>
