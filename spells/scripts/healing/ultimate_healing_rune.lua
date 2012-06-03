@@ -26,5 +26,10 @@ function onCastSpell(cid, var)
 		return false		
 	end
 	
+	if(isPlayer(target) and isPaladin(target)) then
+		min = math.ceil(min * 0.80)
+		max = math.ceil(max * 0.80)	
+	end
+	
 	return doCombat(cid, combat, var)
 end
