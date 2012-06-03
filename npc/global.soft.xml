@@ -82,7 +82,7 @@
 		<keywords>boots</keywords>
 		<keywords>recharge</keywords>
 		<keywords>trade</keywords>
-		<response text="Do you want, to recharge your soft boots for 10,000 golds?">
+		<response text="Você gostaria de recarregar a sua soft boots gasta por 100.000 moedas de ouro?">
 			<action name="topic" value="1"/>
 
 			<interact keywords="yes" topic="1">
@@ -90,16 +90,16 @@
 					<action name="script">
 					<![CDATA[
 					if(getPlayerItemCount(cid,6530)) >= 1 or (getPlayerItemCount(cid,10021)) >= 1 then
-						if(doPlayerRemoveMoney(cid,10000)) == TRUE then
+						if(doPlayerRemoveMoney(cid,100000)) == TRUE then
 							doPlayerRemoveItem(cid,6530,1)
 							doPlayerRemoveItem(cid,10021,1)
 							doPlayerAddItem(cid, 6132,1)
-							selfSay("Here is your new soft boots! Enjoy it.",cid)
+							selfSay("Aqui está a sua soft boots recarregada! Aproveitea!",cid)
 						else
-							selfSay("You no have suficient money!",cid)
+							selfSay("Você não possui dinheiro para isto!",cid)
 						end
 					else
-						selfSay("You dont have a worn soft boots for recharge!",cid)
+						selfSay("Você não possui uma soft boots gasta para recarregar!",cid)
 					end
 					]]>
 					</action>
@@ -107,7 +107,7 @@
 			</interact>
 			
 			<interact keywords="|*|">
-				<response text="Maybe some other time."/>
+				<response text="Talvez outra hora..."/>
 			</interact>
 		</response>
     </interact>
