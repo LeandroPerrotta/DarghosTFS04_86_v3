@@ -5690,14 +5690,24 @@ Position Game::getClosestFreeTile(Creature* creature, Position pos, bool extende
 
 #ifdef __DARGHOS_CUSTOM__
 			ReturnValue ret = tile->__queryAdd(0, player, 1, flags);
+
+			if(ret == RET_NOTENOUGHROOM || (ret == RET_NOTPOSSIBLE && !player->hasCustomFlag(PlayerCustomFlag_CanMoveAnywhere))
+				|| (ret == RET_PLAYERISNOTINVITED && !ignoreHouse && !player->hasFlag(PlayerFlag_CanEditHouses)))
+				continue;
+
+			if(ret == RET_NOERROR)
+				return tile->getPosition();
+			else
+				continue;
 #else
 			ReturnValue ret = tile->__queryAdd(0, player, 1, FLAG_IGNOREBLOCKITEM);
-#endif
+
 			if(ret == RET_NOTENOUGHROOM || (ret == RET_NOTPOSSIBLE && !player->hasCustomFlag(PlayerCustomFlag_CanMoveAnywhere))
 				|| (ret == RET_PLAYERISNOTINVITED && !ignoreHouse && !player->hasFlag(PlayerFlag_CanEditHouses)))
 				continue;
 
 			return tile->getPosition();
+#endif		
 		}
 	}
 	else

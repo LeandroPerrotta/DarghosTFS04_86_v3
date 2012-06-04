@@ -15,6 +15,7 @@
 #include "player.h"
 #include "darghos_const.h"
 
+#define BATTLEGROUND_DESERTOR_TIME 60 * 25
 #define LIMIT_TARGET_FRAGS_INTERVAL 60 * 3
 #define PVP_CHANNEL_ID 10
 

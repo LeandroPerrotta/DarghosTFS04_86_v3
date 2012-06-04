@@ -166,6 +166,8 @@ void Battleground::finish()
 
 void Battleground::finish(Bg_Teams_t teamWinner)
 {
+	status = FINISHED;
+
 	for(BgTeamsMap::iterator it = teamsMap.begin(); it != teamsMap.end(); it++)
 	{
 		for(PlayersMap::iterator it_players = it->second.players.begin(); it_players != it->second.players.end(); it_players++)
@@ -179,6 +181,7 @@ void Battleground::finish(Bg_Teams_t teamWinner)
 			if(player->getBattlegroundTeam() == teamWinner)
 				isWinner  = true;
 
+			g_game.playerCancelAttackAndFollow(it_players->first);
 			player->setPause(true);
 			player->sendPvpChannelMessage("Você será levado ao lugar em que estava em 5 segundos...");
 
@@ -457,7 +460,7 @@ BattlegrondRetValue Battleground::kickPlayer(Player* player, bool force)
 		if(status == STARTED && !force)
 		{
 			std::stringstream ss;
-			ss << (time(NULL) + 60 * 20);
+			ss << (time(NULL) + BATTLEGROUND_DESERTOR_TIME);
 			player->setStorage(DARGHOS_STORAGE_BATTLEGROUND_DESERTER_UNTIL, ss.str());
 		}
 
@@ -471,7 +474,13 @@ BattlegrondRetValue Battleground::kickPlayer(Player* player, bool force)
 		player->setMasterPosition(playerInfo.masterPosition);
 
 		Position pos = g_game.getClosestFreeTile(player, playerInfo.oldPosition, false, false, false);
-		g_game.internalTeleport(player, pos, true);
+
+		if(pos.x == 0 && pos.y == 0 && pos.z == 0)
+			pos = player->getMasterPosition();
+
+		if(g_game.internalTeleport(player, pos, true) != RET_NOERROR)
+			std::clog << "[Battleground Warning] Can not teleport player " << player->getName() << " out of the battleground." << std::endl;
+
 		g_game.addMagicEffect(playerInfo.oldPosition, MAGIC_EFFECT_TELEPORT);
 
 		statisticsList.remove(playerInfo.statistics);
@@ -582,13 +591,13 @@ void Battleground::onPlayerDeath(Player* player, DeathList deathList)
 			(*it)->executeBgDeath(player, lastDmg, tempList);
 		}
 
-		if(team->points >= winPoints && status == STARTED)
+		/*if(team->points >= winPoints && status == STARTED)
 		{
 			status = FINISHED;
 
 			Scheduler::getInstance().addEvent(createSchedulerTask(1000,
 				boost::bind(&Battleground::finish, this, lastDmg->getBattlegroundTeam())));
-		}
+		}*/
 	}
 
 	if(!success || !lastDmg)
@@ -762,10 +771,7 @@ void Battleground::incrementTeamPoints(Bg_Teams_t team_id, uint32_t points)
 
     if(teamsMap[team_id].points >= winPoints && status == STARTED)
     {
-        status = FINISHED;
-
-        Scheduler::getInstance().addEvent(createSchedulerTask(1000,
-            boost::bind(&Battleground::finish, this, team_id)));
+		finish(team_id);
     }
 }
 
@@ -775,10 +781,7 @@ void Battleground::setTeamPoints(Bg_Teams_t team_id, uint32_t points)
 
     if(teamsMap[team_id].points >= winPoints && status == STARTED)
     {
-        status = FINISHED;
-
-        Scheduler::getInstance().addEvent(createSchedulerTask(1000,
-            boost::bind(&Battleground::finish, this, team_id)));
+		finish(team_id);
     }
 }
 
