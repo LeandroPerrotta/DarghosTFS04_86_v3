@@ -768,7 +768,7 @@ function pvpBattleground.onEnter(cid)
 	end
 
 	if(ret == BG_RET_CAN_NOT_JOIN) then
-		doPlayerSendCancel(cid, "Você abandonou uma battleground e foi marcado como desertor, e não poderá entrar em outra durante 20 minutos.")
+		doPlayerSendCancel(cid, "Você abandonou uma battleground e foi marcado como desertor, e não poderá entrar em outra durante 25 minutos.")
 		return false
 	end	
 	
