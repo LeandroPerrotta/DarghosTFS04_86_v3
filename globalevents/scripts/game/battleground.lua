@@ -18,6 +18,7 @@ local secondsLeftMessages = {
 
 function onBattlegroundStart(notJoinPlayers)
 	
+	doSetStorage(gid.BG_LAST_INIT, os.time())
 	pvpBattleground.sendPvpChannelMessage("[Battleground] A partida foi iniciada! Será vencedor o primeiro time que capturar a bandeira dos adversários 3 vezes ou o que mais bandeiras capturadas ao fim da partida em " .. BG_CONFIG_DURATION / 60 .. " minutos!", PVPCHANNEL_MSGMODE_OUTBATTLE, TALKTYPE_TYPES["channel-orange"])
 	
 	if(notJoinPlayers > 0) then

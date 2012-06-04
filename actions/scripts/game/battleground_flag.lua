@@ -14,8 +14,15 @@ function onUse(cid, item, fromPosition, itemEx, toPosition)
 		
 		if(flagTeam == enemy) then			
 			onPlayerPickupFlag(cid, item.uid)
-		else
+		else	
 			if(doPlayerIsFlagCarrier(cid)) then
+				
+				local bgSecondsLeft = (getStorage(gid.BG_LAST_INIT) + BG_CONFIG_DURATION) - os.time()
+				if(bgSecondsLeft <= 10) then
+					doPlayerSendCancel(cid, "Você não pode mais entregar a bandeira, aguarde agora o fim da partida.")
+					return true
+				end
+				
 				local points = getBattlegroundTeamsPoints()
 				points[team] = points[team] + 1
 				
