@@ -16,14 +16,12 @@ function process(cid, message, keywords, parameters, node)
         return false
     end 
 
-    if(getConfigInfo("worldId") == WORLD_AARAGON) then
-    npcHandler:say("Você não pode efetuar uma mudança de PvP neste mundo...", cid)
-	    npcHandler:resetNpc(cid)
+    if(darghos_world_configuration ~= WORLD_CONF_CHANGE_ALLOWED) then
 	    return false		
     end
 	
     if(hasCondition(cid, CONDITION_INFIGHT)) then
-    	npcHandler:say("Ohh por Deus! Você está muito agressivo! Volte quando estiver mais calmo...", cid)
+    	npcHandler:say("Você entrou em combate com outra criatura ou jogador recentemente!", cid)
 		npcHandler:resetNpc(cid)		
 		return false
     end

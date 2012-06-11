@@ -15,6 +15,11 @@ function saySpecialPermission(cid, message, keywords, parameters, node)
     if(not npcHandler:isFocused(cid)) then
         return false
     end 
+	
+
+    if(darghos_world_configuration ~= WORLD_CONF_CHANGE_ALLOWED) then
+	    return false		
+    end
     
     local lastChangePvp = getPlayerStorageValue(cid, sid.LAST_CHANGE_PVP)
     
@@ -65,7 +70,11 @@ function sayPunishment(cid, message, keywords, parameters, node)
 
     if(not npcHandler:isFocused(cid)) then
         return false
-    end 
+    end
+	
+    if(darghos_world_configuration ~= WORLD_CONF_CHANGE_ALLOWED) then
+	    return false		
+    end	
     
     local changePvpDebuffExpire = getPlayerStorageValue(cid, sid.CHANGE_PVP_EXP_DEBUFF)
     

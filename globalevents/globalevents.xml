@@ -12,6 +12,9 @@
 	<globalevent name="bgprepare" type="bgprepare" event="script" value="game/battleground.lua"/>
 	<globalevent name="bgend" type="bgend" event="script" value="game/battleground.lua"/>
 	<globalevent name="announcements" interval="3600000" event="script" value="game/announcements.lua"/>
+	
+	<!-- Darghos Raids -->
+	<globalevent name="raid_darkgeneral" time="16:00:00" event="script" value="game/raid_darkgeneral.lua"/>
 
 	<globalevent name="save" interval="3600000" event="script" value="save.lua"/>
 	<globalevent name="clean" time="5:00:00" event="script" value="clean.lua"/>

@@ -11,12 +11,12 @@ function onStartup()
 	
 	local sendPlayerToTemple = getGlobalStorageValue(gid.SEND_PLAYERS_TO_TEMPLE)
 	
-	setGlobalStorageValue(gid.START_SERVER_WEEKDAY, os.date("*t").wday)
-	setGlobalStorageValue(gid.EVENT_MINI_GAME_STATE, -1)
+	doSetStorage(gid.START_SERVER_WEEKDAY, os.date("*t").wday)
+	doSetStorage(gid.EVENT_MINI_GAME_STATE, EVENT_STATE_NONE)
+	doSetStorage(gid.EVENT_DARK_GENERAL, EVENT_STATE_NONE)
 	
 	if(sendPlayerToTemple == 1) then
 		db.executeQuery("UPDATE `players` SET `posx` = '0', `posy` = '0', `posz` = '0';")
-		db.executeQuery("UPDATE `player_storage` SET `value` = -1 WHERE `key` = " .. sid.IS_ON_TRAINING_ISLAND .. ";")
 		setGlobalStorageValue(gid.SEND_PLAYERS_TO_TEMPLE, 0)
 		print("[onStartup] Sending players to temple.")
 	end	
@@ -30,6 +30,13 @@ function onStartup()
 	end
 	
 	db.executeQuery("UPDATE `players` SET `afk` = 0 WHERE `world_id` = " .. getConfigValue('worldId') .. " AND `afk` > 0;")
+	
+	local today = os.date("*t")
+	
+	-- resetando mudanças de area pvp 1 dia após o dia das mudanças
+	if(today.wday == WEEKDAY.SATURDAY) then
+		db.executeQuery("UPDATE `player_storage` SET `value` = -1 WHERE `key` = '" .. sid.HAS_MADE_WEECLY_CHANGE .. "'")
+	end
 	
 	-- resetando storages diarios
 	for key, value in ipairs(sid.ARIADNE_TOTEMS) do

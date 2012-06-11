@@ -396,13 +396,6 @@ function pvpArena:onPlayerReady(cid)
 		return			
 	end
 	
-	local onIsland = (getPlayerStorageValue(cid, sid.IS_ON_TRAINING_ISLAND) == 1) and true or false
-	
-	if(onIsland) then
-		doPlayerSendTextMessage(cid, MESSAGE_STATUS_CONSOLE_BLUE, "Para entrar na Arena você deve sair da ilha de treinamento.")
-		return
-	end		
-	
 	player = self:findPlayer(cid)
 	self:setPlayerIsReady(player)
 	

@@ -2,14 +2,6 @@ function onThink(cid, interval)
 	if(not isCreature(cid) or not isPlayer(cid)) then
 		return
 	end
-
-	--[[
-	local onIsland = (getPlayerStorageValue(cid, sid.IS_ON_TRAINING_ISLAND) == 1) and true or false
-	
-	if(not onIsland) then
-		return
-	end
-	--]]
 	
 	local target = getCreatureTarget(cid)
 	if(not getBooleanFromString(target) or not isInArray({"Marksman Target", "Hitdoll"}, getCreatureName(target))) then
@@ -19,13 +11,9 @@ function onThink(cid, interval)
 	local tile = getTileInfo(getCreaturePosition(cid))
 	
 	if(not tile.optional) then
-		--setPlayerStorageValue(cid, sid.IS_ON_TRAINING_ISLAND, STORAGE_NULL)
 		setPlayerStorageValue(cid, sid.NEXT_STAMINA_UPDATE, STORAGE_NULL)		
-		
 		return
 	end
-	
-	
 	
 	local nextStaminaUpdate = getPlayerStorageValue(cid, sid.NEXT_STAMINA_UPDATE)
 	

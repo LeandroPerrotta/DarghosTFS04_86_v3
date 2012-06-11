@@ -26,12 +26,19 @@ darghos_use_record = false
 -- Darghos exp rate (double,  triple,  etc)
 darghos_exp_multipler = 1
 
--- Change pvp
+-- Pacific & Agressives world configuration
+darghos_world_configuration = WORLD_CONF_WEECLY_CHANGE
+
+-- Change pvp (CHANGE_ALLOWED)
 darghos_change_pvp_debuff_percent = 50
 darghos_change_pvp_days_cooldown = 30
 darghos_change_pvp_premdays_cooldown = 10
 darghos_change_pvp_premdays_cost = 20
 darghos_remove_change_pvp_debuff_cost = 25
+
+-- Change pvp (WEECLY_CHANGE)
+darghos_weecly_change_day = WEEKDAY.FRIDAY
+darghos_weecly_change_max_level_any_day = 99
 
 -- Darghos spoof players
 -- opções: true (ativo), false (desativo)

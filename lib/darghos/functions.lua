@@ -310,11 +310,6 @@ function broadcastChannel(channelId, message, talktype)
 	end
 end
 
-function isInTrainingIsland(cid)
-
-	return getPlayerStorageValue(cid, sid.IS_ON_TRAINING_ISLAND) == 1
-end
-
 function customStaminaUpdate(cid)
 
 	if(not isPlayer(cid)) then

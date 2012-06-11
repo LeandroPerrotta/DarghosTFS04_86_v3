@@ -200,7 +200,7 @@ end
 
 function onTime(time)
 
-	local date = os.date("*t")	
+	local date = os.date("*t")
 	
 	if(not isInArray(BG_GAIN_EVERYHOUR_DAYS, date.wday)) then
 		if(date.hour == BG_GAIN_START_HOUR) then

@@ -204,6 +204,16 @@
 		SATURDAY 	= 7
 	}
 	
+	WEEKDAY_STRING = {
+		[WEEKDAY.SUNDAY] = "domingo"
+		,[WEEKDAY.MONDAY] = "segunda-feira"
+		,[WEEKDAY.TUESDAY] = "terça-feira"
+		,[WEEKDAY.WEDNESDAY] = "quarta-feira"
+		,[WEEKDAY.THURSDAY] = "quinta-feira"
+		,[WEEKDAY.FRIDAY] = "sexta-feira"
+		,[WEEKDAY.SATURDAY] = "sabado"
+	}
+	
 	CUSTOM_ITEMS = {
 	
 		DURIN_HELMET			= 11736,
@@ -249,6 +259,20 @@
 
 	CUSTOM_CHANNEL_PVP			= 10
 	CUSTOM_CHANNEL_BG_CHAT		= 11
+	
+	-- Pacific & Agresives Configuration
+	
+	-- Nesta configuração o jogador poderá começar como pacifico porem será restrito a Island of Peace, e após certo level a sua rate sera de 1x
+	-- o obrigando a sair da ilha virando agressivo, não podendo retornar a ela, semelhante a Rookgaard do Tibia Global.
+	WORLD_CONF_AGRESSIVE_ONLY = 0
+	
+	-- Nesta configuração o jogador poderá modificar entre pacifico e agressivo em intervalos de tempo, jogadore pacificos não podem entrar em Aracura
+	-- e agressivos não podem entrar em Island of Peace, em outros lugares há a convivencia de ambos modos de pvp
+	WORLD_CONF_CHANGE_ALLOWED = 1
+	
+	-- Nesta configuração quase nunca havera a convivencia no mesmo lugar de pacificos e agressivos, a mudança é permitida em um determinado dia da semana 
+	-- porem os jogadores somente poderão acessar lugares permitidos pelo seu pvp, paficicos somente Island of Peace, e agressivos o restante.
+	WORLD_CONF_WEECLY_CHANGE = 2
 	
 	-- Custom Exhausteds
 	EXHAUSTED_COMBAT_AREA = 3

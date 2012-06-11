@@ -69,15 +69,6 @@ function boatDestiny.addThaun(keywordHandler, npcHandler, module)
 	travelNode:addChildKeyword({'no'}, StdModule.say, {npcHandler = npcHandler, onlyFocus = true, reset = true, text = 'Then stay here!'})
 end
 
-function boatDestiny.addTrainers(keywordHandler, npcHandler, module)
-
-	module = (module == nil) and D_CustomNpcModules.travelTrainingIsland or module
-
-	local travelNode = keywordHandler:addKeyword({'trainers'}, StdModule.say, {npcHandler = npcHandler, onlyFocus = true, text = 'Do you want to sail to island of trainers for 190 gold coins?'})
-	travelNode:addChildKeyword({'yes'}, module, {npcHandler = npcHandler, premium = false, level = 0, cost = 40, destination = BOAT_DESTINY_TRAINERS, entering = true })
-	travelNode:addChildKeyword({'no'}, StdModule.say, {npcHandler = npcHandler, onlyFocus = true, reset = true, text = 'Then stay here!'})
-end
-
 function boatDestiny.addSeaSerpentArea(keywordHandler, npcHandler, module)
 
 	module = (module == nil) and StdModule.travel or module
@@ -100,13 +91,34 @@ function boatDestiny.addIslandOfPeace(keywordHandler, npcHandler)
 			return false
 		end	
 		
-		if(doPlayerIsPvpEnable(cid)) then
-			npcHandler:say('Desculpe, mas você está com o seu pvp ativo... Somente jogadores que estejam com o pvp desativo podem viajar para Island of Peace!', cid)
-			npcHandler:resetNpc(cid)
-			return false
+		if(darghos_world_configuration == WORLD_CONF_CHANGE_ALLOWED) then
+			if(doPlayerIsPvpEnable(cid)) then
+				npcHandler:say('Desculpe, mas você é um jogador agressivo! Torne-se um jogadores pacificos primeiro se quiser viajar para Island of Peace!', cid)
+				npcHandler:resetNpc(cid)
+				return false
+			end
+			
+			npcHandler:say('Você gostaria de pagar 200 moedas de ouro pela passagem de volta a tranquilidade de Island of Peace?', cid)
+		elseif(darghos_world_configuration == WORLD_CONF_WEECLY_CHANGE) then
+			local today = os.date("*t")
+			local hasMadeWeeclyChange = getPlayerStorageValue(cid, sid.HAS_MADE_WEECLY_CHANGE) == 1
+			
+			if(hasMadeWeeclyChange) then
+				npcHandler:say('Lamento mas você acabou de voltar de Island of Peace! Você deverá permanecer em Quendor ate a proxima ' .. WEEKDAY_STRING[darghos_weecly_change_day] .. '!', cid)
+				npcHandler:resetNpc(cid)
+				return false			
+			elseif(getPlayerLevel(cid) <= darghos_weecly_change_max_level_any_day) then
+				npcHandler:say('Você gostaria de viajar a Island of Peace? Lembre-se que ate atingir o nivel ' .. (darghos_weecly_change_max_level_any_day + 1) .. ' você podera fazer essa viagem a qualquer instante e de graça!', cid)
+			elseif(today.wday == darghos_weecly_change_day) then
+				npcHandler:say('Você gostaria de viajar a Island of Peace? Lembre-se que para o seu level somente será permitido voltar a Quendor na proxima ' .. WEEKDAY_STRING[darghos_weecly_change_day] .. '! VOCÊ TEM CERTEZA QUE REALMENTE QUER IR PARA ISLAND OF PEACE?', cid)
+			else
+				npcHandler:say('Lamento, mas para o seu nível somente e permitido viajar para Island of Peace na ' .. WEEKDAY_STRING[darghos_weecly_change_day] .. '!', cid)
+				npcHandler:resetNpc(cid)
+				return false	
+			end
 		end
 		
-		npcHandler:say('Você gostaria de pagar 200 moedas de ouro pela passagem de volta a tranquilidade de Island of Peace?', cid)
+		
 		return true
 	end
 	
@@ -121,16 +133,25 @@ function boatDestiny.addIslandOfPeace(keywordHandler, npcHandler)
 			return false
 		end	
 		
-		if(not doPlayerRemoveMoney(cid, parameters.cost)) then
-			npcHandler:say('Oh, infelizmente você não possui o dinheiro necessario para embarcar...', cid)
-			npcHandler:resetNpc(cid)
-			return true
-		end	
+		if(darghos_world_configuration == WORLD_CONF_CHANGE_ALLOWED) then	
+			if(not doPlayerRemoveMoney(cid, parameters.cost)) then
+				npcHandler:say('Oh, infelizmente você não possui o dinheiro necessario para embarcar...', cid)
+				npcHandler:resetNpc(cid)
+				return true
+			end
+		elseif(darghos_world_configuration == WORLD_CONF_WEECLY_CHANGE) then
+			if(getPlayerLevel(cid) > darghos_weecly_change_max_level_any_day) then
+				setPlayerStorageValue(cid, sid.HAS_MADE_WEECLY_CHANGE, 1)
+			end
+			
+			doPlayerSetTown(cid, towns.ISLAND_OF_PEACE)
+			doPlayerDisablePvp(cid)
+		end
 		
 		npcHandler:say('Seja bem vindo de volta a Island of Peace caro ' .. getPlayerName(cid) .. '!', cid)
 		doTeleportThing(cid, parameters.destination, false)
-		doSendMagicEffect(parameters.destination, CONST_ME_TELEPORT)		
-		return true
+		doSendMagicEffect(parameters.destination, CONST_ME_TELEPORT)
+		return true		
 	end
 
 	local travelNode = keywordHandler:addKeyword({'island of peace', 'isle of peace'}, onAsk, {npcHandler = npcHandler, onlyFocus = true})
@@ -151,23 +172,43 @@ function boatDestiny.addQuendorFromIslandOfPeace(keywordHandler, npcHandler)
 			return false
 		end	
 		
-		local leaveFromIslandOfPeace = getPlayerStorageValue(cid, sid.LEAVE_FROM_ISLAND_OF_PEACE)
-		
-		if(leaveFromIslandOfPeace == -1) then
-			if(getConfigInfo("worldId") == WORLD_ORDON) then
+		if(darghos_world_configuration == WORLD_CONF_CHANGE_ALLOWED) then
+			local hasFirstChangePvpArea = getPlayerStorageValue(cid, sid.FIRST_CHANGE_PVP_AREA) == 1
+			
+			if(not hasFirstChangePvpArea) then
 				npcHandler:say('Vejo que você nunca viajou para Quendor, este barco pode levar-lo para lá, por ser sua primeira viagem, não lhe será cobrado nada, porém saiba que fora de Island of Peace você poderá ativar ou desativar <...>', cid)
 				npcHandler:say('a habilidade de entrar em combate com outros jogadores, isto é, seu pvp. Inicialmente o seu pvp está desativado, caso você deseje o ativar converse com o NPC\'s que ficam no templo de todas cidades. <...>', cid)
 				npcHandler:say('Saiba também que somente é permitido voltar para Island of Peace jogadores que estiverem com seu pvp desativado, se você o ativar-lo, não poderá voltar. <...>', cid)			
 				npcHandler:say('E então, deseja mesmo embarcar para Quendor?', cid)
-			else
-				npcHandler:say('Quendor é uma maravilhosa cidade! Mais saiba que por lá e por todo o resto do mundo do Darghos o seu PvP e de todos outras é sempre ativo, assim você poderá  <...>', cid)
-				npcHandler:say('atacar e ser atacado por outras pessoas... Também esteja ciente que uma vez abandonando esta ilha você se tornará cidadão de Quendor não será mais possivel retornar <...>', cid)
-				npcHandler:say('E então, deseja mesmo embarcar para Quendor?', cid)				
+				
+				return true
 			end
-			return true
-		end		
+			
+			npcHandler:say('Você gostaria de pagar 200 moedas de ouro para viajar para Quendor?', cid)
+		elseif(darghos_world_configuration == WORLD_CONF_WEECLY_CHANGE) then
+			
+			local today = os.date("*t")
+			local hasMadeWeeclyChange = getPlayerStorageValue(cid, sid.HAS_MADE_WEECLY_CHANGE) == 1
+			
+			if(hasMadeWeeclyChange) then
+				npcHandler:say('Lamento mas você acabou de jogar de Quendor! Você deverá permanecer em Island of Peace ate a proxima ' .. WEEKDAY_STRING[darghos_weecly_change_day] .. '!', cid)
+				npcHandler:resetNpc(cid)
+				return false
+			elseif(getPlayerLevel(cid) <= darghos_weecly_change_max_level_any_day) then
+				npcHandler:say('Você gostaria de viajar a Quendor? Lembre-se que ate atingir o nivel ' .. (darghos_weecly_change_max_level_any_day + 1) .. ' você podera fazer essa viagem a qualquer instante e de graça!', cid)
+			elseif(today.wday == darghos_weecly_change_day) then
+				npcHandler:say('Você gostaria de viajar a Quendor? Lembre-se que para o seu level somente será permitido voltar a Island of Peace na proxima ' .. WEEKDAY_STRING[darghos_weecly_change_day] .. '! VOCÊ TEM CERTEZA QUE REALMENTE QUER IR QUENDOR?', cid)
+			else
+				npcHandler:say('Lamento, mas para o seu nível somente e permitido viajar para Quendor na ' .. WEEKDAY_STRING[darghos_weecly_change_day] .. '!', cid)
+				npcHandler:resetNpc(cid)
+				return false	
+			end
+		elseif(darghos_world_configuration == WORLD_CONF_AGRESSIVE_ONLY) then
+			npcHandler:say('Quendor é uma maravilhosa cidade! Mais saiba que por lá e por todo o resto do mundo do Darghos o seu PvP e de todos outras é sempre ativo, assim você poderá  <...>', cid)
+			npcHandler:say('atacar e ser atacado por outras pessoas... Também esteja ciente que uma vez abandonando esta ilha você se tornará cidadão de Quendor não será mais possivel retornar <...>', cid)
+			npcHandler:say('E então, deseja mesmo embarcar para Quendor?', cid)		
+		end
 		
-		npcHandler:say('Você gostaria de pagar 200 moedas de ouro para viajar para Quendor?', cid)
 		return true
 	end
 	
@@ -182,25 +223,43 @@ function boatDestiny.addQuendorFromIslandOfPeace(keywordHandler, npcHandler)
 			return false
 		end	
 		
-		local leaveFromIslandOfPeace = getPlayerStorageValue(cid, sid.LEAVE_FROM_ISLAND_OF_PEACE)
-		
-		if(isInArray({0, 1}, leaveFromIslandOfPeace) and not doPlayerRemoveMoney(cid, parameters.cost)) then
-			npcHandler:say('Oh, infelizmente você não possui o dinheiro necessario para embarcar...', cid)
-			npcHandler:resetNpc(cid)
-			return true
-		end	
-		
-		if(leaveFromIslandOfPeace == -1) then
-			npcHandler:say('Seja bem vindo a Quendor caro ' .. getPlayerName(cid) .. '! Para chegar na cidade, siga para o sul e tenha cuidado com as criatura!', cid)		
-			setPlayerStorageValue(cid, sid.LEAVE_FROM_ISLAND_OF_PEACE, 1)
-		else		
+		if(darghos_world_configuration == WORLD_CONF_CHANGE_ALLOWED) then
+			local hasFirstChangePvpArea = getPlayerStorageValue(cid, sid.FIRST_CHANGE_PVP_AREA) == 1
+			
+			if(hasFirstChangePvpArea and not doPlayerRemoveMoney(cid, parameters.cost)) then
+				npcHandler:say('Oh, infelizmente você não possui o dinheiro necessario para embarcar...', cid)
+				npcHandler:resetNpc(cid)
+				return true
+			end	
+			
+			if(not hasFirstChangePvpArea) then
+				npcHandler:say('Seja bem vindo a Quendor caro ' .. getPlayerName(cid) .. '! Para chegar na cidade, siga para o sul e tenha cuidado com as criatura!', cid)		
+				setPlayerStorageValue(cid, sid.FIRST_CHANGE_PVP_AREA, 1)
+			else		
+				npcHandler:say('Seja bem vindo de volta a Quendor caro ' .. getPlayerName(cid) .. '!', cid)
+			end
+			
+			if(getConfigInfo("worldId") == WORLD_AARAGON) then
+				doPlayerSetTown(cid, towns.QUENDOR)
+				doPlayerEnablePvp(cid)
+				setStageOnChangePvp(cid)
+			end
+		elseif(darghos_world_configuration == WORLD_CONF_WEECLY_CHANGE) then
+			
+			doPlayerSetTown(cid, towns.QUENDOR)
+			doPlayerEnablePvp(cid)
+			
+			if(getPlayerLevel(cid) > darghos_weecly_change_max_level_any_day) then
+				setPlayerStorageValue(cid, sid.HAS_MADE_WEECLY_CHANGE, 1)
+			end
+			
 			npcHandler:say('Seja bem vindo de volta a Quendor caro ' .. getPlayerName(cid) .. '!', cid)
-		end
-		
-		if(getConfigInfo("worldId") == WORLD_AARAGON) then
+		elseif(darghos_world_configuration == WORLD_CONF_AGRESSIVE_ONLY) then
 			doPlayerSetTown(cid, towns.QUENDOR)
 			doPlayerEnablePvp(cid)
 			setStageOnChangePvp(cid)
+			
+			npcHandler:say('Seja bem vindo a Quendor caro ' .. getPlayerName(cid) .. '!', cid)
 		end
 		
 		doTeleportThing(cid, parameters.destination, false)

@@ -56,10 +56,8 @@ function doUpdateCreaturePassable(cid)
 	if(getPlayerGroupId(cid) > GROUP_PLAYER_NON_PVP) then
 		return
 	end	
-
-	local onIsland = (getPlayerStorageValue(cid, sid.IS_ON_TRAINING_ISLAND) == 1) and true or false
 	
-	if(getPlayerTown(cid) ~= towns.ISLAND_OF_PEACE and not onIsland) then
+	if(getPlayerTown(cid) ~= towns.ISLAND_OF_PEACE) then
 		return
 	end
 	
