@@ -100,21 +100,17 @@ function boatDestiny.addIslandOfPeace(keywordHandler, npcHandler)
 			
 			npcHandler:say('Você gostaria de pagar 200 moedas de ouro pela passagem de volta a tranquilidade de Island of Peace?', cid)
 		elseif(darghos_world_configuration == WORLD_CONF_WEECLY_CHANGE) then
-			local today = os.date("*t")
-			local hasMadeWeeclyChange = getPlayerStorageValue(cid, sid.HAS_MADE_WEECLY_CHANGE) == 1
 			
-			if(hasMadeWeeclyChange) then
-				npcHandler:say('Lamento mas você acabou de voltar de Island of Peace! Você deverá permanecer em Quendor ate a proxima ' .. WEEKDAY_STRING[darghos_weecly_change_day] .. '!', cid)
-				npcHandler:resetNpc(cid)
-				return false			
-			elseif(getPlayerLevel(cid) <= darghos_weecly_change_max_level_any_day) then
-				npcHandler:say('Você gostaria de viajar a Island of Peace? Lembre-se que ate atingir o nivel ' .. (darghos_weecly_change_max_level_any_day + 1) .. ' você podera fazer essa viagem a qualquer instante e de graça!', cid)
-			elseif(today.wday == darghos_weecly_change_day) then
-				npcHandler:say('Você gostaria de viajar a Island of Peace? Lembre-se que para o seu level somente será permitido voltar a Quendor na proxima ' .. WEEKDAY_STRING[darghos_weecly_change_day] .. '! VOCÊ TEM CERTEZA QUE REALMENTE QUER IR PARA ISLAND OF PEACE?', cid)
+			if(getPlayerLevel(cid) <= darghos_weecly_change_max_level_any_day) then
+				npcHandler:say('Você gostaria de se mudar para Island of Peace? Lembre-se que ate atingir o nivel ' .. (darghos_weecly_change_max_level_any_day + 1) .. ' você podera fazer essa viagem a qualquer instante e de graça!', cid)
+			elseif(getPlayerStorageValue(cid, sid.TEMP_TEN_DAYS_FREE_CHANGE_PVP) == -1) then
+				npcHandler:say('Você gostaria de se mudar para Island of Peace e se tornar um jogador pacifico?', cid)
+			elseif(getPlayerPremiumDays(cid) > 0) then
+				npcHandler:say('Você gostaria de se mudar para Island of Peace e se tornar um jogador pacifico? PRESTE ATENÇÃO: PARA O SEU NÍVEL {ESTA MUDANÇA IRA CONSUMIR ' .. getChangePvpPrice(cid) .. ' DIAS DE SUA CONTA PREMIUM}! VOCÊ TEM CERTEZA QUE REALMENTE DESEJA ISTO?', cid)
 			else
-				npcHandler:say('Lamento, mas para o seu nível somente e permitido viajar para Island of Peace na ' .. WEEKDAY_STRING[darghos_weecly_change_day] .. '!', cid)
+				npcHandler:say('Para efetuar uma mudança para Island of Peace e se tornar um jogador pacifico em seu nível é necessario possuir dias de conta premium.', cid)
 				npcHandler:resetNpc(cid)
-				return false	
+				return false				
 			end
 		end
 		
@@ -140,8 +136,19 @@ function boatDestiny.addIslandOfPeace(keywordHandler, npcHandler)
 				return true
 			end
 		elseif(darghos_world_configuration == WORLD_CONF_WEECLY_CHANGE) then
-			if(getPlayerLevel(cid) > darghos_weecly_change_max_level_any_day) then
-				setPlayerStorageValue(cid, sid.HAS_MADE_WEECLY_CHANGE, 1)
+			
+			local price = getChangePvpPrice(cid)
+			
+			if(getPlayerStorageValue(cid, sid.TEMP_TEN_DAYS_FREE_CHANGE_PVP) == -1) then
+				setPlayerStorageValue(cid, sid.TEMP_TEN_DAYS_FREE_CHANGE_PVP, 1)			
+			elseif(price > 0) then
+				if(getPlayerPremiumDays(cid) < price) then
+					npcHandler:say('Desculpe, mas esta mudança consome ' .. price .. ' dias de premium de sua conta, e você não possui isto!', cid)
+					npcHandler:resetNpc(cid)
+					return true				
+				end
+			
+				doPlayerAddPremiumDays(cid, -price)
 			end
 			
 			doPlayerSetTown(cid, towns.ISLAND_OF_PEACE)
@@ -187,19 +194,14 @@ function boatDestiny.addQuendorFromIslandOfPeace(keywordHandler, npcHandler)
 			npcHandler:say('Você gostaria de pagar 200 moedas de ouro para viajar para Quendor?', cid)
 		elseif(darghos_world_configuration == WORLD_CONF_WEECLY_CHANGE) then
 			
-			local today = os.date("*t")
-			local hasMadeWeeclyChange = getPlayerStorageValue(cid, sid.HAS_MADE_WEECLY_CHANGE) == 1
-			
-			if(hasMadeWeeclyChange) then
-				npcHandler:say('Lamento mas você acabou de jogar de Quendor! Você deverá permanecer em Island of Peace ate a proxima ' .. WEEKDAY_STRING[darghos_weecly_change_day] .. '!', cid)
-				npcHandler:resetNpc(cid)
-				return false
-			elseif(getPlayerLevel(cid) <= darghos_weecly_change_max_level_any_day) then
-				npcHandler:say('Você gostaria de viajar a Quendor? Lembre-se que ate atingir o nivel ' .. (darghos_weecly_change_max_level_any_day + 1) .. ' você podera fazer essa viagem a qualquer instante e de graça!', cid)
-			elseif(today.wday == darghos_weecly_change_day) then
-				npcHandler:say('Você gostaria de viajar a Quendor? Lembre-se que para o seu level somente será permitido voltar a Island of Peace na proxima ' .. WEEKDAY_STRING[darghos_weecly_change_day] .. '! VOCÊ TEM CERTEZA QUE REALMENTE QUER IR QUENDOR?', cid)
+			if(getPlayerLevel(cid) <= darghos_weecly_change_max_level_any_day) then
+				npcHandler:say('Você gostaria de se mudar para Quendor? Lembre-se que ate atingir o nivel ' .. (darghos_weecly_change_max_level_any_day + 1) .. ' você podera fazer essa viagem a qualquer instante e de graça!', cid)
+			elseif(getPlayerStorageValue(cid, sid.TEMP_TEN_DAYS_FREE_CHANGE_PVP) == -1) then
+				npcHandler:say('Você gostaria de se mudar para Quendor e se tornar um jogador agressivo?', cid)			
+			elseif(getPlayerPremiumDays(cid) > 0) then
+				npcHandler:say('Você gostaria de se mudar para Quendor e se tornar um jogador agressivo? PRESTE ATENÇÃO: PARA O SEU NÍVEL {ESTA MUDANÇA IRA CONSUMIR ' .. getChangePvpPrice(cid) .. ' DIAS DE SUA CONTA PREMIUM}! VOCÊ TEM CERTEZA QUE REALMENTE DESEJA ISTO?', cid)
 			else
-				npcHandler:say('Lamento, mas para o seu nível somente e permitido viajar para Quendor na ' .. WEEKDAY_STRING[darghos_weecly_change_day] .. '!', cid)
+				npcHandler:say('Para efetuar uma mudança para Quendor e se tornar um jogador agressivo em seu nível é necessario possuir dias de conta premium.', cid)
 				npcHandler:resetNpc(cid)
 				return false	
 			end
@@ -246,12 +248,22 @@ function boatDestiny.addQuendorFromIslandOfPeace(keywordHandler, npcHandler)
 			end
 		elseif(darghos_world_configuration == WORLD_CONF_WEECLY_CHANGE) then
 			
+			local price = getChangePvpPrice(cid)
+			
+			if(getPlayerStorageValue(cid, sid.TEMP_TEN_DAYS_FREE_CHANGE_PVP) == -1) then
+				setPlayerStorageValue(cid, sid.TEMP_TEN_DAYS_FREE_CHANGE_PVP, 1)
+			elseif(price > 0) then
+				if(getPlayerPremiumDays(cid) < price) then
+					npcHandler:say('Desculpe, mas esta mudança consome ' .. price .. ' dias de premium de sua conta, e você não possui isto!', cid)
+					npcHandler:resetNpc(cid)
+					return true				
+				end
+			
+				doPlayerAddPremiumDays(cid, -price)
+			end			
+			
 			doPlayerSetTown(cid, towns.QUENDOR)
 			doPlayerEnablePvp(cid)
-			
-			if(getPlayerLevel(cid) > darghos_weecly_change_max_level_any_day) then
-				setPlayerStorageValue(cid, sid.HAS_MADE_WEECLY_CHANGE, 1)
-			end
 			
 			npcHandler:say('Seja bem vindo de volta a Quendor caro ' .. getPlayerName(cid) .. '!', cid)
 		elseif(darghos_world_configuration == WORLD_CONF_AGRESSIVE_ONLY) then

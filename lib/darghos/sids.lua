@@ -295,9 +295,7 @@
 	
 	UNIQUE_YALAHARIAN			= 10041, --@ ID unica pois ï¿½ o mesmo para os dois (1,2)	
 		
-	-- QUESTS DIARIAS
-	DAILY_BATTLEGROUND_LAST			= 14001,
-	DAILY_BATTLEGROUND_ACTIVE		= 14002,
-	DAILY_BATTLEGROUND_POINTS		= 14003
-		
-	}
+	-- Valores temporareos (que poderão ser excluidos apos certo tempo)
+	TEMP_TEN_DAYS_FREE_CHANGE_PVP	= 14001,	
+	
+}

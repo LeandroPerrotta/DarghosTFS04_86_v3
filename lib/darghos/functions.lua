@@ -1,3 +1,30 @@
+function getChangePvpPrice(cid)
+
+	local level = getPlayerLevel(cid)
+	
+	local prices = {
+		{ from = 100, to = 199, price = 4 } 	-- R$ 1,32
+		,{ from = 200, to = 249, price = 10 } 	-- R$ 3,30
+		,{ from = 250, to = 299, price = 20 } 	-- R$ 6,60
+		,{ from = 300, to = 324, price = 30 } 	-- R$ 9,90
+		,{ from = 325, to = 349, price = 40 } 	-- R$ 13,20
+		,{ from = 350, to = 374, price = 55 } 	-- R$ 18,15
+		,{ from = 375, to = 399, price = 75 } 	-- R$ 24,75
+		,{ from = 400, to = 424, price = 100 } 	-- R$ 33,00
+		,{ from = 425, to = 449, price = 140 } 	-- R$ 46,20
+		,{ from = 450, to = 499, price = 200 } 	-- R$ 66,00
+		,{ from = 500, to = 1000, price = 340 } -- R$ 112,00
+	}
+	
+	for _,v in pairs(prices) do
+		if((not v.from and level < v.to) or (level >= v.from and level <= v.to) or (level >= v.from and not v.to) ) then
+			return v.price
+		end
+	end
+	
+	return 0
+end
+
 function getMinMaxClassicFormula(level, maglevel, minFactor, maxFactor, _min, _max)
 	
 	local min = ((level / 3) + (maglevel / 2)) * minFactor
