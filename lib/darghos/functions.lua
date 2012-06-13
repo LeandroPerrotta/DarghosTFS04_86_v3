@@ -346,9 +346,9 @@ function customStaminaUpdate(cid)
 	local event = getPlayerStorageValue(cid, sid.EVENT_STAMINA)
 	local staminaNextUpdate = getPlayerStorageValue(cid, sid.STAMINA_NEXT_UPDATE)
 	
-	if(not isInTrainingIsland(cid) or os.time() < staminaNextUpdate) then
+	if(os.time() < staminaNextUpdate) then
 		return
-	end		
+	end
 		
 	local bonusStamina = 40 * 60
 	local maxStamina = 42 * 60

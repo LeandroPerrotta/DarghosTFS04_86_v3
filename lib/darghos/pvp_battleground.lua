@@ -753,10 +753,9 @@ function pvpBattleground.onEnter(cid)
 		return false	
 	end
 	
-	local onIslandOfPeace = getPlayerTown(cid) == towns.ISLAND_OF_PEACE
-	if(not BATTLEGROUND_CAN_NON_PVP and onIslandOfPeace) then
-		doPlayerSendCancel(cid, "So é permitido jogadores em areas Open PvP a participarem de Battlegrounds.")
-		return false	
+	if(not BATTLEGROUND_CAN_NON_PVP and not doPlayerIsPvpEnable(cid)) then
+		doPlayerSendCancel(cid, "So é permitido a jogadores Agressivos a participarem de Battlegrounds.")
+		return false
 	end	
 	
 	local closeTeam = getBattlegroundWaitlistSize() == (BG_CONFIG_TEAMSIZE * 2) - 1
@@ -830,17 +829,7 @@ function pvpBattleground.onEnter(cid)
 		setPlayerStorageValue(cid, sid.BATTLEGROUND_MATCH_HEALING_DONE, 0)
 		setPlayerStorageValue(cid, sid.BATTLEGROUND_MATCH_FLAGS_CAPTURED, 0)
 		setPlayerStorageValue(cid, sid.BATTLEGROUND_TEMP_HONOR, 0)
-		
-		-- teleportando direto da ilha de treinamento...
-		if(isInTrainingIsland(cid)) then
-			doUpdateCreatureImpassable(cid)
-		end
-		
-		-- islando of peace
-		if(BATTLEGROUND_CAN_NON_PVP and onIslandOfPeace) then
-			doUpdateCreatureImpassable(cid)
-		end
-	
+
 		local teams = { [1] = "Time A", [2] = "Time B" }
 		local team = teams[getPlayerBattlegroundTeam(cid)]
 		

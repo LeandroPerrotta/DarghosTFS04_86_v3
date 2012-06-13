@@ -6,10 +6,6 @@ function onBattlegroundLeave(cid)
 	unregisterCreatureEvent(cid, "onBattlegroundThink")
 	unregisterCreatureEvent(cid, "OnChangeOutfit")
 	
-	if(isInTrainingIsland(cid)) then
-		doUpdateCreaturePassable(cid)
-	end
-	
 	unlockTeleportScroll(cid)
 	doCreatureAddHealth(cid, getCreatureMaxHealth(cid) - getCreatureHealth(cid))
 	pvpBattleground.setPlayerCarryingFlagState(cid, BG_FLAG_STATE_NONE)

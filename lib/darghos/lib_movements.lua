@@ -44,15 +44,20 @@ end
 
 function doUpdateCreatureImpassable(cid)
 		
+	error("Deprecated: Not used yet.")
+	--[[
 	if(getPlayerGroupId(cid) > GROUP_PLAYER_NON_PVP) then
 		return
 	end
 	
 	doPlayerSetGroupId(cid, GROUP_PLAYER)
+	]]
 end
 
 function doUpdateCreaturePassable(cid)
-
+	
+	error("Deprecated: Not used yet.")
+	--[[
 	if(getPlayerGroupId(cid) > GROUP_PLAYER_NON_PVP) then
 		return
 	end	
@@ -61,7 +66,8 @@ function doUpdateCreaturePassable(cid)
 		return
 	end
 	
-	doPlayerSetGroupId(cid, GROUP_PLAYER_NON_PVP)	
+	doPlayerSetGroupId(cid, GROUP_PLAYER_NON_PVP)
+	]]
 end
 
 function doTeleportBack(cid, backPos)
