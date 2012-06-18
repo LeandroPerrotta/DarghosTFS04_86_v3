@@ -19429,6 +19429,138 @@
 		<attribute key="rarity" value="legendary" />
 		<attribute key="quality" value="cloth" />			
 	</item>
+	<item id="12712" article="a" name="hot death legs">
+		<attribute key="weight" value="2100" />
+		<attribute key="criticalChance" value="2" />
+		<attribute key="armor" value="9" />
+		<attribute key="absorbPercentFire" value="6" />
+		<attribute key="maxHealthPoints" value="145" />
+		<attribute key="slotType" value="legs" />
+		<attribute key="rarity" value="epic" />
+		<attribute key="quality" value="cloth" />	
+	</item>
+	<item id="12713" article="a" name="hot death tiara">
+		<attribute key="weight" value="1120" />
+		<attribute key="criticalChance" value="4" />
+		<attribute key="armor" value="6" />
+		<attribute key="absorbPercentFire" value="4" />
+		<attribute key="maxHealthPoints" value="115" />
+		<attribute key="magicpoints" value="2"/>
+		<attribute key="slotType" value="head" />
+		<attribute key="rarity" value="epic" />
+		<attribute key="quality" value="cloth" />	
+	</item>		
+	<item id="12714" article="a" name="hot death robe">
+		<attribute key="weight" value="3950" />
+		<attribute key="criticalChance" value="4" />
+		<attribute key="armor" value="12" />
+		<attribute key="absorbPercentFire" value="8" />
+		<attribute key="maxHealthPoints" value="165" />
+		<attribute key="magicpoints" value="3"/>
+		<attribute key="slotType" value="body" />
+		<attribute key="rarity" value="epic" />
+		<attribute key="quality" value="cloth" />	
+	</item>
+	<item id="12715" article="a" name="magic cold legs">
+		<attribute key="weight" value="2100" />
+		<attribute key="criticalChance" value="2" />
+		<attribute key="armor" value="9" />
+		<attribute key="absorbPercentIce" value="6" />
+		<attribute key="maxHealthPoints" value="145" />
+		<attribute key="slotType" value="legs" />
+		<attribute key="rarity" value="epic" />
+		<attribute key="quality" value="cloth" />	
+	</item>
+	<item id="12716" article="a" name="magic cold mask">
+		<attribute key="weight" value="1120" />
+		<attribute key="criticalChance" value="4" />
+		<attribute key="armor" value="6" />
+		<attribute key="absorbPercentIce" value="4" />
+		<attribute key="maxHealthPoints" value="115" />
+		<attribute key="magicpoints" value="2"/>
+		<attribute key="slotType" value="head" />
+		<attribute key="rarity" value="epic" />
+		<attribute key="quality" value="cloth" />	
+	</item>		
+	<item id="12717" article="a" name="magic cold robe">
+		<attribute key="weight" value="3950" />
+		<attribute key="criticalChance" value="4" />
+		<attribute key="armor" value="12" />
+		<attribute key="absorbPercentIce" value="8" />
+		<attribute key="maxHealthPoints" value="165" />
+		<attribute key="magicpoints" value="3"/>
+		<attribute key="slotType" value="body" />
+		<attribute key="rarity" value="epic" />
+		<attribute key="quality" value="cloth" />	
+	</item>
+	<item id="12718" article="a" name="dream archer's legs">
+		<attribute key="weight" value="13600" />
+		<attribute key="criticalChance" value="3" />
+		<attribute key="armor" value="9" />
+		<attribute key="absorbPercentDeath" value="4" />
+		<attribute key="maxHealthPoints" value="110" />
+		<attribute key="skillDist" value="4" />
+		<attribute key="slotType" value="legs" />
+		<attribute key="rarity" value="epic" />
+		<attribute key="quality" value="mail" />	
+	</item>
+	<item id="12719" article="a" name="dream archer's helmet">
+		<attribute key="weight" value="9500" />
+		<attribute key="criticalChance" value="2" />
+		<attribute key="armor" value="10" />
+		<attribute key="absorbPercentDeath" value="4" />
+		<attribute key="maxHealthPoints" value="85" />
+		<attribute key="skillDist" value="2" />
+		<attribute key="slotType" value="head" />
+		<attribute key="rarity" value="epic" />
+		<attribute key="quality" value="mail" />	
+	</item>		
+	<item id="12720" article="a" name="dream archer's armor">
+		<attribute key="weight" value="18000" />
+		<attribute key="criticalChance" value="3" />
+		<attribute key="armor" value="16" />
+		<attribute key="absorbPercentDeath" value="2" />
+		<attribute key="maxHealthPoints" value="140" />
+		<attribute key="skillDist" value="4" />
+		<attribute key="slotType" value="body" />
+		<attribute key="rarity" value="epic" />
+		<attribute key="quality" value="mail" />	
+	</item>	
+	<item id="12721" article="a" name="heavy stomper legs">
+		<attribute key="weight" value="17400" />
+		<attribute key="criticalChance" value="1" />
+		<attribute key="armor" value="11" />
+		<attribute key="absorbPercentPhysical" value="4" />
+		<attribute key="absorbPercentDeath" value="2" />
+		<attribute key="maxHealthPoints" value="245" />
+		<attribute key="skillShield" value="2" />
+		<attribute key="slotType" value="legs" />
+		<attribute key="rarity" value="epic" />
+		<attribute key="quality" value="plate" />	
+	</item>
+	<item id="12722" article="a" name="heavy stomper helmet">
+		<attribute key="weight" value="11400" />
+		<attribute key="criticalChance" value="1" />
+		<attribute key="armor" value="12" />
+		<attribute key="absorbPercentPhysical" value="5" />
+		<attribute key="absorbPercentDeath" value="2" />
+		<attribute key="maxHealthPoints" value="190" />
+		<attribute key="slotType" value="head" />
+		<attribute key="rarity" value="epic" />
+		<attribute key="quality" value="plate" />	
+	</item>		
+	<item id="12723" article="a" name="heavy stomper armor">
+		<attribute key="weight" value="32100" />
+		<attribute key="criticalChance" value="1" />
+		<attribute key="armor" value="17" />
+		<attribute key="absorbPercentPhysical" value="8" />
+		<attribute key="absorbPercentDeath" value="3" />
+		<attribute key="maxHealthPoints" value="325" />
+		<attribute key="skillShield" value="4" />
+		<attribute key="slotType" value="body" />
+		<attribute key="rarity" value="epic" />
+		<attribute key="quality" value="plate" />	
+	</item>		
 	
 	<!-- Modified Items -->
 	<item id="2270" article="a" name="holy rune">

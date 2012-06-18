@@ -94,8 +94,7 @@
 	<movevent type="Equip" itemid="2197" slot="necklace" event="script" value="game/custom_exhausted.lua"/>
 	-->
 	
-	*CUSTOM ITEMS
-	
+	<!-- CUSTOM -->
 	<!-- WEAPONS -->
 	<movevent type="Equip" itemid="12699" slot="hand" event="function" value="onEquipItem"> <!-- Vengeful Flameblade -->
 		<vocation id="4"/> <vocation id="8" showInDescription="0"/> <vocation id="12" showInDescription="0"/>
@@ -154,7 +153,7 @@
 		<vocation id="2"/> <vocation id="6" showInDescription="0"/> <vocation id="10" showInDescription="0"/>
 		
 	</movevent>
-	<movevent type="DeEquip" itemid="12711" slot="armor" event="function" value="onDeEquipItem"/>	
+	<movevent type="DeEquip" itemid="12711" slot="armor" event="function" value="onDeEquipItem"/>
 		
 	<!-- NECKS -->
 		<!-- Petrified Stonehearth (equipped) -->
@@ -230,6 +229,75 @@
 	</movevent>	
 	<movevent type="Equip" itemid="12689" slot="ring" event="function" value="onEquipItem"/>
 	<movevent type="DeEquip" itemid="12689" slot="ring" event="function" value="onDeEquipItem"/>
+	
+	<!-- Tier 1 -->
+	<!-- sorcerer (hot death) -->
+		<!-- legs -->
+		<movevent type="Equip" itemid="12712" slot="legs" level="280" event="function" value="onEquipItem">
+			<vocation id="1"/> <vocation id="5" showInDescription="0"/> <vocation id="9" showInDescription="0"/>		
+		</movevent>
+		<movevent type="DeEquip" itemid="12712" slot="legs" event="function" value="onDeEquipItem"/>
+		<!-- helmet -->
+		<movevent type="Equip" itemid="12713" slot="head" level="280" event="function" value="onEquipItem">
+			<vocation id="1"/> <vocation id="5" showInDescription="0"/> <vocation id="9" showInDescription="0"/>		
+		</movevent>
+		<movevent type="DeEquip" itemid="12713" slot="head" event="function" value="onDeEquipItem"/>
+		<!-- chest -->
+		<movevent type="Equip" itemid="12714" slot="armor" level="280" event="function" value="onEquipItem">
+			<vocation id="1"/> <vocation id="5" showInDescription="0"/> <vocation id="9" showInDescription="0"/>		
+		</movevent>
+		<movevent type="DeEquip" itemid="12714" slot="armor" event="function" value="onDeEquipItem"/>
+	
+	<!-- druid (magic cold) -->
+		<!-- legs -->
+		<movevent type="Equip" itemid="12715" slot="legs" level="280" event="function" value="onEquipItem">
+			<vocation id="2"/> <vocation id="6" showInDescription="0"/> <vocation id="10" showInDescription="0"/>
+		</movevent>
+		<movevent type="DeEquip" itemid="12715" slot="legs" event="function" value="onDeEquipItem"/>
+		<!-- helmet -->
+		<movevent type="Equip" itemid="12716" slot="head" level="280" event="function" value="onEquipItem">
+			<vocation id="2"/> <vocation id="6" showInDescription="0"/> <vocation id="10" showInDescription="0"/>		
+		</movevent>
+		<movevent type="DeEquip" itemid="12716" slot="head" event="function" value="onDeEquipItem"/>
+		<!-- chest -->
+		<movevent type="Equip" itemid="12717" slot="armor" level="280" event="function" value="onEquipItem">
+			<vocation id="2"/> <vocation id="6" showInDescription="0"/> <vocation id="10" showInDescription="0"/>
+		</movevent>
+		<movevent type="DeEquip" itemid="12717" slot="armor" event="function" value="onDeEquipItem"/>
+	
+	<!-- paladins (dream archer's) -->
+		<!-- legs -->
+		<movevent type="Equip" itemid="12718" slot="legs" level="280" event="function" value="onEquipItem">
+			<vocation id="3"/> <vocation id="7" showInDescription="0"/> <vocation id="11" showInDescription="0"/>
+		</movevent>
+		<movevent type="DeEquip" itemid="12718" slot="legs" event="function" value="onDeEquipItem"/>
+		<!-- helmet -->
+		<movevent type="Equip" itemid="12719" slot="head" level="280" event="function" value="onEquipItem">
+			<vocation id="3"/> <vocation id="7" showInDescription="0"/> <vocation id="11" showInDescription="0"/>
+		</movevent>
+		<movevent type="DeEquip" itemid="12719" slot="head" event="function" value="onDeEquipItem"/>
+		<!-- chest -->
+		<movevent type="Equip" itemid="12720" slot="armor" level="280" event="function" value="onEquipItem">
+			<vocation id="3"/> <vocation id="7" showInDescription="0"/> <vocation id="11" showInDescription="0"/>
+		</movevent>
+		<movevent type="DeEquip" itemid="12720" slot="armor" event="function" value="onDeEquipItem"/>
+	
+	<!-- knights (heavy stomper) -->
+		<!-- legs -->
+		<movevent type="Equip" itemid="12721" slot="legs" level="280" event="function" value="onEquipItem">
+			<vocation id="4"/> <vocation id="8" showInDescription="0"/> <vocation id="12" showInDescription="0"/>
+		</movevent>
+		<movevent type="DeEquip" itemid="12721" slot="legs" event="function" value="onDeEquipItem"/>
+		<!-- helmet -->
+		<movevent type="Equip" itemid="12722" slot="head" level="280" event="function" value="onEquipItem">
+			<vocation id="4"/> <vocation id="8" showInDescription="0"/> <vocation id="12" showInDescription="0"/>
+		</movevent>
+		<movevent type="DeEquip" itemid="12722" slot="head" event="function" value="onDeEquipItem"/>	
+		<!-- chest -->
+		<movevent type="Equip" itemid="12723" slot="armor" level="280" event="function" value="onEquipItem">
+			<vocation id="4"/> <vocation id="8" showInDescription="0"/> <vocation id="12" showInDescription="0"/>
+		</movevent>
+		<movevent type="DeEquip" itemid="12723" slot="armor" event="function" value="onDeEquipItem"/>
 
 	<!-- Decaying tiles -->
 	<movevent type="StepIn" itemid="293" event="script" value="decay.lua"/>

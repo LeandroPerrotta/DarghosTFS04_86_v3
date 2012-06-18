@@ -230,8 +230,44 @@
    <item id="9970" countmax="11" chance="12000">
       <!--small topaz-->
     </item>
-   <item id="2153" countmax="11" chance="10000">
+   <item id="2153" chance="10000">
       <!--violet gem-->
+    </item>
+   <item id="12712" chance="1666">
+      <!--hot death legs-->
+    </item>
+   <item id="12713" chance="1666">
+      <!--hot death tiara-->
+    </item>
+   <item id="12714" chance="833">
+      <!--hot death robe-->
+    </item>
+   <item id="12715" chance="1666">
+      <!--magic cold legs-->
+    </item>
+   <item id="12716" chance="1666">
+      <!--magic cold mask-->
+    </item>
+   <item id="12717" chance="833">
+      <!--magic cold robe-->
+    </item>
+   <item id="12718" chance="1666">
+      <!--dream archer's legs-->
+    </item>
+   <item id="12719" chance="1666">
+      <!--dream archer's helmet-->
+    </item>
+   <item id="12720" chance="833">
+      <!--dream archer's armor-->
+    </item>
+   <item id="12721" chance="1666">
+      <!--heavy stomper legs-->
+    </item>
+   <item id="12722" chance="1666">
+      <!--heavy stomper helmet-->
+    </item>
+   <item id="12723" chance="833">
+      <!--heavy stomper armor-->
     </item>
   </loot>
 </monster>
