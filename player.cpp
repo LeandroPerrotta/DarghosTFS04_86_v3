@@ -2487,7 +2487,7 @@ bool Player::onDeath()
 		}
 
 		uint8_t pvpPercent = (uint8_t)std::ceil((double)pvpDamage * 100. / std::max(1U, totalDamage));
-		if(pvpPercent < 50 && !pzLocked)
+		if(pvpPercent < 50 && !pzLocked && getSkull() != SKULL_BLACK)
 		{
 			monsterDeath = true;
 			setDropLoot(LOOT_DROP_PREVENT);
@@ -2573,7 +2573,7 @@ bool Player::onDeath()
 
         float extraReduction = 0.;
 
-        if(g_config.getBool(ConfigManager::UNFAIR_FIGHT) && alliesLevelSum < enemiesLevelSum)
+        if(g_config.getBool(ConfigManager::UNFAIR_FIGHT) && alliesLevelSum < enemiesLevelSum && getSkull() != SKULL_RED && getSkull() != SKULL_BLACK)
         {
             extraReduction = (float)alliesLevelSum / enemiesLevelSum;
             if(extraReduction < 0.2)
@@ -5637,9 +5637,9 @@ void Player::increaseCombatValues(int32_t& min, int32_t& max, bool useCharges, b
 			g_game.transformItem(item, item->getID(), std::max((int32_t)0, (int32_t)item->getCharges() - 1));
 	}
 
+#ifdef __DARGHOS_CUSTOM__
 	wearWeapon();
 
-#ifdef __DARGHOS_CUSTOM__
 	if(min <= 0 && max <= 0 && random_range(1, 100) < criticalChance)
 	{
 		min = int32_t(min * getCriticalFactor());	

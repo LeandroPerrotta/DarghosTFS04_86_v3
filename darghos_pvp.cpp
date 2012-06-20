@@ -167,6 +167,7 @@ void Battleground::finish()
 void Battleground::finish(Bg_Teams_t teamWinner)
 {
 	status = FINISHED;
+	Scheduler::getInstance().stopEvent(endEvent);
 
 	for(BgTeamsMap::iterator it = teamsMap.begin(); it != teamsMap.end(); it++)
 	{
@@ -199,7 +200,6 @@ void Battleground::finish(Bg_Teams_t teamWinner)
 		}
 	}
 
-	Scheduler::getInstance().stopEvent(endEvent);
 	g_globalEvents->execute(GLOBALEVENT_BATTLEGROUND_END);
 
 	BattlegroundFinishBy finishBy = (teamsMap[teamWinner].points == winPoints) ? BattlegroundFinishByPoints : BattlegroundFinishByTime;
