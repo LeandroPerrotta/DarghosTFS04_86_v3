@@ -1,10 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <houses>
   <house name="Aracura - South Palace I" houseid="1" entryx="3362" entryy="2023" entryz="7" rent="74000" townid="10" size="53"/>
+  <house name="Depot Shop 5" houseid="3" entryx="1984" entryy="1852" entryz="6" rent="48000" townid="1" size="20"/>
+  <house name="Depot Shop 4" houseid="4" entryx="1984" entryy="1858" entryz="6" rent="48000" townid="1" size="20"/>
+  <house name="Depot Shop 6" houseid="5" entryx="1985" entryy="1852" entryz="6" rent="28000" townid="1" size="16"/>
+  <house name="Depot Shop 7" houseid="6" entryx="1985" entryy="1858" entryz="6" rent="28000" townid="1" size="14"/>
+  <house name="Fame Town 2" houseid="7" entryx="2027" entryy="1858" entryz="7" rent="210000" townid="1" size="23"/>
+  <house name="Fame Town 1" houseid="8" entryx="2027" entryy="1864" entryz="7" rent="210000" townid="1" size="23"/>
+  <house name="Fame Town 8" houseid="9" entryx="2033" entryy="1857" entryz="7" rent="26000" townid="1" size="11"/>
+  <house name="Fame Town 9" houseid="10" entryx="2036" entryy="1857" entryz="7" rent="26000" townid="1" size="11"/>
+  <house name="Fame Town 6" houseid="11" entryx="2033" entryy="1859" entryz="7" rent="26000" townid="1" size="11"/>
+  <house name="Fame Town 7" houseid="12" entryx="2036" entryy="1859" entryz="7" rent="26000" townid="1" size="11"/>
+  <house name="Fame Town 11" houseid="13" entryx="2033" entryy="1857" entryz="6" rent="22000" townid="1" size="13"/>
+  <house name="Fame Town 12" houseid="14" entryx="2036" entryy="1857" entryz="6" rent="22000" townid="1" size="13"/>
+  <house name="Fame Town 5" houseid="15" entryx="2033" entryy="1859" entryz="6" rent="22000" townid="1" size="13"/>
+  <house name="Fame Town 10" houseid="16" entryx="2036" entryy="1859" entryz="6" rent="22000" townid="1" size="13"/>
+  <house name="Fame Town 4" houseid="17" entryx="2027" entryy="1858" entryz="6" rent="125000" townid="1" size="24"/>
+  <house name="Fame Town 3" houseid="18" entryx="2027" entryy="1864" entryz="6" rent="125000" townid="1" size="25"/>
+  <house name="East Entrance Flat 1" houseid="19" entryx="2034" entryy="1874" entryz="7" rent="20000" townid="1" size="10"/>
+  <house name="East Entrance Flat 2" houseid="20" entryx="2043" entryy="1874" entryz="7" rent="20000" townid="1" size="10"/>
+  <house name="East Entrance Flat 3" houseid="21" entryx="2034" entryy="1874" entryz="6" rent="18000" townid="1" size="12"/>
+  <house name="East Entrance Flat 4" houseid="22" entryx="2043" entryy="1874" entryz="6" rent="18000" townid="1" size="12"/>
+  <house name="Paradise Lake" houseid="23" entryx="2033" entryy="1878" entryz="7" rent="235000" townid="1" size="60"/>
+  <house name="Champions Lake" houseid="24" entryx="2039" entryy="1878" entryz="7" rent="30000" townid="1" size="16"/>
+  <house name="Depot Flag 1" houseid="25" entryx="2013" entryy="1875" entryz="7" rent="24000" townid="1" size="11"/>
+  <house name="Depot Flag 2" houseid="26" entryx="2016" entryy="1875" entryz="7" rent="24000" townid="1" size="11"/>
+  <house name="Depot Flat 3" houseid="27" entryx="2013" entryy="1885" entryz="7" rent="55000" townid="1" size="26"/>
+  <house name="Depot Flat 4" houseid="28" entryx="2016" entryy="1885" entryz="7" rent="55000" townid="1" size="26"/>
+  <house name="Depot Flat 5" houseid="29" entryx="2013" entryy="1875" entryz="6" rent="20000" townid="1" size="13"/>
+  <house name="Depot Flat 6" houseid="30" entryx="2016" entryy="1875" entryz="6" rent="20000" townid="1" size="13"/>
+  <house name="Palace Shop 2" houseid="31" entryx="1966" entryy="1877" entryz="7" rent="60000" townid="1" size="10"/>
+  <house name="Palace Shop 3" houseid="32" entryx="1970" entryy="1877" entryz="7" rent="60000" townid="1" size="8"/>
   <house name="North II" houseid="33" entryx="3368" entryy="1983" entryz="7" rent="38000" townid="10" size="21"/>
   <house name="North III" houseid="34" entryx="3374" entryy="1983" entryz="7" rent="38000" townid="10" size="21"/>
   <house name="North IV" houseid="35" entryx="3366" entryy="1983" entryz="6" rent="29000" townid="10" size="22"/>
   <house name="North V" houseid="36" entryx="3376" entryy="1983" entryz="6" rent="29000" townid="10" size="22"/>
+  <house name="Palace Flat 2" houseid="37" entryx="1957" entryy="1874" entryz="6" rent="10000" townid="1" size="7"/>
+  <house name="Palace Flat 1" houseid="38" entryx="1957" entryy="1870" entryz="6" rent="10000" townid="1" size="7"/>
   <house name="North VI" houseid="51" entryx="3336" entryy="1993" entryz="7" rent="85000" townid="10" size="40"/>
   <house name="North VII" houseid="52" entryx="3339" entryy="1993" entryz="7" rent="85000" townid="10" size="40"/>
   <house name="North VIII" houseid="53" entryx="3336" entryy="1993" entryz="6" rent="52000" townid="10" size="40"/>
@@ -18,10 +50,115 @@
   <house name="West VII" houseid="61" entryx="3333" entryy="2018" entryz="6" rent="7500" townid="10" size="14"/>
   <house name="South I" houseid="62" entryx="3341" entryy="2017" entryz="7" rent="9500" townid="10" size="28"/>
   <house name="South II" houseid="63" entryx="3357" entryy="2017" entryz="7" rent="9500" townid="10" size="28"/>
+  <house name="Palace Flat 3" houseid="64" entryx="1957" entryy="1876" entryz="6" rent="8000" townid="1" size="4"/>
+  <house name="Palace Flat 4" houseid="65" entryx="1967" entryy="1876" entryz="6" rent="8000" townid="1" size="4"/>
+  <house name="Palace Flat 5" houseid="66" entryx="1967" entryy="1878" entryz="6" rent="96000" townid="1" size="31"/>
+  <house name="West Garden 1" houseid="67" entryx="1948" entryy="1859" entryz="7" rent="80000" townid="1" size="15"/>
+  <house name="West Garden 3" houseid="68" entryx="1948" entryy="1855" entryz="7" rent="80000" townid="1" size="15"/>
+  <house name="West Garden 2" houseid="69" entryx="1950" entryy="1859" entryz="7" rent="80000" townid="1" size="15"/>
+  <house name="West Garden 4" houseid="70" entryx="1950" entryy="1855" entryz="7" rent="0" townid="1" size="15"/>
+  <house name="Garden Shop 2" houseid="71" entryx="1948" entryy="1849" entryz="7" rent="125000" townid="1" size="21"/>
+  <house name="Garden Shop 1" houseid="72" entryx="1951" entryy="1849" entryz="7" rent="125000" townid="1" size="24"/>
+  <house name="West Garden 7" houseid="73" entryx="1948" entryy="1859" entryz="6" rent="65000" townid="1" size="13"/>
+  <house name="West Garden 5" houseid="74" entryx="1948" entryy="1855" entryz="6" rent="65000" townid="1" size="13"/>
+  <house name="West Garden 6" houseid="75" entryx="1950" entryy="1859" entryz="6" rent="65000" townid="1" size="13"/>
+  <house name="West Garden 8" houseid="76" entryx="1950" entryy="1855" entryz="6" rent="65000" townid="1" size="13"/>
+  <house name="Garden Shop 4" houseid="77" entryx="1948" entryy="1849" entryz="6" rent="105000" townid="1" size="17"/>
+  <house name="Garden Shop 3" houseid="78" entryx="1951" entryy="1849" entryz="6" rent="105000" townid="1" size="20"/>
   <house name="West VIII" houseid="79" entryx="3318" entryy="2003" entryz="7" rent="9000" townid="10" size="13"/>
   <house name="West IX" houseid="80" entryx="3318" entryy="2010" entryz="7" rent="9000" townid="10" size="19"/>
   <house name="West X" houseid="81" entryx="3318" entryy="2019" entryz="7" rent="9000" townid="10" size="19"/>
+  <house name="Depot Shop 1" houseid="86" entryx="1984" entryy="1864" entryz="7" rent="52000" townid="1" size="14"/>
+  <house name="Depot Shop 2" houseid="87" entryx="1984" entryy="1858" entryz="7" rent="55000" townid="1" size="18"/>
+  <house name="Depot Shop 3" houseid="88" entryx="1984" entryy="1852" entryz="7" rent="55000" townid="1" size="18"/>
+  <house name="Elite Champion 3" houseid="89" entryx="1989" entryy="1842" entryz="7" rent="180000" townid="1" size="59"/>
+  <house name="High Garden Shop 1" houseid="90" entryx="1955" entryy="1829" entryz="7" rent="70000" townid="1" size="22"/>
+  <house name="High Garden Shop 2" houseid="91" entryx="1960" entryy="1829" entryz="7" rent="70000" townid="1" size="22"/>
+  <house name="High Garden 1" houseid="92" entryx="1954" entryy="1833" entryz="7" rent="140000" townid="1" size="66"/>
+  <house name="High Garden 2" houseid="93" entryx="1948" entryy="1832" entryz="7" rent="145000" townid="1" size="59"/>
+  <house name="Elite Champion 4" houseid="94" entryx="1975" entryy="1835" entryz="7" rent="140000" townid="1" size="37"/>
+  <house name="Elite Champion 1" houseid="95" entryx="1997" entryy="1834" entryz="7" rent="375000" townid="1" size="106"/>
+  <house name="Elite Champion 2" houseid="96" entryx="2007" entryy="1834" entryz="7" rent="375000" townid="1" size="104"/>
+  <house name="Quendor Guild Hall" houseid="97" entryx="2019" entryy="1834" entryz="7" rent="665000" townid="1" size="170"/>
+  <house name="Depot Shop" houseid="98" entryx="2024" entryy="1838" entryz="7" rent="120000" townid="1" size="63"/>
+  <house name="Wall Flat 1" houseid="99" entryx="2029" entryy="1828" entryz="7" rent="45000" townid="1" size="16"/>
+  <house name="Wall Flat 2" houseid="100" entryx="2035" entryy="1829" entryz="7" rent="48000" townid="1" size="21"/>
+  <house name="Wall Flat 3" houseid="101" entryx="2038" entryy="1829" entryz="7" rent="44000" townid="1" size="18"/>
+  <house name="Wall Flat 4" houseid="102" entryx="2038" entryy="1832" entryz="7" rent="44000" townid="1" size="18"/>
+  <house name="Wall Flat 5" houseid="103" entryx="2038" entryy="1835" entryz="7" rent="20000" townid="1" size="10"/>
+  <house name="Wall Flat 6" houseid="104" entryx="2035" entryy="1835" entryz="7" rent="35000" townid="1" size="15"/>
+  <house name="Wall Flat 7" houseid="105" entryx="2029" entryy="1828" entryz="6" rent="38000" townid="1" size="16"/>
+  <house name="Wall Flat 8" houseid="106" entryx="2035" entryy="1829" entryz="6" rent="38000" townid="1" size="21"/>
+  <house name="Wall Flat 9" houseid="107" entryx="2038" entryy="1829" entryz="6" rent="31000" townid="1" size="18"/>
+  <house name="Wall Flat 10" houseid="108" entryx="2038" entryy="1832" entryz="6" rent="31000" townid="1" size="18"/>
+  <house name="Wall Flat 11" houseid="109" entryx="2038" entryy="1835" entryz="6" rent="18000" townid="1" size="10"/>
+  <house name="Wall Flat 12" houseid="110" entryx="2035" entryy="1835" entryz="6" rent="27000" townid="1" size="15"/>
+  <house name="Wall Flat 13" houseid="111" entryx="2029" entryy="1828" entryz="5" rent="29000" townid="1" size="18"/>
+  <house name="Wall Flat 14" houseid="112" entryx="2035" entryy="1829" entryz="5" rent="29000" townid="1" size="23"/>
+  <house name="Wall Flat 15" houseid="113" entryx="2038" entryy="1829" entryz="5" rent="20000" townid="1" size="16"/>
+  <house name="Wall Flat 16" houseid="114" entryx="2038" entryy="1832" entryz="5" rent="20000" townid="1" size="18"/>
+  <house name="Wall Flat 17" houseid="115" entryx="2038" entryy="1835" entryz="5" rent="8000" townid="1" size="10"/>
+  <house name="Wall Flat 18" houseid="116" entryx="2035" entryy="1835" entryz="5" rent="18000" townid="1" size="15"/>
+  <house name="High Garden Flat 1" houseid="117" entryx="1965" entryy="1842" entryz="7" rent="48000" townid="1" size="16"/>
+  <house name="High Garden Flat 2" houseid="118" entryx="1965" entryy="1845" entryz="7" rent="48000" townid="1" size="16"/>
+  <house name="High Garden Flat 3" houseid="119" entryx="1965" entryy="1842" entryz="6" rent="42000" townid="1" size="14"/>
+  <house name="High Garden Flat 4" houseid="120" entryx="1965" entryy="1845" entryz="6" rent="42000" townid="1" size="14"/>
+  <house name="Alameda Cruzades 1" houseid="121" entryx="2396" entryy="1864" entryz="7" rent="42000" townid="4" size="16"/>
+  <house name="Alameda Cruzades 2" houseid="122" entryx="2413" entryy="1864" entryz="7" rent="34000" townid="4" size="12"/>
+  <house name="Alameda Cruzades 3" houseid="123" entryx="2394" entryy="1858" entryz="7" rent="14000" townid="4" size="14"/>
+  <house name="Alameda Cruzades 4" houseid="124" entryx="2400" entryy="1858" entryz="7" rent="33000" townid="4" size="34"/>
+  <house name="Street of Warriors 2" houseid="126" entryx="2372" entryy="1863" entryz="7" rent="25000" townid="4" size="12"/>
+  <house name="Central Park 2" houseid="128" entryx="2375" entryy="1842" entryz="7" rent="48000" townid="4" size="18"/>
+  <house name="Central Park 1" houseid="129" entryx="2380" entryy="1842" entryz="7" rent="48000" townid="4" size="18"/>
+  <house name="Central Park 3" houseid="130" entryx="2375" entryy="1842" entryz="6" rent="40000" townid="4" size="23"/>
+  <house name="Central Park 4" houseid="131" entryx="2380" entryy="1842" entryz="6" rent="40000" townid="4" size="23"/>
+  <house name="Central Park 6" houseid="132" entryx="2357" entryy="1846" entryz="6" rent="35000" townid="4" size="21"/>
+  <house name="Central Park 7" houseid="133" entryx="2364" entryy="1846" entryz="6" rent="35000" townid="4" size="21"/>
+  <house name="Central Park 5" houseid="134" entryx="2357" entryy="1846" entryz="7" rent="42000" townid="4" size="16"/>
+  <house name="Greenwinds Village 1" houseid="135" entryx="2367" entryy="1830" entryz="7" rent="35000" townid="4" size="16"/>
+  <house name="Greenwinds Village 2" houseid="136" entryx="2370" entryy="1820" entryz="7" rent="58000" townid="4" size="44"/>
+  <house name="Greenwinds Village 3" houseid="137" entryx="2378" entryy="1819" entryz="7" rent="42000" townid="4" size="20"/>
+  <house name="Greenwinds Village 4" houseid="139" entryx="2391" entryy="1816" entryz="7" rent="32000" townid="4" size="18"/>
+  <house name="Burnhearts Street 5" houseid="140" entryx="2394" entryy="1816" entryz="7" rent="37000" townid="4" size="18"/>
+  <house name="Burnhearths Street 5" houseid="141" entryx="2409" entryy="1821" entryz="7" rent="22000" townid="4" size="10"/>
+  <house name="Saintly Street 2" houseid="142" entryx="2412" entryy="1817" entryz="7" rent="44000" townid="4" size="18"/>
+  <house name="Saintly Street 3" houseid="143" entryx="2412" entryy="1821" entryz="7" rent="44000" townid="4" size="16"/>
+  <house name="Death Knight Guildhall" houseid="144" entryx="2400" entryy="1838" entryz="7" rent="325000" townid="4" size="143"/>
   <house name="North I" houseid="147" entryx="3366" entryy="1990" entryz="6" rent="35000" townid="10" size="53"/>
+  <house name="Burnhearts Street 1" houseid="148" entryx="2392" entryy="1843" entryz="7" rent="51000" townid="4" size="13"/>
+  <house name="Burnhearts Street 2" houseid="149" entryx="2392" entryy="1835" entryz="7" rent="51000" townid="4" size="15"/>
+  <house name="Burnhearts Street 3" houseid="150" entryx="2387" entryy="1828" entryz="7" rent="21000" townid="4" size="7"/>
+  <house name="Saintly Vilage 1" houseid="151" entryx="2408" entryy="1803" entryz="7" rent="38000" townid="4" size="18"/>
+  <house name="Saintly Vilage 2" houseid="152" entryx="2421" entryy="1806" entryz="7" rent="22500" townid="4" size="10"/>
+  <house name="Saintly Village 3" houseid="153" entryx="2426" entryy="1806" entryz="7" rent="22500" townid="4" size="10"/>
+  <house name="Saintly Village 4" houseid="154" entryx="2415" entryy="1799" entryz="7" rent="32000" townid="4" size="16"/>
+  <house name="Saintly Village 5" houseid="155" entryx="2421" entryy="1794" entryz="7" rent="25000" townid="4" size="14"/>
+  <house name="Rockage 1" houseid="156" entryx="2406" entryy="1790" entryz="7" rent="34000" townid="4" size="15"/>
+  <house name="Rockage 2" houseid="157" entryx="2400" entryy="1790" entryz="7" rent="31000" townid="4" size="12"/>
+  <house name="Glory Cicle 1" houseid="158" entryx="2359" entryy="1874" entryz="7" rent="85000" townid="4" size="60"/>
+  <house name="Glory Cicle 2" houseid="160" entryx="2356" entryy="1863" entryz="7" rent="75000" townid="4" size="45"/>
+  <house name="Glory Cicle 3" houseid="161" entryx="2365" entryy="1865" entryz="7" rent="75000" townid="4" size="51"/>
+  <house name="Glory Cicle 4" houseid="162" entryx="2364" entryy="1863" entryz="7" rent="75000" townid="4" size="45"/>
+  <house name="South Apartments, Flat 4" houseid="163" entryx="2360" entryy="1883" entryz="7" rent="5000" townid="4" size="7"/>
+  <house name="South Apartments, Flat 1" houseid="164" entryx="2360" entryy="1882" entryz="7" rent="5000" townid="4" size="7"/>
+  <house name="South Apartments, Flat 5" houseid="165" entryx="2364" entryy="1883" entryz="7" rent="5000" townid="4" size="7"/>
+  <house name="South Apartments, Flat 2" houseid="166" entryx="2364" entryy="1882" entryz="7" rent="5000" townid="4" size="7"/>
+  <house name="South Apartments, Flat 6" houseid="167" entryx="2368" entryy="1883" entryz="7" rent="5000" townid="4" size="7"/>
+  <house name="South Apartments, Flat 3" houseid="168" entryx="2368" entryy="1882" entryz="7" rent="5000" townid="4" size="7"/>
+  <house name="Monsai Village 1" houseid="169" entryx="2348" entryy="1887" entryz="7" rent="14000" townid="4" size="10"/>
+  <house name="Monsai Village 2" houseid="170" entryx="2341" entryy="1895" entryz="7" rent="54000" townid="4" size="65"/>
+  <house name="Monsai Village 3" houseid="171" entryx="2358" entryy="1890" entryz="7" rent="47000" townid="4" size="73"/>
+  <house name="Monsai Village 4" houseid="172" entryx="2366" entryy="1890" entryz="7" rent="47000" townid="4" size="79"/>
+  <house name="Palace Shop 1" houseid="173" entryx="1957" entryy="1876" entryz="7" rent="120000" townid="1" size="23"/>
+  <house name="Glory Apartment, Flat 1" houseid="174" entryx="2388" entryy="1864" entryz="7" rent="78000" townid="4" size="51"/>
+  <house name="Glory Apartament, Flat 2" houseid="175" entryx="2392" entryy="1868" entryz="6" rent="52000" townid="4" size="38"/>
+  <house name="Bach Mansion" houseid="176" entryx="2423" entryy="1877" entryz="7" rent="175000" townid="4" size="141"/>
+  <house name="Seahome 1" houseid="178" entryx="2420" entryy="1841" entryz="7" rent="54000" townid="4" size="24"/>
+  <house name="Entrance Villager 1" houseid="179" entryx="2355" entryy="1792" entryz="7" rent="6000" townid="4" size="8"/>
+  <house name="Entrance Villager 2" houseid="180" entryx="2367" entryy="1794" entryz="7" rent="40000" townid="4" size="19"/>
+  <house name="Greenwinds Upper Flats" houseid="181" entryx="2378" entryy="1810" entryz="7" rent="49000" townid="4" size="44"/>
+  <house name="Backstreet Shop" houseid="182" entryx="2378" entryy="1876" entryz="7" rent="32000" townid="4" size="20"/>
+  <house name="Backstreet Flat" houseid="183" entryx="2390" entryy="1883" entryz="6" rent="38000" townid="4" size="30"/>
   <house name="Casa da colina" houseid="317" entryx="1983" entryy="1220" entryz="6" rent="12000" townid="7" size="58"/>
   <house name="Choupana I" houseid="318" entryx="2000" entryy="1226" entryz="7" rent="2000" townid="7" size="4"/>
   <house name="Choupana II" houseid="319" entryx="2006" entryy="1227" entryz="7" rent="3500" townid="7" size="8"/>
@@ -156,6 +293,7 @@
   <house name="Goer's Refuge IV" houseid="451" entryx="2859" entryy="1177" entryz="7" rent="8500" townid="2" size="37"/>
   <house name="Goer's Refuge V" houseid="452" entryx="2872" entryy="1172" entryz="7" rent="22500" townid="2" size="80"/>
   <house name="District of Flowers VIII" houseid="453" entryx="2898" entryy="1216" entryz="7" rent="5700" townid="2" size="24"/>
+  <house name="The Temples House" houseid="454" entryx="2021" entryy="1894" entryz="7" rent="65000" townid="1" size="18"/>
   <house name="Real Street 1" houseid="462" entryx="1251" entryy="2236" entryz="7" rent="1400" townid="6" size="12"/>
   <house name="Real Street 2" houseid="463" entryx="1251" entryy="2242" entryz="7" rent="1500" townid="6" size="16"/>
   <house name="Real Street 3" houseid="464" entryx="1251" entryy="2248" entryz="7" rent="2200" townid="6" size="16"/>
@@ -207,91 +345,7 @@
   <house name="West XII" houseid="550" entryx="3320" entryy="2010" entryz="6" rent="6500" townid="10" size="15"/>
   <house name="West XIII" houseid="551" entryx="3320" entryy="2017" entryz="6" rent="8500" townid="10" size="18"/>
   <house name="West XIV" houseid="552" entryx="3320" entryy="2021" entryz="6" rent="9500" townid="10" size="18"/>
-  <house name="West Garden 3" houseid="553" entryx="2156" entryy="1825" entryz="7" rent="80000" townid="1" size="15"/>
-  <house name="West Garden 1" houseid="554" entryx="2156" entryy="1829" entryz="7" rent="80000" townid="1" size="15"/>
-  <house name="West Garden 4" houseid="555" entryx="2158" entryy="1825" entryz="7" rent="80000" townid="1" size="15"/>
-  <house name="West Garden 2" houseid="556" entryx="2158" entryy="1829" entryz="7" rent="80000" townid="1" size="15"/>
-  <house name="Garden Shop 2" houseid="557" entryx="2156" entryy="1819" entryz="7" rent="125000" townid="1" size="21"/>
-  <house name="Garden Shop 1" houseid="558" entryx="2159" entryy="1819" entryz="7" rent="125000" townid="1" size="24"/>
-  <house name="High Garden 2" houseid="559" entryx="2156" entryy="1802" entryz="7" rent="145000" townid="1" size="59"/>
-  <house name="High Garden 1" houseid="560" entryx="2162" entryy="1803" entryz="7" rent="140000" townid="1" size="66"/>
-  <house name="High Garden Shop 1" houseid="561" entryx="2163" entryy="1799" entryz="7" rent="70000" townid="1" size="22"/>
-  <house name="High Garden Shop 2" houseid="562" entryx="2168" entryy="1799" entryz="7" rent="70000" townid="1" size="22"/>
-  <house name="Elite Champion 4" houseid="563" entryx="2183" entryy="1805" entryz="7" rent="140000" townid="1" size="37"/>
-  <house name="High Garden Flat 1" houseid="564" entryx="2173" entryy="1812" entryz="7" rent="48000" townid="1" size="16"/>
-  <house name="High Garden Flat 2" houseid="565" entryx="2173" entryy="1815" entryz="7" rent="48000" townid="1" size="16"/>
-  <house name="Depot Shop 3" houseid="566" entryx="2192" entryy="1822" entryz="7" rent="55000" townid="1" size="18"/>
-  <house name="Depot Shop 2" houseid="567" entryx="2192" entryy="1828" entryz="7" rent="55000" townid="1" size="18"/>
-  <house name="Depot Shop 1" houseid="568" entryx="2192" entryy="1834" entryz="7" rent="52000" townid="1" size="14"/>
-  <house name="Palace Shop 2" houseid="569" entryx="2174" entryy="1847" entryz="7" rent="60000" townid="1" size="10"/>
-  <house name="Palace Shop 3" houseid="570" entryx="2178" entryy="1847" entryz="7" rent="60000" townid="1" size="8"/>
-  <house name="Palace Shop 1" houseid="575" entryx="2165" entryy="1846" entryz="7" rent="120000" townid="1" size="23"/>
-  <house name="Depot Flat 3" houseid="578" entryx="2221" entryy="1855" entryz="7" rent="55000" townid="1" size="26"/>
-  <house name="Depot Flat 4" houseid="579" entryx="2224" entryy="1855" entryz="7" rent="55000" townid="1" size="26"/>
-  <house name="Depot Flat 5" houseid="580" entryx="2221" entryy="1845" entryz="6" rent="20000" townid="1" size="13"/>
-  <house name="Depot Flat 6" houseid="581" entryx="2224" entryy="1845" entryz="6" rent="20000" townid="1" size="13"/>
-  <house name="Depot Flat 1" houseid="583" entryx="2221" entryy="1845" entryz="7" rent="24000" townid="1" size="11"/>
-  <house name="Depot Flat 2" houseid="584" entryx="2224" entryy="1845" entryz="7" rent="24000" townid="1" size="11"/>
-  <house name="East Entrance Flat 1" houseid="586" entryx="2242" entryy="1844" entryz="7" rent="20000" townid="1" size="10"/>
-  <house name="East Entrance Flat 2" houseid="587" entryx="2251" entryy="1844" entryz="7" rent="20000" townid="1" size="10"/>
-  <house name="Fame Town 6" houseid="588" entryx="2241" entryy="1829" entryz="7" rent="26000" townid="1" size="11"/>
-  <house name="Fame Town 7" houseid="589" entryx="2244" entryy="1829" entryz="7" rent="26000" townid="1" size="11"/>
-  <house name="Fame Town 1" houseid="590" entryx="2235" entryy="1834" entryz="7" rent="210000" townid="1" size="23"/>
-  <house name="Fame Town 2" houseid="591" entryx="2235" entryy="1828" entryz="7" rent="210000" townid="1" size="23"/>
-  <house name="Fame Town 8" houseid="592" entryx="2241" entryy="1827" entryz="7" rent="26000" townid="1" size="11"/>
-  <house name="Fame Town 9" houseid="593" entryx="2244" entryy="1827" entryz="7" rent="26000" townid="1" size="11"/>
-  <house name="Wall Guild Hall 1" houseid="594" entryx="2226" entryy="1804" entryz="7" rent="665000" townid="1" size="170"/>
-  <house name="Wall Flat 1" houseid="598" entryx="2237" entryy="1798" entryz="7" rent="45000" townid="1" size="16"/>
-  <house name="Wall Flat 2" houseid="599" entryx="2243" entryy="1799" entryz="7" rent="48000" townid="1" size="21"/>
-  <house name="Wall Flat 3" houseid="600" entryx="2246" entryy="1799" entryz="7" rent="44000" townid="1" size="18"/>
-  <house name="Wall Flat 4" houseid="601" entryx="2246" entryy="1802" entryz="7" rent="44000" townid="1" size="18"/>
-  <house name="Wall Flat 6" houseid="602" entryx="2246" entryy="1805" entryz="7" rent="11000" townid="1" size="10"/>
-  <house name="Wall Flat 7" houseid="603" entryx="2243" entryy="1805" entryz="7" rent="42000" townid="1" size="15"/>
-  <house name="Depot Shop" houseid="604" entryx="2232" entryy="1808" entryz="7" rent="120000" townid="1" size="53"/>
-  <house name="Wall Flat 8" houseid="605" entryx="2237" entryy="1798" entryz="6" rent="38000" townid="1" size="16"/>
-  <house name="Wall Flat 9" houseid="606" entryx="2243" entryy="1799" entryz="6" rent="38000" townid="1" size="21"/>
-  <house name="Wall Flat 5" houseid="607" entryx="2246" entryy="1799" entryz="6" rent="36000" townid="1" size="18"/>
-  <house name="Wall Flat 10" houseid="608" entryx="2246" entryy="1802" entryz="6" rent="36000" townid="1" size="18"/>
-  <house name="Wall Flat 12" houseid="609" entryx="2243" entryy="1805" entryz="6" rent="34000" townid="1" size="16"/>
-  <house name="Wall Flat 11" houseid="610" entryx="2246" entryy="1805" entryz="6" rent="24000" townid="1" size="10"/>
-  <house name="Wall Flat 14" houseid="612" entryx="2243" entryy="1799" entryz="5" rent="36000" townid="1" size="23"/>
-  <house name="Wall Flat 15" houseid="613" entryx="2246" entryy="1799" entryz="5" rent="34000" townid="1" size="16"/>
-  <house name="Wall Flat 16" houseid="614" entryx="2246" entryy="1802" entryz="5" rent="34000" townid="1" size="18"/>
-  <house name="Wall Flat 17" houseid="615" entryx="2246" entryy="1805" entryz="5" rent="5000" townid="1" size="10"/>
-  <house name="Wall Flat 18" houseid="616" entryx="2243" entryy="1805" entryz="5" rent="25000" townid="1" size="14"/>
-  <house name="Fame Town 11" houseid="618" entryx="2241" entryy="1827" entryz="6" rent="22000" townid="1" size="13"/>
-  <house name="Fame Town 12" houseid="619" entryx="2244" entryy="1827" entryz="6" rent="22000" townid="1" size="13"/>
-  <house name="Fame Town 5" houseid="620" entryx="2241" entryy="1829" entryz="6" rent="22000" townid="1" size="13"/>
-  <house name="Fame Town 10" houseid="621" entryx="2244" entryy="1829" entryz="6" rent="22000" townid="1" size="13"/>
-  <house name="Fame Town 4" houseid="622" entryx="2235" entryy="1828" entryz="6" rent="125000" townid="1" size="24"/>
-  <house name="Fame Town 3" houseid="623" entryx="2235" entryy="1833" entryz="6" rent="125000" townid="1" size="25"/>
-  <house name="East Entrance Flat 4" houseid="624" entryx="2251" entryy="1844" entryz="6" rent="18000" townid="1" size="12"/>
-  <house name="Paradise Lake" houseid="626" entryx="2241" entryy="1848" entryz="7" rent="235000" townid="1" size="60"/>
-  <house name="Champion's Lake" houseid="627" entryx="2247" entryy="1848" entryz="7" rent="30000" townid="1" size="16"/>
-  <house name="Palace Flat 1" houseid="630" entryx="2165" entryy="1840" entryz="6" rent="10000" townid="1" size="7"/>
-  <house name="Palace Flat 2" houseid="631" entryx="2165" entryy="1844" entryz="6" rent="10000" townid="1" size="7"/>
-  <house name="Palace Flat 3" houseid="632" entryx="2165" entryy="1846" entryz="6" rent="8000" townid="1" size="4"/>
-  <house name="Palace Flat 4" houseid="633" entryx="2175" entryy="1846" entryz="6" rent="8000" townid="1" size="4"/>
-  <house name="Palace Flat 5" houseid="634" entryx="2175" entryy="1848" entryz="6" rent="96000" townid="1" size="31"/>
-  <house name="West Garden 5" houseid="636" entryx="2156" entryy="1825" entryz="6" rent="65000" townid="1" size="13"/>
-  <house name="West Garden 7" houseid="637" entryx="2156" entryy="1829" entryz="6" rent="65000" townid="1" size="13"/>
-  <house name="West Garden 8" houseid="638" entryx="2158" entryy="1825" entryz="6" rent="65000" townid="1" size="13"/>
-  <house name="West Garden 6" houseid="639" entryx="2158" entryy="1829" entryz="6" rent="65000" townid="1" size="13"/>
-  <house name="Garden Shop 4" houseid="640" entryx="2156" entryy="1819" entryz="6" rent="105000" townid="1" size="17"/>
-  <house name="Garden Shop 3" houseid="641" entryx="2159" entryy="1819" entryz="6" rent="105000" townid="1" size="20"/>
-  <house name="High Garden Flat 3" houseid="642" entryx="2173" entryy="1812" entryz="6" rent="42000" townid="1" size="14"/>
-  <house name="High Garden Flat 4" houseid="643" entryx="2173" entryy="1815" entryz="6" rent="42000" townid="1" size="14"/>
-  <house name="Depot Shop 5" houseid="644" entryx="2192" entryy="1822" entryz="6" rent="48000" townid="1" size="20"/>
-  <house name="Depot Shop 4" houseid="645" entryx="2192" entryy="1828" entryz="6" rent="48000" townid="1" size="20"/>
-  <house name="Depot Shop 6" houseid="646" entryx="2193" entryy="1822" entryz="6" rent="28000" townid="1" size="15"/>
-  <house name="Depot Shop 7" houseid="647" entryx="2193" entryy="1828" entryz="6" rent="28000" townid="1" size="15"/>
-  <house name="Elite Champion 1" houseid="648" entryx="2205" entryy="1804" entryz="7" rent="375000" townid="1" size="102"/>
-  <house name="Elite Champion 2" houseid="649" entryx="2215" entryy="1804" entryz="7" rent="375000" townid="1" size="102"/>
-  <house name="Elite Champion 3" houseid="650" entryx="2197" entryy="1812" entryz="7" rent="180000" townid="1" size="48"/>
-  <house name="The Temples House" houseid="651" entryx="2229" entryy="1864" entryz="7" rent="65000" townid="1" size="18"/>
-  <house name="East Entrance Flat 3" houseid="652" entryx="2242" entryy="1844" entryz="6" rent="18000" townid="1" size="12"/>
-  <house name="Wall Flat 13" houseid="653" entryx="2237" entryy="1798" entryz="5" rent="36000" townid="1" size="18"/>
-  <house name="Fort Guard" houseid="654" entryx="2069" entryy="1839" entryz="7" rent="285000" townid="1" size="117"/>
+  <house name="Fort Guard" houseid="654" entryx="2069" entryy="1839" entryz="7" rent="285000" townid="1" size="133"/>
   <house name="Castle of Wargrowth" houseid="655" entryx="1980" entryy="1791" entryz="7" rent="5000000" townid="1" size="1250"/>
   <house name="South Flat 1" houseid="656" entryx="2186" entryy="2707" entryz="7" rent="6000" townid="5" size="20"/>
   <house name="West Flat 1" houseid="657" entryx="2165" entryy="2705" entryz="7" rent="14000" townid="5" size="39"/>

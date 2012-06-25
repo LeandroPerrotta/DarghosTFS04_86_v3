@@ -5,21 +5,17 @@
 		]]>
 	</script>
 		
-	<announce delay="0" type="event" message="The rebel ladies plan an attack to Quendor."/>
-	<announce delay="60000" type="event" message="Amazons and Valkyries attacking Quendor!"/>
-	
-	<areaspawn delay="60000" centerx="2167" centery="1834" centerz="7" radius="15">
-		<monster name="Valkyrie" minamount="10" maxamount="20"/>
-		<monster name="Amazon" minamount="15" maxamount="25"/>
-	</areaspawn>
+	<announce delay="0" type="event" message="As senhoritas rebeldes planejam um ataque a quendor..."/>
+	<announce delay="60000" type="event" message="As amazonas estão atacando Quendor!"/>
 	
 	<!-- Quendor East Gate -->
-	<areaspawn delay="60000" centerx="2252" centery="1838" centerz="7" radius="15">
+	<areaspawn delay="60000" centerx="2069" centery="1861" centerz="7" radius="8">
 		<monster name="Amazon" minamount="15" maxamount="25"/>
 		<monster name="Valkyrie" minamount="10" maxamount="20"/>
 	</areaspawn>
 	
-	<areaspawn delay="60000" centerx="2195" centery="1781" centerz="7" radius="25">
+	<!-- North Gate -->
+	<areaspawn delay="60000" centerx="2023" centery="1787" centerz="7" radius="12">
 		<monster name="Amazon" minamount="30" maxamount="60"/>
 		<monster name="Valkyrie" minamount="20" maxamount="35"/>
 	</areaspawn>

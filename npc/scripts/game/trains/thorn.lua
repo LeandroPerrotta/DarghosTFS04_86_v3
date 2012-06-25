@@ -11,9 +11,8 @@ function onThink() 						npcHandler:onThink() end
     
 trainDestiny.addQuendor(keywordHandler, npcHandler)     
         
-keywordHandler:addKeyword({'passage'}, StdModule.say, {npcHandler = npcHandler, onlyFocus = true, text = 'The train can take you to Quendor.'})
+keywordHandler:addKeyword({'passage', 'travel'}, StdModule.say, {npcHandler = npcHandler, onlyFocus = true, text = 'The rails of our train can take you to {Quendor} station.'})
 keywordHandler:addKeyword({'job'}, StdModule.say, {npcHandler = npcHandler, onlyFocus = true, text = 'I am an employee of the railroad company.'})
-keywordHandler:addKeyword({'travel'}, StdModule.say, {npcHandler = npcHandler, onlyFocus = true, text = 'The train can take you to Quendor.'})
 
 -- Makes sure the npc reacts when you say hi, bye etc.
 npcHandler:addModule(FocusModule:new())
