@@ -5,8 +5,8 @@
 		]]>
 	</script>
 		
-	<announce delay="0" type="event" message="É possivel ouvir fortes rugidos vindos de Quendor..."/>
-	<announce delay="60000" type="event" message="Dragões de fogo estão sobrevoando Quendor!"/>
+	<announce delay="0" type="event" message="Ã‰ possivel ouvir fortes rugidos vindos de Quendor..."/>
+	<announce delay="60000" type="event" message="DragÃµes de fogo estÃ£o sobrevoando Quendor!"/>
 	<announce delay="100000" type="event" message="Dragoes poem Quendor em chamas!"/>
 	
 	<!-- Quendor East Gate -->

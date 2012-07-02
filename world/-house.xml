@@ -56,7 +56,7 @@
   <house name="West Garden 1" houseid="67" entryx="1948" entryy="1859" entryz="7" rent="80000" townid="1" size="15"/>
   <house name="West Garden 3" houseid="68" entryx="1948" entryy="1855" entryz="7" rent="80000" townid="1" size="15"/>
   <house name="West Garden 2" houseid="69" entryx="1950" entryy="1859" entryz="7" rent="80000" townid="1" size="15"/>
-  <house name="West Garden 4" houseid="70" entryx="1950" entryy="1855" entryz="7" rent="0" townid="1" size="15"/>
+  <house name="West Garden 4" houseid="70" entryx="1950" entryy="1855" entryz="7" rent="80000" townid="1" size="15"/>
   <house name="Garden Shop 2" houseid="71" entryx="1948" entryy="1849" entryz="7" rent="125000" townid="1" size="21"/>
   <house name="Garden Shop 1" houseid="72" entryx="1951" entryy="1849" entryz="7" rent="125000" townid="1" size="24"/>
   <house name="West Garden 7" houseid="73" entryx="1948" entryy="1859" entryz="6" rent="65000" townid="1" size="13"/>
@@ -152,65 +152,65 @@
   <house name="Palace Shop 1" houseid="173" entryx="1957" entryy="1876" entryz="7" rent="120000" townid="1" size="23"/>
   <house name="Glory Apartment, Flat 1" houseid="174" entryx="2388" entryy="1864" entryz="7" rent="78000" townid="4" size="51"/>
   <house name="Glory Apartament, Flat 2" houseid="175" entryx="2392" entryy="1868" entryz="6" rent="52000" townid="4" size="38"/>
-  <house name="Bach Mansion" houseid="176" entryx="2423" entryy="1877" entryz="7" rent="175000" townid="4" size="135"/>
+  <house name="Bach Mansion" houseid="176" entryx="2423" entryy="1877" entryz="7" rent="175000" townid="4" size="141"/>
   <house name="Seahome 1" houseid="178" entryx="2420" entryy="1841" entryz="7" rent="54000" townid="4" size="24"/>
   <house name="Entrance Villager 1" houseid="179" entryx="2355" entryy="1792" entryz="7" rent="6000" townid="4" size="8"/>
   <house name="Entrance Villager 2" houseid="180" entryx="2367" entryy="1794" entryz="7" rent="40000" townid="4" size="19"/>
   <house name="Greenwinds Upper Flats" houseid="181" entryx="2378" entryy="1810" entryz="7" rent="49000" townid="4" size="44"/>
   <house name="Backstreet Shop" houseid="182" entryx="2378" entryy="1876" entryz="7" rent="32000" townid="4" size="20"/>
   <house name="Backstreet Flat" houseid="183" entryx="2390" entryy="1883" entryz="6" rent="38000" townid="4" size="30"/>
-  <house name="Casa da colina" houseid="317" entryx="1983" entryy="1220" entryz="6" rent="12000" townid="7" size="58"/>
+  <house name="Casa da colina" houseid="317" entryx="1983" entryy="1220" entryz="6" rent="12000" townid="7" size="54"/>
   <house name="Choupana I" houseid="318" entryx="2000" entryy="1226" entryz="7" rent="2000" townid="7" size="4"/>
-  <house name="Choupana II" houseid="319" entryx="2006" entryy="1227" entryz="7" rent="3500" townid="7" size="8"/>
-  <house name="Choupana III" houseid="320" entryx="1999" entryy="1232" entryz="7" rent="4500" townid="7" size="15"/>
-  <house name="Glacier House I" houseid="321" entryx="2004" entryy="1244" entryz="7" rent="62000" townid="7" size="51"/>
-  <house name="Glacier House II" houseid="322" entryx="2008" entryy="1243" entryz="6" rent="10000" townid="7" size="51"/>
-  <house name="Glacier House III" houseid="323" entryx="1998" entryy="1241" entryz="7" rent="11000" townid="7" size="31"/>
-  <house name="Glacier House IV" houseid="324" entryx="1986" entryy="1252" entryz="7" rent="12000" townid="7" size="37"/>
-  <house name="Glacier House V" houseid="325" entryx="1973" entryy="1252" entryz="7" rent="12000" townid="7" size="37"/>
+  <house name="Choupana II" houseid="319" entryx="2006" entryy="1227" entryz="7" rent="3500" townid="7" size="6"/>
+  <house name="Choupana III" houseid="320" entryx="1999" entryy="1232" entryz="7" rent="4500" townid="7" size="13"/>
+  <house name="Glacier House I" houseid="321" entryx="2004" entryy="1244" entryz="7" rent="62000" townid="7" size="47"/>
+  <house name="Glacier House II" houseid="322" entryx="2008" entryy="1243" entryz="6" rent="10000" townid="7" size="47"/>
+  <house name="Glacier House III" houseid="323" entryx="1998" entryy="1241" entryz="7" rent="11000" townid="7" size="29"/>
+  <house name="Glacier House IV" houseid="324" entryx="1986" entryy="1252" entryz="7" rent="12000" townid="7" size="35"/>
+  <house name="Glacier House V" houseid="325" entryx="1973" entryy="1252" entryz="7" rent="12000" townid="7" size="35"/>
   <house name="Glacier House VI" houseid="326" entryx="1981" entryy="1248" entryz="6" rent="11000" townid="7" size="37"/>
   <house name="Glacier House VII" houseid="327" entryx="1969" entryy="1248" entryz="6" rent="11000" townid="7" size="37"/>
   <house name="Glacier House VIII" houseid="328" entryx="1994" entryy="1252" entryz="7" rent="10000" townid="7" size="26"/>
-  <house name="Northrend's Flat I" houseid="329" entryx="1963" entryy="1287" entryz="7" rent="4000" townid="7" size="12"/>
-  <house name="Northrend's Flat II" houseid="330" entryx="1963" entryy="1292" entryz="7" rent="5000" townid="7" size="16"/>
-  <house name="Northrend's Flat III" houseid="331" entryx="1965" entryy="1293" entryz="7" rent="9500" townid="7" size="33"/>
-  <house name="Northrend I" houseid="332" entryx="1976" entryy="1266" entryz="7" rent="34000" townid="7" size="35"/>
-  <house name="Northrend II" houseid="333" entryx="1993" entryy="1266" entryz="7" rent="7000" townid="7" size="23"/>
-  <house name="Northrend III" houseid="334" entryx="1994" entryy="1274" entryz="7" rent="55000" townid="7" size="59"/>
-  <house name="Northrend IV" houseid="335" entryx="1997" entryy="1291" entryz="7" rent="87000" townid="7" size="106"/>
-  <house name="Northrend V" houseid="336" entryx="1987" entryy="1291" entryz="7" rent="17000" townid="7" size="64"/>
-  <house name="Northrend VI" houseid="337" entryx="1974" entryy="1292" entryz="7" rent="17000" townid="7" size="64"/>
-  <house name="Casebre I" houseid="338" entryx="1948" entryy="1286" entryz="7" rent="7000" townid="7" size="15"/>
-  <house name="Casebre II" houseid="339" entryx="1944" entryy="1289" entryz="7" rent="6000" townid="7" size="15"/>
-  <house name="Casebre III" houseid="340" entryx="1943" entryy="1296" entryz="7" rent="6000" townid="7" size="14"/>
-  <house name="Casebre IV" houseid="341" entryx="1954" entryy="1296" entryz="7" rent="6000" townid="7" size="16"/>
+  <house name="Northrend's Flat I" houseid="329" entryx="1963" entryy="1287" entryz="7" rent="4000" townid="7" size="10"/>
+  <house name="Northrend's Flat II" houseid="330" entryx="1963" entryy="1292" entryz="7" rent="5000" townid="7" size="14"/>
+  <house name="Northrend's Flat III" houseid="331" entryx="1965" entryy="1293" entryz="7" rent="9500" townid="7" size="29"/>
+  <house name="Northrend I" houseid="332" entryx="1976" entryy="1266" entryz="7" rent="34000" townid="7" size="33"/>
+  <house name="Northrend II" houseid="333" entryx="1993" entryy="1266" entryz="7" rent="7000" townid="7" size="21"/>
+  <house name="Northrend III" houseid="334" entryx="1994" entryy="1274" entryz="7" rent="55000" townid="7" size="55"/>
+  <house name="Northrend IV" houseid="335" entryx="1997" entryy="1291" entryz="7" rent="87000" townid="7" size="100"/>
+  <house name="Northrend V" houseid="336" entryx="1987" entryy="1291" entryz="7" rent="17000" townid="7" size="58"/>
+  <house name="Northrend VI" houseid="337" entryx="1974" entryy="1292" entryz="7" rent="17000" townid="7" size="58"/>
+  <house name="Casebre I" houseid="338" entryx="1948" entryy="1286" entryz="7" rent="7000" townid="7" size="13"/>
+  <house name="Casebre II" houseid="339" entryx="1944" entryy="1289" entryz="7" rent="6000" townid="7" size="13"/>
+  <house name="Casebre III" houseid="340" entryx="1943" entryy="1296" entryz="7" rent="6000" townid="7" size="12"/>
+  <house name="Casebre IV" houseid="341" entryx="1954" entryy="1296" entryz="7" rent="6000" townid="7" size="14"/>
   <house name="Casebre V" houseid="342" entryx="1947" entryy="1304" entryz="7" rent="4500" townid="7" size="10"/>
   <house name="Frozen Guildhall" houseid="343" entryx="1966" entryy="1311" entryz="7" rent="35000" townid="7" size="166"/>
-  <house name="Lake Palace I" houseid="344" entryx="1978" entryy="1307" entryz="7" rent="9500" townid="7" size="26"/>
+  <house name="Lake Palace I" houseid="344" entryx="1978" entryy="1307" entryz="7" rent="9500" townid="7" size="24"/>
   <house name="Lake Palace II" houseid="345" entryx="1973" entryy="1311" entryz="7" rent="13500" townid="7" size="60"/>
   <house name="Lake Palace III" houseid="346" entryx="1982" entryy="1310" entryz="7" rent="13500" townid="7" size="65"/>
-  <house name="Ice Apartment I" houseid="347" entryx="1923" entryy="1282" entryz="7" rent="6500" townid="7" size="15"/>
-  <house name="Ice Apartment II" houseid="348" entryx="1925" entryy="1282" entryz="7" rent="6500" townid="7" size="15"/>
-  <house name="Ice Apartment III" houseid="349" entryx="1922" entryy="1287" entryz="7" rent="8500" townid="7" size="36"/>
-  <house name="Ice Apartment IV" houseid="350" entryx="1927" entryy="1287" entryz="7" rent="8500" townid="7" size="36"/>
-  <house name="Ice Apartment V" houseid="351" entryx="1922" entryy="1286" entryz="6" rent="8000" townid="7" size="25"/>
-  <house name="Ice Apartment VI" houseid="352" entryx="1927" entryy="1286" entryz="6" rent="8000" townid="7" size="25"/>
-  <house name="Ice Apartment VII" houseid="353" entryx="1922" entryy="1287" entryz="6" rent="8500" townid="7" size="36"/>
-  <house name="Ice Apartment VIII" houseid="354" entryx="1927" entryy="1287" entryz="6" rent="8500" townid="7" size="36"/>
+  <house name="Ice Apartment I" houseid="347" entryx="1923" entryy="1282" entryz="7" rent="6500" townid="7" size="13"/>
+  <house name="Ice Apartment II" houseid="348" entryx="1925" entryy="1282" entryz="7" rent="6500" townid="7" size="13"/>
+  <house name="Ice Apartment III" houseid="349" entryx="1922" entryy="1287" entryz="7" rent="8500" townid="7" size="32"/>
+  <house name="Ice Apartment IV" houseid="350" entryx="1927" entryy="1287" entryz="7" rent="8500" townid="7" size="32"/>
+  <house name="Ice Apartment V" houseid="351" entryx="1922" entryy="1286" entryz="6" rent="8000" townid="7" size="23"/>
+  <house name="Ice Apartment VI" houseid="352" entryx="1927" entryy="1286" entryz="6" rent="8000" townid="7" size="23"/>
+  <house name="Ice Apartment VII" houseid="353" entryx="1922" entryy="1287" entryz="6" rent="8500" townid="7" size="32"/>
+  <house name="Ice Apartment VIII" houseid="354" entryx="1927" entryy="1287" entryz="6" rent="8500" townid="7" size="32"/>
   <house name="Ice Apartment IX" houseid="355" entryx="1917" entryy="1289" entryz="5" rent="4000" townid="7" size="12"/>
   <house name="Ice Apartment X" houseid="356" entryx="1924" entryy="1289" entryz="5" rent="5000" townid="7" size="21"/>
   <house name="Ice Apartment XI" houseid="357" entryx="1930" entryy="1289" entryz="5" rent="4000" townid="7" size="12"/>
   <house name="Ice Apartment XII" houseid="358" entryx="1924" entryy="1288" entryz="5" rent="12500" townid="7" size="66"/>
-  <house name="Ice House I" houseid="359" entryx="1929" entryy="1265" entryz="7" rent="12000" townid="7" size="46"/>
-  <house name="Ice House II" houseid="360" entryx="1945" entryy="1265" entryz="7" rent="8500" townid="7" size="30"/>
-  <house name="Ice House III" houseid="361" entryx="1945" entryy="1270" entryz="7" rent="10500" townid="7" size="33"/>
-  <house name="Ice House IV" houseid="362" entryx="1945" entryy="1261" entryz="6" rent="12500" townid="7" size="67"/>
-  <house name="Frozen Circle I" houseid="363" entryx="1943" entryy="1236" entryz="7" rent="13500" townid="7" size="47"/>
-  <house name="Frozen Circle II" houseid="364" entryx="1938" entryy="1230" entryz="7" rent="9500" townid="7" size="25"/>
-  <house name="Frozen Circle III" houseid="365" entryx="1949" entryy="1230" entryz="7" rent="12000" townid="7" size="46"/>
-  <house name="Frozen Circle IV" houseid="366" entryx="1949" entryy="1223" entryz="7" rent="10500" townid="7" size="25"/>
-  <house name="Frozen Circle V" houseid="367" entryx="1956" entryy="1219" entryz="7" rent="6500" townid="7" size="12"/>
-  <house name="Frozen Circle VI" houseid="368" entryx="1962" entryy="1208" entryz="7" rent="12000" townid="7" size="34"/>
+  <house name="Ice House I" houseid="359" entryx="1929" entryy="1265" entryz="7" rent="12000" townid="7" size="42"/>
+  <house name="Ice House II" houseid="360" entryx="1945" entryy="1265" entryz="7" rent="8500" townid="7" size="26"/>
+  <house name="Ice House III" houseid="361" entryx="1945" entryy="1270" entryz="7" rent="10500" townid="7" size="29"/>
+  <house name="Ice House IV" houseid="362" entryx="1945" entryy="1261" entryz="6" rent="12500" townid="7" size="61"/>
+  <house name="Frozen Circle I" houseid="363" entryx="1943" entryy="1236" entryz="7" rent="13500" townid="7" size="45"/>
+  <house name="Frozen Circle II" houseid="364" entryx="1938" entryy="1230" entryz="7" rent="9500" townid="7" size="23"/>
+  <house name="Frozen Circle III" houseid="365" entryx="1949" entryy="1230" entryz="7" rent="12000" townid="7" size="44"/>
+  <house name="Frozen Circle IV" houseid="366" entryx="1949" entryy="1223" entryz="7" rent="10500" townid="7" size="23"/>
+  <house name="Frozen Circle V" houseid="367" entryx="1956" entryy="1219" entryz="7" rent="6500" townid="7" size="10"/>
+  <house name="Frozen Circle VI" houseid="368" entryx="1962" entryy="1208" entryz="7" rent="12000" townid="7" size="32"/>
   <house name="Aracura Flats A-I" houseid="369" entryx="2971" entryy="1118" entryz="7" rent="13500" townid="2" size="35"/>
   <house name="Aracura Flats A-II" houseid="370" entryx="2971" entryy="1124" entryz="7" rent="8700" townid="2" size="28"/>
   <house name="Aracura Flats A-III" houseid="371" entryx="2970" entryy="1120" entryz="6" rent="4200" townid="2" size="15"/>
@@ -346,7 +346,7 @@
   <house name="West XIII" houseid="551" entryx="3320" entryy="2017" entryz="6" rent="8500" townid="10" size="18"/>
   <house name="West XIV" houseid="552" entryx="3320" entryy="2021" entryz="6" rent="9500" townid="10" size="18"/>
   <house name="Fort Guard" houseid="654" entryx="2069" entryy="1839" entryz="7" rent="285000" townid="1" size="133"/>
-  <house name="Castle of Wargrowth" houseid="655" entryx="1980" entryy="1791" entryz="7" rent="5000000" townid="1" size="1250"/>
+  <house name="Castle of Wargrowth" houseid="655" entryx="1980" entryy="1791" entryz="7" rent="5000000" townid="1" size="1251"/>
   <house name="South Flat 1" houseid="656" entryx="2186" entryy="2707" entryz="7" rent="6000" townid="5" size="20"/>
   <house name="West Flat 1" houseid="657" entryx="2165" entryy="2705" entryz="7" rent="14000" townid="5" size="39"/>
   <house name="West Flat 2" houseid="658" entryx="2172" entryy="2700" entryz="7" rent="3000" townid="5" size="4"/>

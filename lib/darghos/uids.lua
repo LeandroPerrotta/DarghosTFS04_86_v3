@@ -264,11 +264,14 @@
 	--MM_TICK = {}
 	
 	-- 100 ~ 199 (question)
-	--MM_QUESTION = {}
+	MM_QUESTION = {
+		{ uid = 100, description = "Benção de Quendor"}
+		,{ uid = 101, description = "Benção de Thorn"}
+	},
 	
 	-- 200 ~ 299 (exclamation)
 	--MM_EXCLAMATION = {}
-	
+		
 	-- 300 ~ 399 (star)
 	MM_STAR = {
 		{ uid = 300, description = "Loja de artigos mágicos"}
@@ -278,15 +281,18 @@
 	-- 400 ~ 499 (cross)
 	MM_CROSS = {
 		{ uid = 400, description = "Porto de Quendor"}
-		,{ uid = 401, description = "Academia de Treinos"}
+		,{ uid = 401, description = "Academia de Treinos"} -- quendor
 		,{ uid = 402, description = "Porto de Island of Peace"}
-		,{ uid = 403, description = "Academia de Treinos"}
+		,{ uid = 403, description = "Academia de Treinos"} -- island of peace
+		,{ uid = 404, description = "Estação de trêm (subterraneo)"} -- thorn
+		,{ uid = 405, description = "Estação de trêm (subterraneo)"} -- quendor
 	},
 		
 	-- 500 ~ 599 (temple)
 	MM_TEMPLE = {
 		{ uid = 500, description = "Templo de Quendor"}
 		,{ uid = 501, description = "Templo de Island of Peace"}
+		,{ uid = 502, description = "Templo de Thorn"}
 	},
 		
 	-- 600 ~ 699 (kiss)
@@ -294,8 +300,9 @@
 		
 	-- 700 ~ 799 (shovel)
 	MM_SHOVEL = {
-		{ uid = 700, description = "Acessórios & Utilidades"}
-		,{ uid = 701, description = "Acessórios & Utilidades"}
+		{ uid = 700, description = "Acessórios & Utilidades"} -- quendor
+		,{ uid = 701, description = "Acessórios & Utilidades"} -- island of peace
+		,{ uid = 702, description = "Acessórios & Utilidades"} -- thorn
 	},
 		
 	-- 800 ~ 899 (sword)
@@ -309,23 +316,33 @@
 		,{ uid = 803, description = "Ferreiro (armas)"}
 		,{ uid = 804, description = "Ferreiro (equipamentos)"}
 		,{ uid = 805, description = "Armas de distância & munições"}
+		
+		-- Thorn
+		,{ uid = 806, description = "Ferreiro (armas)"}
+		,{ uid = 807, description = "Ferreiro (equipamentos)"}
+		,{ uid = 808, description = "Armas de distância & munições"}
 	},
 		
 	-- 900 ~ 999 (flag)
 	MM_FLAG = {
 		{ uid = 900, description = "Castelo do Rei Ordon"}
-		,{ uid = 901, description = "Castelo do Principe Aldebaran"}
+		,{ uid = 901, description = "Castelo do Principe Aldebaran"}	
 	},
 		
 	-- 1000 ~ 1099 (lock)
 	MM_LOCK = {
 		{ uid = 1000, description = "Centro de Quendor"}
 		,{ uid = 1001, description = "Centro de Island of Peace"}
+		,{ uid = 1002, description = "Centro de Thorn"}
 	},
 		
 	-- 1100 ~ 1199 (bag)
 	MM_BAG = {
-		{ uid = 1100, description = "Lojas de decoração & moveis"}
+		{ uid = 1100, description = "Lojas de decoração & moveis"} -- quendor
+		,{ uid = 1101, description = "Lojas de decoração & moveis"} -- thorn
+		,{ uid = 1102, description = "Loja de travesseiros"} -- thorn
+		,{ uid = 1103, description = "Loja de comestiveis"} -- quendor
+		,{ uid = 1104, description = "Loja de comestiveis"} -- thorn
 	},
 		
 	-- 1200 ~ 1299 (skull)
@@ -338,7 +355,9 @@
 		-- Island of Peace
 		{ uid = 1300, description = "Banco"}
 		-- Quendor
-		,{ uid = 1301, description = "Banco"}
+		,{ uid = 1301, description = "Banco (2o andar)"}
+		-- Thorn
+		,{ uid = 1302, description = "Banco"}
 	},
 				
 	-- 1400 ~ 1499 (red north)
