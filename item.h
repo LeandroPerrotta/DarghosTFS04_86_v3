@@ -245,7 +245,7 @@ class Item : virtual public Thing, public ItemAttributes
 
 #ifdef __DARGHOS_CUSTOM__
 		void setDurability(int16_t current, int32_t max) { setAttribute("durability", current); setAttribute("maxdurability", max); }
-		void onWear(bool onDeath = false);
+		void onWear(bool onDeath = false, bool withSkull = false);
 #endif
 
 		std::string getName() const;

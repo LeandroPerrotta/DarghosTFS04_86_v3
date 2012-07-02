@@ -2394,43 +2394,35 @@ uint32_t Player::getIP() const
 
 bool Player::onDeath()
 {
+#ifndef __DARGHOS_CUSTOM__
 	Item* preventLoss = NULL;
 	Item* preventDrop = NULL;
+#endif
 
 #ifdef __DARGHOS_CUSTOM__
-    bool ignoreLoss = false;
-	bool monsterDeath = false;
-    if(hasCondition(CONDITION_IGNORE_DEATH_LOSS))
-    {
-        ignoreLoss = true;
-        setLossSkill(false);
-    }
+	bool wearItems = true;
 
 	if(getZone() == ZONE_HARDCORE || isInBattleground())
-#else
-	if(getZone() == ZONE_HARDCORE)
-#endif
 	{
-		setDropLoot(LOOT_DROP_NONE);
-		setLossSkill(false);
+		wearItems = false;
 	}
 #ifdef __DARGHOS_EMERGENCY_DDOS__
     else if(g_game.isUnderDDoS())
     {
-        setLossSkill(false);
-        setDropLoot(LOOT_DROP_NONE);
-        sendTextMessage(MSG_EVENT_ADVANCE, "Voc� morreu enquanto o servidor estava sofrendo ataques DDoS, nenhuma penalidade foi aplicada a sua morte e voc� ser� apenas levado ao templo, desculpe pelo transtorno.");
+		wearItems = false;
+        sendTextMessage(MSG_EVENT_ADVANCE, "Você morreu enquanto o servidor estava sofrendo ataques DDoS, nenhuma penalidade foi aplicada a sua morte e você será apenas levado ao templo, desculpe pelo transtorno.");
     }
 #endif
+#else
+	if(getZone() == ZONE_HARDCORE)
+	{
+		setDropLoot(LOOT_DROP_NONE);
+		setLossSkill(false);
+	}
 	else if(skull < SKULL_RED)
 	{
 		Item* item = NULL;
 
-#ifdef __DARGHOS_CUSTOM__
-
-        if(!ignoreLoss)
-        {
-#endif
 		for(int32_t i = SLOT_FIRST; ((skillLoss || lootDrop == LOOT_DROP_FULL) && i < SLOT_LAST); ++i)
 		{
 			if(!(item = getInventoryItem((slots_t)i)) || item->isRemoved() ||
@@ -2447,101 +2439,60 @@ bool Player::onDeath()
 			if(skillLoss && !preventLoss && it.abilities.preventLoss)
 				preventLoss = item;
 		}
-
-#ifdef __DARGHOS_CUSTOM__
-        }
-        else
-            setDropLoot(LOOT_DROP_PREVENT);
+	}
 #endif
-	}
-
-#ifdef __DARGHOS_CUSTOM__
-	bool usePVPBlessing = false;
-	uint32_t totalDamage = 0, pvpDamage = 0, enemiesLevelSum = 0, alliesLevelSum = 0;
-	std::map<Player*, uint32_t> enemiesList, alliesList;
-
-	if(skillLoss)
-	{
-		alliesList.insert(std::pair<Player*, uint32_t>(this, 1));
-		alliesLevelSum += getLevel();
-
-		for(CountMap::iterator it = damageMap.begin(); it != damageMap.end(); ++it)
-		{
-			// its enough when we use IDs range comparison here instead of overheating autoList
-			if(((OTSYS_TIME() - it->second.ticks) / 1000) > 60)
-				continue;
-
-			totalDamage += it->second.total;
-
-			Creature* creature = g_game.getCreatureByID(it->first);
-			if(creature && (creature->getPlayer() || creature->isPlayerSummon()))
-			{
-				Player* p = (creature->isPlayerSummon()) ? creature->getMaster()->getPlayer() : creature->getPlayer();
-				if(p && enemiesList.count(p) == 0)
-				{
-					enemiesList.insert(std::pair<Player*, uint32_t>(p, 1));
-					enemiesLevelSum += p->getLevel();
-				}
-				pvpDamage += it->second.total;
-			}
-		}
-
-		uint8_t pvpPercent = (uint8_t)std::ceil((double)pvpDamage * 100. / std::max(1U, totalDamage));
-		if(pvpPercent < 50 && !pzLocked && getSkull() != SKULL_BLACK)
-		{
-			monsterDeath = true;
-			setDropLoot(LOOT_DROP_PREVENT);
-			setLossSkill(false);
-			preventLoss = NULL;
-			preventDrop = NULL;
-
-			wearGear(true);
-			wearShield(true);
-			wearWeapon(true);
-		}
-		else
-		{
-			if(hasPvpBlessing() && getBlessings() >= 1 && pvpPercent >= 40)
-			{
-				usePVPBlessing = true;
-				removePvpBlessing();
-			}
-		}
-	}
 
 	if(!Creature::onDeath())
 	{
+#ifndef __DARGHOS_CUSTOM__
 		if(preventDrop)
 			setDropLoot(LOOT_DROP_FULL);
+#endif
 
 		return false;
 	}
 
-    if(!ignoreLoss && skillLoss)
-	{
-        for(CountMap::iterator it = healMap.begin(); it != healMap.end(); ++it)
-        {
-            // its enough when we use IDs range comparison here instead of overheating autoList
-            if(((OTSYS_TIME() - it->second.ticks) / 1000) > 60)
-                continue;
+#ifdef __DARGHOS_CUSTOM__
 
-            Creature* creature = g_game.getCreatureByID(it->first);
-            if(creature && (creature->getPlayer() || creature->isPlayerSummon()))
-            {
-                Player* p = (creature->isPlayerSummon()) ? creature->getMaster()->getPlayer() : creature->getPlayer();
-                if(p && alliesList.count(p) == 0)
-                {
-                    alliesList.insert(std::pair<Player*, uint32_t>(p, 1));
-                    alliesLevelSum += p->getLevel();
-                }
-            }
-        }
+	setDropLoot(LOOT_DROP_PREVENT);
+	setLossSkill(false);
+
+	if(wearItems)
+	{
+		wearGear(true);
+		wearShield(true);
+		wearWeapon(true);
 	}
 
-    if(!ignoreLoss)
-    {
+	if(isInDungeon() && getDungeonStatus() == DUNGEON_STATUS_INSIDE)
+	{
+		setDungeonStatus(DUNGEON_STATUS_OUTSIDE);
+		Thing* thing = ScriptEnviroment::getUniqueThing((uint32_t)m_dungeonId + 1);
+		if(thing)
+		{
+			const Position& oldPos = getPosition();
+			g_game.internalTeleport(this, thing->getPosition(), true);
+			g_game.addMagicEffect(oldPos, MAGIC_EFFECT_TELEPORT);				
+		}
+	}
+	else
+	{
+		loginPosition = masterPosition;
+
+		if(wearItems)
+		{
+			sendIcons();
+			sendStats();
+			sendSkills();
+
+			g_creatureEvents->playerLogout(this, true);
+			g_game.removeCreature(this, false);
+			sendReLoginWindow();
+		}
+	}
 #endif
 
+#ifndef __DARGHOS_CUSTOM__
 	if(preventLoss)
 	{
 		setLossSkill(false);
@@ -2559,33 +2510,10 @@ bool Player::onDeath()
 			g_game.internalRemoveItem(NULL, preventDrop);
 	}
 
-#ifdef __DARGHOS_CUSTOM__
-    }
-#endif
-
 	removeConditions(CONDITIONEND_DEATH);
 	if(skillLoss)
 	{
 		uint64_t lossExperience = getLostExperience();
-
-#ifdef __DARGHOS_CUSTOM__
-        std::stringstream deathStr; deathStr << "Relatórios da morte:\n";
-
-        float extraReduction = 0.;
-
-        if(g_config.getBool(ConfigManager::UNFAIR_FIGHT) && alliesLevelSum < enemiesLevelSum && getSkull() != SKULL_RED && getSkull() != SKULL_BLACK)
-        {
-            extraReduction = (float)alliesLevelSum / enemiesLevelSum;
-            if(extraReduction < 0.2)
-                extraReduction = 0.2;
-
-            lossExperience = std::floor(lossExperience * extraReduction);
-            deathStr << "\nRedução extra por combate desleal (unfair fight): " << std::floor(100 - (extraReduction * 100)) << "%";
-        }
-
-        deathStr << "\nExperiencia perdida: " << lossExperience << " pontos.";
-#endif
-
 		removeExperience(lossExperience, false);
 		double percent = 1. - ((double)(experience - lossExperience) / experience);
 
@@ -2638,21 +2566,11 @@ bool Player::onDeath()
 			skills[i][SKILL_TRIES] = std::max((int32_t)0, (int32_t)(skills[i][SKILL_TRIES] - lostSkillTries));
 		}
 
-		#ifdef __DARGHOS_CUSTOM__
-        if(usePVPBlessing)
-        {
-            deathStr << "\nVocê morreu em luta contra outros jogadores e perdeu a benção do PvP (twist of fate)! Suas benções regulares estão vuneraveis!";
-        }
-        else
-		#endif
 		blessings = 0;
 		loginPosition = masterPosition;
 
-#ifdef __DARGHOS_CUSTOM__
-		if(!inventory[SLOT_BACKPACK] && g_config.getNumber(ConfigManager::DEATH_CONTAINER) != 0)
-#else
+
 		if(!inventory[SLOT_BACKPACK])
-#endif
 			__internalAddThing(SLOT_BACKPACK, Item::CreateItem(g_config.getNumber(ConfigManager::DEATH_CONTAINER)));
 
 		sendIcons();
@@ -2662,45 +2580,20 @@ bool Player::onDeath()
 		g_creatureEvents->playerLogout(this, true);
 		g_game.removeCreature(this, false);
 		sendReLoginWindow();
-
-#ifdef __DARGHOS_CUSTOM__
-        sendTextMessage(MSG_EVENT_ORANGE, deathStr.str());
-#endif
 	}
 	else
 	{
 		setLossSkill(true);
 
-#ifdef __DARGHOS_CUSTOM__
-
-        if(preventLoss || ignoreLoss || monsterDeath)
-		{
-		    if(ignoreLoss)
-                removeCondition(CONDITION_IGNORE_DEATH_LOSS);
-
-			if(isInDungeon() && getDungeonStatus() == DUNGEON_STATUS_INSIDE)
-			{
-				setDungeonStatus(DUNGEON_STATUS_OUTSIDE);
-				Thing* thing = ScriptEnviroment::getUniqueThing((uint32_t)m_dungeonId + 1);
-				if(thing)
-				{
-					const Position& oldPos = getPosition();
-					g_game.internalTeleport(this, thing->getPosition(), true);
-					g_game.addMagicEffect(oldPos, MAGIC_EFFECT_TELEPORT);				
-				}
-
-				return true;
-			}
-#else
 		if(preventLoss)
 		{
-#endif
 			loginPosition = masterPosition;
 			g_creatureEvents->playerLogout(this, true);
 			g_game.removeCreature(this, false);
 			sendReLoginWindow();
 		}
 	}
+#endif
 
 	return true;
 }
@@ -4592,8 +4485,10 @@ Skulls_t Player::getSkullType(const Creature* creature) const
 		if(g_game.getWorldType() != WORLDTYPE_OPEN)
 			return SKULL_NONE;
 
+#ifndef __DARGHOS_CUSTOM__
 		if((player == this || (skull != SKULL_NONE && player->getSkull() < SKULL_RED)) && player->hasAttacked(this) && !player->isEnemy(this, false))
 			return SKULL_YELLOW;
+#endif
 
 		if(player->getSkull() == SKULL_NONE && (isPartner(player) || isAlly(player)) && g_game.getWorldType() != WORLDTYPE_OPTIONAL)
 			return SKULL_GREEN;
@@ -5799,6 +5694,17 @@ uint32_t Player::getCriticalChance() const
 
 	return criticalChance;
 }
+
+void Player::updateBaseSpeed()
+{
+	if(!hasFlag(PlayerFlag_SetMaxSpeed))
+	{
+		uint32_t baseLevel = (g_config.getNumber(ConfigManager::PLAYER_SPEED_LEVEL) > 0) ? g_config.getNumber(ConfigManager::PLAYER_SPEED_LEVEL) : level;
+		baseSpeed = vocation->getBaseSpeed() + (2 * (baseLevel - 1));
+	}
+	else
+		baseSpeed = SPEED_MAX;
+}
 #endif
 
 #ifdef __DARGHOS_PVP_SYSTEM__
@@ -5823,8 +5729,8 @@ bool Player::isBattlegroundDeserter()
 
 void Player::onEnterBattleground()
 {
-	baseSpeed = vocation->getBaseSpeed() + (2 * (120 - 1));
-	g_game.changeSpeed(this, 0);
+	//baseSpeed = vocation->getBaseSpeed() + (2 * (120 - 1));
+	//g_game.changeSpeed(this, 0);
 
 	health = getPlayerInfo(PLAYERINFO_MAXHEALTH);
 	mana = getPlayerInfo(PLAYERINFO_MAXMANA);
@@ -5854,7 +5760,7 @@ void Player::wearGear(bool isDeath/* = false*/)
 
 		if(item->getWeaponType() == WEAPON_NONE)
 		{
-			item->onWear(isDeath);
+			item->onWear(isDeath, getSkull() == SKULL_WHITE);
 		}
 	}
 }
@@ -5870,7 +5776,7 @@ void Player::wearShield(bool isDeath/* = false*/)
 
 		if(item->getWeaponType() == WEAPON_SHIELD)
 		{
-			item->onWear(isDeath);
+			item->onWear(isDeath, getSkull() == SKULL_WHITE);
 		}
 	}
 }

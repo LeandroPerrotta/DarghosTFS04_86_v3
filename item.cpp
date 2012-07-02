@@ -1839,12 +1839,12 @@ void Item::__startDecaying()
 }
 
 #ifdef __DARGHOS_CUSTOM__
-void Item::onWear(bool onDeath/* = false*/)
+void Item::onWear(bool onDeath/* = false*/, bool withSkull/* = false*/)
 {
 	if(getMaxDurability() <= 0)
 		return;
 
-	int16_t durabilityWear = (onDeath ? std::floor(getMaxDurability() * (float)(g_config.getNumber(ConfigManager::ON_DEATH_ITEM_DURABILITY_WEAR_PERCENT) / 100.)) : 1);
+	int16_t durabilityWear = 1;
 	bool wearDurability = false;
 
 	if(!onDeath)
@@ -1853,7 +1853,14 @@ void Item::onWear(bool onDeath/* = false*/)
 			wearDurability = true;
 	}
 	else
+	{
+		if(!withSkull)
+			durabilityWear = std::floor(getMaxDurability() * (float)(g_config.getNumber(ConfigManager::ON_DEATH_ITEM_DURABILITY_WEAR_PERCENT) / 100.));
+		else
+			durabilityWear = std::floor(getMaxDurability() * (float)(g_config.getNumber(ConfigManager::WITH_SKULL_ITEM_DURABILITY_WEAR_PERCENT) / 100.));
+
 		wearDurability = true;
+	}
 
 	if(wearDurability)
 	{

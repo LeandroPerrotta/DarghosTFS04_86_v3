@@ -1788,6 +1788,7 @@ void ConditionSpellCast::endCondition(Creature* creature, ConditionEnd_t reason)
     }
     else
     {
+		g_game.addAnimatedText(creature->getPlayer()->getPosition(), COLOR_RED, "Fail cast!");
         creature->getPlayer()->sendCancelMessage(RET_YOUINTERRUPTYOURCAST);
         creature->getPlayer()->sendMagicEffect(creature->getPosition(), MAGIC_EFFECT_POFF);
     }

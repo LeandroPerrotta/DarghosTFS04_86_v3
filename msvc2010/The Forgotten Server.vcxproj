@@ -309,7 +309,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>__USE_MYSQL__;__ENABLE_SERVER_DIAGNOSTIC__;__EXCEPTION_TRACER__;__USE_LUALIBRARIES__;__DARGHOS_PVP_SYSTEM__;__DARGHOS_CUSTOM__;__DARGHOS_CUSTOM_SPELLS__;__DARGHOS_SPOOF__;__TFS_NEWEST_REVS_FIXIES__;__NO_CRYPTOPP__;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>otpch.h</PrecompiledHeaderFile>
       <MultiProcessorCompilation>false</MultiProcessorCompilation>
       <AdditionalIncludeDirectories>..\lib\sqlite3\include;..\lib\openssl\include;..\lib\mysql\include;..\lib\luajit\src;..\lib\win32\libxml2\include;..\lib\win32\iconv\include;D:\MSVC\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>

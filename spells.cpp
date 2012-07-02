@@ -75,7 +75,7 @@ ReturnValue Spells::onPlayerSay(Player* player, const std::string& words)
 	if(!instantSpell->canCast(player, reParam, var))
         return RET_NEEDEXCHANGE;
 
-    if(instantSpell->getCastDelay() == 0 || !player->isInBattleground())
+    if(instantSpell->getCastDelay() == 0)
     {
         if(!instantSpell->castInstant(player, reParam, var))
             return RET_NEEDEXCHANGE;
@@ -650,8 +650,8 @@ bool Spell::checkSpell(Player* player) const
 		exhausted = true;
 
 #ifdef __DARGHOS_CUSTOM_SPELLS__
-	//� sempre possivel castar uma magia com cast delay, j� que, durante o cast, qualquer coisa que o jogador fizer ir� interromper o cast
-	if(player->isInBattleground() && castDelay > 0)
+	//é sempre possivel castar uma magia com cast delay, já que, durante o cast, qualquer coisa que o jogador fizer irá interromper o cast
+	if(castDelay > 0)
 		exhausted = false;
 #endif
 
@@ -1040,27 +1040,13 @@ void Spell::postSpell(Player* player, bool finishedCast /*= true*/, bool payCost
 	if(finishedCast)
 	{
 #ifdef __DARGHOS_CUSTOM_SPELLS__
-		if(!player->isInBattleground())
+		if(!player->hasFlag(PlayerFlag_HasNoExhaustion) && exhaustion > 0 && castDelay == 0)
 		{
-			if(!player->hasFlag(PlayerFlag_HasNoExhaustion) && exhaustion > 0)
-			{
-				player->addExhaust(exhaustion, isAggressive ? EXHAUST_COMBAT : EXHAUST_HEALING);
+			player->addExhaust(exhaustion, isAggressive ? EXHAUST_COMBAT : EXHAUST_HEALING);
 
-				uint32_t globalCooldown = g_config.getNumber(ConfigManager::GLOBAL_COOLDOWN);
-				if(globalCooldown > 0)
-					player->addExhaust(globalCooldown, EXHAUST_GLOBAL);
-			}
-		}
-		else
-		{
-			if(!player->hasFlag(PlayerFlag_HasNoExhaustion) && exhaustion > 0 && castDelay == 0)
-			{
-				player->addExhaust(exhaustion, isAggressive ? EXHAUST_COMBAT : EXHAUST_HEALING);
-
-				uint32_t globalCooldown = g_config.getNumber(ConfigManager::GLOBAL_COOLDOWN);
-				if(globalCooldown > 0)
-					player->addExhaust(globalCooldown, EXHAUST_GLOBAL);
-			}
+			uint32_t globalCooldown = g_config.getNumber(ConfigManager::GLOBAL_COOLDOWN);
+			if(globalCooldown > 0)
+				player->addExhaust(globalCooldown, EXHAUST_GLOBAL);
 		}
 #else
 		if(!player->hasFlag(PlayerFlag_HasNoExhaustion) && exhaustion > 0)

@@ -816,7 +816,8 @@ class Player : public Creature, public Cylinder
 
         void onTargetLost(bool cancelTarget = true){
 #ifdef __DARGHOS_CUSTOM_SPELLS__
-            if(isInBattleground()) removeCondition(CONDITION_CASTING_SPELL);
+			if(hasCondition(CONDITION_CASTING_SPELL))
+				removeCondition(CONDITION_CASTING_SPELL);
 #endif
             if(cancelTarget) setAttackedCreature(NULL);
             sendCancelTarget();
@@ -851,7 +852,7 @@ class Player : public Creature, public Cylinder
 
 #ifdef __DARGHOS_CUSTOM_SPELLS__
 		void onPerformAction() {
-		    if(isInBattleground()) removeCondition(CONDITION_CASTING_SPELL);
+		    if(hasCondition(CONDITION_CASTING_SPELL)) removeCondition(CONDITION_CASTING_SPELL);
 		}
 #endif
 
@@ -861,6 +862,9 @@ class Player : public Creature, public Cylinder
 
 		bool gainExperience(double& gainExp, bool fromMonster);
 		bool rateExperience(double& gainExp, bool fromMonster);
+#ifdef __DARGHOS_CUSTOM__
+		void updateBaseSpeed();
+#else
 		void updateBaseSpeed()
 		{
 			if(!hasFlag(PlayerFlag_SetMaxSpeed))
@@ -868,6 +872,8 @@ class Player : public Creature, public Cylinder
 			else
 				baseSpeed = SPEED_MAX;
 		}
+#endif
+
 
 		void updateInventoryWeight();
 		void updateInventoryGoods(uint32_t itemId);

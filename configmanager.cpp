@@ -339,6 +339,8 @@ bool ConfigManager::load()
 	m_confBool[PLAYERS_CAN_HEAL_MONSTERS] = getGlobalBool("playersCanHealMonsters", false);
 	m_confNumber[ITEM_DURABILITY_LOSS_CHANCE] = getGlobalNumber("itemDurabilityLossChance", 10);
 	m_confNumber[ON_DEATH_ITEM_DURABILITY_WEAR_PERCENT] = getGlobalNumber("onDeathItemDurabilityWearPercent", 10);
+	m_confNumber[WITH_SKULL_ITEM_DURABILITY_WEAR_PERCENT] = getGlobalNumber("withSkullItemDurabilityWearPercent", 30);
+	m_confNumber[PLAYER_SPEED_LEVEL] = getGlobalNumber("playerSpeedLevel", 60);
 	m_confNumber[GLOBAL_COOLDOWN] = getGlobalNumber("globalCooldown", 1200);
 	m_confNumber[MAX_FREE_PREMIUM_LEVEL] = getGlobalNumber("maxFreePremiumLevel", 150);
 #endif
