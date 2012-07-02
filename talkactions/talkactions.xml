@@ -7,6 +7,7 @@
 	<talkaction log="yes" words="/help" channel="65534" access="1" event="script" value="game/help_manager.lua"/>
 	<talkaction words="/getoutfit" channel="65534" access="4" event="script" value="game/getoutfit.lua"/>
 	<talkaction log="yes" words="/poll" channel="65534" logged="1" access="5" event="script" value="game/createpoll.lua"/>
+	<talkaction words="!online;/online" access="3" event="script" value="game/online.lua"/>
 	
 	<talkaction words="!pvp;!arena" event="script" value="game/arena.lua"/>
 	<!-- 
@@ -19,7 +20,6 @@
 	<talkaction words="!vote" access="0" event="script" value="game/vote.lua"/>
 	<talkaction words="!voteinfo" access="0" event="script" value="game/voteinfo.lua"/>
 	<talkaction words="!aceitotp" access="0" event="script" value="game/accept_teleport.lua"/>
-	<talkaction words="!online;/online" event="script" value="game/online.lua"/>
 	<talkaction words="!bg;/bg;!battleground;/battleground" event="script" value="game/battleground.lua"/>
 	<talkaction words="!dungeon;/dungeon" event="script" value="game/dungeon.lua"/>
 	
