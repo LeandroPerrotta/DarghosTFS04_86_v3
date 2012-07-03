@@ -1789,7 +1789,7 @@ void ConditionSpellCast::endCondition(Creature* creature, ConditionEnd_t reason)
     else
     {
 		if(creature){
-			Player* player = creature->getPayer();
+			Player* player = creature->getPlayer();
 			if(player){
 				player->sendCancelMessage(RET_YOUINTERRUPTYOURCAST);
 				player->sendMagicEffect(creature->getPosition(), MAGIC_EFFECT_POFF);
