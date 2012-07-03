@@ -1788,9 +1788,14 @@ void ConditionSpellCast::endCondition(Creature* creature, ConditionEnd_t reason)
     }
     else
     {
-		g_game.addAnimatedText(creature->getPlayer()->getPosition(), COLOR_RED, "Fail cast!");
-        creature->getPlayer()->sendCancelMessage(RET_YOUINTERRUPTYOURCAST);
-        creature->getPlayer()->sendMagicEffect(creature->getPosition(), MAGIC_EFFECT_POFF);
+		if(creature){
+			Player* player = creature->getPayer();
+			if(player){
+				player->sendCancelMessage(RET_YOUINTERRUPTYOURCAST);
+				player->sendMagicEffect(creature->getPosition(), MAGIC_EFFECT_POFF);
+				g_game.addAnimatedText(player->getPosition(), COLOR_RED, "Fail cast!");
+			}
+		}
     }
 }
 
