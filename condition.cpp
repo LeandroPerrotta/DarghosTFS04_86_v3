@@ -1793,7 +1793,7 @@ void ConditionSpellCast::endCondition(Creature* creature, ConditionEnd_t reason)
 			if(player){
 				player->sendCancelMessage(RET_YOUINTERRUPTYOURCAST);
 				player->sendMagicEffect(creature->getPosition(), MAGIC_EFFECT_POFF);
-				g_game.addAnimatedText(player->getPosition(), COLOR_RED, "Fail cast!");
+				player->sendAnimatedText(player->getPosition(), COLOR_RED, "Fail cast!");
 			}
 		}
     }
