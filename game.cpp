@@ -4876,7 +4876,12 @@ void Game::addAnimatedText(const SpectatorVec& list, const Position& pos, uint8_
 	Player* player = NULL;
 	for(SpectatorVec::const_iterator it = list.begin(); it != list.end(); ++it)
 	{
+#ifdef __DARGHOS_CUSTOM__
+		Creature* c = (*it);
+		if(c && (player = c->getPlayer()))
+#else
 		if((player = (*it)->getPlayer()))
+#endif
 			player->sendAnimatedText(pos, textColor, text);
 	}
 }
