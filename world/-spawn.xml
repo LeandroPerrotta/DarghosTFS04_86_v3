@@ -6717,7 +6717,9 @@
     <monster name="Thorn Citizen" x="-4" y="-5" z="7" spawntime="60"/>
     <monster name="Thorn Citizen" x="1" y="2" z="7" spawntime="60"/>
   </spawn>
-  <spawn centerx="2004" centery="1846" centerz="7" radius="1"/>
+  <spawn centerx="2005" centery="1846" centerz="7" radius="1">
+    <npc name="quendor.magic" x="0" y="0" z="7" spawntime="60"/>
+  </spawn>
   <spawn centerx="2341" centery="1846" centerz="7" radius="1">
     <npc name="thorn.pillow" x="0" y="0" z="7" spawntime="60"/>
   </spawn>
