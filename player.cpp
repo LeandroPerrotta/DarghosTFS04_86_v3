@@ -2442,6 +2442,11 @@ bool Player::onDeath()
 	}
 #endif
 
+#ifdef __DARGHOS_CUSTOM__
+	setDropLoot(LOOT_DROP_PREVENT);
+	setLossSkill(false);
+#endif
+
 	if(!Creature::onDeath())
 	{
 #ifndef __DARGHOS_CUSTOM__
@@ -2453,10 +2458,6 @@ bool Player::onDeath()
 	}
 
 #ifdef __DARGHOS_CUSTOM__
-
-	setDropLoot(LOOT_DROP_PREVENT);
-	setLossSkill(false);
-
 	if(wearItems)
 	{
 		wearGear(true);
